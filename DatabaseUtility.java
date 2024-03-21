@@ -110,7 +110,7 @@ public class DatabaseUtility {
                 
                 String itemName = resultSet.getString("itemName");
                 int itemNumber = resultSet.getInt("itemNumber");
-                BigDecimal price = new BigDecimal(resultSet.getDouble("price"));
+                BigDecimal price = new BigDecimal(resultSet.getString("price"));
                 String category = resultSet.getString("category");
                 String itemPicture = resultSet.getString("itemPicture");
                 int inventoryCount = resultSet.getInt("inventoryCount");                

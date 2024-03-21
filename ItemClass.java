@@ -9,6 +9,7 @@ public class ItemClass implements Comparable<ItemClass>{
     // holds name of item photo
     private String itemPicture;
     private int inventoryCount;
+    
 
     // Default Constructor
     public ItemClass(){
