@@ -1,0 +1,9 @@
+/* CSS Style Sheet for Home Screen */
+
+#home-screen-center-image {
+
+}
+
+#center-stack-pane {
+    -fx-background-image: url('/images/homepage_background_section_placeholder.png');
+}
