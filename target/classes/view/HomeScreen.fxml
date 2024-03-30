@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeScreenController">
    <children>
-      <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="600.0" spacing="10.0" style="-fx-background-color: white;">
+      <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="1100.0" spacing="10.0" style="-fx-background-color: white;">
          <children>
             <ImageView fx:id="headerBarLogoImage" fitHeight="57.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -54,9 +54,9 @@
             <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
          </padding>
       </HBox>
-      <StackPane id="center-stack-pane" fx:id="centerStackPane" alignment="CENTER_LEFT" prefHeight="250.0" prefWidth="500.0">
+      <StackPane id="center-stack-pane" fx:id="centerStackPane" alignment="CENTER_LEFT" prefHeight="250.0" prefWidth="1100.0">
          <children>
-            <ImageView fitHeight="250.0" fitWidth="1000.0" pickOnBounds="true">
+            <ImageView fitHeight="250.0" fitWidth="1100.0" pickOnBounds="true">
                <image>
                   <Image url="@../images/homepage_background_section_placeholder.png" />
                </image>
@@ -71,7 +71,7 @@
             </Button>
          </children>
       </StackPane>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="1100.0" spacing="50.0">
          <children>
             <VBox alignment="CENTER" prefHeight="100.0" prefWidth="125.0">
                <children>
