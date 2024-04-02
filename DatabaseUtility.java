@@ -1,20 +1,17 @@
 import java.math.BigDecimal;
 import java.sql.*;
+import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
 
 
 
 
-/*****************************************************
- * This class has a database object that can be used to
- * accesss and manipulate databases for our project
- * 
- * ONLY WORKS IF YOU ARE USING MYSQL AND HAVE JDBC DRIVER
- * INSTALLED    
- * 
- * 
- *****************************************************/
+
+/**
+ * Utility class for accessing and manipulating databases.
+ * Note: Works only with MySQL and requires JDBC driver.
+ */
 public class DatabaseUtility {
 
     private String url;
@@ -27,17 +24,23 @@ public class DatabaseUtility {
 
     // default constructor
     public DatabaseUtility() {
-        this.schema = "campusmart";
-        this.user = "root";
-        this.password = "PixelPioneers380!";
-        this.url = "jdbc:mysql://localhost:3306/" + schema;
+        this.schema = "sql3694706";
+        this.user = "sql3694706";
+        this.password = "yRDGXZx65e";
+        this.url = "jdbc:mysql://sql3.freesqldatabase.com/" + schema;
         this.query = "";
         this.table = "";
 
     }
-    // constructor with parameters
-    // localhost using mysql
-    // ask for database table to accesss
+    /**
+     * Constructor with parameters.
+     *
+     * @param schema   The name of the database schema.
+     * @param table    The name of the database table.
+     * @param user     The username for accessing the database.
+     * @param password The password for accessing the database.
+     * @param url      The URL of the database.
+     */
     public DatabaseUtility(String schema, String table, String user, String password, String url) {
         this.schema =  schema;
         this.user = user;
@@ -47,11 +50,25 @@ public class DatabaseUtility {
         this.table = "";
 
     }
+    /**
+     * Sets the query for database operations.
+     *
+     * @param q The query to be set.
+     */
     public void setQuery (String q) {this.query = q;}
+    
+    /**
+     * Sets the table for database operations.
+     *
+     * @param t The table name to be set.
+     */
     public void setTable (String t) {this.table = t;}
 
 
-    // prints out the data from table
+    
+    /**
+     * Prints out the data from the table.
+     */
     public void printTable() {
         try {
 
@@ -93,17 +110,23 @@ public class DatabaseUtility {
 
     }
 
-    // creates a TreeSet dataStructure 
+    /**
+     * Creates a TreeSet data structure containing ItemClass objects.
+     *
+     * @return A TreeSet containing ItemClass objects.
+     */
     public Set<ItemClass> createDataStructureItemClass() {
 
         Set<ItemClass> tree = new TreeSet<ItemClass>();
         try {
-
+            
+            // creating connection to the database. 
             Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
             Statement statment = connection.createStatement();
              
             String printQuery = "select * from " + this.table;
             ResultSet resultSet = statment.executeQuery(printQuery);
+            // end of connection to database
             
             //get all info from database to create a DataStructureItemClass
             while (resultSet.next()) {
@@ -125,6 +148,73 @@ public class DatabaseUtility {
 
         return tree;
     }
+
+    /**
+     * Creates a HashMap data structure containing ItemClass objects.
+     *
+     * @return A HashMap containing ItemClass objects.
+     */
+    public HashMap<Integer, ItemClass> createHasMapItemClass() {
+        HashMap<Integer, ItemClass> map = new HashMap<>();
+        try {
+            
+            // creating connection to the database. 
+            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+            Statement statment = connection.createStatement();
+             
+            String printQuery = "select * from " + this.table;
+            ResultSet resultSet = statment.executeQuery(printQuery);
+            // end of connection to database
+            
+            //get all info from database to create a DataStructureItemClass
+            while (resultSet.next()) {
+                
+                String itemName = resultSet.getString("itemName");
+                int itemNumber = resultSet.getInt("itemNumber");
+                BigDecimal price = new BigDecimal(resultSet.getString("price"));
+                String category = resultSet.getString("category");
+                String itemPicture = resultSet.getString("itemPicture");
+                int inventoryCount = resultSet.getInt("inventoryCount");                
+                ItemClass temp = new ItemClass(itemName, itemNumber, price, category, itemPicture, inventoryCount);
+                /*change to HashMap entry*/
+                map.putIfAbsent(itemNumber, temp);
+                
+
+                 
+            }
+            connection.close();
+            
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        return map;
+
+
+
+    }
     
+    public void updateItemDatabaseInventory(Integer itemNumber) {
+        // use the datastructure class to get the object
+        ItemDataStructure data = ItemDataStructure.getInstance();
+        // get temp item structure
+        ItemClass temp = data.getItemDataStructure().get(itemNumber);
+
+        String sqlStatment = "UPDATE itemtable SET inventoryCount = " + temp.getInventoryCount() + " WHERE itemNumber = " + itemNumber;
+
+        
+        try {
+            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+            Statement statment = connection.createStatement();
+            statment.executeUpdate(sqlStatment);
+            connection.close();
+        } 
+        
+        catch (SQLException e) {
+            
+            e.printStackTrace();
+        }
+
+
+    }
 
 }

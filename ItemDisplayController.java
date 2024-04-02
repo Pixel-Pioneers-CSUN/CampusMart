@@ -1,9 +1,8 @@
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.TreeSet;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -18,7 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
-import javafx.scene.text.Text;
 
 public class ItemDisplayController implements Initializable{
 
@@ -41,13 +40,21 @@ public class ItemDisplayController implements Initializable{
 
     @FXML
     private GridPane grid;
+    
+    @FXML
+    private Button myAddToCart;
+
+    @FXML
+    private ChoiceBox<Integer> myChoiceBox;
+
+    private Integer[] choices;
 
     private MyListener myListener;
     private Image image;
     
     
     //Image myImage = new Image(getClass().getResourceAsStream("projectPhotos/soda.png"));
-    private ItemDataStructure tempData = ItemDataStructure.getInstance();
+    //private ItemDataStructure tempData = ItemDataStructure.getInstance();
 
    
     // create a way to display all info and item page 
@@ -62,6 +69,15 @@ public class ItemDisplayController implements Initializable{
         itemImage.setImage(image);
         
     }
+    @FXML
+    public void clickAddToCart(ActionEvent event) {
+        Integer amount = myChoiceBox.getValue();
+        // value has to be passed to shopping cart
+        // maybe update picture of cart with a new value on the side
+        // confirmation of added to cart??
+
+    }
+    
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -71,12 +87,27 @@ public class ItemDisplayController implements Initializable{
 
         // create datastructure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
-        data.setItemDataStructure(bd.createDataStructureItemClass());
-        Iterator<ItemClass> it = data.getIterator();
+        data.setItemDataStructure(bd.createHasMapItemClass());
+
+
+        Iterator<HashMap.Entry<Integer,ItemClass>> it = data.getItemDataStructure().entrySet().iterator();
+
+        /*****************'
+         * 
+         * 
+         * 
+         * temp attempt to see if update database works or not
+         * ******************************/
+        ItemClass tempItem = data.getItemDataStructure().get(1);
+
+        tempItem.setInventoryCount(50);
+
+        bd.updateItemDatabaseInventory(1);
+        // should update database
 
         //set initialize item to be shown
         if(!data.getItemDataStructure().isEmpty()){
-            displayItemInformation(it.next());
+            displayItemInformation(it.next().getValue());
             // override the myListner to pass data bewteen
             myListener = new MyListener() {
                 @Override
@@ -85,7 +116,6 @@ public class ItemDisplayController implements Initializable{
                 }
             };
         }
-        System.out.println("Pass the creation of onClickDisplay!");
         //reset Iterator
         it = data.getIterator();
 
@@ -104,12 +134,14 @@ public class ItemDisplayController implements Initializable{
                 AnchorPane anchorPane;
                 anchorPane = fxmlLoader.load();
                 
+                
                 ItemController itemController = fxmlLoader.getController();
 
 
                 // set the information for item view
                // System.out.println("Pass itemController gets controller");
-                itemController.setData(it.next(), myListener);
+                itemController.setData(it.next().getValue(), myListener);
+
 
 
                 //System.out.println("Pass the setData for itemController!");
@@ -134,6 +166,14 @@ public class ItemDisplayController implements Initializable{
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        choices = new Integer[25];
+        for(int i = 0; i < choices.length; i++){
+            choices[i] = i;
+
+        }
+        myChoiceBox.getItems().addAll(choices);
+
         System.out.println("Finish initialize");
         
     }

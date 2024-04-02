@@ -1,17 +1,23 @@
 import java.math.BigDecimal;
 
+/**
+ * Represents an item with various attributes such as name, number, price, category, picture, and inventory count.
+ * Implements Comparable interface to allow comparison based on item number.
+ */
 public class ItemClass implements Comparable<ItemClass>{
+
     // attributes
     private String itemName;
     private int itemNumber;
     private BigDecimal price; //item number can be a 4 digit number for now
-    private String category;
-    // holds name of item photo
+    private String category; // holds name of item photo
     private String itemPicture;
     private int inventoryCount;
     
 
-    // Default Constructor
+    /**
+     * Default constructor initializes item attributes with default values.
+     */
     public ItemClass(){
         this.itemName = "Item Name";
         this.itemNumber = 0000; 
@@ -21,7 +27,16 @@ public class ItemClass implements Comparable<ItemClass>{
         this.inventoryCount = 0;
 
     }
-    // Constructor with values
+    /**
+     * Constructor initializes item attributes with provided values.
+     *
+     * @param itemName       The name of the item.
+     * @param itemNumber     The number of the item.
+     * @param price          The price of the item.
+     * @param category       The category of the item.
+     * @param itemPicture    The picture of the item.
+     * @param inventoryCount The count of the item in inventory.
+     */
     public ItemClass(String itemName, int itemNumber, BigDecimal price, String category, String itemPicture, int inventoryCount){
         this.itemName = itemName;
         this.itemNumber = itemNumber; 
@@ -50,7 +65,9 @@ public class ItemClass implements Comparable<ItemClass>{
     public void setItemPicture(String itemPicture){this.itemPicture = itemPicture;}
     public void setInventoryCount(int inventoryCount){this.inventoryCount = inventoryCount;}
 
-    // print object
+    /**
+     * Print the details of the item.
+     */
     public void printItem(){
         System.out.print(this.itemNumber + "\t");
         System.out.print(this.itemName + "\t");
@@ -60,6 +77,12 @@ public class ItemClass implements Comparable<ItemClass>{
         System.out.print(this.inventoryCount+ "\n");
 
     }
+    /**
+     * Returns a string representation of the item.
+     *
+     * @return A string representation of the item.
+     */
+    @Override
     public String toString() {
         return this.itemNumber + "\t" +
         this.itemName + "\t" +
@@ -68,10 +91,21 @@ public class ItemClass implements Comparable<ItemClass>{
         this.itemPicture + "\t" +
         this.inventoryCount + "\t";
     }
-    // reduce inventoryCount by certain amount
+    
+    /**
+     * Reduces the inventory count of the item by the specified amount.
+     *
+     * @param count The amount to reduce the inventory count by.
+     */
     public void reduceInventoryCount(int count){
         this.inventoryCount = this.inventoryCount - count;
     }
+    /**
+     * Compares this item with another item based on their item numbers.
+     *
+     * @param o The item to be compared.
+     * @return A negative integer, zero, or a positive integer if this item is less than, equal to, or greater than the specified item.
+     */
     @Override
     public int compareTo(ItemClass o) {
         if(this.itemNumber > o.itemNumber) {return 1;}

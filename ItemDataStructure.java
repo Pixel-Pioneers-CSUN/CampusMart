@@ -1,37 +1,55 @@
-import java.util.Iterator;
-import java.util.Set;
+
 // this is a Singleton Class meaning only one instance of class
+
+import java.util.HashMap;
+import java.util.Iterator;
+
+/**
+ * Represents a singleton data structure for storing items.
+ */
 public class ItemDataStructure {
     private static final ItemDataStructure singletonObj = new ItemDataStructure();
 
-    private Set<ItemClass> tree;
-    private Iterator<ItemClass> it;
+    private HashMap<Integer, ItemClass> map;
 
     private ItemDataStructure(){
+        // Private constructor to prevent instantiation
 
     }
-
-    // get instance of item structure 
+    /**
+     * Returns the instance of the ItemDataStructure.
+     *
+     * @return The singleton instance of ItemDataStructure.
+     */ 
     public static ItemDataStructure getInstance() {
         return singletonObj;
     }
-    public Set<ItemClass> getItemDataStructure() {
-        return tree;
-    }
-
-    public void setItemDataStructure(Set<ItemClass> treeSet) {
-        this.tree = treeSet;
-    }
     
-    
-    public Iterator<ItemClass> getIterator() {
-        return this.tree.iterator();
+    /**
+     * Returns the item data structure.
+     *
+     * @return The item data structure.
+     */
+    public HashMap<Integer, ItemClass> getItemDataStructure() {
+        return map;
     }
     
-    // go to next item in list
-    
+    /**
+     * Sets the item data structure.
+     *
+     * @param hashMap The item data structure to set.
+     */
+    public void setItemDataStructure(HashMap<Integer, ItemClass> hashMap) {
+        this.map = hashMap;
+    }
+    /**
+     * Returns an iterator over the item data structure entries.
+     *
+     * @return An iterator over the item data structure entries.
+     */
+    public Iterator<HashMap.Entry<Integer, ItemClass>> getIterator() {
+        return map.entrySet().iterator();
 
-    // restart list
-
+    }
 
 }

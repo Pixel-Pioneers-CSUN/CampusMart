@@ -22,18 +22,20 @@ public class ItemController {
     void click(MouseEvent event) {
         myListener.onClickListener(item);
     }
-
+    /**
+    * Sets data of an item and updates corresponding UI components.
+    *
+    * @param item       The item to set data for.
+    * @param myListener The listener for item events.
+    */
     public void setData(ItemClass item, MyListener myListener) {
 
         this.item = item;
         this.myListener = myListener;
         nameLable.setText(item.getItemName());
         priceLable.setText(item.getPrice().toString());
-        // change later but put a defauly photo rn
         Image image = new Image(getClass().getResourceAsStream("projectPhotos/" + item.getItemPicture()));
-        // System.out.println("Passt setting imagefile");
         itemImage.setImage(image);
-        System.out.println("out of image set");
     }
 
 
