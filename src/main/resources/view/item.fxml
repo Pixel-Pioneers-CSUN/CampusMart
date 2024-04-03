@@ -33,13 +33,13 @@
             </HBox>
             <ImageView fx:id="itemImage" fitHeight="115.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@projectPhotos/soda.png" />
+                  <Image url="@/images/soda.png" />
                </image></ImageView>
          </children>
       </VBox>
    </children>
    <stylesheets>
-      <URL value="@itemStyle.css" />
+      <URL value="@../css/items-styles.css" />
       <URL value="@../css/items-styles.css" />
    </stylesheets>
 </AnchorPane>
