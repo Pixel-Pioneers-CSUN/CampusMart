@@ -1,0 +1,60 @@
+
+.root {
+    -fx-background-color: "fd4a4a";
+}
+#myAddToCart {
+    -fx-font-size: 30;
+    -fx-text-fill: "black";
+    fx-aligment: center;
+}
+.itemCard {
+    -fx-background-color: "e27474";
+    
+
+}
+#nameLable {
+    -fx-font-size: 17;
+    -fx-text-fill: "white";
+    -fx-alignemnt: center;
+}
+#priceLable {
+    -fx-font-size: 30;
+    -fx-text-fill: "white";
+    -fx-alignemnt: center;
+}
+#itemImage {
+    height: 100px;
+    width: 100px;
+    image-rendering: auto;
+}
+#itemName {
+    -fx-font-size: 30;
+    -fx-text-fill: "white";
+    -fx-alignemnt: center;
+}
+#itemPrice {
+    -fx-font-size: 30;
+    -fx-text-fill: "white";
+    -fx-alignemnt: center;
+}
+#myQuantityLabel {
+    -fx-font-size: 30;
+    -fx-text-fill: "white";
+    -fx-alignemnt: center;
+}
+.transparent{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-text-fill:transparent;
+}
+
+.topButtons{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-text-fill:transparent;    
+}
+.storeNameLabel{
+    -fx-background-color:transparent;
+    -fx-alignemnt: center;
+    -fx-font-size: 60;  
+}

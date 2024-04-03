@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ItemDisplayController">
+   <children>
+      <Button fx:id="myButton" layoutX="263.0" layoutY="361.0" mnemonicParsing="false" onAction="#displayItemPhoto" text="Button" />
+      <AnchorPane layoutX="122.0" layoutY="22.0" prefHeight="306.0" prefWidth="317.0">
+         <children>
+            <ImageView fx:id="myImageView" fitHeight="150.0" fitWidth="200.0" layoutX="63.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@projectPhotos/chips.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="ItemNameDisplay" layoutX="70.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="43.13671875" />
+            <Text fx:id="itemPriceDisplay" layoutX="191.0" layoutY="191.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="43.13671875" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
