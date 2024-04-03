@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMousePressed="#click" styleClass="itemCard" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ItemController">
+<AnchorPane onMousePressed="#click" styleClass="itemCard" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ItemController">
    <children>
       <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="215.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -40,6 +40,6 @@
    </children>
    <stylesheets>
       <URL value="@itemStyle.css" />
-      <URL value="@style.css" />
+      <URL value="@../css/items-styles.css" />
    </stylesheets>
 </AnchorPane>

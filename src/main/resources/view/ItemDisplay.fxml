@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ItemDisplayController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../css/items-styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ItemDisplayController">
    <children>
       <BorderPane layoutX="143.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <left>
@@ -38,7 +38,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label id="myQuantityLabel" fx:id="myQuantityLabel" prefHeight="101.0" prefWidth="406.0" stylesheets="@style.css" text="Quantity" />
+                        <Label id="myQuantityLabel" fx:id="myQuantityLabel" prefHeight="101.0" prefWidth="406.0" stylesheets="@../css/items-styles.css" text="Quantity" />
                         <ChoiceBox fx:id="myChoiceBox" prefHeight="25.0" prefWidth="213.0" />
                      </children>
                   </HBox>
@@ -47,11 +47,11 @@
             </VBox>
          </left>
          <center>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="transparent" stylesheets="@style.css" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" styleClass="transparent" stylesheets="@../css/items-styles.css" BorderPane.alignment="CENTER">
                <children>
-                  <ScrollPane prefHeight="780.0" prefWidth="865.0" styleClass="transparent" stylesheets="@style.css">
+                  <ScrollPane prefHeight="780.0" prefWidth="865.0" styleClass="transparent" stylesheets="@../css/items-styles.css">
                      <content>
-                        <GridPane fx:id="grid" styleClass="transparent" stylesheets="@style.css">
+                        <GridPane fx:id="grid" styleClass="transparent" stylesheets="@../css/items-styles.css">
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
@@ -64,7 +64,7 @@
          <top>
             <HBox prefHeight="4.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="124.0" prefWidth="110.0" styleClass="topButtons" stylesheets="@style.css" text="Button">
+                  <Button mnemonicParsing="false" prefHeight="124.0" prefWidth="110.0" styleClass="topButtons" stylesheets="@../css/items-styles.css" text="Button">
                      <graphic>
                         <ImageView fitHeight="85.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -73,7 +73,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="124.0" prefWidth="110.0" styleClass="topButtons" stylesheets="@style.css" text="Button">
+                  <Button mnemonicParsing="false" prefHeight="124.0" prefWidth="110.0" styleClass="topButtons" stylesheets="@../css/items-styles.css" text="Button">
                      <graphic>
                         <ImageView fitHeight="85.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -82,7 +82,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <Label prefHeight="95.0" prefWidth="1072.0" styleClass="storeNameLabel" stylesheets="@style.css" text="Campus Mart" />
+                  <Label prefHeight="95.0" prefWidth="1072.0" styleClass="storeNameLabel" stylesheets="@../css/items-styles.css" text="Campus Mart" />
                </children>
             </HBox>
          </top>

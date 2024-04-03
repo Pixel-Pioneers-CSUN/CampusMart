@@ -61,7 +61,7 @@
                   <Image url="@../images/homepage_background_section_placeholder.png" />
                </image>
             </ImageView>
-            <Button mnemonicParsing="false" text="Shop Now">
+            <Button fx:id="shopNowButton" mnemonicParsing="false" text="Shop Now">
                <StackPane.margin>
                   <Insets left="50.0" />
                </StackPane.margin>

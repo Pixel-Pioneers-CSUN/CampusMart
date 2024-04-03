@@ -1,17 +1,24 @@
 package org.example.campusmart;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import items.*;
 
 import java.io.IOException;
 
 public class CampusMart extends Application {
 
     public static void main(String[] args) {
+        ItemClass apple = new ItemClass();
+        System.out.println(apple);
         launch(args);
     }
+
+
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -19,6 +26,12 @@ public class CampusMart extends Application {
 
         // Setting the default window size of the scene
         Scene scene = new Scene(fxmlLoader.load(), 1100, 650);   // also set the initial window size
+
+//        Parent root = FXMLLoader.load(getClass().getResource("/view/ItemDisplay.fxml"));
+//
+//        Scene scene = new Scene(root);
+//        String css = this.getClass().getResource("/css/items-styles.css").toExternalForm();
+//        scene.getStylesheets().add(css);
 
         // Setting the title of the stage
         stage.setTitle("Welcome to Campus Mart");

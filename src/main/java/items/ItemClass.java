@@ -1,3 +1,5 @@
+package items;
+
 import java.math.BigDecimal;
 
 /**

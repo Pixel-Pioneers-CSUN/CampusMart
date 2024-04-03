@@ -1,3 +1,6 @@
+package controllers;
+
+import items.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -34,7 +37,7 @@ public class ItemController {
         this.myListener = myListener;
         nameLable.setText(item.getItemName());
         priceLable.setText(item.getPrice().toString());
-        Image image = new Image(getClass().getResourceAsStream("projectPhotos/" + item.getItemPicture()));
+        Image image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
         itemImage.setImage(image);
     }
 

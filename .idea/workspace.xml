@@ -5,12 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Initial Home Screen UI and file structure setup">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/DatabaseUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/ItemClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemDataStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/ItemDataStructure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemDisplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/ItemDisplay.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ItemDisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/MyListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/item.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectPhoto/chips.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/chips.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectPhoto/chocolateBar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/chocolateBar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectPhoto/error.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/error.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectPhoto/granola.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/granola.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectPhoto/iceCreamBar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/iceCreamBar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectPhoto/soda.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/soda.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectPhoto/text.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/projectPhoto/waterBottle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/waterBottle.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/HomeScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/HomeScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/items-styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/HomeScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/HomeScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -68,12 +90,12 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "SevanCSUN"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;SevanCSUN&quot;
   }
-}]]></component>
+}</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -107,7 +129,8 @@
     "Application.HelloApplication.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Home-Screen",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -125,6 +148,10 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/images" />
+      <recent name="$PROJECT_DIR$/src/main/java/items" />
+      <recent name="$PROJECT_DIR$/src/main/java/controllers" />
+      <recent name="$PROJECT_DIR$/src/main/java/org/example/campusmart" />
+      <recent name="$PROJECT_DIR$/src/main/resources/view" />
     </key>
   </component>
   <component name="RunManager">
@@ -167,6 +194,7 @@
       <workItem from="1711654664788" duration="28978000" />
       <workItem from="1711765318533" duration="3844000" />
       <workItem from="1711769172422" duration="10787000" />
+      <workItem from="1712166759008" duration="6047000" />
     </task>
     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
       <option name="closed" value="true" />

@@ -1,4 +1,4 @@
-
+package items;
 // this is a Singleton Class meaning only one instance of class
 
 import java.util.HashMap;
