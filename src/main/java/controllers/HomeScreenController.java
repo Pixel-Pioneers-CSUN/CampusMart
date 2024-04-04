@@ -55,10 +55,10 @@ public class HomeScreenController {
                 // load the fxml file of the home screen
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ItemDisplay.fxml"));
                 Parent root = loader.load();
-                // create a new scene and load the fxml of home screen
+                // create a new scene and load the fxml of item display screen
                 Scene scene = new Scene(root);
                 // get the stage and set it to the new scene
-                Stage stage = (Stage) headerBarLogoImage.getScene().getWindow();
+                Stage stage = (Stage) shopNowButton.getScene().getWindow();
                 stage.setScene(scene);
                 stage.show();
             } catch (IOException e) {

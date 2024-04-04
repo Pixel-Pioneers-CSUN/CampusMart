@@ -23,10 +23,10 @@ public class DatabaseUtility {
 
     // default constructor
     public DatabaseUtility() {
-        this.schema = "sql3694706";
-        this.user = "sql3694706";
-        this.password = "yRDGXZx65e";
-        this.url = "jdbc:mysql://sql3.freesqldatabase.com/" + schema;
+        this.schema = "driftmer_CampusMart";
+        this.user = "driftmer_pixelpioneer";
+        this.password = "COMP380Group";
+        this.url = "jdbc:mysql://cp01-wa.privatesystems.net/" + schema;
         this.query = "";
         this.table = "";
 
