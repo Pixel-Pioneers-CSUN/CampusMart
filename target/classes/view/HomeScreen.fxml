@@ -18,7 +18,7 @@
    <children>
       <HBox alignment="CENTER_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="1100.0" spacing="10.0" style="-fx-background-color: white;">
          <children>
-            <ImageView fx:id="headerBarLogoImage" fitHeight="57.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#clickHomeLogo">
+            <ImageView fx:id="headerBarLogoImage" fitHeight="57.0" fitWidth="55.0" onMouseClicked="#clickHomeLogo" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/store_icon_placeholder.png" />
                </image>
@@ -28,7 +28,7 @@
             </ImageView>
             <ComboBox fx:id="headerBarCategoryDropdown" prefHeight="26.0" prefWidth="150.0" promptText="Categories" />
             <Region prefHeight="88.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
-            <TextField fx:id="headerBarSearchBar" prefHeight="26.0" prefWidth="229.0" promptText="What can we help you find?" onKeyReleased="#searchItems">
+            <TextField id="searchBar" fx:id="headerBarSearchBar" onKeyReleased="#searchItems" prefHeight="26.0" prefWidth="229.0" promptText="What can we help you find?">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
@@ -61,7 +61,7 @@
                   <Image url="@../images/homepage_background_section_placeholder.png" />
                </image>
             </ImageView>
-            <Button fx:id="shopNowButton" mnemonicParsing="false" text="Shop Now" onAction="#clickShopNow">
+            <Button fx:id="shopNowButton" mnemonicParsing="false" onAction="#clickShopNow" text="Shop Now">
                <StackPane.margin>
                   <Insets left="50.0" />
                </StackPane.margin>

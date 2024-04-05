@@ -9,12 +9,9 @@ import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -52,9 +49,13 @@ public class HomeScreenController {
 
     @FXML
     public void initialize() {
-        // Set the content of the Popup to a VBox containing the ListView
+        // set the content of the Popup to a VBox containing the ListView
         VBox popupContent = new VBox(searchResultsListView);
         searchPopup.getContent().add(popupContent);
+
+        // set the style of the search popup and hide its default scroll bar
+        searchResultsListView.setStyle("-fx-background-color: transparent; -fx-padding: 0;");
+
 
         // hide the popup initially (only show it during a valid search)
         searchPopup.setAutoHide(true);
@@ -82,9 +83,14 @@ public class HomeScreenController {
             // perform search through ItemDataStructure based on searchTerm
             Map<Integer, ItemClass> searchResults = SearchHelper.searchItems(ItemDataStructure.getInstance().getItemDataStructure(), searchTerm);
 
-            // populate the ListView with search results
+            // clear the current items in the ListView
             searchResultsListView.getItems().clear();
+
+            // populate the ListView with search results
             searchResults.forEach((id, item) -> searchResultsListView.getItems().add(item.getItemName()));
+
+            // set the height of the ListView depending on the number of items
+            searchResultsListView.setPrefHeight(searchResults.size() * 24); // 24 is the pixel height of each result
 
             // show the Popup below the search bar
             positionSearchResults();
@@ -96,13 +102,18 @@ public class HomeScreenController {
 
     //position the search popup below the search bar
     private void positionSearchResults() {
-        Bounds searchBarBounds = headerBarSearchBar.localToScreen(headerBarSearchBar.getBoundsInLocal());
+        // get the width of the search bar
+        double searchBarWidth = headerBarSearchBar.getWidth();
 
+        // set the preferred width of the popup search results to match the width of the search bar
+        searchResultsListView.setPrefWidth(searchBarWidth);
+
+        // set the position of the popup relative to the parent container
+        Bounds searchBarBounds = headerBarSearchBar.localToScreen(headerBarSearchBar.getBoundsInLocal());
         // calculate the location below the search bar
         double popupX = searchBarBounds.getMinX();
         double popupY = searchBarBounds.getMaxY();
 
-        // set the position of the popup relative to the parent container
         searchPopup.show(headerBarSearchBar, popupX, popupY);
     }
 
