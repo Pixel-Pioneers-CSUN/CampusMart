@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Search functionality on header bar now displays relevant item names.">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_34PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_34PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_49PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_49PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/items/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/DatabaseUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/granola.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/iceCreamBar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/granola.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/images/iceCreamBar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/items/DatabaseUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/items/DatabaseUtility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" afterDir="false" />
-    </list>
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Adding more images for the view page." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +55,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Search-Bar" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -87,7 +69,7 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="76be5842-3193-45eb-b7c8-3825938dc8ad" />
+        <option name="accountId" value="8bf064ff-64f3-4717-8edb-0eab9d92534d" />
         <option name="url" value="https://github.com/Pixel-Pioneers-CSUN/CampusMart.git" />
       </UrlAndAccount>
     </option>
@@ -237,7 +219,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712299048155</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Adding more images for the view page.">
+      <option name="closed" value="true" />
+      <created>1712551137594</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712551137594</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,8 +274,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial HomeScreen UI and file structure setup" />
     <MESSAGE value="Initial Home Screen UI and file structure setup" />
-    <MESSAGE value="Merged Home-Screen and Item-Screen + fixed conflicts and dependencies." />
     <MESSAGE value="Search functionality on header bar now displays relevant item names." />
-    <option name="LAST_COMMIT_MESSAGE" value="Search functionality on header bar now displays relevant item names." />
+    <MESSAGE value="Merged Home-Screen and Item-Screen + fixed conflicts and dependencies." />
+    <MESSAGE value="Adding more images for the view page." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding more images for the view page." />
   </component>
 </project>
