@@ -87,7 +87,7 @@ public class DatabaseUtility {
                 
 
             }
-            System.out.println("");
+            System.out.println();
 
             //print all the data in table
             while (resultSet.next()) {
@@ -97,7 +97,7 @@ public class DatabaseUtility {
                     System.out.printf("%-20s", columnValue);
     
                 }
-                System.out.println("");
+                System.out.println();
                 
             }
 

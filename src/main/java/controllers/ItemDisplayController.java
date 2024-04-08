@@ -79,7 +79,7 @@ public class ItemDisplayController implements Initializable {
     @FXML
     private void displayItemInformation(ItemClass item) {
         itemName.setText(item.getItemName());
-        itemPrice.setText(item.getPrice().toString());
+        itemPrice.setText("$" + item.getPrice().toString());
         image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
         itemImage.setImage(image);
 
@@ -96,20 +96,25 @@ public class ItemDisplayController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // start of app pull data and then make a data structure
-        DatabaseUtility bd = new DatabaseUtility();
-        bd.setTable("itemtable");
-
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
-        data.setItemDataStructure(bd.createHasMapItemClass());
 
         Iterator<HashMap.Entry<Integer, ItemClass>> it = data.getItemDataStructure().entrySet().iterator();
+
+        // could have a check for if an item has been searched so display that instead
+
         if (it.hasNext()) {
-            // get the first entry in the iterator
-            HashMap.Entry<Integer, ItemClass> entry = it.next();
+            // here I can check if there is an item being searched with getting the information from user
+            /*
+                Take the headerBarSearchBar value and place it as the first item
+                psudeo code:
+                if(headerSearch !empty){
+                    get value from searchbar
+
+             */
+            ItemClass entry = it.next().getValue();
             // display item information
-            displayItemInformation(entry.getValue());
+            displayItemInformation(entry);
             // override the myListener to pass data between
             myListener = new MyListener() {
                 @Override
@@ -127,7 +132,8 @@ public class ItemDisplayController implements Initializable {
         try {
             while (it.hasNext()) {
                 // Get the next entry in the iterator
-                HashMap.Entry<Integer, ItemClass> entry = it.next();
+                ItemClass entry = it.next().getValue();
+                //HashMap.Entry<Integer, ItemClass> entry = it.next();
 
                 // Create a grid pane that has all items information on a
                 // page. Take the fxml that holds the item product display
@@ -141,7 +147,9 @@ public class ItemDisplayController implements Initializable {
                 ItemController itemController = fxmlLoader.getController();
 
                 // Set the information for item view
-                itemController.setData(entry.getValue(), myListener);
+                System.out.println(entry);
+                itemController.setData(entry, myListener);
+
 
                 if (column == 3) {
                     column = 0;
@@ -165,7 +173,7 @@ public class ItemDisplayController implements Initializable {
             e.printStackTrace();
         }
 
-        choices = new Integer[25];
+        choices = new Integer[10];
         for (int i = 0; i < choices.length; i++) {
             choices[i] = i;
 

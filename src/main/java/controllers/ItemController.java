@@ -36,7 +36,7 @@ public class ItemController {
         this.item = item;
         this.myListener = myListener;
         nameLable.setText(item.getItemName());
-        priceLable.setText(item.getPrice().toString());
+        priceLable.setText("$" + item.getPrice().toString());
         Image image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
         itemImage.setImage(image);
     }
