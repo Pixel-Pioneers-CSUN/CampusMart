@@ -65,7 +65,7 @@ public class ItemDisplayController implements Initializable {
     private int selectedItemNumber;
 
     @FXML
-    private void displayItemInformation(ItemClass item) {
+    public void displayItemInformation(ItemClass item) {
         itemName.setText(item.getItemName());
         itemPrice.setText("$" + item.getPrice().toString());
         selectedItemNumber = item.getItemNumber();
