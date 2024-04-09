@@ -42,10 +42,16 @@ public class HomeScreenController {
     private ImageView headerBarLogoImage;
 
     @FXML
-    private Button shopNowButton;
+    private TextField headerBarSearchBar;
 
     @FXML
-    private TextField headerBarSearchBar;
+    private ImageView headerBarCartImage;
+
+    @FXML
+    private ImageView headerBarAccountImage;
+
+    @FXML
+    private Button shopNowButton;
 
     @FXML
     public void initialize() {
@@ -94,9 +100,40 @@ public class HomeScreenController {
 
             // show the Popup below the search bar
             positionSearchResults();
+
+            // add a click event handler to the search results ListView
+            searchResultsListView.setOnMouseClicked(event -> {
+                String selectedName = searchResultsListView.getSelectionModel().getSelectedItem();
+                if (selectedName != null) {
+                    ItemClass selectedItem = SearchHelper.getItemByName(selectedName, ItemDataStructure.getInstance().getItemDataStructure());
+                    if (selectedItem != null) {
+                        loadItemPage(selectedItem);
+                    }
+                }
+            });
+
         } else {
             // hide the Popup when not conducting a search
             searchPopup.hide();
+        }
+    }
+
+    // load the item's page if a search result is clicked on
+    private void loadItemPage(ItemClass item) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ItemDisplay.fxml"));
+            Parent root = loader.load();
+            // now pass the selected item to the ItemDisplayController so it can display it
+            ItemDisplayController controller = loader.getController();
+            controller.displayItemInformation(item);
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -129,6 +166,40 @@ public class HomeScreenController {
             Scene scene = new Scene(root);
             // get the stage and set it to the new scene
             Stage stage = (Stage) headerBarLogoImage.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void clickAccountImage(MouseEvent event) {
+        // if header bar account icon is clicked, navigate user to the account screen
+        try {
+            System.out.println("Account image clicked!");
+            // load the fxml file of the account screen
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountScreen.fxml"));
+            Parent root = loader.load();
+            // get the stage and set it to the new scene
+            Stage stage = (Stage) headerBarAccountImage.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void clickCartImage(MouseEvent event) {
+        // if header bar cart icon is clicked, navigate user to the cart
+        try {
+            System.out.println("Cart image clicked!");
+            // load the fxml file of the cart screen
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CartScreen.fxml"));
+            Parent root = loader.load();
+            // get the stage and set it to the new scene
+            Stage stage = (Stage) headerBarCartImage.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

@@ -24,7 +24,7 @@ public class CampusMart extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
 
         // Setting the default window size of the scene
-        Scene scene = new Scene(fxmlLoader.load(), 1100, 650);   // also set the initial window size
+        Scene scene = new Scene(fxmlLoader.load(), 1300, 800);   // also set the initial window size
 
 //        Parent root = FXMLLoader.load(getClass().getResource("/view/ItemDisplay.fxml"));
 //

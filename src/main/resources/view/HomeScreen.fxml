@@ -33,7 +33,7 @@
                   <Insets />
                </HBox.margin>
             </TextField>
-            <ImageView fx:id="headerBarAccountImage" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="headerBarAccountImage" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#clickAccountImage" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/account_icon_placeholder.png" />
                </image>
@@ -41,7 +41,7 @@
                   <Cursor fx:constant="DEFAULT" />
                </cursor>
             </ImageView>
-            <ImageView fx:id="headerBarCartImage" fitHeight="32.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="headerBarCartImage" fitHeight="32.0" fitWidth="47.0" onMouseClicked= "#clickCartImage" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/cart_icon_placeholder.png" />
                </image>

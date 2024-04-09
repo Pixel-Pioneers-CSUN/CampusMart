@@ -77,7 +77,7 @@ public class ItemDisplayController implements Initializable {
     // Need to make it so it can be done for every item in database
     //  Will need a loop to make all full display objects
     @FXML
-    private void displayItemInformation(ItemClass item) {
+    public void displayItemInformation(ItemClass item) {
         itemName.setText(item.getItemName());
         itemPrice.setText(item.getPrice().toString());
         image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
@@ -96,13 +96,13 @@ public class ItemDisplayController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        // start of app pull data and then make a data structure
-        DatabaseUtility bd = new DatabaseUtility();
-        bd.setTable("itemtable");
-
-        // create data structure for Items
+//        // start of app pull data and then make a data structure
+//        DatabaseUtility bd = new DatabaseUtility();
+//        bd.setTable("itemtable");
+//
+//        // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
-        data.setItemDataStructure(bd.createHasMapItemClass());
+//        data.setItemDataStructure(bd.createHasMapItemClass());
 
         Iterator<HashMap.Entry<Integer, ItemClass>> it = data.getItemDataStructure().entrySet().iterator();
         if (it.hasNext()) {
