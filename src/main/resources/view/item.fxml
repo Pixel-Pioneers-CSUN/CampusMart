@@ -13,13 +13,8 @@
    <children>
       <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="215.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <HBox prefHeight="51.0" prefWidth="185.0">
+            <HBox alignment="CENTER" prefHeight="51.0" prefWidth="274.0">
                <children>
-                  <Label fx:id="nameLabel" prefHeight="49.0" prefWidth="137.0" text="Item">
-                     <font>
-                        <Font name="Cambria" size="24.0" />
-                     </font>
-                  </Label>
                   <Label fx:id="priceLabel" prefHeight="49.0" prefWidth="101.0" text="\$0.99">
                      <font>
                         <Font name="Cambria Bold" size="18.0" />
@@ -31,6 +26,11 @@
                </VBox.margin>
             </HBox>
             <ImageView fx:id="itemImage" fitHeight="115.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="nameLabel" alignment="CENTER" prefHeight="60.0" prefWidth="229.0" text="Item">
+               <font>
+                  <Font name="Cambria" size="24.0" />
+               </font>
+            </Label>
          </children>
       </VBox>
    </children>

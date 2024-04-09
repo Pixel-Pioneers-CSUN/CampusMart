@@ -12,12 +12,12 @@
     
 
 }
-#nameLable {
+#nameLabel {
     -fx-font-size: 17;
     -fx-text-fill: "white";
     -fx-alignemnt: center;
 }
-#priceLable {
+#priceLabel {
     -fx-font-size: 30;
     -fx-text-fill: "white";
     -fx-alignemnt: center;
