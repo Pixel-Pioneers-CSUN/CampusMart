@@ -104,7 +104,7 @@ public class DatabaseUtility {
             connection.close();
             
         } catch(Exception e){
-            e.printStackTrace();
+            System.out.println("Failed to print out items from DatabaseUtility!");
         }
 
     }

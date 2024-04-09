@@ -11,8 +11,8 @@ public class ItemClass implements Comparable<ItemClass>{
     // attributes
     private String itemName;
     private int itemNumber;
-    private BigDecimal price; //item number can be a 4 digit number for now
-    private String category; // holds name of item photo
+    private BigDecimal price;
+    private String category;
     private String itemPicture;
     private int inventoryCount;
     
@@ -22,7 +22,7 @@ public class ItemClass implements Comparable<ItemClass>{
      */
     public ItemClass(){
         this.itemName = "Item Name";
-        this.itemNumber = 0000; 
+        this.itemNumber = 0;
         this.price = BigDecimal.valueOf(00.00);
         this.category = "Unknown";
         this.itemPicture = "error.png";

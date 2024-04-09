@@ -11,7 +11,9 @@ module org.example.campusmart {
 
     opens org.example.campusmart to javafx.fxml;
     opens controllers to javafx.fxml;   // had to open up controllers to JavafX since it couldn't access the HomeScreenController
+    opens items to javafx.fxml;
 
     exports org.example.campusmart;
     exports controllers;
+    exports items;
 }

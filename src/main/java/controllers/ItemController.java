@@ -13,10 +13,10 @@ public class ItemController {
     private ImageView itemImage;
 
     @FXML
-    private Label nameLable;
+    private Label nameLabel;
 
     @FXML
-    private Label priceLable;
+    private Label priceLabel;
 
     private ItemClass item;
     private MyListener myListener;
@@ -35,8 +35,8 @@ public class ItemController {
 
         this.item = item;
         this.myListener = myListener;
-        nameLable.setText(item.getItemName());
-        priceLable.setText("$" + item.getPrice().toString());
+        nameLabel.setText(item.getItemName());
+        priceLabel.setText("$" + item.getPrice().toString());
         Image image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
         itemImage.setImage(image);
     }

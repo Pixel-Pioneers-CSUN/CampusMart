@@ -61,25 +61,15 @@ public class ItemDisplayController implements Initializable {
     // might have to if this will work or not
     @FXML
     private ImageView headerBarLogoImage;
-
-    private Integer[] choices;
-
     private MyListener myListener;
-    private Image image;
+    private int selectedItemNumber;
 
-
-    //Image myImage = new Image(getClass().getResourceAsStream("projectPhotos/soda.png"));
-    //private ItemDataStructure tempData = ItemDataStructure.getInstance();
-
-
-    // create a way to display all info and item page
-    // basic to just work
-    // Need to make it so it can be done for every item in database
-    //  Will need a loop to make all full display objects
     @FXML
     private void displayItemInformation(ItemClass item) {
         itemName.setText(item.getItemName());
         itemPrice.setText("$" + item.getPrice().toString());
+        selectedItemNumber = item.getItemNumber();
+        Image image;
         image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
         itemImage.setImage(image);
 
@@ -88,6 +78,7 @@ public class ItemDisplayController implements Initializable {
     @FXML
     public void clickAddToCart(ActionEvent event) {
         Integer amount = myChoiceBox.getValue();
+        // pass into function item number and amount they want
         // value has to be passed to shopping cart
         // maybe update picture of cart with a new value on the side
         // confirmation of added to cart??
@@ -107,7 +98,7 @@ public class ItemDisplayController implements Initializable {
             // here I can check if there is an item being searched with getting the information from user
             /*
                 Take the headerBarSearchBar value and place it as the first item
-                psudeo code:
+                pseudocode:
                 if(headerSearch !empty){
                     get value from searchbar
 
@@ -170,9 +161,10 @@ public class ItemDisplayController implements Initializable {
                 GridPane.setMargin(anchorPane, new Insets(10));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Failed to create item page!");
+            //e.printStackTrace();
         }
-
+        Integer[] choices;
         choices = new Integer[10];
         for (int i = 0; i < choices.length; i++) {
             choices[i] = i;
