@@ -16,4 +16,6 @@ module org.example.campusmart {
     exports org.example.campusmart;
     exports controllers;
     exports items;
+    exports utils;
+    opens utils to javafx.fxml;
 }

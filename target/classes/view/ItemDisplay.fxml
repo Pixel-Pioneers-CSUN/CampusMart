@@ -22,12 +22,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="itemName" prefHeight="127.0" prefWidth="267.0" text="ItemName">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="itemPrice" prefHeight="98.0" prefWidth="304.0" text="ItemPrice">
+                        <Label fx:id="itemPrice" alignment="CENTER" prefHeight="98.0" prefWidth="473.0" text="ItemPrice">
                            <font>
                               <Font size="36.0" />
                            </font>
@@ -35,10 +30,17 @@
                      </children>
                   </HBox>
                   <ImageView fx:id="itemImage" fitHeight="311.0" fitWidth="382.0" pickOnBounds="true" preserveRatio="true" />
-                  <HBox prefHeight="100.0" prefWidth="200.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Label id="myQuantityLabel" fx:id="myQuantityLabel" prefHeight="101.0" prefWidth="406.0" stylesheets="@../css/items-styles.css" text="Quantity" />
+                        <Label fx:id="itemName" alignment="CENTER" prefHeight="100.0" prefWidth="468.0" text="ItemName">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                     </children></HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label id="myQuantityLabel" fx:id="myQuantityLabel" alignment="CENTER" prefHeight="101.0" prefWidth="406.0" stylesheets="@../css/items-styles.css" text="Quantity" />
                         <ChoiceBox fx:id="myChoiceBox" prefHeight="25.0" prefWidth="213.0" />
                      </children>
                   </HBox>

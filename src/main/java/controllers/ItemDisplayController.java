@@ -24,6 +24,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import org.controlsfx.control.PropertySheet;
 
 public class ItemDisplayController implements Initializable {
 
@@ -84,46 +85,31 @@ public class ItemDisplayController implements Initializable {
         // confirmation of added to cart??
 
     }
-
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
+    public  void createItemGridPage(String category) {
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
 
         Iterator<HashMap.Entry<Integer, ItemClass>> it = data.getItemDataStructure().entrySet().iterator();
 
-        // could have a check for if an item has been searched so display that instead
 
-        if (it.hasNext()) {
-            // here I can check if there is an item being searched with getting the information from user
-            /*
-                Take the headerBarSearchBar value and place it as the first item
-                pseudocode:
-                if(headerSearch !empty){
-                    get value from searchbar
-
-             */
-            ItemClass entry = it.next().getValue();
-            // display item information
-            displayItemInformation(entry);
-            // override the myListener to pass data between
-            myListener = new MyListener() {
-                @Override
-                public void onClickListener(ItemClass item) {
-                    displayItemInformation(item);
-                }
-            };
-        }
-
-        // reset Iterator
-        it = data.getIterator();
-
+        // possibly a switch case for what category to make?
         int column = 0;
         int row = 1;
         try {
-            while (it.hasNext()) {
+            for(ItemClass item : data.getItemDataStructure().values()) {
+            //while (it.hasNext()) {
                 // Get the next entry in the iterator
-                ItemClass entry = it.next().getValue();
+                ItemClass entry = new ItemClass();
+                if(item.getCategory().equals(category)) {
+                    entry = item;
+                }
+                else {
+                    continue;
+                }
+
+
+
+
                 //HashMap.Entry<Integer, ItemClass> entry = it.next();
 
                 // Create a grid pane that has all items information on a
@@ -138,7 +124,7 @@ public class ItemDisplayController implements Initializable {
                 ItemController itemController = fxmlLoader.getController();
 
                 // Set the information for item view
-                System.out.println(entry);
+                //System.out.println(entry);
                 itemController.setData(entry, myListener);
 
 
@@ -164,6 +150,32 @@ public class ItemDisplayController implements Initializable {
             System.out.println("Failed to create item page!");
             //e.printStackTrace();
         }
+
+    }
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+
+
+        myListener = new MyListener() {
+            @Override
+            public void onClickListener(ItemClass item) {
+                displayItemInformation(item);
+            }
+        };
+
+        //switch case??? to pick between.
+        String category = " ";
+        switch (category) {
+            case "snacks" :
+                createItemGridPage(category);
+                break;
+                case "drinks" :
+                    createItemGridPage(category);
+        }
+        createItemGridPage("drinks");
+
+
+
         Integer[] choices;
         choices = new Integer[10];
         for (int i = 0; i < choices.length; i++) {
@@ -172,7 +184,6 @@ public class ItemDisplayController implements Initializable {
         }
         myChoiceBox.getItems().addAll(choices);
 
-        System.out.println("Finish initialize");
     }
 }
 

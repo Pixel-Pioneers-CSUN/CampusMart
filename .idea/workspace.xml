@@ -4,7 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Adding more images for the view page." />
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="More UI changes for item display page">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_34PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_34PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_49PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_49PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/items/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/SearchHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/SearchHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/items-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/items-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/css/items-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/items-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/SearchHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/SearchHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/HomeScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/HomeScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/ItemDisplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/ItemDisplay.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -55,7 +75,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Search-Bar" />
+        <entry key="$PROJECT_DIR$" value="More-Images-for-Item-Page" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -66,13 +86,16 @@
     &quot;assignee&quot;: &quot;SevanCSUN&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="8bf064ff-64f3-4717-8edb-0eab9d92534d" />
-        <option name="url" value="https://github.com/Pixel-Pioneers-CSUN/CampusMart.git" />
-      </UrlAndAccount>
-    </option>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Pixel-Pioneers-CSUN/CampusMart.git&quot;,
+    &quot;accountId&quot;: &quot;519635a5-75fe-44c2-808f-97921c63e8c2&quot;
+  }
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_1_ItemDisplayController.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_2_ItemDisplayController.class" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp__ItemDisplayController.class" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="lvtn39rm" />
@@ -86,6 +109,9 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -103,7 +129,8 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Search-Bar",
+    "git-widget-placeholder": "Merge-Searchbar-and-ItemUpdate",
+    "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -111,20 +138,25 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
+    "org.rust.first.attach.projects": "true",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\erick\OneDrive\Desktop\Pixel Pionners\GITHUB Repo\target" />
       <recent name="$PROJECT_DIR$/src/main/resources/images" />
       <recent name="$PROJECT_DIR$/src/main/java/items" />
       <recent name="$PROJECT_DIR$/src/main/java/controllers" />
       <recent name="$PROJECT_DIR$/src/main/java/org/example/campusmart" />
-      <recent name="$PROJECT_DIR$/src/main/resources/view" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="utils" />
     </key>
   </component>
   <component name="RunManager">
@@ -150,9 +182,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176" />
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
-        <option value="jdk-21.0.2-temurin-21.0.2-4caba194b151-7da56cdf" />
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
       </set>
     </attachedChunks>
   </component>
@@ -170,6 +201,11 @@
       <workItem from="1711765318533" duration="3844000" />
       <workItem from="1711769172422" duration="10787000" />
       <workItem from="1712166759008" duration="6344000" />
+      <workItem from="1712600813453" duration="2329000" />
+      <workItem from="1712628547101" duration="1676000" />
+      <workItem from="1712630750622" duration="432000" />
+      <workItem from="1712631438429" duration="661000" />
+      <workItem from="1712696434137" duration="7879000" />
     </task>
     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
       <option name="closed" value="true" />
@@ -227,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712551137594</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="More UI changes for item display page">
+      <option name="closed" value="true" />
+      <created>1712632050009</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712632050009</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,6 +321,7 @@
     <MESSAGE value="Search functionality on header bar now displays relevant item names." />
     <MESSAGE value="Merged Home-Screen and Item-Screen + fixed conflicts and dependencies." />
     <MESSAGE value="Adding more images for the view page." />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding more images for the view page." />
+    <MESSAGE value="More UI changes for item display page" />
+    <option name="LAST_COMMIT_MESSAGE" value="More UI changes for item display page" />
   </component>
 </project>

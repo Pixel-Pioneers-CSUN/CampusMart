@@ -1,29 +1,22 @@
 package controllers;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.Popup;
-import org.example.campusmart.CampusMart;
+import utils.DatabaseUtility;
 import utils.SearchHelper;
 import items.*;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 public class HomeScreenController {
@@ -118,7 +111,7 @@ public class HomeScreenController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ItemDisplay.fxml"));
             Parent root = loader.load();
-            // now pass the selected item to the ItemDisplayController so it can display it
+            // now pass the selected item to the ItemDisplayController, so it can display it
             ItemDisplayController controller = loader.getController();
             controller.displayItemInformation(item);
 

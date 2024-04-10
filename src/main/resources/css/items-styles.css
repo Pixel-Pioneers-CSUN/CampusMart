@@ -27,6 +27,9 @@
     width: 100px;
     image-rendering: auto;
 }
+#selectedItemImage {
+    
+}
 #itemName {
     -fx-font-size: 30;
     -fx-text-fill: "white";
