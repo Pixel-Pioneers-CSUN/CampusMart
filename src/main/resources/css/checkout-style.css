@@ -3,6 +3,17 @@
     -fx-background-color: #efefef; 
 }
 
+#checkoutLabel {
+    -fx-font-size: 30px;
+    -fx-effect: dropshadow(three-pass-box, #414141, 4, 4, 0, 0);
+    -fx-text-fill: #ffff;
+    -fx-background-color: #C13538;
+    -fx-padding: 20px;
+    -fx-background-radius: 20px;
+    -fx-pref-width: 300px;
+    -fx-alignment: center;
+    }
+
 #payButton {
     -fx-background-color: #C13538;
     -fx-text-fill: white; 
@@ -27,18 +38,11 @@
     -fx-font-size: 10px; 
 }
 
-/* Apply styling to the contactInfoPane */
 #contactInfoPane {
     -fx-background-color: #fff; 
     -fx-border-color: #ccc; 
     -fx-border-width: 1px; 
     -fx-border-radius: 5px; 
-}
-
-
-/* Apply styling to the creditcardImg */
-#creditcardImg {
-    -fx-opacity: 0.91; 
 }
 
 /* Apply styling to the TableView */
@@ -66,3 +70,5 @@ table-view {
 #paymentInfoVBOX HBox {
     -fx-alignment: center; 
 }
+
+

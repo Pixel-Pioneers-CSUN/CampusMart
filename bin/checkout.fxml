@@ -5,7 +5,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -18,8 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CheckoutController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CheckoutController">
    <children>
       <Label id="checkoutLabel" layoutX="584.0" layoutY="64.0" prefHeight="57.0" prefWidth="178.0" text="Check Out">
          <font>
@@ -43,7 +41,7 @@
             <TextField fx:id="cardNumTF" layoutX="25.0" layoutY="130.0" prefHeight="25.0" prefWidth="250.0" promptText="Card Number" />
             <DatePicker fx:id="validThroughTF" layoutX="26.0" layoutY="192.0" prefHeight="25.0" prefWidth="127.0" promptText="Valid Through" />
             <TextField fx:id="cvvTF" layoutX="208.0" layoutY="192.0" prefHeight="25.0" prefWidth="68.0" promptText="CVV" />
-            <Label fx:id="ErrorMessageLabel" layoutX="98.0" layoutY="237.0" prefHeight="18.0" prefWidth="151.0" text="Enter valid expiration date" textFill="RED" visible="false">
+            <Label fx:id="creditcardErrorLabel" layoutX="98.0" layoutY="237.0" prefHeight="18.0" prefWidth="151.0" textFill="RED" visible="false">
                <font>
                   <Font size="8.0" />
                </font>
@@ -79,17 +77,6 @@
             </HBox>
          </children>
       </VBox>
-      <ScrollPane layoutX="890.0" layoutY="265.0" prefHeight="286.0" prefWidth="273.0">
-         <content>
-            <TableView prefHeight="290.0" prefWidth="288.0">
-              <columns>
-                <TableColumn prefWidth="104.66674554347992" text="Item Name" />
-                <TableColumn prefWidth="81.33319854736328" text="Quantity" />
-                  <TableColumn prefWidth="86.66661071777344" text="Price" />
-              </columns>
-            </TableView>
-         </content>
-      </ScrollPane>
       <Accordion layoutX="44.0" layoutY="108.0" />
       <Pane fx:id="contactInfoPane" layoutX="115.0" layoutY="193.0" prefHeight="479.0" prefWidth="357.0">
          <children>
@@ -105,6 +92,7 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Label>
+            <Label fx:id="contactInfoErrorLabel" layoutX="59.0" layoutY="422.0" prefHeight="17.0" prefWidth="239.0" textFill="RED" visible="false" />
          </children>
       </Pane>
       <VBox id="paymentInfoVBOX" layoutX="561.0" layoutY="203.0" prefHeight="145.0" prefWidth="250.0">
@@ -122,33 +110,40 @@
             <HBox prefHeight="41.0" prefWidth="250.0">
                <children>
                   <RadioButton mnemonicParsing="false" onAction="#showCreditCard" prefHeight="28.0" prefWidth="121.0" text="    Credit Card" />
-                  <ImageView fx:id="creditcardIMG" fitHeight="30.0" fitWidth="28.0" opacity="0.91" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Images/creditcard.png" />
-                     </image>
+                  <ImageView fitHeight="30.0" fitWidth="28.0" opacity="0.91" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <Blend />
                      </effect>
+                     <image>
+                        <Image url="@../src/main/resources/images/creditcard.png" />
+                     </image>
                   </ImageView>
-                  <ImageView fx:id="creditcardIMG" fitHeight="30.0" fitWidth="28.0" opacity="0.91" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Images/american-express.png" />
-                     </image>
+                  <ImageView fitHeight="30.0" fitWidth="28.0" opacity="0.91" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <Blend />
                      </effect>
+                     <image>
+                        <Image url="@../src/main/resources/images/americanexpress.png" />
+                     </image>
                   </ImageView>
-                  <ImageView fx:id="creditcardIMG" fitHeight="30.0" fitWidth="28.0" opacity="0.91" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@Images/mastercard.png" />
-                     </image>
+                  <ImageView fitHeight="30.0" fitWidth="28.0" opacity="0.91" pickOnBounds="true" preserveRatio="true">
                      <effect>
                         <Blend />
                      </effect>
+                     <image>
+                        <Image url="@../src/main/resources/images/mastercard.png" />
+                     </image>
                   </ImageView>
                </children>
             </HBox>
          </children>
       </VBox>
+      <TableView layoutX="859.0" layoutY="276.0" prefHeight="290.0" prefWidth="288.0">
+         <columns>
+            <TableColumn prefWidth="104.66674554347992" text="Item Name" />
+            <TableColumn prefWidth="90.6666259765625" text="Quantity" />
+            <TableColumn prefWidth="90.6666259765625" text="Price" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

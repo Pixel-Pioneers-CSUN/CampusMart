@@ -15,16 +15,15 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import utils.textFieldHelper;
 
 public class CheckoutController implements Initializable {
 
+
+
     // FXML
-    @FXML
-    private Label ErrorMessageLabel;
     @FXML
     private TextField addressTF;
     @FXML
@@ -36,9 +35,11 @@ public class CheckoutController implements Initializable {
     @FXML
     private Pane contactInfoPane;
     @FXML
-    private Pane creditCardInfoPane;
+    private Label creditcardErrorLabel;
     @FXML
-    private ImageView creditcardImg;
+    private Label contactInfoErrorLabel;
+    @FXML
+    private Pane creditCardInfoPane;
     @FXML
     private TextField cvvTF;
     @FXML
@@ -63,9 +64,6 @@ public class CheckoutController implements Initializable {
     private Label checkoutLabel;
     @FXML
     private DatePicker validThroughTF;
-
-    // Constant
-    final int CREDIT_CARD_MAX = 16;
 
     List<TextField> textFields = new ArrayList<>();
     List<TextField> emptyFields = new ArrayList<>();
@@ -176,65 +174,31 @@ public class CheckoutController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             // Set filters for text fields during initialization
-            cardNumTF.setTextFormatter(new TextFormatter<>(numbersOnlyFilter()));
-            nameOnCardTF.setTextFormatter(new TextFormatter<>(nameFilter()));
-            cvvTF.setTextFormatter(new TextFormatter<>(cvvFilter()));
+            cardNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter
+                    (cardNumTF, creditcardErrorLabel, "\\d{0,16}", "Enter a valid card number")));
+            nameOnCardTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
+                    nameOnCardTF, creditcardErrorLabel, "^[a-zA-Z ]*$", "Enter a valid name for card")));
+            cvvTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
+                    cvvTF, creditcardErrorLabel, "\\d{0,3}", "Enter a valid CVV")));
+            firstNameTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
+                    firstNameTF, contactInfoErrorLabel, "^[a-zA-Z ]*$", "Enter a valid first name")));
+            lastNameTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
+                    lastNameTF, contactInfoErrorLabel, "^[a-zA-Z ]*$", "Enter a valid last name")));
+            cityTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
+                    cityTF, contactInfoErrorLabel, "^[a-zA-Z ]*$", "Enter a valid city")));
+            zipCodeTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
+                    zipCodeTF, contactInfoErrorLabel, "\\d{0,5}", "Enter a valid zip code")));
+            phoneNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
+                    phoneNumTF, contactInfoErrorLabel, "\\d{0,10}", "Enter a valid phone number")));
+            addressTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
+                    addressTF, contactInfoErrorLabel, "^[a-zA-Z0-9 ]*$"
+                    , "Enter a valid address")));
+
             textFields = List.of(addressTF, cardNumTF, cityTF, cvvTF, emailTF, firstNameTF, lastNameTF, nameOnCardTF,
                     phoneNumTF, zipCodeTF);
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    // Check if input is a numerical value only and within length limits
-    private UnaryOperator<TextFormatter.Change> numbersOnlyFilter() {
-        return change -> {
-            String newText = change.getControlNewText();
-            if (newText.matches("^[0-9]*$") && (newText.length() <= CREDIT_CARD_MAX)) {
-                cardNumTF.setStyle(""); // Reset style if input is valid
-                ErrorMessageLabel.setText(""); // Clear error message
-                return change; 
-            } else {
-                cardNumTF.setStyle("-fx-background-color: pink;");
-                ErrorMessageLabel.setVisible(true);
-                ErrorMessageLabel.setText("Enter a valid card number");
-                return null;
-            }
-        };
-    }
-
-    // Filter for name validation
-    private UnaryOperator<TextFormatter.Change> nameFilter() {
-        return change -> {
-            String newText = change.getControlNewText();
-            if (newText.matches("^[a-zA-Z ]*$")) {
-                nameOnCardTF.setStyle("");
-                ErrorMessageLabel.setText("");
-                return change; 
-            } else {
-                nameOnCardTF.setStyle("-fx-background-color: pink;");
-                ErrorMessageLabel.setVisible(true);
-                ErrorMessageLabel.setText("Enter a valid name");
-                return null;
-            }
-        };
-    }
-
-    // Filter for CVV validation
-    private UnaryOperator<TextFormatter.Change> cvvFilter() {
-        return change -> {
-            String newText = change.getControlNewText();
-            if (newText.matches("^[0-9]*$") && newText.length() <= 3) {
-                cvvTF.setStyle("");
-                ErrorMessageLabel.setText("");
-                return change;
-            } else {
-                cvvTF.setStyle("-fx-background-color: pink;");
-                ErrorMessageLabel.setVisible(true);
-                ErrorMessageLabel.setText("Enter a valid CVV number");
-                return null;
-            }
-        };
     }
 
     // Method to reduce the inventory count for items that were bought
