@@ -4,15 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="More UI changes for item display page">
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/HeaderBar.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/items/DatabaseUtility.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/HomeScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/HomeScreen.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/ItemDisplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/ItemDisplay.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/utils/SearchHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/SearchHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/HomeScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/HomeScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -64,7 +65,7 @@
     </favorite-branches>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="More-Images-for-Item-Page" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,19 +76,13 @@
     &quot;assignee&quot;: &quot;SevanCSUN&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Pixel-Pioneers-CSUN/CampusMart.git&quot;,
-    &quot;accountId&quot;: &quot;519635a5-75fe-44c2-808f-97921c63e8c2&quot;
-  }
-}</component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_1_ItemDisplayController.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_2_ItemDisplayController.class" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp__ItemDisplayController.class" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="MacroExpansionManager">
-    <option name="directoryName" value="lvtn39rm" />
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="76be5842-3193-45eb-b7c8-3825938dc8ad" />
+        <option name="url" value="https://github.com/Pixel-Pioneers-CSUN/CampusMart.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -99,9 +94,6 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
 }</component>
@@ -111,41 +103,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.CampusMart.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merge-Searchbar-and-ItemUpdate",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
-    "org.rust.first.attach.projects": "true",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CampusMart.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Search-Bar&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\erick\OneDrive\Desktop\Pixel Pionners\GITHUB Repo\target" />
       <recent name="$PROJECT_DIR$/src/main/resources/images" />
       <recent name="$PROJECT_DIR$/src/main/java/items" />
       <recent name="$PROJECT_DIR$/src/main/java/controllers" />
       <recent name="$PROJECT_DIR$/src/main/java/org/example/campusmart" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="utils" />
+      <recent name="$PROJECT_DIR$/src/main/resources/view" />
     </key>
   </component>
   <component name="RunManager">
@@ -171,8 +157,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176" />
       </set>
     </attachedChunks>
   </component>
@@ -190,11 +175,8 @@
       <workItem from="1711765318533" duration="3844000" />
       <workItem from="1711769172422" duration="10787000" />
       <workItem from="1712166759008" duration="6344000" />
-      <workItem from="1712600813453" duration="2329000" />
-      <workItem from="1712628547101" duration="1676000" />
-      <workItem from="1712630750622" duration="432000" />
-      <workItem from="1712631438429" duration="661000" />
-      <workItem from="1712696434137" duration="7879000" />
+      <workItem from="1712678622765" duration="8021000" />
+      <workItem from="1712775373254" duration="8903000" />
     </task>
     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
       <option name="closed" value="true" />
@@ -244,21 +226,21 @@
       <option name="project" value="LOCAL" />
       <updated>1712299048155</updated>
     </task>
-    <task id="LOCAL-00007" summary="Adding more images for the view page.">
+    <task id="LOCAL-00007" summary="Search bar popup results styling and positioning fixes.">
       <option name="closed" value="true" />
-      <created>1712551137594</created>
+      <created>1712301548823</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1712551137594</updated>
+      <updated>1712301548823</updated>
     </task>
-    <task id="LOCAL-00008" summary="More UI changes for item display page">
+    <task id="LOCAL-00008" summary="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.">
       <option name="closed" value="true" />
-      <created>1712632050009</created>
+      <created>1712684404511</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1712632050009</updated>
+      <updated>1712684404511</updated>
     </task>
     <option name="localTasksCounter" value="9" />
     <servers />
@@ -307,10 +289,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial HomeScreen UI and file structure setup" />
     <MESSAGE value="Initial Home Screen UI and file structure setup" />
-    <MESSAGE value="Search functionality on header bar now displays relevant item names." />
     <MESSAGE value="Merged Home-Screen and Item-Screen + fixed conflicts and dependencies." />
-    <MESSAGE value="Adding more images for the view page." />
-    <MESSAGE value="More UI changes for item display page" />
-    <option name="LAST_COMMIT_MESSAGE" value="More UI changes for item display page" />
+    <MESSAGE value="Search functionality on header bar now displays relevant item names." />
+    <MESSAGE value="Search bar popup results styling and positioning fixes." />
+    <MESSAGE value="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages." />
+    <option name="LAST_COMMIT_MESSAGE" value="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages." />
   </component>
 </project>
