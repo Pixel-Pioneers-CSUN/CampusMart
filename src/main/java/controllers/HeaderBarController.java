@@ -1,6 +1,6 @@
 package controllers;
 
-import items.DatabaseUtility;
+
 import items.ItemClass;
 import items.ItemDataStructure;
 import javafx.event.ActionEvent;
@@ -17,6 +17,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
+import utils.DatabaseUtility;
 import utils.SearchHelper;
 
 import java.io.IOException;
@@ -67,7 +68,7 @@ public class HeaderBarController {
         //==============
         // start of app pull data and then make a data structure
         DatabaseUtility bd = new DatabaseUtility();
-        bd.setTable("itemtable");
+        bd.setTable("Item_Database");
 
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
