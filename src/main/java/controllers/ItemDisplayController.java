@@ -89,7 +89,7 @@ public class ItemDisplayController implements Initializable {
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
 
-        Iterator<HashMap.Entry<Integer, ItemClass>> it = data.getItemDataStructure().entrySet().iterator();
+        //Iterator<HashMap.Entry<Integer, ItemClass>> it = data.getItemDataStructure().entrySet().iterator();
 
 
         // possibly a switch case for what category to make?
@@ -102,15 +102,13 @@ public class ItemDisplayController implements Initializable {
                 ItemClass entry = new ItemClass();
                 if(item.getCategory().equals(category)) {
                     entry = item;
+                } else if (category.equals("default")) {
+                    entry = item;
+
                 }
-                else {
+                else
                     continue;
-                }
 
-
-
-
-                //HashMap.Entry<Integer, ItemClass> entry = it.next();
 
                 // Create a grid pane that has all items information on a
                 // page. Take the fxml that holds the item product display
@@ -163,16 +161,30 @@ public class ItemDisplayController implements Initializable {
             }
         };
 
-        //switch case??? to pick between.
+        // Need a passed in argument or data from home screen
         String category = " ";
         switch (category) {
-            case "snacks" :
-                createItemGridPage(category);
+            case "drinks":
+                createItemGridPage("drinks");
                 break;
-                case "drinks" :
-                    createItemGridPage(category);
+            case "snacks":
+                createItemGridPage("snacks");
+                break;
+            case "fruits":
+                createItemGridPage("fruits");
+                break;
+            case "hot foods":
+                createItemGridPage("hot foods");
+                break;
+            case "cold foods":
+                createItemGridPage("cold foods");
+                break;
+            default:
+                createItemGridPage("default");
+                break;
+
         }
-        createItemGridPage("drinks");
+        //createItemGridPage("drinks");
 
 
 

@@ -12,8 +12,6 @@ import java.io.IOException;
 public class CampusMart extends Application {
 
     public static void main(String[] args) {
-        ItemClass apple = new ItemClass();
-        System.out.println(apple);
         launch(args);
     }
 
