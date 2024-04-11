@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Search bar popup results styling and positioning fixes.">
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/HeaderBar.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/SearchHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/SearchHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/HomeScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/HomeScreen.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/css/home-screen-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/home-screen-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/ItemDisplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/ItemDisplay.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/SearchHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/SearchHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/HomeScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/HomeScreen.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +23,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="CSS File" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -175,7 +175,8 @@
       <workItem from="1711765318533" duration="3844000" />
       <workItem from="1711769172422" duration="10787000" />
       <workItem from="1712166759008" duration="6344000" />
-      <workItem from="1712678622765" duration="5302000" />
+      <workItem from="1712678622765" duration="8021000" />
+      <workItem from="1712775373254" duration="8903000" />
     </task>
     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
       <option name="closed" value="true" />
@@ -233,7 +234,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712301548823</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.">
+      <option name="closed" value="true" />
+      <created>1712684404511</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712684404511</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,6 +292,7 @@
     <MESSAGE value="Merged Home-Screen and Item-Screen + fixed conflicts and dependencies." />
     <MESSAGE value="Search functionality on header bar now displays relevant item names." />
     <MESSAGE value="Search bar popup results styling and positioning fixes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Search bar popup results styling and positioning fixes." />
+    <MESSAGE value="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages." />
+    <option name="LAST_COMMIT_MESSAGE" value="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages." />
   </component>
 </project>

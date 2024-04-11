@@ -17,6 +17,9 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../css/items-styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ItemDisplayController">
    <children>
       <BorderPane layoutX="143.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <fx:include source="HeaderBar.fxml" />
+         </top>
          <left>
             <VBox alignment="CENTER" prefHeight="800.0" prefWidth="465.0" BorderPane.alignment="CENTER">
                <children>
@@ -61,31 +64,6 @@
                </children>
             </HBox>
          </center>
-         <top>
-            <HBox prefHeight="4.0" prefWidth="1300.0" BorderPane.alignment="CENTER">
-               <children>
-                  <Button mnemonicParsing="false" prefHeight="124.0" prefWidth="110.0" styleClass="topButtons" stylesheets="@../css/items-styles.css" text="Button">
-                     <graphic>
-                        <ImageView fitHeight="85.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/account_icon_placeholder.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" prefHeight="124.0" prefWidth="110.0" styleClass="topButtons" stylesheets="@../css/items-styles.css" text="Button">
-                     <graphic>
-                        <ImageView fitHeight="85.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/cart_icon_placeholder.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Label prefHeight="95.0" prefWidth="1072.0" styleClass="storeNameLabel" stylesheets="@../css/items-styles.css" text="Campus Mart" />
-               </children>
-            </HBox>
-         </top>
       </BorderPane>
    </children>
 </AnchorPane>
