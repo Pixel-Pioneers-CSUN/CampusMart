@@ -65,20 +65,6 @@ public class HeaderBarController {
         // hide the popup initially (only show it during a valid search)
         searchPopup.setAutoHide(true);
 
-        //==============
-        // start of app pull data and then make a data structure
-        DatabaseUtility bd = new DatabaseUtility();
-        bd.setTable("Item_Database");
-
-        // create data structure for Items
-        ItemDataStructure data = ItemDataStructure.getInstance();
-        data.setItemDataStructure(bd.createHasMapItemClass());
-
-        Iterator<HashMap.Entry<Integer, ItemClass>> it = data.getItemDataStructure().entrySet().iterator();
-        if (it.hasNext()) {
-            // get the first entry in the iterator
-            HashMap.Entry<Integer, ItemClass> entry = it.next();
-        }
     }
 
     @FXML

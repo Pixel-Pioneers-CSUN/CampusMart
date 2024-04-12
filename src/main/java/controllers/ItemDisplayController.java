@@ -100,11 +100,11 @@ public class ItemDisplayController implements Initializable {
             //while (it.hasNext()) {
                 // Get the next entry in the iterator
                 ItemClass entry = new ItemClass();
+
                 if(item.getCategory().equals(category)) {
                     entry = item;
                 } else if (category.equals("default")) {
                     entry = item;
-
                 }
                 else
                     continue;
@@ -150,6 +150,8 @@ public class ItemDisplayController implements Initializable {
         }
 
     }
+
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -162,7 +164,7 @@ public class ItemDisplayController implements Initializable {
         };
 
         // Need a passed in argument or data from home screen
-        String category = " ";
+        String category = "";
         switch (category) {
             case "drinks":
                 createItemGridPage("drinks");
@@ -184,7 +186,6 @@ public class ItemDisplayController implements Initializable {
                 break;
 
         }
-        //createItemGridPage("drinks");
 
 
 

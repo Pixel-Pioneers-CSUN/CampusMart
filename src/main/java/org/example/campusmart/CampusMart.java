@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import items.*;
+import utils.DatabaseUtility;
 
 import java.io.IOException;
 
@@ -19,6 +20,14 @@ public class CampusMart extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        //==============
+        // start of app pull data and then make a data structure
+        DatabaseUtility bd = new DatabaseUtility();
+        bd.setTable("Item_Database");
+
+        // create data structure for Items
+        ItemDataStructure data = ItemDataStructure.getInstance();
+        data.setItemDataStructure(bd.createHasMapItemClass());
         FXMLLoader fxmlLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
 
         // Setting the default window size of the scene
