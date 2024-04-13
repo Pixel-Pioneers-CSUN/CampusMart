@@ -4,13 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Merge the new itembase with the HeaderBarController.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/caffe latte.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/cappuccino.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/images/hot black coffee.png" afterDir="false" />
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="fixing a branch issue">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderItemController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/orders/OrderDataStructure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_24__9_28PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_11_24__9_28PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_24__4_15PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_24__4_15PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/css/items-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/items-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/orders/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/orders/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Order.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Order.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,12 +111,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.CampusMart.executor": "Run",
+    "Application.CampusMart.executor": "Debug",
     "Application.HelloApplication.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Header-Bar-Categories",
+    "git-widget-placeholder": "Merge-Searchbar-and-ItemUpdate",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "list.type.of.created.stylesheet": "CSS",
@@ -179,6 +187,7 @@
       <workItem from="1712678622765" duration="8021000" />
       <workItem from="1712775373254" duration="8903000" />
       <workItem from="1712883537204" duration="3734000" />
+      <workItem from="1713018723132" duration="14981000" />
     </task>
     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
       <option name="closed" value="true" />
@@ -252,7 +261,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712873837790</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="fixing a branch issue">
+      <option name="closed" value="true" />
+      <created>1712988926725</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712988926725</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -304,6 +321,23 @@
     <MESSAGE value="Search bar popup results styling and positioning fixes." />
     <MESSAGE value="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages." />
     <MESSAGE value="Merge the new itembase with the HeaderBarController." />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge the new itembase with the HeaderBarController." />
+    <MESSAGE value="fixing a branch issue" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing a branch issue" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/OrderController.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/OrderController.java</url>
+          <line>66</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

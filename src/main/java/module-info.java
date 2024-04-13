@@ -8,6 +8,7 @@ module org.example.campusmart {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires mysql.connector.j;
 
     opens org.example.campusmart to javafx.fxml;
     opens controllers to javafx.fxml;   // had to open up controllers to JavafX since it couldn't access the HomeScreenController
@@ -18,4 +19,6 @@ module org.example.campusmart {
     exports items;
     exports utils;
     opens utils to javafx.fxml;
+    opens orders to javafx.fxml;
+    exports orders;
 }

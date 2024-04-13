@@ -28,7 +28,9 @@ public class CampusMart extends Application {
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
         data.setItemDataStructure(bd.createHasMapItemClass());
-        FXMLLoader fxmlLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
+        //FXMLLoader fxmlLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
+        //FXMLLoader fxmlLoader = new FXMLLoader(CampusMart.class.getResource("/view/OrderPage.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(CampusMart.class.getResource("/view/Order.fxml"));
 
         // Setting the default window size of the scene
         Scene scene = new Scene(fxmlLoader.load(), 1300, 800);   // also set the initial window size
