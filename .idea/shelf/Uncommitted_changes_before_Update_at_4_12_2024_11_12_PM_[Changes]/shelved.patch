@@ -1,0 +1,218 @@
+Index: src/main/java/controllers/HomeScreenController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controllers;\r\n\r\nimport javafx.event.ActionEvent;\r\n\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\n\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.*;\r\n\r\nimport javafx.scene.layout.BorderPane;\r\nimport javafx.stage.Stage;\r\n\r\n\r\nimport java.io.IOException;\r\n\r\n\r\npublic class HomeScreenController {\r\n\r\n    @FXML\r\n    private Button shopNowButton;\r\n\r\n    @FXML\r\n    private void clickShopNow(ActionEvent event) {\r\n        try {\r\n            System.out.println(\"Shop Now button clicked!\");\r\n            // load the fxml file of the item display screen\r\n            FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/view/ItemDisplay.fxml\"));\r\n            Parent root = loader.load();\r\n            // create a new scene and load the fxml of item display screen\r\n            Scene scene = new Scene(root);\r\n            // get the stage and set it to the new scene\r\n            Stage stage = (Stage) shopNowButton.getScene().getWindow();\r\n            stage.setScene(scene);\r\n            stage.show();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n//    @FXML\r\n//    public void initialize() {\r\n//        try {\r\n//            // load the header bar FXML to the top of the borderpane\r\n//            FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/view/HeaderBar.fxml\"));\r\n//            BorderPane headerBar = loader.load();\r\n//\r\n//            rootPane.setTop(headerBar);\r\n//\r\n//        } catch (IOException e) {\r\n//            e.printStackTrace();\r\n//        }\r\n//\r\n//    }\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controllers/HomeScreenController.java b/src/main/java/controllers/HomeScreenController.java
+--- a/src/main/java/controllers/HomeScreenController.java	(revision e73506fbc74f630a4c4ad56b59faec547d4ba779)
++++ b/src/main/java/controllers/HomeScreenController.java	(date 1712974319994)
+@@ -35,6 +35,7 @@
+             stage.setScene(scene);
+             stage.show();
+         } catch (IOException e) {
++            System.out.println("Failed to load after shop now button clicked!");
+             e.printStackTrace();
+         }
+     }
+Index: src/main/resources/view/Order.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.control.ScrollPane?>\r\n<?import javafx.scene.layout.GridPane?>\r\n<?import javafx.scene.layout.HBox?>\r\n<?import javafx.scene.layout.RowConstraints?>\r\n<?import javafx.scene.layout.VBox?>\r\n<?import javafx.scene.text.Font?>\r\n\r\n\r\n<HBox maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"400.0\" prefWidth=\"600.0\" xmlns=\"http://javafx.com/javafx/21\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"controllers.OrderController\">\r\n   <children>\r\n      <VBox prefHeight=\"400.0\" prefWidth=\"340.0\">\r\n         <children>\r\n            <Label alignment=\"CENTER\" prefHeight=\"18.0\" prefWidth=\"328.0\" text=\"Date Order Placed\">\r\n               <font>\r\n                  <Font size=\"17.0\" />\r\n               </font>\r\n            </Label>\r\n            <ScrollPane prefHeight=\"780.0\" prefWidth=\"865.0\" styleClass=\"transparent\" stylesheets=\"@../css/items-styles.css\">\r\n               <content>\r\n                  <GridPane fx:id=\"grid\" styleClass=\"transparent\" stylesheets=\"@../css/items-styles.css\">\r\n                     <rowConstraints>\r\n                        <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\r\n                     </rowConstraints>\r\n                  </GridPane>\r\n               </content>\r\n            </ScrollPane>\r\n         </children>\r\n      </VBox>\r\n      <VBox prefHeight=\"400.0\" prefWidth=\"352.0\">\r\n         <children>\r\n            <Label alignment=\"CENTER\" prefHeight=\"207.0\" prefWidth=\"306.0\" text=\"View Order\">\r\n               <font>\r\n                  <Font size=\"43.0\" />\r\n               </font>\r\n            </Label>\r\n            <Label alignment=\"CENTER\" prefHeight=\"123.0\" prefWidth=\"306.0\" text=\"View Invoice\">\r\n               <font>\r\n                  <Font size=\"43.0\" />\r\n               </font>\r\n            </Label>\r\n         </children>\r\n      </VBox>\r\n   </children>\r\n</HBox>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/view/Order.fxml b/src/main/resources/view/Order.fxml
+--- a/src/main/resources/view/Order.fxml	(revision e73506fbc74f630a4c4ad56b59faec547d4ba779)
++++ b/src/main/resources/view/Order.fxml	(date 1712889325715)
+@@ -13,7 +13,7 @@
+    <children>
+       <VBox prefHeight="400.0" prefWidth="340.0">
+          <children>
+-            <Label alignment="CENTER" prefHeight="18.0" prefWidth="328.0" text="Date Order Placed">
++            <Label alignment="CENTER" prefHeight="18.0" prefWidth="328.0" text="OrderID">
+                <font>
+                   <Font size="17.0" />
+                </font>
+Index: src/main/java/controllers/ItemDisplayController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controllers;\r\nimport items.*;\r\n\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.util.HashMap;\r\nimport java.util.Iterator;\r\nimport java.util.Objects;\r\nimport java.util.ResourceBundle;\r\n\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.geometry.Insets;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.chart.PieChart;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.control.ChoiceBox;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.control.TextArea;\r\nimport javafx.scene.image.Image;\r\nimport javafx.scene.image.ImageView;\r\nimport javafx.scene.layout.*;\r\nimport javafx.stage.Stage;\r\nimport org.controlsfx.control.PropertySheet;\r\n\r\npublic class ItemDisplayController implements Initializable {\r\n\r\n\r\n    // These three are for the\r\n    @FXML\r\n    private BorderPane myBorderPane;\r\n    @FXML\r\n    private ImageView itemImage;\r\n\r\n    @FXML\r\n    private Label itemName;\r\n\r\n    @FXML\r\n    private Label itemPrice;\r\n\r\n    @FXML\r\n    private HBox headerPane;\r\n\r\n    @FXML\r\n    private TextArea myTextArea;\r\n\r\n    @FXML\r\n    private ImageView myImageView;\r\n\r\n    @FXML\r\n    private GridPane grid;\r\n\r\n    @FXML\r\n    private Button myAddToCart;\r\n\r\n    @FXML\r\n    private ChoiceBox<Integer> myChoiceBox;\r\n\r\n    // might have to if this will work or not\r\n    @FXML\r\n    private ImageView headerBarLogoImage;\r\n    private MyListener myListener;\r\n    private int selectedItemNumber;\r\n\r\n    @FXML\r\n    public void displayItemInformation(ItemClass item) {\r\n        itemName.setText(item.getItemName());\r\n        itemPrice.setText(\"$\" + item.getPrice().toString());\r\n        selectedItemNumber = item.getItemNumber();\r\n        Image image;\r\n        image = new Image(getClass().getResourceAsStream(\"/images/\" + item.getItemPicture()));\r\n        itemImage.setImage(image);\r\n\r\n    }\r\n\r\n    @FXML\r\n    public void clickAddToCart(ActionEvent event) {\r\n        Integer amount = myChoiceBox.getValue();\r\n        // pass into function item number and amount they want\r\n        // value has to be passed to shopping cart\r\n        // maybe update picture of cart with a new value on the side\r\n        // confirmation of added to cart??\r\n\r\n    }\r\n    public  void createItemGridPage(String category) {\r\n        // create data structure for Items\r\n        ItemDataStructure data = ItemDataStructure.getInstance();\r\n\r\n        //Iterator<HashMap.Entry<Integer, ItemClass>> it = data.getItemDataStructure().entrySet().iterator();\r\n\r\n\r\n        // possibly a switch case for what category to make?\r\n        int column = 0;\r\n        int row = 1;\r\n        try {\r\n            for(ItemClass item : data.getItemDataStructure().values()) {\r\n            //while (it.hasNext()) {\r\n                // Get the next entry in the iterator\r\n                ItemClass entry = new ItemClass();\r\n\r\n                if(item.getCategory().equals(category)) {\r\n                    entry = item;\r\n                } else if (category.equals(\"default\")) {\r\n                    entry = item;\r\n                }\r\n                else\r\n                    continue;\r\n\r\n\r\n                // Create a grid pane that has all items information on a\r\n                // page. Take the fxml that holds the item product display\r\n                // and populate a grind pane with it.\r\n                // This action will eventually have to be made each time going to item page\r\n\r\n                FXMLLoader fxmlLoader = new FXMLLoader();\r\n                fxmlLoader.setLocation(getClass().getResource(\"/view/item.fxml\"));\r\n                AnchorPane anchorPane = fxmlLoader.load();\r\n\r\n                ItemController itemController = fxmlLoader.getController();\r\n\r\n                // Set the information for item view\r\n                //System.out.println(entry);\r\n                itemController.setData(entry, myListener);\r\n\r\n\r\n                if (column == 3) {\r\n                    column = 0;\r\n                    row++;\r\n                }\r\n\r\n                grid.add(anchorPane, column++, row); //(child,column,row)\r\n                // Set grid width\r\n                grid.setMinWidth(Region.USE_COMPUTED_SIZE);\r\n                grid.setPrefWidth(Region.USE_COMPUTED_SIZE);\r\n                grid.setMaxWidth(Region.USE_PREF_SIZE);\r\n\r\n                // Set grid height\r\n                grid.setMinHeight(Region.USE_COMPUTED_SIZE);\r\n                grid.setPrefHeight(Region.USE_COMPUTED_SIZE);\r\n                grid.setMaxHeight(Region.USE_PREF_SIZE);\r\n\r\n                GridPane.setMargin(anchorPane, new Insets(10));\r\n            }\r\n        } catch (IOException e) {\r\n            System.out.println(\"Failed to create item page!\");\r\n            //e.printStackTrace();\r\n        }\r\n\r\n    }\r\n\r\n\r\n    @Override\r\n    public void initialize(URL arg0, ResourceBundle arg1) {\r\n\r\n\r\n        myListener = new MyListener() {\r\n            @Override\r\n            public void onClickListener(ItemClass item) {\r\n                displayItemInformation(item);\r\n            }\r\n        };\r\n\r\n        // Need a passed in argument or data from home screen\r\n        String category = \"\";\r\n        switch (category) {\r\n            case \"drinks\":\r\n                createItemGridPage(\"drinks\");\r\n                break;\r\n            case \"snacks\":\r\n                createItemGridPage(\"snacks\");\r\n                break;\r\n            case \"fruits\":\r\n                createItemGridPage(\"fruits\");\r\n                break;\r\n            case \"hot foods\":\r\n                createItemGridPage(\"hot foods\");\r\n                break;\r\n            case \"cold foods\":\r\n                createItemGridPage(\"cold foods\");\r\n                break;\r\n            default:\r\n                createItemGridPage(\"default\");\r\n                break;\r\n\r\n        }\r\n\r\n\r\n\r\n        Integer[] choices;\r\n        choices = new Integer[10];\r\n        for (int i = 0; i < choices.length; i++) {\r\n            choices[i] = i;\r\n\r\n        }\r\n        myChoiceBox.getItems().addAll(choices);\r\n\r\n    }\r\n}\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controllers/ItemDisplayController.java b/src/main/java/controllers/ItemDisplayController.java
+--- a/src/main/java/controllers/ItemDisplayController.java	(revision e73506fbc74f630a4c4ad56b59faec547d4ba779)
++++ b/src/main/java/controllers/ItemDisplayController.java	(date 1712974503295)
+@@ -123,6 +123,7 @@
+ 
+                 // Set the information for item view
+                 //System.out.println(entry);
++                System.out.println(entry);
+                 itemController.setData(entry, myListener);
+ 
+ 
+@@ -164,7 +165,7 @@
+         };
+ 
+         // Need a passed in argument or data from home screen
+-        String category = "";
++        String category = " ";
+         switch (category) {
+             case "drinks":
+                 createItemGridPage("drinks");
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"d074da33-4be0-4762-b17e-6ea61fcf7725\" name=\"Changes\" comment=\"Merge the new itembase with the HeaderBarController.\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/controllers/OrderController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/orders/Orders.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24,_3_34 PM_[Changes]/shelved.patch\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24,_3_49 PM_[Changes]/shelved.patch\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_34PM__Changes_.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_49PM__Changes_.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"CSS File\" />\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <excluded-from-favorite>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"REMOTE\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"origin/main\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </excluded-from-favorite>\r\n    <favorite-branches>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"LOCAL\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"Home-Screen\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n          <entry type=\"REMOTE\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"origin/Homescreen\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </favorite-branches>\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;SevanCSUN&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\"><![CDATA[{\r\n  \"selectedUrlAndAccountId\": {\r\n    \"url\": \"https://github.com/Pixel-Pioneers-CSUN/CampusMart.git\",\r\n    \"accountId\": \"519635a5-75fe-44c2-808f-97921c63e8c2\"\r\n  }\r\n}]]></component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"jx693jil\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2eKCWBCWb4rjyoee9z5z6mJJSBu\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"Application.CampusMart.executor\": \"Run\",\r\n    \"Application.HelloApplication.executor\": \"Run\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"git-widget-placeholder\": \"Merge-Searchbar-and-ItemUpdate\",\r\n    \"ignore.virus.scanning.warn.message\": \"true\",\r\n    \"kotlin-language-version-configured\": \"true\",\r\n    \"list.type.of.created.stylesheet\": \"CSS\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"nodejs_package_manager_path\": \"npm\",\r\n    \"org.rust.first.attach.projects\": \"true\",\r\n    \"project.structure.last.edited\": \"Modules\",\r\n    \"project.structure.proportion\": \"0.0\",\r\n    \"project.structure.side.proportion\": \"0.0\",\r\n    \"settings.editor.selected.configurable\": \"org.jetbrains.plugins.github.ui.GithubSettingsConfigurable\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/images\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/items\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/controllers\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/org/example/campusmart\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/view\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"CampusMart\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.campusmart.CampusMart\" />\r\n      <module name=\"CampusMart\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.campusmart.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.CampusMart\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"d074da33-4be0-4762-b17e-6ea61fcf7725\" name=\"Changes\" comment=\"\" />\r\n      <created>1711643911910</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1711643911910</updated>\r\n      <workItem from=\"1711643912938\" duration=\"5473000\" />\r\n      <workItem from=\"1711650371189\" duration=\"2526000\" />\r\n      <workItem from=\"1711654664788\" duration=\"28978000\" />\r\n      <workItem from=\"1711765318533\" duration=\"3844000\" />\r\n      <workItem from=\"1711769172422\" duration=\"10787000\" />\r\n      <workItem from=\"1712166759008\" duration=\"6344000\" />\r\n      <workItem from=\"1712678622765\" duration=\"8021000\" />\r\n      <workItem from=\"1712775373254\" duration=\"8903000\" />\r\n      <workItem from=\"1712883537204\" duration=\"3734000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial HomeScreen UI and file structure setup\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711762927109</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711762927109</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Initial HomeScreen UI and file structure setup\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711767869090</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711767869090</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Initial HomeScreen UI and file structure setup\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711769204425</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711769204425</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Initial Home Screen UI and file structure setup\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711769258202</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711769258202</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Merged Home-Screen and Item-Screen + fixed conflicts and dependencies.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712173002503</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712173002503</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Search functionality on header bar now displays relevant item names.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712299048155</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712299048155</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Search bar popup results styling and positioning fixes.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712301548823</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712301548823</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712684404511</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712684404511</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Merge the new itembase with the HeaderBarController.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712873837790</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712873837790</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"10\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"origin/Homescreen\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial HomeScreen UI and file structure setup\" />\r\n    <MESSAGE value=\"Initial Home Screen UI and file structure setup\" />\r\n    <MESSAGE value=\"Merged Home-Screen and Item-Screen + fixed conflicts and dependencies.\" />\r\n    <MESSAGE value=\"Search functionality on header bar now displays relevant item names.\" />\r\n    <MESSAGE value=\"Search bar popup results styling and positioning fixes.\" />\r\n    <MESSAGE value=\"Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.\" />\r\n    <MESSAGE value=\"Merge the new itembase with the HeaderBarController.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Merge the new itembase with the HeaderBarController.\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision e73506fbc74f630a4c4ad56b59faec547d4ba779)
++++ b/.idea/workspace.xml	(date 1712975153997)
+@@ -4,21 +4,11 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Merge the new itembase with the HeaderBarController.">
+-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/main/java/orders/Orders.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24,_3_34 PM_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24,_3_49 PM_[Changes]/shelved.patch" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_34PM__Changes_.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_49PM__Changes_.xml" beforeDir="false" />
++    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="adding fxml files for order">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Order.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Order.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -81,12 +71,12 @@
+     &quot;assignee&quot;: &quot;SevanCSUN&quot;
+   }
+ }</component>
+-  <component name="GithubPullRequestsUISettings"><![CDATA[{
+-  "selectedUrlAndAccountId": {
+-    "url": "https://github.com/Pixel-Pioneers-CSUN/CampusMart.git",
+-    "accountId": "519635a5-75fe-44c2-808f-97921c63e8c2"
+-  }
+-}]]></component>
++  <component name="GithubPullRequestsUISettings">{
++  &quot;selectedUrlAndAccountId&quot;: {
++    &quot;url&quot;: &quot;https://github.com/Pixel-Pioneers-CSUN/CampusMart.git&quot;,
++    &quot;accountId&quot;: &quot;519635a5-75fe-44c2-808f-97921c63e8c2&quot;
++  }
++}</component>
+   <component name="MacroExpansionManager">
+     <option name="directoryName" value="jx693jil" />
+   </component>
+@@ -109,30 +99,30 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "Application.CampusMart.executor": "Run",
+-    "Application.HelloApplication.executor": "Run",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "git-widget-placeholder": "Merge-Searchbar-and-ItemUpdate",
+-    "ignore.virus.scanning.warn.message": "true",
+-    "kotlin-language-version-configured": "true",
+-    "list.type.of.created.stylesheet": "CSS",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "nodejs_package_manager_path": "npm",
+-    "org.rust.first.attach.projects": "true",
+-    "project.structure.last.edited": "Modules",
+-    "project.structure.proportion": "0.0",
+-    "project.structure.side.proportion": "0.0",
+-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;Application.CampusMart.executor&quot;: &quot;Run&quot;,
++    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;Merge-Searchbar-and-ItemUpdate&quot;,
++    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
++    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
++    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
++    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="$PROJECT_DIR$/src/main/resources/images" />
+@@ -186,7 +176,8 @@
+       <workItem from="1712166759008" duration="6344000" />
+       <workItem from="1712678622765" duration="8021000" />
+       <workItem from="1712775373254" duration="8903000" />
+-      <workItem from="1712883537204" duration="3734000" />
++      <workItem from="1712883537204" duration="5231000" />
++      <workItem from="1712974077316" duration="1071000" />
+     </task>
+     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
+       <option name="closed" value="true" />
+@@ -260,7 +251,23 @@
+       <option name="project" value="LOCAL" />
+       <updated>1712873837790</updated>
+     </task>
+-    <option name="localTasksCounter" value="10" />
++    <task id="LOCAL-00010" summary="Start of Order Class and changing the header controller to move item datastructure creation into main.">
++      <option name="closed" value="true" />
++      <created>1712888497205</created>
++      <option name="number" value="00010" />
++      <option name="presentableId" value="LOCAL-00010" />
++      <option name="project" value="LOCAL" />
++      <updated>1712888497205</updated>
++    </task>
++    <task id="LOCAL-00011" summary="adding fxml files for order">
++      <option name="closed" value="true" />
++      <created>1712888987625</created>
++      <option name="number" value="00011" />
++      <option name="presentableId" value="LOCAL-00011" />
++      <option name="project" value="LOCAL" />
++      <updated>1712888987626</updated>
++    </task>
++    <option name="localTasksCounter" value="12" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -312,6 +319,8 @@
+     <MESSAGE value="Search bar popup results styling and positioning fixes." />
+     <MESSAGE value="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages." />
+     <MESSAGE value="Merge the new itembase with the HeaderBarController." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Merge the new itembase with the HeaderBarController." />
++    <MESSAGE value="Start of Order Class and changing the header controller to move item datastructure creation into main." />
++    <MESSAGE value="adding fxml files for order" />
++    <option name="LAST_COMMIT_MESSAGE" value="adding fxml files for order" />
+   </component>
+ </project>
+\ No newline at end of file
