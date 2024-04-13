@@ -10,6 +10,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -21,9 +22,7 @@ import utils.DatabaseUtility;
 import utils.SearchHelper;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
+import java.util.*;
 
 public class HeaderBarController {
 
@@ -50,10 +49,17 @@ public class HeaderBarController {
     private ImageView headerBarAccountImage;
 
     @FXML
-    private Button shopNowButton;
+    private ComboBox<String> headerBarCategoryDropdown;
 
     @FXML
     public void initialize() {
+
+        // populate the ComboBox (category drop down) with product categories
+        populateCategoryDropdown();
+
+        // set up the event handler to navigate user to selected category page
+        setupCategorySelectionHandler();
+
         // set the content of the Popup to a VBox containing the ListView
         VBox popupContent = new VBox(searchResultsListView);
         searchPopup.getContent().add(popupContent);
@@ -61,10 +67,47 @@ public class HeaderBarController {
         // set the style of the search popup and hide its default scroll bar
         searchResultsListView.setStyle("-fx-background-color: transparent; -fx-padding: 0;");
 
+        // set the maximum height of the search results popup so it doesn't go off screen
+        searchResultsListView.setMaxHeight(240);    // 24 * 10 = 240, so max size is 10 items, but list will be scrollable
 
         // hide the popup initially (only show it during a valid search)
         searchPopup.setAutoHide(true);
 
+    }
+
+    private void populateCategoryDropdown() {
+        // defining the product categories
+        List<String> categories = Arrays.asList("Hot Foods", "Cold Foods", "Snacks", "Fruits", "Drinks", "Coffee");
+
+        // adding the categories to the ComboBox
+        headerBarCategoryDropdown.getItems().addAll(categories);
+    }
+
+    private void setupCategorySelectionHandler() {
+        headerBarCategoryDropdown.setOnAction(event -> {
+            // store the selected category name into selectedCategory
+            String selectedCategory = headerBarCategoryDropdown.getSelectionModel().getSelectedItem().toLowerCase();
+            if (selectedCategory != null) {
+                // get reference to the ItemDisplayController
+                FXMLLoader itemDisplayLoader = new FXMLLoader((getClass().getResource("/view/ItemDisplay.fxml")));
+                Parent itemDisplayRoot;
+                try {
+                    itemDisplayRoot = itemDisplayLoader.load();
+                    ItemDisplayController itemDisplayController = itemDisplayLoader.getController();
+
+                    // pass the selected category to the ItemDisplayController
+                    itemDisplayController.createItemGridPage(selectedCategory);
+
+                    // set the scene of the current stage to the scene containing the modified ItemDisplayController
+                    Stage currentStage = (Stage) headerBarCategoryDropdown.getScene().getWindow();
+                    Scene scene = new Scene(itemDisplayRoot);
+                    currentStage.setScene(scene);
+                    currentStage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @FXML
