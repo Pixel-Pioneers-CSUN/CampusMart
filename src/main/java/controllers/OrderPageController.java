@@ -24,6 +24,7 @@ public class OrderPageController {
         fxmlLoader.setLocation(getClass().getResource("/view/Order.fxml"));
         try {
             AnchorPane pane = fxmlLoader.load();
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

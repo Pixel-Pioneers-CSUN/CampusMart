@@ -1,6 +1,7 @@
 package controllers;
 
 import items.ItemClass;
+import items.ItemDataStructure;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -21,12 +22,18 @@ public class OrderItemController {
     private ItemClass item;
 
     //this will have set the order objects
-    public void setData(ItemClass item, int amount){
+    @FXML
+    public void setData(ItemClass item, Integer amount){
+        //ItemDataStructure data = ItemDataStructure.getInstance();
+
         this.item = item;
-        myAmount.setText(String.valueOf(amount));
+
+        String amountText = String.valueOf(amount);
+        myAmount.setText(amountText);
         myItemName.setText(item.getItemName());
         Image image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
         myOrderItemImage.setImage(image);
+
 
 
     }
