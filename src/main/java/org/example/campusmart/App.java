@@ -12,7 +12,7 @@ public class App extends Application {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/view/checkout.fxml"));
             
-            Scene scene = new Scene(root, 1300, 800);
+            Scene scene = new Scene(root);
             primaryStage.setResizable(false);
             scene.getStylesheets().add(getClass().getResource("/css/checkout-style.css").toExternalForm());
             

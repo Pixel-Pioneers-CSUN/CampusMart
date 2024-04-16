@@ -3,7 +3,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.function.UnaryOperator;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +10,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
@@ -20,8 +18,6 @@ import javafx.scene.layout.Pane;
 import utils.textFieldHelper;
 
 public class CheckoutController implements Initializable {
-
-
 
     // FXML
     @FXML
@@ -63,7 +59,7 @@ public class CheckoutController implements Initializable {
     @FXML
     private Label checkoutLabel;
     @FXML
-    private DatePicker validThroughTF;
+    private TextField expirationDateTF;
 
     List<TextField> textFields = new ArrayList<>();
     List<TextField> emptyFields = new ArrayList<>();
@@ -111,9 +107,7 @@ public class CheckoutController implements Initializable {
         return cityTF.getText();
     }
 
-    public DatePicker getValidThrough() {
-        return validThroughTF;
-    }
+    public String getExpirationDate(){ return expirationDateTF.getText(); }
 
     @FXML
     void confirmPayment(ActionEvent event) {
@@ -121,7 +115,7 @@ public class CheckoutController implements Initializable {
             // Check if user entered all info
             emptyFields = textFieldHelper.checkEmptyTextFields(textFields);
             Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-            if (!textFieldHelper.isEmpty) {
+            if (emptyFields.isEmpty() ) {
                 confirmAlert.setTitle("Payment Confirmation");
                 confirmAlert.setHeaderText("Confirm Payment");
                 confirmAlert.setContentText("Are you sure you want to proceed with the payment?");
@@ -173,6 +167,8 @@ public class CheckoutController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
+            textFields = List.of(addressTF, cardNumTF, cityTF, cvvTF, emailTF, firstNameTF, lastNameTF, nameOnCardTF,
+                    phoneNumTF, zipCodeTF, expirationDateTF);
             // Set filters for text fields during initialization
             cardNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter
                     (cardNumTF, creditcardErrorLabel, "\\d{0,16}", "Enter a valid card number")));
@@ -194,8 +190,8 @@ public class CheckoutController implements Initializable {
                     addressTF, contactInfoErrorLabel, "^[a-zA-Z0-9 ]*$"
                     , "Enter a valid address")));
 
-            textFields = List.of(addressTF, cardNumTF, cityTF, cvvTF, emailTF, firstNameTF, lastNameTF, nameOnCardTF,
-                    phoneNumTF, zipCodeTF);
+
+
         } catch (Exception e) {
             e.printStackTrace();
         }
