@@ -1,10 +1,9 @@
 package controllers;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud;
-import items.ItemClass;
 import items.ItemDataStructure;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -42,18 +41,7 @@ public class OrderController {
      * -Flow of creating the order page
      *
      */
-    @FXML
-    public void initialize() {
-        DatabaseUtility db = new DatabaseUtility();
-        OrderDataStructure data = OrderDataStructure.getInstance();
-        data.setOrderList(db.createOrderList(0));
-        for(Orders order : data.getOrderList()) {
-            System.out.println(order);
-        }
-        OrderDataStructure orderMap = OrderDataStructure.getInstance();
-        Orders order = orderMap.getOrderList().getFirst();
-        createOrderHistory(orderMap.getOrderList().get(4));
-    }
+
 
     @FXML
     public void createOrderHistory(Orders order) {
@@ -98,5 +86,20 @@ public class OrderController {
             e.printStackTrace();
         }
     }
+
+//    @FXML
+//    public void initialize() {
+//
+//        DatabaseUtility db = new DatabaseUtility();
+//        OrderDataStructure data = OrderDataStructure.getInstance();
+//        data.setOrderList(db.createOrderList(0));
+//        for(Orders order : data.getOrderList()) {
+//            System.out.println(order);
+//        }
+//        OrderDataStructure orderMap = OrderDataStructure.getInstance();
+//        Orders order = orderMap.getOrderList().getFirst();
+//
+//        createOrderHistory(orderMap.getOrderList().get(4));
+//    }
 
 }
