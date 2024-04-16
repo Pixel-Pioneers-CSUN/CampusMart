@@ -10,11 +10,11 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/view/checkout.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/login.fxml"));
             
-            Scene scene = new Scene(root, 1300, 800);
+            Scene scene = new Scene(root);
             primaryStage.setResizable(false);
-            scene.getStylesheets().add(getClass().getResource("/css/checkout-style.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/css/login-styles.css").toExternalForm());
             
             primaryStage.setScene(scene);
             

@@ -4,7 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Moved some methods into separate class, updated CSS styling and fixed some issues." />
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Removed vs code files">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24,_3_34 PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24,_3_49 PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_34PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_49PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/items/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/DatabaseUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/textFieldHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/textFieldHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/checkout-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/checkout-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/checkout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/checkout.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/css/checkout-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/checkout-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/items/DatabaseUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/items/DatabaseUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/textFieldHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/textFieldHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/checkout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/checkout.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +32,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="CSS File" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -61,7 +79,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Search-Bar" />
+        <entry key="$PROJECT_DIR$" value="Checkout-Page" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -100,40 +118,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CampusMart.executor&quot;: &quot;Run&quot;,
-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Checkout-Page&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/olahe/OneDrive/Desktop/COMP380 Project&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.App.executor": "Run",
+    "Application.CampusMart.executor": "Run",
+    "Application.HelloApplication.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "Login-Screen",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/olahe/OneDrive/Desktop/COMP380 Project",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\resources\view" />
       <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\resources\images" />
       <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\java\org\example\campusmart" />
       <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\java\utils" />
       <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\java\controllers" />
-      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\resources\css" />
     </key>
   </component>
   <component name="RunManager" selected="Application.App">
@@ -165,8 +183,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CampusMart" />
+        <item itemvalue="Application.App" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.CampusMart" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -193,7 +214,8 @@
       <workItem from="1711769172422" duration="10787000" />
       <workItem from="1712166759008" duration="6344000" />
       <workItem from="1712724489499" duration="9456000" />
-      <workItem from="1712734085536" duration="4491000" />
+      <workItem from="1712734085536" duration="21599000" />
+      <workItem from="1713050310087" duration="8773000" />
     </task>
     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
       <option name="closed" value="true" />
@@ -275,7 +297,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712738463157</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Moved some methods into separate class, updated CSS styling and fixed some issues.">
+      <option name="closed" value="true" />
+      <created>1712738864940</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712738864940</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Removed vs code files">
+      <option name="closed" value="true" />
+      <created>1712739002524</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712739002524</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +364,8 @@
     <MESSAGE value="Search functionality on header bar now displays relevant item names." />
     <MESSAGE value="Fixed issues regarding null exceptions and images." />
     <MESSAGE value="Moved some methods into separate class, updated CSS styling and fixed some issues." />
-    <option name="LAST_COMMIT_MESSAGE" value="Moved some methods into separate class, updated CSS styling and fixed some issues." />
+    <MESSAGE value="Removed vs code files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed vs code files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -335,6 +374,11 @@
           <url>file://$PROJECT_DIR$/bin/App.class</url>
           <line>11</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
