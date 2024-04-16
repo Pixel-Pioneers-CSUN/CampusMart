@@ -15,6 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -32,6 +33,9 @@ public class HeaderBarController {
 
     // creating a Popup for displaying search results
     private Popup searchPopup = new Popup();
+
+    // creating a Popup for sign-in/create account options when clicking account icon
+    private Popup accountPopup;
 
     // creating a ListView for search results
     private ListView<String> searchResultsListView = new ListView<>();
@@ -72,6 +76,9 @@ public class HeaderBarController {
 
         // hide the popup initially (only show it during a valid search)
         searchPopup.setAutoHide(true);
+
+        // Initialize the account popup
+        loadAccountPopup();
 
     }
 
@@ -146,6 +153,22 @@ public class HeaderBarController {
         }
     }
 
+    // loads the sign-in / create account popup
+    private void loadAccountPopup() {
+        accountPopup = new Popup();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountSignInPopup.fxml"));
+            BorderPane popupContent = loader.load();
+            AccountSignInPopupController popupController = loader.getController();
+            accountPopup.getContent().add(popupContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // hide the popup if the user clicks anywhere outside of it
+        accountPopup.setAutoHide(true);
+    }
+
     // load the item's page if a search result is clicked on
     private void loadItemPage(ItemClass item) {
         try {
@@ -203,20 +226,29 @@ public class HeaderBarController {
 
     @FXML
     private void clickAccountImage(MouseEvent event) {
-        // if header bar account icon is clicked, navigate user to the account screen
-        try {
-            System.out.println("Account image clicked!");
-            // load the fxml file of the account screen
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountScreen.fxml"));
-            Parent root = loader.load();
-            // get the stage and set it to the new scene
-            Stage stage = (Stage) headerBarAccountImage.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        // if header bar account icon is clicked, navigate user to the account screen
+//        try {
+//            System.out.println("Account image clicked!");
+//            // load the fxml file of the account screen
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountScreen.fxml"));
+//            Parent root = loader.load();
+//            // get the stage and set it to the new scene
+//            Stage stage = (Stage) headerBarAccountImage.getScene().getWindow();
+//            stage.setScene(scene);
+//            stage.show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        // Show the account popup below to the account image
+        Bounds accountImageBounds = headerBarAccountImage.localToScreen(headerBarAccountImage.getBoundsInLocal());
+        double popupX = accountImageBounds.getMinX() - 185;
+        double popupY = accountImageBounds.getMinY() + 25;
+
+        System.out.println("Account image clicked!");
+        accountPopup.show(headerBarAccountImage, popupX, popupY);
     }
+
+
 
     @FXML
     private void clickCartImage(MouseEvent event) {
