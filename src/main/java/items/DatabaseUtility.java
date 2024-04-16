@@ -55,7 +55,9 @@ public class DatabaseUtility {
      * @param q The query to be set.
      */
     public void setQuery (String q) {this.query = q;}
-    
+
+    public String getQuery() {return this.query;}
+
     /**
      * Sets the table for database operations.
      *
@@ -63,6 +65,13 @@ public class DatabaseUtility {
      */
     public void setTable (String t) {this.table = t;}
 
+    public Connection getConnection() {
+        try {
+            return DriverManager.getConnection(this.url, this.user, this.password);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     
     /**
