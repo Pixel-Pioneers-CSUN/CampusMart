@@ -2,12 +2,14 @@ package utils;
 
 import items.ItemClass;
 import items.ItemDataStructure;
+import orders.Orders;
 
 import java.math.BigDecimal;
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.TreeSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.Date;
 
 
 /**
@@ -218,5 +220,89 @@ public class DatabaseUtility {
 
 
     }
+
+    public List<Orders> createOrderList(int customerID) {
+        List<Orders> orderList = new ArrayList<>();
+        this.setTable("Orders_Database");
+
+        try {
+
+            // creating connection to the database.
+            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+            Statement statment = connection.createStatement();
+
+            String printQuery = "select * from " + this.table;
+            ResultSet resultSet = statment.executeQuery(printQuery);
+            // end of connection to database
+
+            //get all info from database to create a DataStructureItemClass
+            while (resultSet.next()) {
+                //need to create a orderItems HashMap
+                if(customerID == resultSet.getInt("customerID")) {
+
+                    int orderID = resultSet.getInt("orderID");
+                    long timer = System.nanoTime();
+                    HashMap<Integer, Integer> map = this.createOrderItemsHashMap(orderID);
+                    long timer2 = System.nanoTime();
+                    long elapsedTime = timer2 - timer;
+                    double seconds = (double)elapsedTime / 1_000_000_000.0;
+                    System.out.print("Time to create OrderItem HashMap: ");
+                    System.out.println(seconds);
+                    // fix this later
+
+                    Date date = new Date(resultSet.getString("orderDate"));
+
+
+                    BigDecimal totalPrice = resultSet.getBigDecimal("orderTotal");
+                    Orders newEntry = new Orders(orderID,customerID,date,totalPrice,map);
+                    orderList.add(newEntry);
+                }
+
+
+            }
+            connection.close();
+
+        } catch(Exception e){
+            System.out.println("Failed to create Orders List!");
+            e.printStackTrace();
+        }
+
+        return orderList;
+    }
+
+    // pulls from "OrderItems_Database"
+    public HashMap<Integer,Integer> createOrderItemsHashMap(int orderID) {
+        HashMap<Integer,Integer> temp = new HashMap<>();
+        this.setTable("OrderItems_Database");
+        try {
+
+            // creating connection to the database.
+            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+            Statement statment = connection.createStatement();
+
+            String printQuery = "select * from " + this.table;
+            ResultSet resultSet = statment.executeQuery(printQuery);
+            // end of connection to database
+
+            //get all info from database to create a DataStructureItemClass
+            while (resultSet.next()) {
+                if(orderID == resultSet.getInt("orderNumber")) {
+                    Integer itemNumber = resultSet.getInt("itemNumber");
+                    Integer itemCount = resultSet.getInt("itemCount");
+                    temp.putIfAbsent(itemNumber, itemCount);
+                }
+
+            }
+            connection.close();
+
+        } catch(Exception e){
+            System.out.println("Failed to create OrderItems HashMap from DatabaseUtility!");
+            e.printStackTrace();
+        }
+        return temp;
+
+    }
+
+
 
 }

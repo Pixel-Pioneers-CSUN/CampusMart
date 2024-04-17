@@ -1,0 +1,19 @@
+.root {
+
+}
+
+.orderItem {
+    -fx-background-color: "e27474";
+}
+.orderPage {
+
+}
+
+.order {
+    -fx-background-color: "e27474";
+}
+
+.orderImage {
+
+    object-fit: fill;
+}
