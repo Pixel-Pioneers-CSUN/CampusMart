@@ -1,5 +1,6 @@
 package items;
 
+import java.lang.foreign.AddressLayout;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.HashMap;
@@ -223,6 +224,23 @@ public class DatabaseUtility {
         }
 
 
+    }
+
+    public String getLoggedInUserAddress(String loggedInUserName){
+        String address = "";
+        try (Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+             PreparedStatement statement = connection.prepareStatement("SELECT address FROM" + this.table + "WHERE username = ?")) {
+            statement.setString(1, loggedInUserName);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                     address = resultSet.getString("address");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle SQL exception
+        }
+
+        return address;
     }
 
 }

@@ -45,7 +45,10 @@ public class LoginController implements Initializable {
     List<TextField> emptyFields = new ArrayList<>();
     utils.textFieldHelper textFieldHelper = new textFieldHelper();
     boolean isLoggedIn = false;
-
+    String loggedInUsername;
+    public String getLoggedInUsername() {
+        return loggedInUsername;
+    }
     @FXML
     void switchToSignUp(MouseEvent event) {
         try{ FXMLLoader loader = new FXMLLoader(getClass().getResource("signup.fxml"));
@@ -102,6 +105,7 @@ public class LoginController implements Initializable {
                     LoginErrorLabel.setText("Invalid Password");
                     return;
                 }
+                    loggedInUsername = resultSet.getString("username");
                     isLoggedIn = true;
                     switchToHomescreen();
                 }
