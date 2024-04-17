@@ -6,6 +6,8 @@ import orders.Orders;
 
 import java.math.BigDecimal;
 import java.sql.*;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Date;
 
@@ -239,16 +241,22 @@ public class DatabaseUtility {
                 if(customerID == resultSet.getInt("customerID")) {
 
                     int orderID = resultSet.getInt("orderID");
+                    long timer = System.nanoTime();
                     HashMap<Integer, Integer> map = this.createOrderItemsHashMap(orderID);
+                    long timer2 = System.nanoTime();
+                    long elapsedTime = timer2 - timer;
+                    double seconds = (double)elapsedTime / 1_000_000_000.0;
+                    System.out.print("Time to create OrderItem HashMap: ");
+                    System.out.println(seconds);
+                    // fix this later
+
                     Date date = new Date(resultSet.getString("orderDate"));
+
+
                     BigDecimal totalPrice = resultSet.getBigDecimal("orderTotal");
                     Orders newEntry = new Orders(orderID,customerID,date,totalPrice,map);
                     orderList.add(newEntry);
                 }
-
-
-
-
 
 
             }

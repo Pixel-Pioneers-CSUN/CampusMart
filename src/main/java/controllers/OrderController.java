@@ -1,5 +1,6 @@
 package controllers;
 
+import items.ItemClass;
 import items.ItemDataStructure;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,8 @@ import orders.Orders;
 import utils.DatabaseUtility;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class OrderController {
 
@@ -46,7 +49,12 @@ public class OrderController {
     @FXML
     public void createOrderHistory(Orders order) {
         //create OrderNumber fxml with list
-        myDateOrderPlaced.setText(order.getDate().toString());
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+        System.out.println(dateFormat.format(order.getDate()));
+
+
+        myDateOrderPlaced.setText(dateFormat.format(order.getDate()));
 
         int row = 1;
         try {
@@ -61,6 +69,9 @@ public class OrderController {
                 OrderItemController itemController = fxmlLoader.getController();
 
                 ItemDataStructure data = ItemDataStructure.getInstance();
+
+//                ItemClass temp = data.getItemDataStructure().get(35).getPrice();
+//                System.out.println("Item from data: " + temp);
 
                 itemController.setData(data.getItemDataStructure().get(itemNumber),
                        order.getOrderItems().get(itemNumber));

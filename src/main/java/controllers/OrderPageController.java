@@ -58,7 +58,12 @@ public class OrderPageController {
         // create Orders DataStructure
         DatabaseUtility db = new DatabaseUtility();
         OrderDataStructure data = OrderDataStructure.getInstance();
+        long timer = System.nanoTime();
         data.setOrderList(db.createOrderList(0));
+        long timer2 = System.nanoTime();
+        long elapsedTime = timer2 - timer;
+        double seconds = (double)elapsedTime / 1_000_000_000.0;
+        System.out.println(seconds);
         for(Orders order : data.getOrderList()) {
             System.out.println(order);
         }
