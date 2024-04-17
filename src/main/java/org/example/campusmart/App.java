@@ -14,7 +14,7 @@ public class App extends Application {
             
             Scene scene = new Scene(root);
             primaryStage.setResizable(false);
-            scene.getStylesheets().add(getClass().getResource("/css/checkout-style.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/css/checkout-styles.css").toExternalForm());
             
             primaryStage.setScene(scene);
             
