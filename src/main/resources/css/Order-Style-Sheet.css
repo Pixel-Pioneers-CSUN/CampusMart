@@ -1,19 +1,34 @@
-.root {
+/* Order Items style*/
+.orderItemImage {
+    -fx-pref-height: 20px;
+    -fx-pref-width: 20px;
+    -fx-max-width: 20px;
+    -fx-max-height: 20px;
+    -fx-min-width: 20px;
+    -fx-min-height: 20px;
+
 
 }
-
-.orderItem {
-    -fx-background-color: "e27474";
+.orderItemAnchor {
+    -fx-background-color: "C13538";
+    -fx-border-color: black;
 }
-.orderPage {
+.orderItemAnchor:hover {
+    -fx-background-color: "e6dbdb";
+}
+.orderItemLabel {
+
+    -fx-text-fill: "white";
+    -fx-font-size: 10;
+    -fx-text-alignment: center;
 
 }
-
 .order {
-    -fx-background-color: "e27474";
+    -fx-background-color: "C13538";
 }
-
-.orderImage {
-
-    object-fit: fill;
+.order:hover {
+    -fx-background-color: "e6dbdb";
+ }
+.paneTransparent {
+    -fx-background-color:transparent;
 }

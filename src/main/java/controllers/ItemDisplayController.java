@@ -161,9 +161,11 @@ public class ItemDisplayController implements Initializable {
                 displayItemInformation(item);
             }
         };
+
         if(grid.getChildren().isEmpty()) {
             createItemGridPage("default");
         }
+
         myQuantityField.setText("0");
 
     }

@@ -54,7 +54,7 @@ public class OrderController {
         System.out.println(dateFormat.format(order.getDate()));
 
 
-        myDateOrderPlaced.setText(dateFormat.format(order.getDate()));
+        myDateOrderPlaced.setText("Order Placed: " + dateFormat.format(order.getDate()));
 
         int row = 1;
         try {

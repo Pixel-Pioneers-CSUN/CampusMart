@@ -56,7 +56,7 @@
                         </VBox>
                      </children>
                   </HBox>
-                  <Button fx:id="myAddToCart" mnemonicParsing="false" onAction="#clickAddToCart" prefHeight="108.0" prefWidth="464.0" styleClass="addToCart" stylesheets="@../css/items-styles.css" text="Add To Cart" />
+                  <Button fx:id="myAddToCart" mnemonicParsing="false" onAction="#clickAddToCart" prefHeight="107.0" prefWidth="497.0" styleClass="addToCart" stylesheets="@../css/items-styles.css" text="Add To Cart" />
                </children>
             </VBox>
          </left>

@@ -14,7 +14,7 @@
 
 .itemCardLabels {
 
-    -fx-font: 100px Tahoma;
+    -fx-font: 100 pxTahoma;
     -fx-text-alignment: center;
     -fx-font-size: 20;
     -fx-text-fill: "white";
