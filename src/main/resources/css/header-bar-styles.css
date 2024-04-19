@@ -5,7 +5,7 @@
 }
 
 #actionButton {
-    -fx-background-color: "FFD213";
+    -fx-background-color: "FF2C38";
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
 }
 
@@ -14,4 +14,13 @@
     -fx-font-family: Arial;
     -fx-background-color: "f2f2f2";
     -fx-background-radius: 5.0;
+}
+
+.combo-box .list-view .list-cell:hover{
+    -fx-background-color: "FF2C38";
+}
+
+#headerBar {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);
 }

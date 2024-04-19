@@ -151,7 +151,6 @@ public class ItemDisplayController implements Initializable {
 
     }
 
-
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -162,32 +161,6 @@ public class ItemDisplayController implements Initializable {
                 displayItemInformation(item);
             }
         };
-
-        // Need a passed in argument or data from home screen
-        String category = "";
-        switch (category) {
-            case "drinks":
-                createItemGridPage("drinks");
-                break;
-            case "snacks":
-                createItemGridPage("snacks");
-                break;
-            case "fruits":
-                createItemGridPage("fruits");
-                break;
-            case "hot foods":
-                createItemGridPage("hot foods");
-                break;
-            case "cold foods":
-                createItemGridPage("cold foods");
-                break;
-            default:
-                createItemGridPage("default");
-                break;
-
-        }
-
-
 
         Integer[] choices;
         choices = new Integer[10];

@@ -1,11 +1,18 @@
 /* CSS Style Sheet for Home Screen */
 #shopNowButton {
-    -fx-background-color: Black;
+    -fx-background-color: white;
+    -fx-background-radius: 5.0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 10, 0, 0, 0);
+    -fx-background-insets: 0;
+}
+
+#shopNowButton:hover {
+    -fx-background-color: black;
+    -fx-text-fill: white;
     -fx-background-radius: 5.0;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.25), 10, 0, 0, 0);
 }
 
-#center-stack-pane {
-    -fx-background-image: url('/images/homepage_background_section_placeholder.png');
-}
+
+
 

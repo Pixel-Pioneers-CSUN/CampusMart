@@ -1,5 +1,6 @@
 package controllers;
 
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,9 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
+import utils.ImageCarousel;
 import java.io.IOException;
 
 public class HomeScreenController {
@@ -36,22 +38,38 @@ public class HomeScreenController {
     private VBox vboxCoffee;
 
     @FXML
-    private void clickShopNow(ActionEvent event) {
-        try {
-            System.out.println("Shop Now button clicked!");
-            // load the fxml file of the item display screen
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ItemDisplay.fxml"));
-            Parent root = loader.load();
-            // create a new scene and load the fxml of item display screen
-            Scene scene = new Scene(root);
-            // get the stage and set it to the new scene
-            Stage stage = (Stage) shopNowButton.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    private HBox itemCarouselContainer;
+
+    @FXML
+    private void initialize() {
+        // create an instance of ImageCarousel and add it to the FlowPane container
+        ImageCarousel imageCarousel = new ImageCarousel(10);
+        itemCarouselContainer.getChildren().add(imageCarousel);
     }
+
+    @FXML
+    private void clickShopNow(ActionEvent event) {
+            System.out.println("Shop Now button clicked!");
+
+            FXMLLoader itemDisplayLoader = new FXMLLoader((getClass().getResource("/view/ItemDisplay.fxml")));
+            Parent itemDisplayRoot;
+            try {
+                itemDisplayRoot = itemDisplayLoader.load();
+                ItemDisplayController itemDisplayController = itemDisplayLoader.getController();
+
+                // pass the selected category to the ItemDisplayController
+                itemDisplayController.createItemGridPage("default");
+
+                // get the stage and set it to the new scene
+                Stage stage = (Stage) shopNowButton.getScene().getWindow();
+                Scene scene = new Scene(itemDisplayRoot);
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+    }
+
 
     @FXML
     private void clickHotFoods(MouseEvent event) {
@@ -123,5 +141,7 @@ public class HomeScreenController {
         VBox vbox = (VBox) event.getSource();
         removeDropShadow(vbox);
     }
+
+
 }
 

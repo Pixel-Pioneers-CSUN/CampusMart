@@ -1,35 +1,33 @@
 package controllers;
 
-
 import items.ItemClass;
 import items.ItemDataStructure;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import utils.DatabaseUtility;
+import utils.NavigationListener;
 import utils.SearchHelper;
-
 import java.io.IOException;
 import java.util.*;
 
-public class HeaderBarController {
 
-    private Stage stage;
+public class HeaderBarController implements NavigationListener {
+
+    public StackPane headerBar;
+    private Stage mainStage;
     private Scene scene;
-    private Parent root;
 
     // creating a Popup for displaying search results
     private Popup searchPopup = new Popup();
@@ -55,6 +53,24 @@ public class HeaderBarController {
     @FXML
     private ComboBox<String> headerBarCategoryDropdown;
 
+    @Override
+    public void navigateToCreateAccount() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAccount.fxml"));
+            Parent root = loader.load();
+//            Scene scene = mainStage.getScene();
+//            scene.setRoot(root); // replace the root of the current scene with the CreateAccount screen
+
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     public void initialize() {
 
@@ -77,9 +93,13 @@ public class HeaderBarController {
         // hide the popup initially (only show it during a valid search)
         searchPopup.setAutoHide(true);
 
-        // Initialize the account popup
-        loadAccountPopup();
+        // Initialize the account popup and pass in a reference to the current stage, mainStage
+        loadAccountPopup(mainStage);
 
+    }
+
+    public void setMainStage(Stage mainStage) {
+        this.mainStage = mainStage;
     }
 
     private void populateCategoryDropdown() {
@@ -154,17 +174,18 @@ public class HeaderBarController {
     }
 
     // loads the sign-in / create account popup
-    private void loadAccountPopup() {
+    private void loadAccountPopup(Stage mainStage) {
+        this.mainStage = mainStage;
         accountPopup = new Popup();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountSignInPopup.fxml"));
             BorderPane popupContent = loader.load();
             AccountSignInPopupController popupController = loader.getController();
+            popupController.setNavigationListener(this);    // pass the NavigationListener to AccountSignInPopupController
             accountPopup.getContent().add(popupContent);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         // hide the popup if the user clicks anywhere outside of it
         accountPopup.setAutoHide(true);
     }
@@ -226,19 +247,7 @@ public class HeaderBarController {
 
     @FXML
     private void clickAccountImage(MouseEvent event) {
-//        // if header bar account icon is clicked, navigate user to the account screen
-//        try {
-//            System.out.println("Account image clicked!");
-//            // load the fxml file of the account screen
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountScreen.fxml"));
-//            Parent root = loader.load();
-//            // get the stage and set it to the new scene
-//            Stage stage = (Stage) headerBarAccountImage.getScene().getWindow();
-//            stage.setScene(scene);
-//            stage.show();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
         // Show the account popup below to the account image
         Bounds accountImageBounds = headerBarAccountImage.localToScreen(headerBarAccountImage.getBoundsInLocal());
         double popupX = accountImageBounds.getMinX() - 185;

@@ -1,5 +1,6 @@
 package org.example.campusmart;
 
+import controllers.HeaderBarController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,11 +17,9 @@ public class CampusMart extends Application {
         launch(args);
     }
 
-
-
     @Override
-    public void start(Stage stage) throws IOException {
-        //==============
+    public void start(Stage primaryStage) throws IOException {
+
         // start of app pull data and then make a data structure
         DatabaseUtility bd = new DatabaseUtility();
         bd.setTable("Item_Database");
@@ -28,29 +27,35 @@ public class CampusMart extends Application {
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
         data.setItemDataStructure(bd.createHasMapItemClass());
-        FXMLLoader fxmlLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
 
-        // Setting the default window size of the scene
-        Scene scene = new Scene(fxmlLoader.load(), 1300, 800);   // also set the initial window size
+        // load the HeaderBar.fxml file and set is as the headerBar
+        FXMLLoader headerLoader = new FXMLLoader(getClass().getResource("/view/HeaderBar.fxml"));
+        Parent headerRoot = headerLoader.load();
 
-//        Parent root = FXMLLoader.load(getClass().getResource("/view/ItemDisplay.fxml"));
-//
-//        Scene scene = new Scene(root);
-//        String css = this.getClass().getResource("/css/items-styles.css").toExternalForm();
-//        scene.getStylesheets().add(css);
+        // get the HeaderBarController instance and set the main stage
+        HeaderBarController headerController = headerLoader.getController();
+        headerController.setMainStage(primaryStage);
 
-        // Setting the title of the stage
-        stage.setTitle("Welcome to Campus Mart");
+        // load the HomeScreen.fxml file
+        FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
+        Parent homeRoot = homeLoader.load();
 
-        // Setting the stage to not be resizable (fixed size)
-        stage.setResizable(false);
+        // setting homeRoot as the root node of the scene
+        Scene scene = new Scene(homeRoot, 1300, 800);   // also set the initial window size
 
-        // Setting the scene on the stage
-        stage.setScene(scene);
+        // setting the title of the stage
+        primaryStage.setTitle("Welcome to Campus Mart");
 
-        // Center the scene on the display
-        stage.centerOnScreen();
+        // setting the stage to not be resizable (fixed size)
+        primaryStage.setResizable(false);
 
-        stage.show();
+        // setting the scene on the stage
+        primaryStage.setScene(scene);
+
+        // center the scene on the display
+        primaryStage.centerOnScreen();
+
+        // show the stage
+        primaryStage.show();
     }
 }
