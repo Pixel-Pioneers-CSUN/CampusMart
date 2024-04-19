@@ -162,9 +162,9 @@ public class ItemDisplayController implements Initializable {
             }
         };
 
-        if(grid.getChildren().isEmpty()) {
-            createItemGridPage("default");
-        }
+//        if(grid.getChildren().isEmpty()) {
+//            createItemGridPage("default");
+//        }
 
         myQuantityField.setText("0");
 

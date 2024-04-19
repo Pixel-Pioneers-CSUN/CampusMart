@@ -1,5 +1,7 @@
-package items;
+package utils;
 
+import items.ItemClass;
+import items.ItemDataStructure;
 import orders.Orders;
 
 import java.math.BigDecimal;

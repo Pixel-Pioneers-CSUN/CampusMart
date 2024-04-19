@@ -1,5 +1,5 @@
 package controllers;
-import items.DatabaseUtility;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
+import utils.DatabaseUtility;
 import utils.textFieldHelper;
 
 import java.io.IOException;
@@ -113,9 +114,6 @@ public class LoginController implements Initializable {
         @Override
         public void initialize(URL location, ResourceBundle resources) {
             textFields = List.of(usernameTF, passwordTF);
-
-
-
 
     }
 
