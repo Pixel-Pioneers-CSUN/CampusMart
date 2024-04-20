@@ -36,11 +36,10 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Pane fx:id="creditCardInfoPane" layoutX="536.0" layoutY="377.0" prefHeight="260.0" prefWidth="300.0" visible="false">
+      <Pane fx:id="creditCardInfoPane" layoutX="536.0" layoutY="377.0" prefHeight="260.0" prefWidth="300.0">
          <children>
             <TextField fx:id="nameOnCardTF" layoutX="25.0" layoutY="75.0" prefHeight="25.0" prefWidth="250.0" promptText="Name on Card" />
             <TextField fx:id="cardNumTF" layoutX="25.0" layoutY="130.0" prefHeight="25.0" prefWidth="250.0" promptText="Card Number" />
-            <DatePicker fx:id="validThroughTF" layoutX="26.0" layoutY="192.0" prefHeight="25.0" prefWidth="127.0" promptText="Valid Through" />
             <TextField fx:id="cvvTF" layoutX="208.0" layoutY="192.0" prefHeight="25.0" prefWidth="68.0" promptText="CVV" />
             <Label fx:id="creditcardErrorLabel" layoutX="98.0" layoutY="237.0" prefHeight="18.0" prefWidth="151.0" textFill="RED" visible="false">
                <font>
@@ -52,6 +51,7 @@
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Label>
+            <DatePicker fx:id="validThroughDP" layoutX="22.0" layoutY="192.0" prefHeight="25.0" prefWidth="160.0" promptText="Valid Through" />
          </children>
       </Pane>
       <VBox layoutX="910.0" layoutY="588.0" prefHeight="111.0" prefWidth="151.0">

@@ -1,9 +1,11 @@
 package controllers;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.function.UnaryOperator;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +20,9 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import utils.textFieldHelper;
+
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 
 public class CheckoutController implements Initializable {
 
@@ -63,7 +68,7 @@ public class CheckoutController implements Initializable {
     @FXML
     private Label checkoutLabel;
     @FXML
-    private DatePicker validThroughTF;
+    private DatePicker validThroughDP;
 
     List<TextField> textFields = new ArrayList<>();
     List<TextField> emptyFields = new ArrayList<>();
@@ -75,9 +80,7 @@ public class CheckoutController implements Initializable {
         return cardNumTF.getText();
     }
 
-    public String getCVV() {
-        return cvvTF.getText();
-    }
+    public String getCVV() { return cvvTF.getText(); }
 
     public String getNameOnCard() {
         return nameOnCardTF.getText();
@@ -112,16 +115,17 @@ public class CheckoutController implements Initializable {
     }
 
     public DatePicker getValidThrough() {
-        return validThroughTF;
+        return validThroughDP;
     }
 
     @FXML
     void confirmPayment(ActionEvent event) {
         try {
+            dateValidation();
             // Check if user entered all info
             emptyFields = textFieldHelper.checkEmptyTextFields(textFields);
             Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-            if (!textFieldHelper.isEmpty) {
+            if (!textFieldHelper.isEmpty && dateValidation()) {
                 confirmAlert.setTitle("Payment Confirmation");
                 confirmAlert.setHeaderText("Confirm Payment");
                 confirmAlert.setContentText("Are you sure you want to proceed with the payment?");
@@ -130,7 +134,7 @@ public class CheckoutController implements Initializable {
                 confirmAlert.getButtonTypes().setAll(yesBtn, noBtn);
                 confirmAlert.showAndWait();
                 // If not show error
-            } 
+            }
             else {
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                 errorAlert.setTitle("Error");
@@ -170,6 +174,17 @@ public class CheckoutController implements Initializable {
         creditCardInfoPane.setVisible(true);
     }
 
+    public  boolean isValidEmailAddress(String email) {
+        boolean isValid = true;
+        try {
+            InternetAddress internetAddress = new InternetAddress(email);
+            internetAddress.validate();
+        } catch (AddressException e) {
+            isValid = false;
+        }
+        return isValid;
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
@@ -193,6 +208,17 @@ public class CheckoutController implements Initializable {
             addressTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
                     addressTF, contactInfoErrorLabel, "^[a-zA-Z0-9 ]*$"
                     , "Enter a valid address")));
+            //email validation
+            emailTF.textProperty().addListener((observable, oldValue, newValue) -> {
+                if (isValidEmailAddress(newValue) || emailTF.getText()=="") {
+                    emailTF.setStyle("");
+                    contactInfoErrorLabel.setText("");
+                } else {
+                    emailTF.setStyle("-fx-background-color: pink;");
+                    contactInfoErrorLabel.setText("Enter a valid email address");
+                    contactInfoErrorLabel.setVisible(true);
+                }
+            });
 
             textFields = List.of(addressTF, cardNumTF, cityTF, cvvTF, emailTF, firstNameTF, lastNameTF, nameOnCardTF,
                     phoneNumTF, zipCodeTF);
@@ -200,7 +226,20 @@ public class CheckoutController implements Initializable {
             e.printStackTrace();
         }
     }
+    //checks if the expiration date entered is after the today's date
+    public boolean dateValidation(){
+        LocalDate currentDate = LocalDate.now();
+        LocalDate selectedDate = getValidThrough().getValue();
+        boolean isValid = false;
 
+        if (selectedDate != null && selectedDate.isAfter(currentDate)) {
+            creditcardErrorLabel.setText("");
+            isValid = true;
+        } else {
+            creditcardErrorLabel.setText("Invalid Date");
+        }
+        return  isValid;
+    }
     // Method to reduce the inventory count for items that were bought
     public int reduceInventory() {
         // Iterate over each item in cart
