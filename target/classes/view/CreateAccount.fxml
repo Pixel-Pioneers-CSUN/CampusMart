@@ -32,7 +32,7 @@
                   <Font name="Arial Bold" size="13.0" />
                </font>
             </Label>
-            <TextField prefHeight="26.0" prefWidth="536.0" promptText="First and last name">
+            <TextField fx:id="createAccountName" prefHeight="26.0" prefWidth="536.0" promptText="First and last name">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
@@ -45,7 +45,7 @@
                   <Insets bottom="5.0" left="25.0" top="15.0" />
                </VBox.margin>
             </Label>
-            <TextField prefHeight="26.0" prefWidth="536.0">
+            <TextField fx:id="createAccountUsername" prefHeight="26.0" prefWidth="536.0">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
@@ -58,7 +58,7 @@
                   <Insets bottom="5.0" left="25.0" right="25.0" top="15.0" />
                </VBox.margin>
             </Label>
-            <TextField prefHeight="26.0" prefWidth="536.0" promptText="At least 6 charaacters">
+            <TextField fx:id="createAccountPassword" prefHeight="26.0" prefWidth="536.0" promptText="At least 6 characters">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
@@ -71,12 +71,12 @@
                   <Insets bottom="5.0" left="25.0" right="25.0" top="15.0" />
                </VBox.margin>
             </Label>
-            <TextField prefHeight="26.0" prefWidth="536.0">
+            <TextField fx:id="createAccountPasswordVerify" prefHeight="26.0" prefWidth="536.0">
                <VBox.margin>
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </TextField>
-            <Button mnemonicParsing="false" text="Sign Up" textAlignment="CENTER">
+            <Button fx:id="signUpButton" mnemonicParsing="false" text="Sign Up" textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>

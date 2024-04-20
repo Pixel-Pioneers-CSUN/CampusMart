@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work).">
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Fixed item search not showing rest of items in item grid view.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,11 +134,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/view" />
       <recent name="$PROJECT_DIR$/src/main/resources/images" />
       <recent name="$PROJECT_DIR$/src/main/java/items" />
       <recent name="$PROJECT_DIR$/src/main/java/controllers" />
       <recent name="$PROJECT_DIR$/src/main/java/org/example/campusmart" />
-      <recent name="$PROJECT_DIR$/src/main/resources/view" />
     </key>
   </component>
   <component name="RunManager">
@@ -178,7 +187,7 @@
       <workItem from="1712883537204" duration="3734000" />
       <workItem from="1713124766101" duration="21935000" />
       <workItem from="1713252627688" duration="52388000" />
-      <workItem from="1713570720807" duration="1618000" />
+      <workItem from="1713570720807" duration="12353000" />
     </task>
     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
       <option name="closed" value="true" />
@@ -284,7 +293,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713570476020</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed item search not showing rest of items in item grid view.">
+      <option name="closed" value="true" />
+      <created>1713572935665</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1713572935665</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -339,6 +356,7 @@
     <MESSAGE value="Header bar categories drop down menu now shows categories and navigates user to filtered item display page." />
     <MESSAGE value="New Sign-In/Create Account popup, updated visuals, cleaned up UI, and refactored code." />
     <MESSAGE value="Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work)." />
+    <MESSAGE value="Fixed item search not showing rest of items in item grid view." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed item search not showing rest of items in item grid view." />
   </component>
 </project>

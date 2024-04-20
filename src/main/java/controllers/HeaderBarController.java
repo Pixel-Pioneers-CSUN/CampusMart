@@ -58,14 +58,24 @@ public class HeaderBarController implements NavigationListener {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAccount.fxml"));
             Parent root = loader.load();
-//            Scene scene = mainStage.getScene();
-//            scene.setRoot(root); // replace the root of the current scene with the CreateAccount screen
-
             Scene scene = new Scene(root);
             Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    @Override
+    public void navigateToSignIn() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SignIn.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }

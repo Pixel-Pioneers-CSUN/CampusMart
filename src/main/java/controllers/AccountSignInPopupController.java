@@ -28,6 +28,11 @@ public class AccountSignInPopupController {
     }
 
     @FXML
+    private void clickSignIn(MouseEvent event) {
+
+    }
+
+    @FXML
     private void clickStartHere(MouseEvent event) {
         // if Start Here in popup is clicked, notify the HeaderBarController to navigate to the create account page
         if (navigationListener != null) {
