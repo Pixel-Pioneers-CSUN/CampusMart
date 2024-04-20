@@ -197,7 +197,10 @@ public class HeaderBarController implements NavigationListener {
             Parent root = loader.load();
             // now pass the selected item to the ItemDisplayController so it can display it
             ItemDisplayController controller = loader.getController();
+            //display the selected item
             controller.displayItemInformation(item);
+            // display the grid with the rest of the items
+            controller.createItemGridPage("default");
 
             Scene scene = new Scene(root);
             Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();

@@ -57,7 +57,7 @@ public class HomeScreenController {
                 itemDisplayRoot = itemDisplayLoader.load();
                 ItemDisplayController itemDisplayController = itemDisplayLoader.getController();
 
-                // pass the selected category to the ItemDisplayController
+                // display all the items (set by default) in the item grid
                 itemDisplayController.createItemGridPage("default");
 
                 // get the stage and set it to the new scene
