@@ -3,7 +3,11 @@ import items.*;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Objects;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,11 +17,15 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
+import org.controlsfx.control.PropertySheet;
 
 public class ItemDisplayController implements Initializable {
 
 
     // These three are for the
+    @FXML
+    private BorderPane myBorderPane;
     @FXML
     private ImageView itemImage;
 
@@ -27,6 +35,14 @@ public class ItemDisplayController implements Initializable {
     @FXML
     private Label itemPrice;
 
+    @FXML
+    private HBox headerPane;
+
+    @FXML
+    private TextArea myTextArea;
+
+    @FXML
+    private ImageView myImageView;
 
     @FXML
     private GridPane grid;

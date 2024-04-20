@@ -4,8 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Removed vs code files">
-      <change beforePath="$PROJECT_DIR$/target/classes/css/checkout-style.css" beforeDir="false" />
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Fixed item search not showing rest of items in item grid view.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="Class" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -55,15 +67,9 @@
         </map>
       </branch-storage>
     </favorite-branches>
-    <option name="PUSH_TAGS">
-      <GitPushTagMode>
-        <option name="argument" value="--follow-tags" />
-        <option name="title" value="Current Branch" />
-      </GitPushTagMode>
-    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Login-Screen" />
+        <entry key="$PROJECT_DIR$" value="Header-Bar-Categories" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,9 +83,12 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Pixel-Pioneers-CSUN/CampusMart.git&quot;,
-    &quot;accountId&quot;: &quot;ca6f6385-dc86-4a64-8e76-df02d33adefe&quot;
+    &quot;accountId&quot;: &quot;519635a5-75fe-44c2-808f-97921c63e8c2&quot;
   }
 }</component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="jx693jil" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -89,9 +98,6 @@
         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
       </MavenGeneralSettings>
     </option>
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -104,21 +110,21 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.App.executor&quot;: &quot;Run&quot;,
     &quot;Application.CampusMart.executor&quot;: &quot;Run&quot;,
     &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Checkout-Page&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Header-Bar-Categories&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/olahe/OneDrive/Desktop/COMP380 Project&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -127,31 +133,15 @@
   }
 }</component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\resources\view" />
-      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\resources\images" />
-      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\java\org\example\campusmart" />
-      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\java\utils" />
-      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\java\controllers" />
+      <recent name="$PROJECT_DIR$/src/main/resources/view" />
+      <recent name="$PROJECT_DIR$/src/main/resources/images" />
+      <recent name="$PROJECT_DIR$/src/main/java/items" />
+      <recent name="$PROJECT_DIR$/src/main/java/controllers" />
+      <recent name="$PROJECT_DIR$/src/main/java/org/example/campusmart" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.campusmart.App" />
-      <module name="CampusMart" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.campusmart.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager">
     <configuration name="CampusMart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.campusmart.CampusMart" />
       <module name="CampusMart" />
@@ -167,19 +157,14 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.App" />
         <item itemvalue="Application.CampusMart" />
-        <item itemvalue="Application.App" />
-        <item itemvalue="Application.CampusMart" />
-        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176" />
       </set>
     </attachedChunks>
   </component>
@@ -197,9 +182,12 @@
       <workItem from="1711765318533" duration="3844000" />
       <workItem from="1711769172422" duration="10787000" />
       <workItem from="1712166759008" duration="6344000" />
-      <workItem from="1712724489499" duration="9456000" />
-      <workItem from="1712734085536" duration="21599000" />
-      <workItem from="1713050310087" duration="8773000" />
+      <workItem from="1712678622765" duration="8021000" />
+      <workItem from="1712775373254" duration="8903000" />
+      <workItem from="1712883537204" duration="3734000" />
+      <workItem from="1713124766101" duration="21935000" />
+      <workItem from="1713252627688" duration="52388000" />
+      <workItem from="1713570720807" duration="12353000" />
     </task>
     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
       <option name="closed" value="true" />
@@ -249,55 +237,71 @@
       <option name="project" value="LOCAL" />
       <updated>1712299048155</updated>
     </task>
-    <task id="LOCAL-00007" summary="Fixed issues regarding null exceptions and images.">
+    <task id="LOCAL-00007" summary="Search bar popup results styling and positioning fixes.">
       <option name="closed" value="true" />
-      <created>1712373031416</created>
+      <created>1712301548823</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1712373031416</updated>
+      <updated>1712301548823</updated>
     </task>
-    <task id="LOCAL-00008" summary="Fixed issues regarding null exceptions and images.">
+    <task id="LOCAL-00008" summary="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.">
       <option name="closed" value="true" />
-      <created>1712373139890</created>
+      <created>1712684404511</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1712373139890</updated>
+      <updated>1712684404511</updated>
     </task>
-    <task id="LOCAL-00009" summary="Fixed issues regarding null exceptions and images.">
+    <task id="LOCAL-00009" summary="Merge the new itembase with the HeaderBarController.">
       <option name="closed" value="true" />
-      <created>1712373373416</created>
+      <created>1712873837790</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1712373373416</updated>
+      <updated>1712873837790</updated>
     </task>
-    <task id="LOCAL-00010" summary="Moved some methods into separate class, updated CSS styling and fixed some issues.">
+    <task id="LOCAL-00010" summary="Header bar categories drop down menu now shows categories and navigates user to filtered item display page.">
       <option name="closed" value="true" />
-      <created>1712738463157</created>
+      <created>1712904674362</created>
       <option name="number" value="00010" />
       <option name="presentableId" value="LOCAL-00010" />
       <option name="project" value="LOCAL" />
-      <updated>1712738463157</updated>
+      <updated>1712904674362</updated>
     </task>
-    <task id="LOCAL-00011" summary="Moved some methods into separate class, updated CSS styling and fixed some issues.">
+    <task id="LOCAL-00011" summary="New Sign-In/Create Account popup, updated visuals, cleaned up UI, and refactored code.">
       <option name="closed" value="true" />
-      <created>1712738864940</created>
+      <created>1713255143885</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1712738864940</updated>
+      <updated>1713255143885</updated>
     </task>
-    <task id="LOCAL-00012" summary="Removed vs code files">
+    <task id="LOCAL-00012" summary="Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work).">
       <option name="closed" value="true" />
-      <created>1712739002524</created>
+      <created>1713570371076</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1712739002524</updated>
+      <updated>1713570371076</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work).">
+      <option name="closed" value="true" />
+      <created>1713570476020</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713570476020</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fixed item search not showing rest of items in item grid view.">
+      <option name="closed" value="true" />
+      <created>1713572935665</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1713572935665</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,20 +350,13 @@
     <MESSAGE value="Initial Home Screen UI and file structure setup" />
     <MESSAGE value="Merged Home-Screen and Item-Screen + fixed conflicts and dependencies." />
     <MESSAGE value="Search functionality on header bar now displays relevant item names." />
-    <MESSAGE value="Fixed issues regarding null exceptions and images." />
-    <MESSAGE value="Moved some methods into separate class, updated CSS styling and fixed some issues." />
-    <MESSAGE value="Removed vs code files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed vs code files" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/bin/App.class</url>
-          <line>11</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Search bar popup results styling and positioning fixes." />
+    <MESSAGE value="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages." />
+    <MESSAGE value="Merge the new itembase with the HeaderBarController." />
+    <MESSAGE value="Header bar categories drop down menu now shows categories and navigates user to filtered item display page." />
+    <MESSAGE value="New Sign-In/Create Account popup, updated visuals, cleaned up UI, and refactored code." />
+    <MESSAGE value="Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work)." />
+    <MESSAGE value="Fixed item search not showing rest of items in item grid view." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed item search not showing rest of items in item grid view." />
   </component>
 </project>
