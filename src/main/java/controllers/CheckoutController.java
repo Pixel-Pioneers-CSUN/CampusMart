@@ -1,6 +1,7 @@
 package controllers;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -73,6 +74,7 @@ public class CheckoutController implements Initializable {
 
     textFieldHelper textFieldHelper = new textFieldHelper();
     DateHelper dateHelper  = new DateHelper();
+    String formattedDate;
 
     // Getter methods to access text fields info
     public String getCardNumber() {
@@ -113,8 +115,8 @@ public class CheckoutController implements Initializable {
         return cityTF.getText();
     }
 
-    public DatePicker getValidThrough() {
-        return validThroughDP;
+    public LocalDate getValidThrough() {
+        return validThroughDP.getValue();
     }
 
     @FXML
@@ -125,6 +127,7 @@ public class CheckoutController implements Initializable {
             emptyFields = textFieldHelper.checkEmptyTextFields(textFields);
             Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
             if (!textFieldHelper.isEmpty && dateValidation) {
+                 formattedDate = getValidThrough().format(DateTimeFormatter.ofPattern("MM/dd/yy"));
                 confirmAlert.setTitle("Payment Confirmation");
                 confirmAlert.setHeaderText("Confirm Payment");
                 confirmAlert.setContentText("Are you sure you want to proceed with the payment?");
@@ -132,6 +135,7 @@ public class CheckoutController implements Initializable {
                 ButtonType noBtn = new ButtonType("No", ButtonData.NO);
                 confirmAlert.getButtonTypes().setAll(yesBtn, noBtn);
                 confirmAlert.showAndWait();
+                //System.out.println(formattedDate);
                 // If not show error
             }
             else {
@@ -140,6 +144,7 @@ public class CheckoutController implements Initializable {
                 errorAlert.setHeaderText("Empty Fields");
                 errorAlert.setContentText("Please Fill All Fields ");
                 errorAlert.show();
+
                 for (TextField textField : emptyFields) {
                     textField.setStyle("-fx-background-color: pink;");
                 }

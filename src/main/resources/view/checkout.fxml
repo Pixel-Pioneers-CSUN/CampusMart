@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CheckoutController" stylesheets="@../css/checkout-styles.css">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../css/checkout-styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CheckoutController">
    <children>
       <Label id="checkoutLabel" layoutX="530.0" layoutY="64.0" prefHeight="57.0" prefWidth="178.0" text="Check Out">
          <font>
@@ -36,7 +36,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
-      <Pane fx:id="creditCardInfoPane" layoutX="536.0" layoutY="377.0" prefHeight="260.0" prefWidth="300.0">
+      <Pane fx:id="creditCardInfoPane" layoutX="536.0" layoutY="377.0" prefHeight="260.0" prefWidth="300.0" visible="false">
          <children>
             <TextField fx:id="nameOnCardTF" layoutX="25.0" layoutY="75.0" prefHeight="25.0" prefWidth="250.0" promptText="Name on Card" />
             <TextField fx:id="cardNumTF" layoutX="25.0" layoutY="130.0" prefHeight="25.0" prefWidth="250.0" promptText="Card Number" />

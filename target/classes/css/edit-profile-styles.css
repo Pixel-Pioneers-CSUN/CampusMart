@@ -4,23 +4,34 @@
     -fx-min-width: 120px;
     -fx-min-height: 40px;
     -fx-background-radius: 5px;
-    -fx-background-color: #C13538;
     -fx-text-fill: white;
+    -fx-background-color: #C13538;
 }
-
-.button:hover {
+#editPaymentBtn:hover{
     -fx-background-color: #951616;
     -fx-cursor: hand;
 }
-
+#editPaymentBtn:pressed{
+    -fx-background-color: #7c0b0b;
+}
 #cancelBtn:hover {
     -fx-background-color: #951616;
     -fx-cursor: hand;
 }
+#cancelBtn:pressed{
+    -fx-background-color: #7c0b0b;
+}
 
-#cancelBtn:hover {
-    -fx-background-color: #951616;
+#saveBtn{
+    -fx-background-color: #4CAF50;
+}
+#saveBtn:hover {
+    -fx-background-color: #45a049;
     -fx-cursor: hand;
+}
+
+#saveBtn:pressed {
+    -fx-background-color: #398439; /* Even Darker Green */
 }
 
 .image-view {

@@ -10,6 +10,8 @@ import utils.DateHelper;
 import utils.textFieldHelper;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -39,10 +41,11 @@ public class EditPaymentController implements Initializable {
     private Button saveEditBtn;
 
     public String getEditPaymentCVV() {return editPaymentCVV.getText();}
-    public  DatePicker getEditPaymentValidThrough () {return editPaymentValidThrough;}
+    public LocalDate getEditPaymentValidThrough () {return editPaymentValidThrough.getValue();}
     public String getEditPaymentCardNum() {return editPaymentCardNum.getText();}
     public String getEditPaymentNameOnCard() {return editPaymentNameOnCard.getText();}
     LoginController login = new LoginController();
+    String formattedDate;
 
 
 
@@ -63,6 +66,7 @@ public class EditPaymentController implements Initializable {
 
         boolean dateValidation = dateHelper.dateValidation(getEditPaymentValidThrough(), editPaymentErrorLabel, "Invalid Date");
         // Check if user entered all info
+        formattedDate = getEditPaymentValidThrough().format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
         emptyFields = textFieldHelper.checkEmptyTextFields(textFields);
         Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
         if (!textFieldHelper.isEmpty && dateValidation) {
@@ -70,7 +74,7 @@ public class EditPaymentController implements Initializable {
             db.saveProfileInfoToDB("name on card", getEditPaymentNameOnCard(), login.getLoggedInUsername());
             db.saveProfileInfoToDB("card number", getEditPaymentCardNum(), login.getLoggedInUsername());
             db.saveProfileInfoToDB("cvv", getEditPaymentCVV(), login.getLoggedInUsername());
-            db.saveProfileInfoToDB("date", getEditPaymentValidThrough().toString(), login.getLoggedInUsername());
+            db.saveProfileInfoToDB("date", formattedDate, login.getLoggedInUsername());
 
         }
         else {

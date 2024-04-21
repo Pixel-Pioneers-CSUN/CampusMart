@@ -8,12 +8,12 @@ import java.time.LocalDate;
 public class DateHelper
 {
 
-    public boolean dateValidation(DatePicker datePicker , Label errorLabel, String errorMessage){
+    public boolean dateValidation(LocalDate date , Label errorLabel, String errorMessage){
         LocalDate currentDate = LocalDate.now();
-        LocalDate selectedDate = datePicker.getValue();
+        //LocalDate selectedDate = datePicker.getValue();
         boolean isValid = false;
 
-        if (selectedDate != null && selectedDate.isAfter(currentDate)) {
+        if (date != null && date.isAfter(currentDate)) {
             errorLabel.setText("");
             isValid = true;
         } else {

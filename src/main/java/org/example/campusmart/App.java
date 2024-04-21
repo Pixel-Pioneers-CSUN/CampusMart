@@ -10,12 +10,10 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/view/EditProfile.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/view/checkout.fxml"));
             
             Scene scene = new Scene(root, 1300, 800);
             primaryStage.setResizable(false);
-            scene.getStylesheets().add(getClass().getResource("/css/edit-profile-styles.css").toExternalForm());
-            
             primaryStage.setScene(scene);
             
             primaryStage.show();

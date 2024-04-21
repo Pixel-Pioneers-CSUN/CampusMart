@@ -132,7 +132,7 @@
                   <Insets left="100.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#editPayment" prefHeight="49.0" prefWidth="133.0" text="Edit Payment">
+            <Button fx:id="editPaymentBtn" mnemonicParsing="false" onAction="#editPayment" prefHeight="49.0" prefWidth="133.0" text="Edit Payment">
                <VBox.margin>
                   <Insets left="110.0" top="20.0" />
                </VBox.margin>
@@ -142,7 +142,7 @@
    </right>
    <bottom>
       <HBox prefHeight="112.0" prefWidth="1300.0" spacing="40.0" BorderPane.alignment="CENTER">
-         <Button mnemonicParsing="false" onAction="#saveChangesToDB" prefHeight="41.0" prefWidth="144.0" text="Save Changes">
+         <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveChangesToDB" prefHeight="41.0" prefWidth="144.0" text="Save Changes">
             <HBox.margin>
                <Insets left="500.0" />
             </HBox.margin>
