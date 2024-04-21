@@ -49,7 +49,7 @@ public class OrderController {
     @FXML
     public void createOrderHistory(Orders order) {
         //create OrderNumber fxml with list
-        myDateOrderPlaced.setText("Order Placed: " + order.getDate() + "\t\tTotal: $" + order.getTotal().toString());
+        myDateOrderPlaced.setText("Order Placed: " + order.getDate() + "\nTotal: $" + order.getTotal().toString());
 
         int row = 1;
         try {

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Random;
 
 public class AccountDashboardController {
 
@@ -23,26 +24,29 @@ public class AccountDashboardController {
     private AnchorPane myDisplayAnchorPane;
 
     @FXML
-    void loadOrderPage(ActionEvent event) throws SQLException {
+    void loadOrderPage(ActionEvent event) {
         // create Orders DataStructure
         DatabaseUtility db = new DatabaseUtility();
         OrderDataStructure data = OrderDataStructure.getInstance();
         // There will be a check for which account is being used before
         // creating the database aka make sure a user is logged in
 
-        HashMap<Integer,Integer> tempMap = new HashMap<>();
-        tempMap.put(4,2);
-        tempMap.put(34,2);
-        tempMap.put(5,1);
-        tempMap.put(45,2);
-
-        BigDecimal tempTotal = new BigDecimal("33.66");
-
-        Orders tempOrder = new Orders(7,0, "7/13/24", tempTotal, tempMap);
-
-        System.out.println(tempOrder);
-
-        tempOrder.addToDataBase();
+//        HashMap<Integer,Integer> tempMap = new HashMap<>();
+//        Random rand = new Random();
+//        tempMap.put(4,2);
+//        tempMap.put(34,2);
+//        tempMap.put(5,1);
+//        tempMap.put(45,2);
+//
+//        BigDecimal tempTotal = new BigDecimal("33.66");
+//
+//        int rand_int = rand.nextInt(100);
+//
+//        Orders tempOrder = new Orders(rand_int,0, "7/13/24", tempTotal, tempMap);
+//
+//        System.out.println(tempOrder);
+//
+//        tempOrder.addToDataBase();
         data.setOrderList(db.createOrderList(0));
 
 

@@ -28,7 +28,7 @@ public class CampusMart extends Application {
 
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
-        data.setItemDataStructure(bd.createHasMapItemClass());
+        data.setItemDataStructure(bd.createHashMapItemClass());
 
         // load the HeaderBar.fxml file and set is as the headerBar
         FXMLLoader headerLoader = new FXMLLoader(getClass().getResource("/view/HeaderBar.fxml"));

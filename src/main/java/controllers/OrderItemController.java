@@ -29,8 +29,8 @@ public class OrderItemController {
         this.item = item;
 
         String amountText = String.valueOf(amount);
-        myAmount.setText(amountText);
-        myItemName.setText(item.getItemName());
+        //myAmount.setText(amountText);
+        myItemName.setText("Item: " + item.getItemName() + "\nQty: " + amountText);
         Image image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
         myOrderItemImage.setImage(image);
 

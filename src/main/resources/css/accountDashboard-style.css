@@ -1,0 +1,15 @@
+.buttons {
+    -fx-background-color: "C13538";
+    -fx-border-color: black;
+    -fx-pref-height: 38px;
+    -fx-pref-width: 240px;
+    -fx-font: 100px Tahoma;
+    -fx-text-alignment: center;
+    -fx-font-size: 20;
+    -fx-text-fill: "white";
+
+}
+.buttons:hover {
+    -fx-background-color: "c44e4e";
+
+}

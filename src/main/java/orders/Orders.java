@@ -57,9 +57,17 @@ public class Orders {
         // then need to add the orderItems HashMap into OrderItems_Database
 
         // so need to create a functions in DB Utility
+        String query = "insert into Orders_Database (customerID, orderID, orderDate, orderTotal) values ("
+                + getCustomerID() + ", " + getOrderID() + ", '" + getDate() + "', " + getTotal().toString() +" )";
+
         DatabaseUtility db = new DatabaseUtility();
         try {
-            db.updateOrderDatabase(this);
+            db.updateOrderDatabase(query);
+            for(Map.Entry<Integer,Integer> entry : orderItems.entrySet()) {
+                String secondQuery =  "insert into OrderItems_Database (orderNumber, itemNumber, itemCount) VALUES (" +
+                        getOrderID() + ", " + entry.getKey() + ", " + entry.getValue() + ")";
+                db.updateOrderItemsDatabase(secondQuery);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

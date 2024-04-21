@@ -6,6 +6,7 @@
     -fx-max-height: 20px;
     -fx-min-width: 20px;
     -fx-min-height: 20px;
+    -fx-alignment: center;
 
 
 }
@@ -14,13 +15,13 @@
     -fx-border-color: black;
 }
 .orderItemAnchor:hover {
-    -fx-background-color: "e6dbdb";
+
 }
 .orderItemLabel {
 
     -fx-text-fill: "white";
-    -fx-font-size: 10;
-    -fx-text-alignment: center;
+    -fx-font-size: 12;
+    -fx-text-alignment: left;
 
 }
 .order {
@@ -31,4 +32,13 @@
  }
 .paneTransparent {
     -fx-background-color:transparent;
+}
+
+.orderPageTitle {
+    -fx-border-color: black;
+    -fx-background-color: "C13538";
+    -fx-font: 100 pxTahoma;
+    -fx-text-alignment: center;
+    -fx-font-size: 30;
+    -fx-text-fill: "white";
 }

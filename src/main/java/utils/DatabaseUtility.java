@@ -1,8 +1,6 @@
 package utils;
 
-import com.mysql.cj.x.protobuf.MysqlxCrud;
 import controllers.HeaderBarController;
-import controllers.HomeScreenController;
 import items.ItemClass;
 import items.ItemDataStructure;
 import javafx.event.ActionEvent;
@@ -17,10 +15,7 @@ import orders.Orders;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.Date;
 
 
 /**
@@ -81,12 +76,27 @@ public class DatabaseUtility {
      */
     public void setTable (String t) {this.table = t;}
 
+    // makes it easier to just call this for connection
+    // helper funcion to make code look nicer
     public Connection getConnection() {
         try {
             return DriverManager.getConnection(this.url, this.user, this.password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    // a helper function to execute a sql statement regarding the database
+    public  void executeSQLStatement (String query) {
+        try {
+            Statement statement = getConnection().createStatement();
+            statement.execute(query);
+            getConnection().close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+
+        }
+
     }
 
 
@@ -136,51 +146,13 @@ public class DatabaseUtility {
 
     }
 
-    /**
-     * Creates a TreeSet data structure containing ItemClass objects.
-     *
-     * @return A TreeSet containing ItemClass objects.
-     */
-    public Set<ItemClass> createDataStructureItemClass() {
-
-        Set<ItemClass> tree = new TreeSet<ItemClass>();
-        try {
-            
-            // creating connection to the database. 
-            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
-            Statement statment = connection.createStatement();
-             
-            String printQuery = "select * from " + this.table;
-            ResultSet resultSet = statment.executeQuery(printQuery);
-            // end of connection to database
-            
-            //get all info from database to create a DataStructureItemClass
-            while (resultSet.next()) {
-                
-                String itemName = resultSet.getString("itemName");
-                int itemNumber = resultSet.getInt("itemNumber");
-                BigDecimal price = new BigDecimal(resultSet.getString("price"));
-                String category = resultSet.getString("category");
-                String itemPicture = resultSet.getString("itemPicture");
-                int inventoryCount = resultSet.getInt("inventoryCount");                
-                ItemClass temp = new ItemClass(itemName, itemNumber, price, category, itemPicture, inventoryCount);
-                tree.add(temp);   
-            }
-            connection.close();
-            
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-
-        return tree;
-    }
 
     /**
      * Creates a HashMap data structure containing ItemClass objects.
      *
      * @return A HashMap containing ItemClass objects.
      */
-    public HashMap<Integer, ItemClass> createHasMapItemClass() {
+    public HashMap<Integer, ItemClass> createHashMapItemClass() {
         HashMap<Integer, ItemClass> map = new HashMap<>();
         try {
             
@@ -446,53 +418,12 @@ public class DatabaseUtility {
 
     }
 
-    public void updateOrderDatabase(Orders order) {
-        this.setTable("Orders_Database");
-
-
-        try {
-            // Connect to database and prepare a sql statement to add a new entry
-            // the ? are replaced by the values using a PreparedStatement obj
-            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
-            String query = "insert into Orders_Database (customerID, orderID, orderDate, orderTotal) values ("
-                    + order.getCustomerID() + ", " + order.getOrderID() + ", '" + order.getDate() + "', " + order.getTotal().toString() +" )";
-
-
-            Statement statement = connection.createStatement();
-            statement.execute(query);
-            connection.close();
-
-            // add orders to database using HashMap values
-            for(Map.Entry<Integer, Integer> entry : order.getOrderItems().entrySet()) {
-                this.updateOrderItemsDatabase(order.getOrderID(), entry.getKey(), entry.getValue());
-            }
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
+    public void updateOrderDatabase(String query) {
+        this.executeSQLStatement(query);
     }
 
-    public void updateOrderItemsDatabase(int orderNumber, int itemNumber, int itemCount) {
-        this.setTable("Orders_Database");
-
-
-        try {
-            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
-            String query = "insert into OrderItems_Database (orderNumber, itemNumber, itemCount) VALUES (" +
-                    orderNumber + ", " + itemNumber + ", " + itemCount + ")";
-
-            Statement statement = connection.createStatement();
-            statement.execute(query);
-
-            connection.close();
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public void updateOrderItemsDatabase(String query) {
+        this.executeSQLStatement(query);
     }
 
 
