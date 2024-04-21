@@ -49,12 +49,7 @@ public class OrderController {
     @FXML
     public void createOrderHistory(Orders order) {
         //create OrderNumber fxml with list
-        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-
-        System.out.println(dateFormat.format(order.getDate()));
-
-
-        myDateOrderPlaced.setText("Order Placed: " + dateFormat.format(order.getDate()));
+        myDateOrderPlaced.setText("Order Placed: " + order.getDate() + "\t\tTotal: $" + order.getTotal().toString());
 
         int row = 1;
         try {

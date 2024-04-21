@@ -1,5 +1,6 @@
 package utils;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import controllers.HeaderBarController;
 import controllers.HomeScreenController;
 import items.ItemClass;
@@ -242,7 +243,7 @@ public class DatabaseUtility {
                 FXMLLoader loader = new FXMLLoader(DatabaseUtility.class.getResource(fxmlFile));
                 root = loader.load();
                 HeaderBarController headerBarController = loader.getController();
-                headerBarController.setUserInformation(username);
+               //headerBarController.setUserInformation(username);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -378,10 +379,10 @@ public class DatabaseUtility {
 
             // creating connection to the database.
             Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
-            Statement statment = connection.createStatement();
+            Statement statement = connection.createStatement();
 
             String printQuery = "select * from " + this.table;
-            ResultSet resultSet = statment.executeQuery(printQuery);
+            ResultSet resultSet = statement.executeQuery(printQuery);
             // end of connection to database
 
             //get all info from database to create a DataStructureItemClass
@@ -390,17 +391,9 @@ public class DatabaseUtility {
                 if(customerID == resultSet.getInt("customerID")) {
 
                     int orderID = resultSet.getInt("orderID");
-                    long timer = System.nanoTime();
                     HashMap<Integer, Integer> map = this.createOrderItemsHashMap(orderID);
-                    long timer2 = System.nanoTime();
-                    long elapsedTime = timer2 - timer;
-                    double seconds = (double)elapsedTime / 1_000_000_000.0;
-                    System.out.print("Time to create OrderItem HashMap: ");
-                    System.out.println(seconds);
                     // fix this later
-
-                    Date date = new Date(resultSet.getString("orderDate"));
-
+                    String date = resultSet.getString("orderDate");
 
                     BigDecimal totalPrice = resultSet.getBigDecimal("orderTotal");
                     Orders newEntry = new Orders(orderID,customerID,date,totalPrice,map);
@@ -427,10 +420,10 @@ public class DatabaseUtility {
 
             // creating connection to the database.
             Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
-            Statement statment = connection.createStatement();
+            Statement statement = connection.createStatement();
 
             String printQuery = "select * from " + this.table;
-            ResultSet resultSet = statment.executeQuery(printQuery);
+            ResultSet resultSet = statement.executeQuery(printQuery);
             // end of connection to database
 
             //get all info from database to create a DataStructureItemClass
@@ -442,6 +435,7 @@ public class DatabaseUtility {
                 }
 
             }
+
             connection.close();
 
         } catch(Exception e){
@@ -450,6 +444,55 @@ public class DatabaseUtility {
         }
         return temp;
 
+    }
+
+    public void updateOrderDatabase(Orders order) {
+        this.setTable("Orders_Database");
+
+
+        try {
+            // Connect to database and prepare a sql statement to add a new entry
+            // the ? are replaced by the values using a PreparedStatement obj
+            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+            String query = "insert into Orders_Database (customerID, orderID, orderDate, orderTotal) values ("
+                    + order.getCustomerID() + ", " + order.getOrderID() + ", '" + order.getDate() + "', " + order.getTotal().toString() +" )";
+
+
+            Statement statement = connection.createStatement();
+            statement.execute(query);
+            connection.close();
+
+            // add orders to database using HashMap values
+            for(Map.Entry<Integer, Integer> entry : order.getOrderItems().entrySet()) {
+                this.updateOrderItemsDatabase(order.getOrderID(), entry.getKey(), entry.getValue());
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public void updateOrderItemsDatabase(int orderNumber, int itemNumber, int itemCount) {
+        this.setTable("Orders_Database");
+
+
+        try {
+            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+            String query = "insert into OrderItems_Database (orderNumber, itemNumber, itemCount) VALUES (" +
+                    orderNumber + ", " + itemNumber + ", " + itemCount + ")";
+
+            Statement statement = connection.createStatement();
+            statement.execute(query);
+
+            connection.close();
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 
