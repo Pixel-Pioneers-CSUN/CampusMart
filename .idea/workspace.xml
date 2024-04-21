@@ -4,21 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Added validation for email and date.">
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Added more files and methods for the edit profile functionality">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditPaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditPaymentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/items/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/DatabaseUtility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/edit-profile-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/edit-profile-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/EditProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/EditProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/EditPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/EditPayment.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EditPaymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EditPaymentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/items/DatabaseUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/items/DatabaseUtility.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/EditProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/EditProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/EditPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/EditPayment.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,7 +313,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713581120616</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added more files and methods for the edit profile functionality">
+      <option name="closed" value="true" />
+      <created>1713682009186</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1713682009186</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +375,8 @@
     <MESSAGE value="Implemented an initial login screen functionality." />
     <MESSAGE value="Added new edit profile files. Files are in their initial states and not yet completed" />
     <MESSAGE value="Added validation for email and date." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added validation for email and date." />
+    <MESSAGE value="Added more files and methods for the edit profile functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more files and methods for the edit profile functionality" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

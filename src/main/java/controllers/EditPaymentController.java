@@ -1,16 +1,27 @@
 package controllers;
 
+import items.DatabaseUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import utils.DateHelper;
+import utils.textFieldHelper;
 
-public class EditPaymentController {
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+public class EditPaymentController implements Initializable {
 
     @FXML
     private Button cancelEditBtn;
+
+    @FXML
+    private Label editPaymentErrorLabel;
+
 
     @FXML
     private TextField editPaymentCVV;
@@ -27,6 +38,20 @@ public class EditPaymentController {
     @FXML
     private Button saveEditBtn;
 
+    public String getEditPaymentCVV() {return editPaymentCVV.getText();}
+    public  DatePicker getEditPaymentValidThrough () {return editPaymentValidThrough;}
+    public String getEditPaymentCardNum() {return editPaymentCardNum.getText();}
+    public String getEditPaymentNameOnCard() {return editPaymentNameOnCard.getText();}
+    LoginController login = new LoginController();
+
+
+
+    utils.textFieldHelper textFieldHelper = new textFieldHelper();
+    List<TextField> textFields = new ArrayList<>();
+    List<TextField> emptyFields = new ArrayList<>();
+    DateHelper dateHelper = new DateHelper();
+    DatabaseUtility db = new DatabaseUtility();
+
     @FXML
     void cancelEdit(ActionEvent event) {
         Stage stage = (Stage) cancelEditBtn.getScene().getWindow();
@@ -35,15 +60,42 @@ public class EditPaymentController {
 
     @FXML
     void saveEdit(ActionEvent event) {
-    //saves payment to database
 
-        //update card ending num
+        boolean dateValidation = dateHelper.dateValidation(getEditPaymentValidThrough(), editPaymentErrorLabel, "Invalid Date");
+        // Check if user entered all info
+        emptyFields = textFieldHelper.checkEmptyTextFields(textFields);
+        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        if (!textFieldHelper.isEmpty && dateValidation) {
+            //saves payment to database
+            db.saveProfileInfoToDB("name on card", getEditPaymentNameOnCard(), login.getLoggedInUsername());
+            db.saveProfileInfoToDB("card number", getEditPaymentCardNum(), login.getLoggedInUsername());
+            db.saveProfileInfoToDB("cvv", getEditPaymentCVV(), login.getLoggedInUsername());
+            db.saveProfileInfoToDB("date", getEditPaymentValidThrough().toString(), login.getLoggedInUsername());
+            //update card ending num
+        }
+        else {
 
+        }
     }
 
-    void setEditedInfo(){
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            // Set filters for text fields during initialization
+            editPaymentCardNum.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter
+                    (editPaymentCardNum, editPaymentErrorLabel, "\\d{0,16}", "Enter a valid card number")));
+            editPaymentNameOnCard.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
+                    editPaymentNameOnCard, editPaymentErrorLabel, "^[a-zA-Z ]*$", "Enter a valid name for card")));
+            editPaymentCVV.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
+                    editPaymentCVV, editPaymentErrorLabel, "\\d{0,3}", "Enter a valid CVV")));
 
+            textFields = List.of(editPaymentCardNum, editPaymentNameOnCard, editPaymentCVV);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        }
     }
 
-}
 

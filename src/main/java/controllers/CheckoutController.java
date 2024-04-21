@@ -19,15 +19,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import utils.DateHelper;
 import utils.textFieldHelper;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
 public class CheckoutController implements Initializable {
-
-
-
     // FXML
     @FXML
     private TextField addressTF;
@@ -74,6 +72,7 @@ public class CheckoutController implements Initializable {
     List<TextField> emptyFields = new ArrayList<>();
 
     textFieldHelper textFieldHelper = new textFieldHelper();
+    DateHelper dateHelper  = new DateHelper();
 
     // Getter methods to access text fields info
     public String getCardNumber() {
@@ -121,11 +120,11 @@ public class CheckoutController implements Initializable {
     @FXML
     void confirmPayment(ActionEvent event) {
         try {
-            dateValidation();
+            boolean dateValidation = dateHelper.dateValidation(getValidThrough(),creditcardErrorLabel, "Invalid Date");
             // Check if user entered all info
             emptyFields = textFieldHelper.checkEmptyTextFields(textFields);
             Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-            if (!textFieldHelper.isEmpty && dateValidation()) {
+            if (!textFieldHelper.isEmpty && dateValidation) {
                 confirmAlert.setTitle("Payment Confirmation");
                 confirmAlert.setHeaderText("Confirm Payment");
                 confirmAlert.setContentText("Are you sure you want to proceed with the payment?");
@@ -229,19 +228,19 @@ public class CheckoutController implements Initializable {
         }
     }
     //checks if the expiration date entered is after the today's date
-    public boolean dateValidation(){
-        LocalDate currentDate = LocalDate.now();
-        LocalDate selectedDate = getValidThrough().getValue();
-        boolean isValid = false;
-
-        if (selectedDate != null && selectedDate.isAfter(currentDate)) {
-            creditcardErrorLabel.setText("");
-            isValid = true;
-        } else {
-            creditcardErrorLabel.setText("Invalid Date");
-        }
-        return  isValid;
-    }
+//    public boolean dateValidation(){
+//        LocalDate currentDate = LocalDate.now();
+//        LocalDate selectedDate = getValidThrough().getValue();
+//        boolean isValid = false;
+//
+//        if (selectedDate != null && selectedDate.isAfter(currentDate)) {
+//            creditcardErrorLabel.setText("");
+//            isValid = true;
+//        } else {
+//            creditcardErrorLabel.setText("Invalid Date");
+//        }
+//        return  isValid;
+//    }
 
     public void emailValidation(){
 

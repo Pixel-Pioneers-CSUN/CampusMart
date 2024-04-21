@@ -22,9 +22,8 @@ import java.util.ResourceBundle;
 
 public class EditProfileController implements Initializable {
 
-    // Instance variables
-    LoginController login = new LoginController(); // Controller for login functionality
-    DatabaseUtility db = new DatabaseUtility(); // Utility for database operations
+    LoginController login = new LoginController();
+    DatabaseUtility db = new DatabaseUtility();
 
     // FXML elements
     @FXML
@@ -42,8 +41,9 @@ public class EditProfileController implements Initializable {
     @FXML
     private Button cancelBtn; // Button for canceling changes
 
-    @FXML
-    private VBox buttonContainer; // Container for buttons
+    public  String getEditAddress() {return editAddressTF.getText();}
+    public  String getEditPassword() {return editPasswordTF.getText();}
+    public  String getConfirmPassword() {return confirmPwTF.getText();}
 
     // method to save changes to the database
     @FXML
@@ -97,7 +97,7 @@ public class EditProfileController implements Initializable {
         alert.getButtonTypes().setAll(yesBtn, noBtn);
 
         // If fields are empty, go back directly
-        if (editAddressTF.getText().isEmpty() && editPasswordTF.getText().isEmpty() && confirmPwTF.getText().isEmpty()) {
+        if (getEditAddress().isEmpty() && getEditPassword().isEmpty() && getConfirmPassword().isEmpty()) {
             goBack();
         } else {
             alert.showAndWait(); // Otherwise, show confirmation alert
