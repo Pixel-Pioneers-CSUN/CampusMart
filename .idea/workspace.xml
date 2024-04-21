@@ -4,18 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Added more files and methods for the edit profile functionality">
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="refactored code for dateValidation and moved it to its own DateHelper class.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditPaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditPaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/checkout-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/checkout-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/login-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/login-styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/EditPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/EditPayment.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/EditProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/EditProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/checkout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/checkout.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/EditPaymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EditPaymentController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/css/checkout-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/css/login-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/login-styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/EditPayment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/EditPayment.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/EditProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/EditProfile.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/checkout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/checkout.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/view/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/login.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +33,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="FxmlFile" />
-        <option value="CSS File" />
         <option value="Class" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -321,7 +328,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713682009186</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="refactored code for dateValidation and moved it to its own DateHelper class.">
+      <option name="closed" value="true" />
+      <created>1713735694404</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713735694404</updated>
+    </task>
+    <task id="LOCAL-00016" summary="refactored code for dateValidation and moved it to its own DateHelper class.">
+      <option name="closed" value="true" />
+      <created>1713735706041</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1713735706041</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,7 +399,8 @@
     <MESSAGE value="Added new edit profile files. Files are in their initial states and not yet completed" />
     <MESSAGE value="Added validation for email and date." />
     <MESSAGE value="Added more files and methods for the edit profile functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more files and methods for the edit profile functionality" />
+    <MESSAGE value="refactored code for dateValidation and moved it to its own DateHelper class." />
+    <option name="LAST_COMMIT_MESSAGE" value="refactored code for dateValidation and moved it to its own DateHelper class." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -71,12 +71,19 @@ public class EditPaymentController implements Initializable {
             db.saveProfileInfoToDB("card number", getEditPaymentCardNum(), login.getLoggedInUsername());
             db.saveProfileInfoToDB("cvv", getEditPaymentCVV(), login.getLoggedInUsername());
             db.saveProfileInfoToDB("date", getEditPaymentValidThrough().toString(), login.getLoggedInUsername());
-            //update card ending num
-        }
-        else {
 
         }
-    }
+        else {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Error");
+                errorAlert.setHeaderText("Empty Fields");
+                errorAlert.setContentText("Please Fill All Fields ");
+                errorAlert.show();
+                for (TextField textField : emptyFields) {
+                    textField.setStyle("-fx-background-color: pink;");
+                }
+            }
+        }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
