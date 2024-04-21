@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Fixed item search not showing rest of items in item grid view.">
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Account creation and validation logic (incomplete) with database interaction.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -357,6 +349,7 @@
     <MESSAGE value="New Sign-In/Create Account popup, updated visuals, cleaned up UI, and refactored code." />
     <MESSAGE value="Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work)." />
     <MESSAGE value="Fixed item search not showing rest of items in item grid view." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed item search not showing rest of items in item grid view." />
+    <MESSAGE value="Account creation and validation logic (incomplete) with database interaction." />
+    <option name="LAST_COMMIT_MESSAGE" value="Account creation and validation logic (incomplete) with database interaction." />
   </component>
 </project>

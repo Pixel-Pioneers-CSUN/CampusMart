@@ -221,23 +221,23 @@ public class DatabaseUtility {
     }
 
 //    *** the following is preliminary code for when user is logged in... need to work out implementation later
-    public static void changeScene(ActionEvent event, String fxmlFile, String username) {
-        Parent root = null;
-        // if the user is logged in, allow them to navigate to account dashboard
-        if (username != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(DatabaseUtility.class.getResource(fxmlFile));
-                root = loader.load();
-                HeaderBarController headerBarController = loader.getController();
-                headerBarController.setUserInformation(username);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root, 1300, 800));
-        stage.show();
-    }
+//    public static void changeScene(ActionEvent event, String fxmlFile, String username) {
+//        Parent root = null;
+//        // if the user is logged in, allow them to navigate to account dashboard
+//        if (username != null) {
+//            try {
+//                FXMLLoader loader = new FXMLLoader(DatabaseUtility.class.getResource(fxmlFile));
+//                root = loader.load();
+//                HeaderBarController headerBarController = loader.getController();
+//                headerBarController.setUserInformation(username);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        stage.setScene(new Scene(root, 1300, 800));
+//        stage.show();
+//    }
 
     public static void createAccount(ActionEvent event, String name, String username, String password) {
         Connection connection = null;   // connection to the database
@@ -264,7 +264,7 @@ public class DatabaseUtility {
                 psInsert.setString(3, password);
                 psInsert.executeUpdate();
 
-                changeScene(event, "HomeScreen.fxml", username);
+             //   changeScene(event, "HomeScreen.fxml", username);
             }
         } catch(SQLException e) {
             e.printStackTrace();
@@ -300,59 +300,59 @@ public class DatabaseUtility {
         }
     }
 
-    public static void logInUser(ActionEvent event, String username, String password) {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        try {
-            connection = DriverManager.getConnection("jdbc:mysql://cp01-wa.privatesystems.net/users", "driftmer_pixelpioneer", "COMP380Group");
-            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
-            preparedStatement.setString(1, username);
-            resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.isBeforeFirst()) {
-                System.out.print("User not found in the database!");
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("The provided username is incorrect!");
-                alert.show();
-            } else {
-                while (resultSet.next()) {
-                    String retrievedPassword = resultSet.getString("password");
-                    if (retrievedPassword.equals(password)) {
-                        changeScene(event, "HomeScreen.fxml", username);
-                    } else {
-                        System.out.println("Passwords did not match!");
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("The provided password is incorrect.");
-                        alert.show();
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally { // close database connections in the end to free resources
-            if (resultSet != null) {
-                try {
-                    resultSet.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (preparedStatement != null) {
-                try {
-                    preparedStatement.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+//    public static void logInUser(ActionEvent event, String username, String password) {
+//        Connection connection = null;
+//        PreparedStatement preparedStatement = null;
+//        ResultSet resultSet = null;
+//        try {
+//            connection = DriverManager.getConnection("jdbc:mysql://cp01-wa.privatesystems.net/users", "driftmer_pixelpioneer", "COMP380Group");
+//            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
+//            preparedStatement.setString(1, username);
+//            resultSet = preparedStatement.executeQuery();
+//
+//            if (resultSet.isBeforeFirst()) {
+//                System.out.print("User not found in the database!");
+//                Alert alert = new Alert(Alert.AlertType.ERROR);
+//                alert.setContentText("The provided username is incorrect!");
+//                alert.show();
+//            } else {
+//                while (resultSet.next()) {
+//                    String retrievedPassword = resultSet.getString("password");
+//                    if (retrievedPassword.equals(password)) {
+//                        changeScene(event, "HomeScreen.fxml", username);
+//                    } else {
+//                        System.out.println("Passwords did not match!");
+//                        Alert alert = new Alert(Alert.AlertType.ERROR);
+//                        alert.setContentText("The provided password is incorrect.");
+//                        alert.show();
+//                    }
+//                }
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } finally { // close database connections in the end to free resources
+//            if (resultSet != null) {
+//                try {
+//                    resultSet.close();
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            if (preparedStatement != null) {
+//                try {
+//                    preparedStatement.close();
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            if (connection != null) {
+//                try {
+//                    connection.close();
+//                } catch (SQLException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
+//    }
 
 }

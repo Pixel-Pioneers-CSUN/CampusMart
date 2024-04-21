@@ -1,0 +1,484 @@
+Index: src/main/java/utils/NavigationListener.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package utils;\n\npublic interface NavigationListener {\n    void navigateToCreateAccount();\n    void navigateToSignIn();\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/utils/NavigationListener.java b/src/main/java/utils/NavigationListener.java
+--- a/src/main/java/utils/NavigationListener.java	(revision cb113ae4cb3fca4de64d0af17e24f426277decbd)
++++ b/src/main/java/utils/NavigationListener.java	(date 1713651784716)
+@@ -3,4 +3,6 @@
+ public interface NavigationListener {
+     void navigateToCreateAccount();
+     void navigateToSignIn();
++
++    void navigateToAccountDashboard();
+ }
+Index: src/main/java/controllers/HeaderBarController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controllers;\n\nimport items.ItemClass;\nimport items.ItemDataStructure;\nimport javafx.fxml.FXML;\nimport javafx.fxml.FXMLLoader;\nimport javafx.geometry.Bounds;\nimport javafx.scene.Parent;\nimport javafx.scene.Scene;\nimport javafx.scene.control.ComboBox;\nimport javafx.scene.control.ListView;\nimport javafx.scene.control.TextField;\nimport javafx.scene.image.ImageView;\nimport javafx.scene.input.MouseEvent;\nimport javafx.scene.layout.BorderPane;\nimport javafx.scene.layout.StackPane;\nimport javafx.scene.layout.VBox;\nimport javafx.stage.Popup;\nimport javafx.stage.Stage;\nimport utils.NavigationListener;\nimport utils.SearchHelper;\nimport java.io.IOException;\nimport java.util.*;\n\n\npublic class HeaderBarController implements NavigationListener {\n\n    public StackPane headerBar;\n    private Stage mainStage;\n    private Scene scene;\n\n    // creating a Popup for displaying search results\n    private Popup searchPopup = new Popup();\n\n    // creating a Popup for sign-in/create account options when clicking account icon\n    private Popup accountPopup;\n\n    // creating a ListView for search results\n    private ListView<String> searchResultsListView = new ListView<>();\n\n    @FXML\n    private ImageView headerBarLogoImage;\n\n    @FXML\n    private TextField headerBarSearchBar;\n\n    @FXML\n    private ImageView headerBarCartImage;\n\n    @FXML\n    private ImageView headerBarAccountImage;\n\n    @FXML\n    private ComboBox<String> headerBarCategoryDropdown;\n\n    @Override\n    public void navigateToCreateAccount() {\n        try {\n            FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/view/CreateAccount.fxml\"));\n            Parent root = loader.load();\n            Scene scene = new Scene(root);\n            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();\n            stage.setScene(scene);\n            stage.show();\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n    }\n\n    @Override\n    public void navigateToSignIn() {\n        try {\n            FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/view/SignIn.fxml\"));\n            Parent root = loader.load();\n            Scene scene = new Scene(root);\n            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();\n            stage.setScene(scene);\n            stage.show();\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n    }\n\n    @FXML\n    public void initialize() {\n\n        // populate the ComboBox (category drop down) with product categories\n        populateCategoryDropdown();\n\n        // set up the event handler to navigate user to selected category page\n        setupCategorySelectionHandler();\n\n        // set the content of the Popup to a VBox containing the ListView\n        VBox popupContent = new VBox(searchResultsListView);\n        searchPopup.getContent().add(popupContent);\n\n        // set the style of the search popup and hide its default scroll bar\n        searchResultsListView.setStyle(\"-fx-background-color: transparent; -fx-padding: 0;\");\n\n        // set the maximum height of the search results popup so it doesn't go off screen\n        searchResultsListView.setMaxHeight(240);    // 24 * 10 = 240, so max size is 10 items, but list will be scrollable\n\n        // hide the popup initially (only show it during a valid search)\n        searchPopup.setAutoHide(true);\n\n        // Initialize the account popup and pass in a reference to the current stage, mainStage\n        loadAccountPopup(mainStage);\n\n    }\n\n    public void setMainStage(Stage mainStage) {\n        this.mainStage = mainStage;\n    }\n\n    private void populateCategoryDropdown() {\n        // defining the product categories\n        List<String> categories = Arrays.asList(\"Hot Foods\", \"Cold Foods\", \"Snacks\", \"Fruits\", \"Drinks\", \"Coffee\");\n\n        // adding the categories to the ComboBox\n        headerBarCategoryDropdown.getItems().addAll(categories);\n    }\n\n    private void setupCategorySelectionHandler() {\n        headerBarCategoryDropdown.setOnAction(event -> {\n            // store the selected category name into selectedCategory\n            String selectedCategory = headerBarCategoryDropdown.getSelectionModel().getSelectedItem().toLowerCase();\n            if (selectedCategory != null) {\n                // get reference to the ItemDisplayController\n                FXMLLoader itemDisplayLoader = new FXMLLoader((getClass().getResource(\"/view/ItemDisplay.fxml\")));\n                Parent itemDisplayRoot;\n                try {\n                    itemDisplayRoot = itemDisplayLoader.load();\n                    ItemDisplayController itemDisplayController = itemDisplayLoader.getController();\n\n                    // pass the selected category to the ItemDisplayController\n                    itemDisplayController.createItemGridPage(selectedCategory);\n\n                    // set the scene of the current stage to the scene containing the modified ItemDisplayController\n                    Stage currentStage = (Stage) headerBarCategoryDropdown.getScene().getWindow();\n                    Scene scene = new Scene(itemDisplayRoot);\n                    currentStage.setScene(scene);\n                    currentStage.show();\n                } catch (IOException e) {\n                    e.printStackTrace();\n                }\n            }\n        });\n    }\n\n    @FXML\n    private void searchItems() {\n        String searchTerm = headerBarSearchBar.getText();\n        if (!searchTerm.isEmpty()) {\n            // perform search through ItemDataStructure based on searchTerm\n            Map<Integer, ItemClass> searchResults = SearchHelper.searchItems(ItemDataStructure.getInstance().getItemDataStructure(), searchTerm);\n\n            // clear the current items in the ListView\n            searchResultsListView.getItems().clear();\n\n            // populate the ListView with search results\n            searchResults.forEach((id, item) -> searchResultsListView.getItems().add(item.getItemName()));\n\n            // set the height of the ListView depending on the number of items\n            searchResultsListView.setPrefHeight(searchResults.size() * 24); // 24 is the pixel height of each result\n\n            // show the Popup below the search bar\n            positionSearchResults();\n\n            // add a click event handler to the search results ListView\n            searchResultsListView.setOnMouseClicked(event -> {\n                String selectedName = searchResultsListView.getSelectionModel().getSelectedItem();\n                if (selectedName != null) {\n                    ItemClass selectedItem = SearchHelper.getItemByName(selectedName, ItemDataStructure.getInstance().getItemDataStructure());\n                    if (selectedItem != null) {\n                        loadItemPage(selectedItem);\n                    }\n                }\n            });\n\n        } else {\n            // hide the Popup when not conducting a search\n            searchPopup.hide();\n        }\n    }\n\n    // loads the sign-in / create account popup\n    private void loadAccountPopup(Stage mainStage) {\n        this.mainStage = mainStage;\n        accountPopup = new Popup();\n        try {\n            FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/view/AccountSignInPopup.fxml\"));\n            BorderPane popupContent = loader.load();\n            AccountSignInPopupController popupController = loader.getController();\n            popupController.setNavigationListener(this);    // pass the NavigationListener to AccountSignInPopupController\n            accountPopup.getContent().add(popupContent);\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n        // hide the popup if the user clicks anywhere outside of it\n        accountPopup.setAutoHide(true);\n    }\n\n    // load the item's page if a search result is clicked on\n    private void loadItemPage(ItemClass item) {\n        try {\n            FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/view/ItemDisplay.fxml\"));\n            Parent root = loader.load();\n            // now pass the selected item to the ItemDisplayController so it can display it\n            ItemDisplayController controller = loader.getController();\n            //display the selected item\n            controller.displayItemInformation(item);\n            // display the grid with the rest of the items\n            controller.createItemGridPage(\"default\");\n\n            Scene scene = new Scene(root);\n            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();\n            stage.setScene(scene);\n            stage.show();\n\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n    }\n\n    //position the search popup below the search bar\n    private void positionSearchResults() {\n        // get the width of the search bar\n        double searchBarWidth = headerBarSearchBar.getWidth();\n\n        // set the preferred width of the popup search results to match the width of the search bar\n        searchResultsListView.setPrefWidth(searchBarWidth);\n\n        // set the position of the popup relative to the parent container\n        Bounds searchBarBounds = headerBarSearchBar.localToScreen(headerBarSearchBar.getBoundsInLocal());\n        // calculate the location below the search bar\n        double popupX = searchBarBounds.getMinX();\n        double popupY = searchBarBounds.getMaxY();\n\n        searchPopup.show(headerBarSearchBar, popupX, popupY);\n    }\n\n    @FXML\n    private void clickHomeLogo(MouseEvent event) {\n        // if header bar logo image is clicked, return user to home screen\n        try {\n            System.out.println(\"Logo image clicked!\");\n            // load the fxml file of the home screen\n            FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/view/HomeScreen.fxml\"));\n            Parent root = loader.load();\n            // create a new scene and load the fxml of home screen\n            Scene scene = new Scene(root);\n            // get the stage and set it to the new scene\n            Stage stage = (Stage) headerBarLogoImage.getScene().getWindow();\n            stage.setScene(scene);\n            stage.show();\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n    }\n\n    @FXML\n    private void clickAccountImage(MouseEvent event) {\n\n        // Show the account popup below to the account image\n        Bounds accountImageBounds = headerBarAccountImage.localToScreen(headerBarAccountImage.getBoundsInLocal());\n        double popupX = accountImageBounds.getMinX() - 185;\n        double popupY = accountImageBounds.getMinY() + 25;\n\n        System.out.println(\"Account image clicked!\");\n        accountPopup.show(headerBarAccountImage, popupX, popupY);\n    }\n\n\n\n    @FXML\n    private void clickCartImage(MouseEvent event) {\n        // if header bar cart icon is clicked, navigate user to the cart\n        try {\n            System.out.println(\"Cart image clicked!\");\n            // load the fxml file of the cart screen\n            FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/view/CartScreen.fxml\"));\n            Parent root = loader.load();\n            // get the stage and set it to the new scene\n            Stage stage = (Stage) headerBarCartImage.getScene().getWindow();\n            stage.setScene(scene);\n            stage.show();\n        } catch (IOException e) {\n            e.printStackTrace();\n        }\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controllers/HeaderBarController.java b/src/main/java/controllers/HeaderBarController.java
+--- a/src/main/java/controllers/HeaderBarController.java	(revision cb113ae4cb3fca4de64d0af17e24f426277decbd)
++++ b/src/main/java/controllers/HeaderBarController.java	(date 1713651956780)
+@@ -70,7 +70,21 @@
+     @Override
+     public void navigateToSignIn() {
+         try {
+-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/SignIn.fxml"));
++            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
++            Parent root = loader.load();
++            Scene scene = new Scene(root);
++            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
++            stage.setScene(scene);
++            stage.show();
++        } catch (IOException e) {
++            e.printStackTrace();
++        }
++    }
++
++    @Override
++    public void navigateToAccountDashboard() {
++        try {
++            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountDashboard.fxml"));
+             Parent root = loader.load();
+             Scene scene = new Scene(root);
+             Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
+Index: src/main/java/controllers/CreateAccountController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controllers;\n\nimport javafx.fxml.FXML;\nimport javafx.scene.control.Button;\nimport javafx.scene.control.Label;\nimport javafx.scene.control.TextField;\nimport utils.DatabaseUtility;\n\npublic class CreateAccountController {\n\n    @FXML\n    private TextField createAccountName;\n\n    @FXML\n    private TextField createAccountUsername;\n\n    @FXML\n    private TextField createAccountPassword;\n\n    @FXML\n    private TextField createAccountPasswordVerify;\n\n    @FXML\n    private Button signUpButton;\n\n    @FXML\n    private Label alreadyHaveAccount;\n\n\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controllers/CreateAccountController.java b/src/main/java/controllers/CreateAccountController.java
+--- a/src/main/java/controllers/CreateAccountController.java	(revision cb113ae4cb3fca4de64d0af17e24f426277decbd)
++++ b/src/main/java/controllers/CreateAccountController.java	(date 1713736838151)
+@@ -27,5 +27,10 @@
+     private Label alreadyHaveAccount;
+ 
+ 
++    // make sure text fields meet requirements
++
++    // make sure password fields match
++
++    // create account if above parameters are met
+ 
+ }
+Index: src/main/java/utils/DatabaseUtility.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package utils;\n\nimport controllers.HeaderBarController;\nimport controllers.HomeScreenController;\nimport items.ItemClass;\nimport items.ItemDataStructure;\nimport javafx.event.ActionEvent;\nimport javafx.fxml.FXMLLoader;\nimport javafx.scene.Node;\nimport javafx.scene.Parent;\nimport javafx.scene.Scene;\nimport javafx.scene.control.Alert;\nimport javafx.stage.Stage;\n\nimport java.io.IOException;\nimport java.math.BigDecimal;\nimport java.sql.*;\nimport java.util.HashMap;\nimport java.util.Set;\nimport java.util.TreeSet;\n\n\n/**\n * Utility class for accessing and manipulating databases.\n * Note: Works only with MySQL and requires JDBC driver.\n */\npublic class DatabaseUtility {\n\n    private String url;\n    private String user;\n    private String password; \n    private String schema;\n    private String table;\n    private String query;\n\n\n    // default constructor\n    public DatabaseUtility() {\n        this.schema = \"driftmer_CampusMart\";\n        this.user = \"driftmer_pixelpioneer\";\n        this.password = \"COMP380Group\";\n        this.url = \"jdbc:mysql://cp01-wa.privatesystems.net/\" + schema;\n        this.query = \"\";\n        this.table = \"\";\n\n    }\n    /**\n     * Constructor with parameters.\n     *\n     * @param schema   The name of the database schema.\n     * @param table    The name of the database table.\n     * @param user     The username for accessing the database.\n     * @param password The password for accessing the database.\n     * @param url      The URL of the database.\n     */\n    public DatabaseUtility(String schema, String table, String user, String password, String url) {\n        this.schema =  schema;\n        this.user = user;\n        this.password = password;\n        this.url = url + schema;\n        this.query = \"\";\n        this.table = \"\";\n\n    }\n    /**\n     * Sets the query for database operations.\n     *\n     * @param q The query to be set.\n     */\n    public void setQuery (String q) {this.query = q;}\n    \n    /**\n     * Sets the table for database operations.\n     *\n     * @param t The table name to be set.\n     */\n    public void setTable (String t) {this.table = t;}\n\n\n    \n    /**\n     * Prints out the data from the table.\n     */\n    public void printTable() {\n        try {\n\n            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);\n            Statement statement = connection.createStatement();\n            //add user input or make one that \n            String printQuery = \"select * from \" + this.table;\n            ResultSet resultSet = statement.executeQuery(printQuery);\n            // get total columns in table\n            ResultSetMetaData rsmd = resultSet.getMetaData();\n            int numberOfColumns = rsmd.getColumnCount();\n            // prints names of Columns to terminal\n            for(int i = 1; i <= numberOfColumns; i++) {\n           \n                String columnName = rsmd.getColumnName(i);\n                System.out.printf(\"%-20s\", columnName);\n                \n\n            }\n            System.out.println();\n\n            //print all the data in table\n            while (resultSet.next()) {\n                for(int i = 1; i <= numberOfColumns; i++) {\n                   \n                    String columnValue = resultSet.getString(i);\n                    System.out.printf(\"%-20s\", columnValue);\n    \n                }\n                System.out.println();\n                \n            }\n\n            connection.close();\n            \n        } catch(Exception e){\n            System.out.println(\"Failed to print out items from DatabaseUtility!\");\n        }\n\n    }\n\n    /**\n     * Creates a TreeSet data structure containing ItemClass objects.\n     *\n     * @return A TreeSet containing ItemClass objects.\n     */\n    public Set<ItemClass> createDataStructureItemClass() {\n\n        Set<ItemClass> tree = new TreeSet<ItemClass>();\n        try {\n            \n            // creating connection to the database. \n            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);\n            Statement statment = connection.createStatement();\n             \n            String printQuery = \"select * from \" + this.table;\n            ResultSet resultSet = statment.executeQuery(printQuery);\n            // end of connection to database\n            \n            //get all info from database to create a DataStructureItemClass\n            while (resultSet.next()) {\n                \n                String itemName = resultSet.getString(\"itemName\");\n                int itemNumber = resultSet.getInt(\"itemNumber\");\n                BigDecimal price = new BigDecimal(resultSet.getString(\"price\"));\n                String category = resultSet.getString(\"category\");\n                String itemPicture = resultSet.getString(\"itemPicture\");\n                int inventoryCount = resultSet.getInt(\"inventoryCount\");                \n                ItemClass temp = new ItemClass(itemName, itemNumber, price, category, itemPicture, inventoryCount);\n                tree.add(temp);   \n            }\n            connection.close();\n            \n        } catch(Exception e){\n            e.printStackTrace();\n        }\n\n        return tree;\n    }\n\n    /**\n     * Creates a HashMap data structure containing ItemClass objects.\n     *\n     * @return A HashMap containing ItemClass objects.\n     */\n    public HashMap<Integer, ItemClass> createHasMapItemClass() {\n        HashMap<Integer, ItemClass> map = new HashMap<>();\n        try {\n            \n            // creating connection to the database. \n            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);\n            Statement statement = connection.createStatement();\n             \n            String printQuery = \"select * from \" + this.table;\n            ResultSet resultSet = statement.executeQuery(printQuery);\n            // end of connection to database\n            \n            //get all info from database to create a DataStructureItemClass\n            while (resultSet.next()) {\n                \n                String itemName = resultSet.getString(\"itemName\");\n                int itemNumber = resultSet.getInt(\"itemNumber\");\n                BigDecimal price = new BigDecimal(resultSet.getString(\"price\"));\n                String category = resultSet.getString(\"category\");\n                String itemPicture = resultSet.getString(\"itemPicture\");\n                int inventoryCount = resultSet.getInt(\"inventoryCount\");                \n                ItemClass temp = new ItemClass(itemName, itemNumber, price, category, itemPicture, inventoryCount);\n                /*change to HashMap entry*/\n                map.putIfAbsent(itemNumber, temp);\n            }\n            connection.close();\n            \n        } catch(Exception e){\n            e.printStackTrace();\n        }\n        return map;\n    }\n    \n    public void updateItemDatabaseInventory(Integer itemNumber) {\n        // use the datastructure class to get the object\n        ItemDataStructure data = ItemDataStructure.getInstance();\n        // get temp item structure\n        ItemClass temp = data.getItemDataStructure().get(itemNumber);\n\n        String sqlStatement = \"UPDATE itemtable SET inventoryCount = \" + temp.getInventoryCount() + \" WHERE itemNumber = \" + itemNumber;\n\n        \n        try {\n            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);\n            Statement statement = connection.createStatement();\n            statement.executeUpdate(sqlStatement);\n            connection.close();\n        } \n        \n        catch (SQLException e) {\n            e.printStackTrace();\n        }\n    }\n\n//    *** the following is preliminary code for when user is logged in... need to work out implementation later\n    public static void changeScene(ActionEvent event, String fxmlFile, String username) {\n        Parent root = null;\n        // if the user is logged in, allow them to navigate to account dashboard\n        if (username != null) {\n            try {\n                FXMLLoader loader = new FXMLLoader(DatabaseUtility.class.getResource(fxmlFile));\n                root = loader.load();\n                HeaderBarController headerBarController = loader.getController();\n                headerBarController.setUserInformation(username);\n            } catch (IOException e) {\n                e.printStackTrace();\n            }\n        }\n        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();\n        stage.setScene(new Scene(root, 1300, 800));\n        stage.show();\n    }\n\n    public static void createAccount(ActionEvent event, String name, String username, String password) {\n        Connection connection = null;   // connection to the database\n        PreparedStatement psInsert = null;  // used to query the database - inserts valid user data into database\n        PreparedStatement psCheckIfUserExists = null;   // used to query the database - checks if user already exits\n        ResultSet resultSet = null; // contains the data returned from our database when we query it\n\n        try {\n            connection = DriverManager.getConnection(\"jdbc:mysql://cp01-wa.privatesystems.net/users\", \"driftmer_pixelpioneer\", \"COMP380Group\");\n            psCheckIfUserExists = connection.prepareStatement(\"SELECT * FROM users WHERE username = ?\");    // check database if username already exists\n            psCheckIfUserExists.setString(1, username);\n            resultSet = psCheckIfUserExists.executeQuery();\n\n            // if the resultSet is empty, then username is available and can proceed to create account\n            if (resultSet.isBeforeFirst()) {    // isBeforeFirst() returns false if resultSet is empty\n                System.out.println(\"Username is already taken.\");\n                Alert alert = new Alert(Alert.AlertType.ERROR);\n                alert.setContentText(\"Username is not available.\");\n                alert.show();\n            } else {\n                psInsert = connection.prepareStatement(\"INSERT INTO users (name, username, password VALUES (?, ?, ?))\");\n                psInsert.setString(1, name);\n                psInsert.setString(2, username);\n                psInsert.setString(3, password);\n                psInsert.executeUpdate();\n\n                changeScene(event, \"HomeScreen.fxml\", username);\n            }\n        } catch(SQLException e) {\n            e.printStackTrace();\n        } finally { // close database connections in the end to free resources\n            if (resultSet != null) {\n                try {\n                    resultSet.close();\n                } catch (SQLException e) {\n                    e.printStackTrace();\n                }\n            }\n            if (psCheckIfUserExists != null) {\n                try {\n                    psCheckIfUserExists.close();\n                } catch (SQLException e) {\n                    e.printStackTrace();\n                }\n            }\n            if (psInsert != null) {\n                try {\n                    psInsert.close();\n                } catch (SQLException e) {\n                    e.printStackTrace();\n                }\n            }\n            if (connection != null) {\n                try {\n                    connection.close();\n                } catch (SQLException e) {\n                    e.printStackTrace();\n                }\n            }\n        }\n    }\n\n    public static void logInUser(ActionEvent event, String username, String password) {\n        Connection connection = null;\n        PreparedStatement preparedStatement = null;\n        ResultSet resultSet = null;\n        try {\n            connection = DriverManager.getConnection(\"jdbc:mysql://cp01-wa.privatesystems.net/users\", \"driftmer_pixelpioneer\", \"COMP380Group\");\n            preparedStatement = connection.prepareStatement(\"SELECT password FROM users WHERE username = ?\");\n            preparedStatement.setString(1, username);\n            resultSet = preparedStatement.executeQuery();\n\n            if (resultSet.isBeforeFirst()) {\n                System.out.print(\"User not found in the database!\");\n                Alert alert = new Alert(Alert.AlertType.ERROR);\n                alert.setContentText(\"The provided username is incorrect!\");\n                alert.show();\n            } else {\n                while (resultSet.next()) {\n                    String retrievedPassword = resultSet.getString(\"password\");\n                    if (retrievedPassword.equals(password)) {\n                        changeScene(event, \"HomeScreen.fxml\", username);\n                    } else {\n                        System.out.println(\"Passwords did not match!\");\n                        Alert alert = new Alert(Alert.AlertType.ERROR);\n                        alert.setContentText(\"The provided password is incorrect.\");\n                        alert.show();\n                    }\n                }\n            }\n        } catch (SQLException e) {\n            e.printStackTrace();\n        } finally { // close database connections in the end to free resources\n            if (resultSet != null) {\n                try {\n                    resultSet.close();\n                } catch (SQLException e) {\n                    e.printStackTrace();\n                }\n            }\n            if (preparedStatement != null) {\n                try {\n                    preparedStatement.close();\n                } catch (SQLException e) {\n                    e.printStackTrace();\n                }\n            }\n            if (connection != null) {\n                try {\n                    connection.close();\n                } catch (SQLException e) {\n                    e.printStackTrace();\n                }\n            }\n        }\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/utils/DatabaseUtility.java b/src/main/java/utils/DatabaseUtility.java
+--- a/src/main/java/utils/DatabaseUtility.java	(revision cb113ae4cb3fca4de64d0af17e24f426277decbd)
++++ b/src/main/java/utils/DatabaseUtility.java	(date 1713736536319)
+@@ -220,24 +220,24 @@
+         }
+     }
+ 
+-//    *** the following is preliminary code for when user is logged in... need to work out implementation later
+-    public static void changeScene(ActionEvent event, String fxmlFile, String username) {
+-        Parent root = null;
+-        // if the user is logged in, allow them to navigate to account dashboard
+-        if (username != null) {
+-            try {
+-                FXMLLoader loader = new FXMLLoader(DatabaseUtility.class.getResource(fxmlFile));
+-                root = loader.load();
+-                HeaderBarController headerBarController = loader.getController();
+-                headerBarController.setUserInformation(username);
+-            } catch (IOException e) {
+-                e.printStackTrace();
+-            }
+-        }
+-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+-        stage.setScene(new Scene(root, 1300, 800));
+-        stage.show();
+-    }
++////    *** the following is preliminary code for when user is logged in... need to work out implementation later
++//    public static void changeScene(ActionEvent event, String fxmlFile, String username) {
++//        Parent root = null;
++//        // if the user is logged in, allow them to navigate to account dashboard
++//        if (username != null) {
++//            try {
++//                FXMLLoader loader = new FXMLLoader(DatabaseUtility.class.getResource(fxmlFile));
++//                root = loader.load();
++//                HeaderBarController headerBarController = loader.getController();
++//                headerBarController.setUserInformation(username);
++//            } catch (IOException e) {
++//                e.printStackTrace();
++//            }
++//        }
++//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
++//        stage.setScene(new Scene(root, 1300, 800));
++//        stage.show();
++//    }
+ 
+     public static void createAccount(ActionEvent event, String name, String username, String password) {
+         Connection connection = null;   // connection to the database
+@@ -264,7 +264,7 @@
+                 psInsert.setString(3, password);
+                 psInsert.executeUpdate();
+ 
+-                changeScene(event, "HomeScreen.fxml", username);
++              //  changeScene(event, "HomeScreen.fxml", username);
+             }
+         } catch(SQLException e) {
+             e.printStackTrace();
+@@ -300,59 +300,59 @@
+         }
+     }
+ 
+-    public static void logInUser(ActionEvent event, String username, String password) {
+-        Connection connection = null;
+-        PreparedStatement preparedStatement = null;
+-        ResultSet resultSet = null;
+-        try {
+-            connection = DriverManager.getConnection("jdbc:mysql://cp01-wa.privatesystems.net/users", "driftmer_pixelpioneer", "COMP380Group");
+-            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
+-            preparedStatement.setString(1, username);
+-            resultSet = preparedStatement.executeQuery();
+-
+-            if (resultSet.isBeforeFirst()) {
+-                System.out.print("User not found in the database!");
+-                Alert alert = new Alert(Alert.AlertType.ERROR);
+-                alert.setContentText("The provided username is incorrect!");
+-                alert.show();
+-            } else {
+-                while (resultSet.next()) {
+-                    String retrievedPassword = resultSet.getString("password");
+-                    if (retrievedPassword.equals(password)) {
+-                        changeScene(event, "HomeScreen.fxml", username);
+-                    } else {
+-                        System.out.println("Passwords did not match!");
+-                        Alert alert = new Alert(Alert.AlertType.ERROR);
+-                        alert.setContentText("The provided password is incorrect.");
+-                        alert.show();
+-                    }
+-                }
+-            }
+-        } catch (SQLException e) {
+-            e.printStackTrace();
+-        } finally { // close database connections in the end to free resources
+-            if (resultSet != null) {
+-                try {
+-                    resultSet.close();
+-                } catch (SQLException e) {
+-                    e.printStackTrace();
+-                }
+-            }
+-            if (preparedStatement != null) {
+-                try {
+-                    preparedStatement.close();
+-                } catch (SQLException e) {
+-                    e.printStackTrace();
+-                }
+-            }
+-            if (connection != null) {
+-                try {
+-                    connection.close();
+-                } catch (SQLException e) {
+-                    e.printStackTrace();
+-                }
+-            }
+-        }
+-    }
++//    public static void logInUser(ActionEvent event, String username, String password) {
++//        Connection connection = null;
++//        PreparedStatement preparedStatement = null;
++//        ResultSet resultSet = null;
++//        try {
++//            connection = DriverManager.getConnection("jdbc:mysql://cp01-wa.privatesystems.net/users", "driftmer_pixelpioneer", "COMP380Group");
++//            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
++//            preparedStatement.setString(1, username);
++//            resultSet = preparedStatement.executeQuery();
++//
++//            if (resultSet.isBeforeFirst()) {
++//                System.out.print("User not found in the database!");
++//                Alert alert = new Alert(Alert.AlertType.ERROR);
++//                alert.setContentText("The provided username is incorrect!");
++//                alert.show();
++//            } else {
++//                while (resultSet.next()) {
++//                    String retrievedPassword = resultSet.getString("password");
++//                    if (retrievedPassword.equals(password)) {
++//                        changeScene(event, "HomeScreen.fxml", username);
++//                    } else {
++//                        System.out.println("Passwords did not match!");
++//                        Alert alert = new Alert(Alert.AlertType.ERROR);
++//                        alert.setContentText("The provided password is incorrect.");
++//                        alert.show();
++//                    }
++//                }
++//            }
++//        } catch (SQLException e) {
++//            e.printStackTrace();
++//        } finally { // close database connections in the end to free resources
++//            if (resultSet != null) {
++//                try {
++//                    resultSet.close();
++//                } catch (SQLException e) {
++//                    e.printStackTrace();
++//                }
++//            }
++//            if (preparedStatement != null) {
++//                try {
++//                    preparedStatement.close();
++//                } catch (SQLException e) {
++//                    e.printStackTrace();
++//                }
++//            }
++//            if (connection != null) {
++//                try {
++//                    connection.close();
++//                } catch (SQLException e) {
++//                    e.printStackTrace();
++//                }
++//            }
++//        }
++//    }
+ 
+ }
+Index: src/main/resources/css/header-bar-styles.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#signInPopup {\n    -fx-background-color: white;\n    -fx-background-radius: 5.0;\n    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);\n}\n\n#actionButton {\n    -fx-background-color: \"FF2C38\";\n    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);\n}\n\n#categoriesDropdown {\n    -fx-font-size: 15;\n    -fx-font-family: Arial;\n    -fx-background-color: \"f2f2f2\";\n    -fx-background-radius: 5.0;\n}\n\n.combo-box .list-view .list-cell:hover{\n    -fx-background-color: \"FF2C38\";\n}\n\n#headerBar {\n    -fx-background-color: white;\n    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/css/header-bar-styles.css b/src/main/resources/css/header-bar-styles.css
+--- a/src/main/resources/css/header-bar-styles.css	(revision cb113ae4cb3fca4de64d0af17e24f426277decbd)
++++ b/src/main/resources/css/header-bar-styles.css	(date 1713651535662)
+@@ -9,6 +9,11 @@
+     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+ }
+ 
++#accountDashboardButton {
++    -fx-background-color: "#245cdb";
++    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
++}
++
+ #categoriesDropdown {
+     -fx-font-size: 15;
+     -fx-font-family: Arial;
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"d074da33-4be0-4762-b17e-6ea61fcf7725\" name=\"Changes\" comment=\"Fixed item search not showing rest of items in item grid view.\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/utils/NavigationListener.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/utils/NavigationListener.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/utils/NavigationListener.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/utils/NavigationListener.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/target/classes/view/CreateAccount.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/view/CreateAccount.fxml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"FxmlFile\" />\n        <option value=\"CSS File\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <excluded-from-favorite>\n      <branch-storage>\n        <map>\n          <entry type=\"REMOTE\">\n            <value>\n              <list>\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"origin/main\" />\n              </list>\n            </value>\n          </entry>\n        </map>\n      </branch-storage>\n    </excluded-from-favorite>\n    <favorite-branches>\n      <branch-storage>\n        <map>\n          <entry type=\"LOCAL\">\n            <value>\n              <list>\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"Home-Screen\" />\n              </list>\n            </value>\n          </entry>\n          <entry type=\"REMOTE\">\n            <value>\n              <list>\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"origin/Homescreen\" />\n              </list>\n            </value>\n          </entry>\n        </map>\n      </branch-storage>\n    </favorite-branches>\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"Header-Bar-Categories\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitHubPullRequestSearchHistory\">{\n  &quot;lastFilter&quot;: {\n    &quot;state&quot;: &quot;OPEN&quot;,\n    &quot;assignee&quot;: &quot;SevanCSUN&quot;\n  }\n}</component>\n  <component name=\"GithubPullRequestsUISettings\">{\n  &quot;selectedUrlAndAccountId&quot;: {\n    &quot;url&quot;: &quot;https://github.com/Pixel-Pioneers-CSUN/CampusMart.git&quot;,\n    &quot;accountId&quot;: &quot;519635a5-75fe-44c2-808f-97921c63e8c2&quot;\n  }\n}</component>\n  <component name=\"MacroExpansionManager\">\n    <option name=\"directoryName\" value=\"jx693jil\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProjectColorInfo\">{\n  &quot;associatedIndex&quot;: 8\n}</component>\n  <component name=\"ProjectId\" id=\"2eKCWBCWb4rjyoee9z5z6mJJSBu\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Application.CampusMart.executor&quot;: &quot;Run&quot;,\n    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;git-widget-placeholder&quot;: &quot;Header-Bar-Categories&quot;,\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\n    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\n    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/resources/view\" />\n      <recent name=\"$PROJECT_DIR$/src/main/resources/images\" />\n      <recent name=\"$PROJECT_DIR$/src/main/java/items\" />\n      <recent name=\"$PROJECT_DIR$/src/main/java/controllers\" />\n      <recent name=\"$PROJECT_DIR$/src/main/java/org/example/campusmart\" />\n    </key>\n  </component>\n  <component name=\"RunManager\">\n    <configuration name=\"CampusMart\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.campusmart.CampusMart\" />\n      <module name=\"CampusMart\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"org.example.campusmart.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Application.CampusMart\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SharedIndexes\">\n    <attachedChunks>\n      <set>\n        <option value=\"jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176\" />\n      </set>\n    </attachedChunks>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"d074da33-4be0-4762-b17e-6ea61fcf7725\" name=\"Changes\" comment=\"\" />\n      <created>1711643911910</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1711643911910</updated>\n      <workItem from=\"1711643912938\" duration=\"5473000\" />\n      <workItem from=\"1711650371189\" duration=\"2526000\" />\n      <workItem from=\"1711654664788\" duration=\"28978000\" />\n      <workItem from=\"1711765318533\" duration=\"3844000\" />\n      <workItem from=\"1711769172422\" duration=\"10787000\" />\n      <workItem from=\"1712166759008\" duration=\"6344000\" />\n      <workItem from=\"1712678622765\" duration=\"8021000\" />\n      <workItem from=\"1712775373254\" duration=\"8903000\" />\n      <workItem from=\"1712883537204\" duration=\"3734000\" />\n      <workItem from=\"1713124766101\" duration=\"21935000\" />\n      <workItem from=\"1713252627688\" duration=\"52388000\" />\n      <workItem from=\"1713570720807\" duration=\"12353000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Initial HomeScreen UI and file structure setup\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1711762927109</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1711762927109</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Initial HomeScreen UI and file structure setup\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1711767869090</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1711767869090</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Initial HomeScreen UI and file structure setup\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1711769204425</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1711769204425</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Initial Home Screen UI and file structure setup\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1711769258202</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1711769258202</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Merged Home-Screen and Item-Screen + fixed conflicts and dependencies.\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1712173002503</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1712173002503</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Search functionality on header bar now displays relevant item names.\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1712299048155</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1712299048155</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Search bar popup results styling and positioning fixes.\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1712301548823</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1712301548823</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1712684404511</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1712684404511</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"Merge the new itembase with the HeaderBarController.\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1712873837790</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1712873837790</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"Header bar categories drop down menu now shows categories and navigates user to filtered item display page.\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1712904674362</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1712904674362</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"New Sign-In/Create Account popup, updated visuals, cleaned up UI, and refactored code.\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1713255143885</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713255143885</updated>\n    </task>\n    <task id=\"LOCAL-00012\" summary=\"Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work).\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1713570371076</created>\n      <option name=\"number\" value=\"00012\" />\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713570371076</updated>\n    </task>\n    <task id=\"LOCAL-00013\" summary=\"Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work).\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1713570476020</created>\n      <option name=\"number\" value=\"00013\" />\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713570476020</updated>\n    </task>\n    <task id=\"LOCAL-00014\" summary=\"Fixed item search not showing rest of items in item grid view.\">\n      <option name=\"closed\" value=\"true\" />\n      <created>1713572935665</created>\n      <option name=\"number\" value=\"00014\" />\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1713572935665</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"15\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"RECENT_FILTERS\">\n      <map>\n        <entry key=\"Branch\">\n          <value>\n            <list>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"origin/Homescreen\" />\n                </option>\n              </RecentGroup>\n            </list>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"origin/main\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Initial HomeScreen UI and file structure setup\" />\n    <MESSAGE value=\"Initial Home Screen UI and file structure setup\" />\n    <MESSAGE value=\"Merged Home-Screen and Item-Screen + fixed conflicts and dependencies.\" />\n    <MESSAGE value=\"Search functionality on header bar now displays relevant item names.\" />\n    <MESSAGE value=\"Search bar popup results styling and positioning fixes.\" />\n    <MESSAGE value=\"Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.\" />\n    <MESSAGE value=\"Merge the new itembase with the HeaderBarController.\" />\n    <MESSAGE value=\"Header bar categories drop down menu now shows categories and navigates user to filtered item display page.\" />\n    <MESSAGE value=\"New Sign-In/Create Account popup, updated visuals, cleaned up UI, and refactored code.\" />\n    <MESSAGE value=\"Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work).\" />\n    <MESSAGE value=\"Fixed item search not showing rest of items in item grid view.\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Fixed item search not showing rest of items in item grid view.\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision cb113ae4cb3fca4de64d0af17e24f426277decbd)
++++ b/.idea/workspace.xml	(date 1713736838207)
+@@ -4,20 +4,20 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Fixed item search not showing rest of items in item grid view.">
++    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Account creation and validation logic (incomplete) with database interaction.">
++      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/AlreadySignedInPopupController.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/resources/view/AlreadySignedInPopup.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/css/header-bar-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/header-bar-styles.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/css/header-bar-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/header-bar-styles.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -27,8 +27,8 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="FxmlFile" />
+         <option value="CSS File" />
++        <option value="FxmlFile" />
+         <option value="Class" />
+       </list>
+     </option>
+@@ -187,7 +187,7 @@
+       <workItem from="1712883537204" duration="3734000" />
+       <workItem from="1713124766101" duration="21935000" />
+       <workItem from="1713252627688" duration="52388000" />
+-      <workItem from="1713570720807" duration="12353000" />
++      <workItem from="1713570720807" duration="17825000" />
+     </task>
+     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
+       <option name="closed" value="true" />
+@@ -301,7 +301,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1713572935665</updated>
+     </task>
+-    <option name="localTasksCounter" value="15" />
++    <task id="LOCAL-00015" summary="Account creation and validation logic (incomplete) with database interaction.">
++      <option name="closed" value="true" />
++      <created>1713649459647</created>
++      <option name="number" value="00015" />
++      <option name="presentableId" value="LOCAL-00015" />
++      <option name="project" value="LOCAL" />
++      <updated>1713649459648</updated>
++    </task>
++    <option name="localTasksCounter" value="16" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -357,6 +365,7 @@
+     <MESSAGE value="New Sign-In/Create Account popup, updated visuals, cleaned up UI, and refactored code." />
+     <MESSAGE value="Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work)." />
+     <MESSAGE value="Fixed item search not showing rest of items in item grid view." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Fixed item search not showing rest of items in item grid view." />
++    <MESSAGE value="Account creation and validation logic (incomplete) with database interaction." />
++    <option name="LAST_COMMIT_MESSAGE" value="Account creation and validation logic (incomplete) with database interaction." />
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/java/controllers/AlreadySignedInPopupController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/controllers/AlreadySignedInPopupController.java b/src/main/java/controllers/AlreadySignedInPopupController.java
+new file mode 100644
+--- /dev/null	(date 1713651784722)
++++ b/src/main/java/controllers/AlreadySignedInPopupController.java	(date 1713651784722)
+@@ -0,0 +1,41 @@
++package controllers;
++
++import javafx.fxml.FXML;
++import javafx.fxml.FXMLLoader;
++import javafx.scene.Scene;
++import javafx.scene.Parent;
++import javafx.scene.control.Button;
++import javafx.scene.control.Label;
++import javafx.scene.input.MouseEvent;
++import javafx.scene.layout.StackPane;
++import javafx.stage.Stage;
++import utils.NavigationListener;
++import java.io.IOException;
++
++public class AlreadySignedInPopupController {
++    private NavigationListener navigationListener;
++    private Stage mainStage;
++
++    @FXML
++    private Button popupAccountDashboard;
++    @FXML
++    private Button popupLogOut;
++
++    public void setNavigationListener(NavigationListener navigationListener) {
++        this.navigationListener = navigationListener;
++    }
++
++    @FXML
++    private void clickAccountDashboard(MouseEvent event) {
++        // if Start Here in popup is clicked, notify the HeaderBarController to navigate to the create account page
++        if (navigationListener != null) {
++            System.out.println("Account Dashboard Clicked!");
++            navigationListener.navigateToAccountDashboard();
++        }
++    }
++
++    @FXML
++    private void clickLogOut(MouseEvent event) {
++
++    }
++}
+\ No newline at end of file
+Index: target/classes/css/header-bar-styles.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#signInPopup {\n    -fx-background-color: white;\n    -fx-background-radius: 5.0;\n    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.8), 10, 0, 0, 0);\n}\n\n#actionButton {\n    -fx-background-color: \"FF2C38\";\n    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);\n}\n\n#categoriesDropdown {\n    -fx-font-size: 15;\n    -fx-font-family: Arial;\n    -fx-background-color: \"f2f2f2\";\n    -fx-background-radius: 5.0;\n}\n\n.combo-box .list-view .list-cell:hover{\n    -fx-background-color: \"FF2C38\";\n}\n\n#headerBar {\n    -fx-background-color: white;\n    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 5);\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/classes/css/header-bar-styles.css b/target/classes/css/header-bar-styles.css
+--- a/target/classes/css/header-bar-styles.css	(revision cb113ae4cb3fca4de64d0af17e24f426277decbd)
++++ b/target/classes/css/header-bar-styles.css	(date 1713731602006)
+@@ -9,6 +9,11 @@
+     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
+ }
+ 
++#accountDashboardButton {
++    -fx-background-color: "#245cdb";
++    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.3), 10, 0, 0, 0);
++}
++
+ #categoriesDropdown {
+     -fx-font-size: 15;
+     -fx-font-family: Arial;
+Index: src/main/resources/view/AlreadySignedInPopup.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/view/AlreadySignedInPopup.fxml b/src/main/resources/view/AlreadySignedInPopup.fxml
+new file mode 100644
+--- /dev/null	(date 1713652137057)
++++ b/src/main/resources/view/AlreadySignedInPopup.fxml	(date 1713652137057)
+@@ -0,0 +1,49 @@
++<?xml version="1.0" encoding="UTF-8"?>
++
++<?import java.net.URL?>
++<?import javafx.geometry.Insets?>
++<?import javafx.scene.Cursor?>
++<?import javafx.scene.control.Button?>
++<?import javafx.scene.layout.BorderPane?>
++<?import javafx.scene.layout.VBox?>
++<?import javafx.scene.text.Font?>
++
++<BorderPane id="signInPopup" fx:id="accountSignInPopup" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="85.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AlreadySignedInPopupController">
++   <center>
++      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
++         <children>
++            <Button id="accountDashboardButton" fx:id="popupAccountDashboard" onMouseClicked="#clickAccountDashboard" mnemonicParsing="false" text="Account Dashboard" textFill="WHITE">
++               <VBox.margin>
++                  <Insets top="5.0" />
++               </VBox.margin>
++               <padding>
++                  <Insets bottom="10.0" left="25.0" right="25.0" top="10.0" />
++               </padding>
++               <font>
++                  <Font name="Arial Bold" size="14.0" />
++               </font>
++               <cursor>
++                  <Cursor fx:constant="HAND" />
++               </cursor>
++            </Button>
++            <Button id="actionButton" fx:id="popupLogOut" onMouseClicked="#clickLogOut" mnemonicParsing="false" text="Log Out" textFill="WHITE">
++               <padding>
++                  <Insets bottom="5.0" left="35.0" right="35.0" top="5.0" />
++               </padding>
++               <font>
++                  <Font name="Arial Bold" size="14.0" />
++               </font>
++               <cursor>
++                  <Cursor fx:constant="HAND" />
++               </cursor>
++               <VBox.margin>
++                  <Insets top="10.0" />
++               </VBox.margin>
++            </Button>
++         </children>
++      </VBox>
++   </center>
++   <stylesheets>
++      <URL value="@../css/header-bar-styles.css" />
++   </stylesheets>
++</BorderPane>

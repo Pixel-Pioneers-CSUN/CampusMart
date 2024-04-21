@@ -27,5 +27,10 @@ public class CreateAccountController {
     private Label alreadyHaveAccount;
 
 
+    // make sure text fields meet requirements
+
+    // make sure password fields match
+
+    // create account if above parameters are met
 
 }
