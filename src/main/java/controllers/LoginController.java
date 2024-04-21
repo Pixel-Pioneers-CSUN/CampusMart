@@ -79,8 +79,7 @@ public class LoginController implements Initializable {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("homescreen.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
-            Stage stage =
-                    (Stage) SignUpLabel.getScene().getWindow();
+            Stage stage = (Stage) SignUpLabel.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

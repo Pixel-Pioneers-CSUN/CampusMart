@@ -210,13 +210,15 @@ public class CheckoutController implements Initializable {
                     , "Enter a valid address")));
             //email validation
             emailTF.textProperty().addListener((observable, oldValue, newValue) -> {
-                if (isValidEmailAddress(newValue) || emailTF.getText()=="") {
+                if (isValidEmailAddress(newValue) || emailTF.isVisible()) {
                     emailTF.setStyle("");
                     contactInfoErrorLabel.setText("");
+                    System.out.println("right");
                 } else {
                     emailTF.setStyle("-fx-background-color: pink;");
                     contactInfoErrorLabel.setText("Enter a valid email address");
                     contactInfoErrorLabel.setVisible(true);
+                    System.out.println("wrong");
                 }
             });
 
@@ -239,6 +241,10 @@ public class CheckoutController implements Initializable {
             creditcardErrorLabel.setText("Invalid Date");
         }
         return  isValid;
+    }
+
+    public void emailValidation(){
+
     }
     // Method to reduce the inventory count for items that were bought
     public int reduceInventory() {

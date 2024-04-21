@@ -4,31 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Added new edit profile files. Files are in their initial states and not yet completed">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/javax_mail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24,_3_34 PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24,_3_49 PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_34PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_24__3_49PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/CheckoutController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Added validation for email and date.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/items/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/DatabaseUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/edit-profile-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/edit-profile-styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/EditProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/EditProfile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/checkout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/checkout.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/css/checkout-styles.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/items/DatabaseUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/items/DatabaseUtility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/EditProfile.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/EditProfile.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/checkout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/checkout.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,7 +308,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713395823961</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added validation for email and date.">
+      <option name="closed" value="true" />
+      <created>1713581120616</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713581120616</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -371,7 +369,8 @@
     <MESSAGE value="Moved some methods into separate class, updated CSS styling and fixed some issues." />
     <MESSAGE value="Implemented an initial login screen functionality." />
     <MESSAGE value="Added new edit profile files. Files are in their initial states and not yet completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added new edit profile files. Files are in their initial states and not yet completed" />
+    <MESSAGE value="Added validation for email and date." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added validation for email and date." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

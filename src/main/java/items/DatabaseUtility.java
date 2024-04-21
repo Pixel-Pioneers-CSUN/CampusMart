@@ -242,4 +242,19 @@ public class DatabaseUtility {
         return retrievedData;
     }
 
-}
+    public int saveProfileInfoToDB(String infoToUpdate , String updatedInfo, String loggedInUserName){
+        int updatedInfoCount=-1;
+        try {
+            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+            PreparedStatement statement = connection.prepareStatement(" UPDATE " + this.table + " SET "
+                    + infoToUpdate + " = ? WHERE username = ?");
+            statement.setString(1, updatedInfo);
+            statement.setString(2, loggedInUserName);
+            updatedInfoCount = statement.executeUpdate();
+
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return updatedInfoCount;
+}}
