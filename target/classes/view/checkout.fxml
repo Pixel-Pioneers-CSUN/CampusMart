@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CheckoutController">
+   <children>
+      <Label id="checkoutLabel" layoutX="530.0" layoutY="64.0" prefHeight="57.0" prefWidth="178.0" text="Check Out">
+         <font>
+            <Font name="System Bold" size="23.0" />
+         </font>
+
+      </Label>
+      <Label layoutX="932.0" layoutY="212.0" prefHeight="21.0" prefWidth="160.0" text="Order Summary">
+         <font>
+            <Font name="Arial Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="payButton" layoutX="611.0" layoutY="710.0" mnemonicParsing="false" onAction="#confirmPayment" prefHeight="44.0" prefWidth="77.0" text="Pay " />
+      <Label fx:id="backToCartLabel" layoutX="38.0" layoutY="36.0" onMouseClicked="#switchToCart" prefHeight="28.0" prefWidth="116.0" text="&lt;  Back to cart">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Pane fx:id="creditCardInfoPane" layoutX="536.0" layoutY="377.0" prefHeight="260.0" prefWidth="300.0">
+         <children>
+            <TextField fx:id="nameOnCardTF" layoutX="25.0" layoutY="75.0" prefHeight="25.0" prefWidth="250.0" promptText="Name on Card" />
+            <TextField fx:id="cardNumTF" layoutX="25.0" layoutY="130.0" prefHeight="25.0" prefWidth="250.0" promptText="Card Number" />
+            <TextField fx:id="cvvTF" layoutX="208.0" layoutY="192.0" prefHeight="25.0" prefWidth="68.0" promptText="CVV" />
+            <Label fx:id="creditcardErrorLabel" layoutX="98.0" layoutY="237.0" prefHeight="18.0" prefWidth="151.0" textFill="RED" visible="false">
+               <font>
+                  <Font size="8.0" />
+               </font>
+            </Label>
+            <Label layoutX="82.0" layoutY="28.0" prefHeight="20.0" prefWidth="133.0" text="Card Information">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="validThroughDP" layoutX="22.0" layoutY="192.0" prefHeight="25.0" prefWidth="160.0" promptText="Valid Through" />
+         </children>
+      </Pane>
+      <VBox layoutX="910.0" layoutY="588.0" prefHeight="111.0" prefWidth="151.0">
+         <children>
+            <HBox prefHeight="45.0" prefWidth="100.0">
+               <children>
+                  <Label prefHeight="45.0" prefWidth="63.0" text="Tax:">
+                     <font>
+                        <Font name="Arial Bold" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="taxAmount" prefHeight="45.0" prefWidth="93.0" text="0.0$" />
+               </children>
+            </HBox>
+            <HBox prefHeight="57.0" prefWidth="178.0">
+               <children>
+                  <Label prefHeight="61.0" prefWidth="110.0" text="Total: ">
+                     <font>
+                        <Font name="Arial Bold" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalPrice" prefHeight="65.0" prefWidth="136.0" text="0.0$" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Accordion layoutX="44.0" layoutY="108.0" />
+      <Pane fx:id="contactInfoPane" layoutX="115.0" layoutY="193.0" prefHeight="479.0" prefWidth="357.0">
+         <children>
+            <TextField fx:id="firstNameTF" layoutX="33.0" layoutY="106.0" prefHeight="25.0" prefWidth="133.0" promptText="First Name" />
+            <TextField fx:id="lastNameTF" layoutX="193.0" layoutY="106.0" prefHeight="25.0" prefWidth="133.0" promptText="Last Name" />
+            <TextField fx:id="addressTF" layoutX="29.0" layoutY="174.0" prefHeight="25.0" prefWidth="300.0" promptText="Street Address" />
+            <TextField fx:id="cityTF" layoutX="29.0" layoutY="243.0" prefHeight="25.0" prefWidth="91.0" promptText="City" />
+            <TextField fx:id="zipCodeTF" layoutX="213.0" layoutY="243.0" prefHeight="25.0" prefWidth="116.0" promptText="Zip Code" />
+            <TextField fx:id="emailTF" layoutX="29.0" layoutY="311.0" prefHeight="25.0" prefWidth="300.0" promptText="Email Address" />
+            <TextField fx:id="phoneNumTF" layoutX="29.0" layoutY="371.0" prefHeight="25.0" prefWidth="300.0" promptText="Phone Number" />
+            <Label layoutX="99.0" layoutY="14.0" prefHeight="57.0" prefWidth="160.0" text="Contact Information">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="contactInfoErrorLabel" layoutX="59.0" layoutY="422.0" prefHeight="17.0" prefWidth="239.0" textFill="RED" visible="false" />
+         </children>
+      </Pane>
+      <VBox id="paymentInfoVBOX" layoutX="561.0" layoutY="203.0" prefHeight="145.0" prefWidth="250.0">
+         <children>
+            <Label prefHeight="65.0" prefWidth="200.0" text="Payment Information">
+               <font>
+                  <Font name="Arial Bold" size="16.0" />
+               </font>
+            </Label>
+            <Label prefHeight="36.0" prefWidth="151.0" text="Select payment method:">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <HBox prefHeight="41.0" prefWidth="250.0">
+               <children>
+                  <RadioButton mnemonicParsing="false" onAction="#showCreditCard" prefHeight="28.0" prefWidth="121.0" text="    Credit Card" />
+                  <ImageView fitHeight="30.0" fitWidth="28.0" opacity="0.91" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <Blend />
+                     </effect>
+                     <image>
+                        <Image url="@../images/creditcard.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="28.0" opacity="0.91" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <Blend />
+                     </effect>
+                     <image>
+                        <Image url="@../images/americanexpress.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="30.0" fitWidth="28.0" opacity="0.91" pickOnBounds="true" preserveRatio="true">
+                     <effect>
+                        <Blend />
+                     </effect>
+                     <image>
+                        <Image url="@../images/mastercard.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <TableView layoutX="859.0" layoutY="276.0" prefHeight="290.0" prefWidth="288.0">
+         <columns>
+            <TableColumn prefWidth="104.66674554347992" text="Item Name" />
+            <TableColumn prefWidth="90.6666259765625" text="Quantity" />
+            <TableColumn prefWidth="90.6666259765625" text="Price" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

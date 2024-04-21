@@ -1,0 +1,35 @@
+/* Apply styles to buttons */
+.button {
+    -fx-font-size: 14px;
+    -fx-min-width: 120px;
+    -fx-min-height: 40px;
+    -fx-background-radius: 5px;
+    -fx-background-color: #C13538;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #951616;
+    -fx-cursor: hand;
+}
+
+#cancelBtn:hover {
+    -fx-background-color: #951616;
+    -fx-cursor: hand;
+}
+
+#cancelBtn:hover {
+    -fx-background-color: #951616;
+    -fx-cursor: hand;
+}
+
+.image-view {
+    -fx-fit-height: 150px;
+    -fx-fit-width: 200px;
+    -fx-padding: 10px;
+}
+
+.button-container {
+    -fx-alignment: CENTER;
+    -fx-spacing: 20px;
+}
