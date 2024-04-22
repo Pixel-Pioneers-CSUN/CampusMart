@@ -16,6 +16,7 @@ import javafx.stage.StageStyle;
 import utils.CardHelper;
 
 import javax.swing.*;
+import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -41,6 +42,12 @@ public class EditProfileController implements Initializable {
     @FXML
     private Button cancelBtn; // Button for canceling changes
 
+    @FXML
+    private Label editProfileErrorLabel;
+
+    @FXML
+    private Label goBackLabel;
+
     public  String getEditAddress() {return editAddressTF.getText();}
     public  String getEditPassword() {return editPasswordTF.getText();}
     public  String getConfirmPassword() {return confirmPwTF.getText();}
@@ -52,23 +59,37 @@ public class EditProfileController implements Initializable {
         int passwordUpdated = -1; // Flag for password update
 
         // Check if address is provided and update the database
-        if (!editAddressTF.getText().isEmpty()) {
+        if (!editAddressTF.getText().isEmpty() && validatePassword()) {
             addressUpdated = db.saveProfileInfoToDB("address", editAddressTF.getText(), login.loggedInUsername);
         }
 
         // Check if password is provided and update the database
-        if (!editPasswordTF.getText().isEmpty()) {
+        if (!editPasswordTF.getText().isEmpty() && !confirmPwTF.getText().isEmpty() && validatePassword()) {
             passwordUpdated = db.saveProfileInfoToDB("password", editPasswordTF.getText(), login.loggedInUsername);
         }
-
         // Show confirmation message if any update was successful
         Alert saveConfirmation = new Alert(Alert.AlertType.INFORMATION);
         if (addressUpdated != -1 || passwordUpdated != -1) {
             saveConfirmation.setContentText("Saved Successfully");
             saveConfirmation.showAndWait();
         }
+        else {
+            saveConfirmation.setContentText("Something went wrong");
+            saveConfirmation.showAndWait();
+        }
     }
 
+
+    public boolean validatePassword(){
+        boolean validPW = false;
+        if (!(editPasswordTF.getText().equals(confirmPwTF.getText()))){
+            editProfileErrorLabel.setText("Passwords do not match");
+        }
+        else {
+            validPW = true;
+        }
+        return validPW;
+    }
     // method to edit payment information
     @FXML
     void editPayment(ActionEvent event) {
@@ -86,23 +107,31 @@ public class EditProfileController implements Initializable {
         }
     }
 
+    @FXML
+    void backToAccount(MouseEvent event) {
+        checkIfSafeToGoBack();
+    }
+
     // method to go back to the profile page
     @FXML
     void backToEditProfile(ActionEvent event) {
+        checkIfSafeToGoBack();
+    }
+
+
+    public void checkIfSafeToGoBack(){
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setContentText("Are you sure you want to go back to the previous window?");
         ButtonType yesBtn = new ButtonType("Yes", ButtonBar.ButtonData.YES);
         ButtonType noBtn = new ButtonType("No", ButtonBar.ButtonData.NO);
         alert.getButtonTypes().setAll(yesBtn, noBtn);
-
         // If fields are empty, go back directly
         if (getEditAddress().isEmpty() && getEditPassword().isEmpty() && getConfirmPassword().isEmpty()) {
             goBack();
         } else {
             alert.showAndWait(); // Otherwise, show confirmation alert
         }
-
         // ff user click yes, go back
         if (alert.getResult() == yesBtn) {
             goBack();
@@ -112,7 +141,7 @@ public class EditProfileController implements Initializable {
     // method to navigate back to the previous window
     public void goBack() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("account.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountDashboard.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) cancelBtn.getScene().getWindow();
@@ -126,10 +155,11 @@ public class EditProfileController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // show original address so user can edit it
+        editProfileErrorLabel.setText("");
         if (login.isLoggedIn) {
             db.setTable("users");
             editAddressTF.setText(db.getLoggedInUserInfo(login.getLoggedInUsername(), "address"));
-            String cardnum = db.getLoggedInUserInfo(login.getLoggedInUsername(), "cardNumber");
+            String cardnum = db.getLoggedInUserInfo(login.getLoggedInUsername(), "paymentNumber");
             String hiddenNumber = CardHelper.hideNumbers(cardnum);
             cardEndingLabel.setText(hiddenNumber);
             cardEndingLabel.setVisible(true);

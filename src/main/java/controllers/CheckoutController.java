@@ -55,8 +55,6 @@ public class CheckoutController implements Initializable {
     @FXML
     private TextField nameOnCardTF;
     @FXML
-    private Button payButton;
-    @FXML
     private TextField phoneNumTF;
     @FXML
     private Label taxAmount;
@@ -65,9 +63,8 @@ public class CheckoutController implements Initializable {
     @FXML
     private TextField zipCodeTF;
     @FXML
-    private Label checkoutLabel;
-    @FXML
     private DatePicker validThroughDP;
+
 
     List<TextField> textFields = new ArrayList<>();
     List<TextField> emptyFields = new ArrayList<>();
