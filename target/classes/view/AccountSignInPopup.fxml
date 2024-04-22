@@ -14,7 +14,7 @@
    <center>
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Button id="actionButton" fx:id="popupSignIn" mnemonicParsing="false" text="Sign in" textFill="WHITE">
+            <Button id="actionButton" fx:id="popupSignIn" onMouseClicked="#clickSignIn" mnemonicParsing="false" text="Sign in" textFill="WHITE">
                <VBox.margin>
                   <Insets top="15.0" />
                </VBox.margin>

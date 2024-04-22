@@ -239,7 +239,7 @@ public class DatabaseUtility {
 //        stage.show();
 //    }
 
-    public static void createAccount(ActionEvent event, String name, String username, String password) {
+    public static void createAccount(String name, String username, String password) {
         Connection connection = null;   // connection to the database
         PreparedStatement psInsert = null;  // used to query the database - inserts valid user data into database
         PreparedStatement psCheckIfUserExists = null;   // used to query the database - checks if user already exits
@@ -264,7 +264,7 @@ public class DatabaseUtility {
                 psInsert.setString(3, password);
                 psInsert.executeUpdate();
 
-             //   changeScene(event, "HomeScreen.fxml", username);
+                //   changeScene(event, "HomeScreen.fxml", username);
             }
         } catch(SQLException e) {
             e.printStackTrace();

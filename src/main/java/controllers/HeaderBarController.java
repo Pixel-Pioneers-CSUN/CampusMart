@@ -95,6 +95,20 @@ public class HeaderBarController implements NavigationListener {
         }
     }
 
+    @Override
+    public void navigateToLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @FXML
     public void initialize() {
 

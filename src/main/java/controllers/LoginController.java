@@ -51,7 +51,7 @@ public class LoginController implements Initializable {
     }
     @FXML
     void switchToSignUp(MouseEvent event) {
-        try{ FXMLLoader loader = new FXMLLoader(getClass().getResource("signup.fxml"));
+        try{ FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAccount.fxml"));
          Parent root = loader.load(); Scene scene = new Scene(root); Stage stage =
          (Stage) SignUpLabel.getScene().getWindow(); stage.setScene(scene);
          stage.show(); } catch (IOException e) { e.printStackTrace(); }
@@ -76,7 +76,7 @@ public class LoginController implements Initializable {
 
     void switchToHomescreen() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("homescreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeScreen.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) SignUpLabel.getScene().getWindow();

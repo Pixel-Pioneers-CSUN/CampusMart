@@ -29,14 +29,16 @@ public class AccountSignInPopupController {
 
     @FXML
     private void clickSignIn(MouseEvent event) {
-
+        // if Sign In in popup is clicked, notify the HeaderBarController to navigate to the login page
+        if (navigationListener != null) {
+            navigationListener.navigateToLogin();
+        }
     }
 
     @FXML
     private void clickStartHere(MouseEvent event) {
         // if Start Here in popup is clicked, notify the HeaderBarController to navigate to the create account page
         if (navigationListener != null) {
-            System.out.println("Start Here clicked!");
             navigationListener.navigateToCreateAccount();
         }
     }

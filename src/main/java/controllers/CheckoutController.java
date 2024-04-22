@@ -21,8 +21,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import utils.textFieldHelper;
 
-import javax.mail.internet.AddressException;
-import javax.mail.internet.InternetAddress;
+//import javax.mail.internet.AddressException;
+//import javax.mail.internet.InternetAddress;
 
 public class CheckoutController implements Initializable {
 
@@ -174,16 +174,16 @@ public class CheckoutController implements Initializable {
         creditCardInfoPane.setVisible(true);
     }
 
-    public  boolean isValidEmailAddress(String email) {
-        boolean isValid = true;
-        try {
-            InternetAddress internetAddress = new InternetAddress(email);
-            internetAddress.validate();
-        } catch (AddressException e) {
-            isValid = false;
-        }
-        return isValid;
-    }
+//    public  boolean isValidEmailAddress(String email) {
+//        boolean isValid = true;
+//        try {
+//            InternetAddress internetAddress = new InternetAddress(email);
+//            internetAddress.validate();
+//        } catch (AddressException e) {
+//            isValid = false;
+//        }
+//        return isValid;
+//    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -209,18 +209,18 @@ public class CheckoutController implements Initializable {
                     addressTF, contactInfoErrorLabel, "^[a-zA-Z0-9 ]*$"
                     , "Enter a valid address")));
             //email validation
-            emailTF.textProperty().addListener((observable, oldValue, newValue) -> {
-                if (isValidEmailAddress(newValue) || emailTF.isVisible()) {
-                    emailTF.setStyle("");
-                    contactInfoErrorLabel.setText("");
-                    System.out.println("right");
-                } else {
-                    emailTF.setStyle("-fx-background-color: pink;");
-                    contactInfoErrorLabel.setText("Enter a valid email address");
-                    contactInfoErrorLabel.setVisible(true);
-                    System.out.println("wrong");
-                }
-            });
+//            emailTF.textProperty().addListener((observable, oldValue, newValue) -> {
+//                if (isValidEmailAddress(newValue) || emailTF.isVisible()) {
+//                    emailTF.setStyle("");
+//                    contactInfoErrorLabel.setText("");
+//                    System.out.println("right");
+//                } else {
+//                    emailTF.setStyle("-fx-background-color: pink;");
+//                    contactInfoErrorLabel.setText("Enter a valid email address");
+//                    contactInfoErrorLabel.setVisible(true);
+//                    System.out.println("wrong");
+//                }
+//            });
 
             textFields = List.of(addressTF, cardNumTF, cityTF, cvvTF, emailTF, firstNameTF, lastNameTF, nameOnCardTF,
                     phoneNumTF, zipCodeTF);
@@ -243,9 +243,9 @@ public class CheckoutController implements Initializable {
         return  isValid;
     }
 
-    public void emailValidation(){
-
-    }
+//    public void emailValidation(){
+//
+//    }
     // Method to reduce the inventory count for items that were bought
     public int reduceInventory() {
         // Iterate over each item in cart
