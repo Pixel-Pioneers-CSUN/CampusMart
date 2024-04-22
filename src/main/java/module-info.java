@@ -21,4 +21,7 @@ module org.example.campusmart {
     opens utils to javafx.fxml;
     opens orders to javafx.fxml;
     exports orders;
+
+    opens Cart to javafx.fxml;
+    exports Cart;
 }

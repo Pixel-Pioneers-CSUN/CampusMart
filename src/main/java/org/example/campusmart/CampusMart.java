@@ -1,5 +1,6 @@
 package org.example.campusmart;
 
+import Cart.Cart;
 import controllers.HeaderBarController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +11,7 @@ import items.*;
 import utils.DatabaseUtility;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class CampusMart extends Application {
 
@@ -21,6 +23,14 @@ public class CampusMart extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
+
+
+
+
+
+
+
+
         //==============
         // start of app pull data and then make a data structure
         DatabaseUtility bd = new DatabaseUtility();
@@ -29,6 +39,21 @@ public class CampusMart extends Application {
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
         data.setItemDataStructure(bd.createHashMapItemClass());
+
+        /***
+         * test for cart object
+         */
+        Cart cart = new Cart();
+        cart.addToCart(1,4);
+        cart.addToCart(4,7);
+        cart.addToCart(23,5);
+        cart.addToCart(34,2);
+        cart.addToCart(2,1);
+        System.out.println("Cart object test add to cart:\n" + cart.toString());
+
+        cart.removeFromCart(23);
+        System.out.println("Cart object test remove from cart:\n" + cart.toString());
+        System.out.println("End of test");
 
         // load the HeaderBar.fxml file and set is as the headerBar
         FXMLLoader headerLoader = new FXMLLoader(getClass().getResource("/view/HeaderBar.fxml"));
