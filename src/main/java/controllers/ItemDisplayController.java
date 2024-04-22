@@ -13,13 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -53,8 +47,9 @@ public class ItemDisplayController implements Initializable {
     @FXML
     private GridPane grid;
 
+
     @FXML
-    private Button myAddToCart;
+    private TextField myQuantityField;
 
     @FXML
     private ChoiceBox<Integer> myChoiceBox;
@@ -64,6 +59,7 @@ public class ItemDisplayController implements Initializable {
     private ImageView headerBarLogoImage;
     private MyListener myListener;
     private int selectedItemNumber;
+    private int itemQuantity = 0;
 
     @FXML
     public void displayItemInformation(ItemClass item) {
@@ -73,18 +69,37 @@ public class ItemDisplayController implements Initializable {
         Image image;
         image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
         itemImage.setImage(image);
+        myQuantityField.setText("0");
+        itemQuantity = 0;
 
     }
 
     @FXML
     public void clickAddToCart(ActionEvent event) {
-        Integer amount = myChoiceBox.getValue();
+        System.out.println("Clicked Add To Cart");
+
         // pass into function item number and amount they want
         // value has to be passed to shopping cart
         // maybe update picture of cart with a new value on the side
         // confirmation of added to cart??
 
     }
+
+    @FXML
+    public  void increaseQuantity(ActionEvent event) {
+        itemQuantity++;
+        myQuantityField.setText(String.valueOf(itemQuantity));
+
+    }
+
+    @FXML
+    public void decreaseQuantity(ActionEvent event) {
+        if (itemQuantity > 0) {
+            itemQuantity--;
+            myQuantityField.setText(String.valueOf(itemQuantity));
+        }
+    }
+
     public  void createItemGridPage(String category) {
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
@@ -151,6 +166,7 @@ public class ItemDisplayController implements Initializable {
 
     }
 
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 
@@ -162,13 +178,11 @@ public class ItemDisplayController implements Initializable {
             }
         };
 
-        Integer[] choices;
-        choices = new Integer[10];
-        for (int i = 0; i < choices.length; i++) {
-            choices[i] = i;
+//        if(grid.getChildren().isEmpty()) {
+//            createItemGridPage("default");
+//        }
 
-        }
-        myChoiceBox.getItems().addAll(choices);
+        myQuantityField.setText("0");
 
     }
 }

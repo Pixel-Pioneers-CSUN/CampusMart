@@ -24,7 +24,6 @@ import java.util.*;
 
 
 public class HeaderBarController implements NavigationListener {
-
     public StackPane headerBar;
     private Stage mainStage;
     private Scene scene;

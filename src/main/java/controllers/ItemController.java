@@ -39,6 +39,7 @@ public class ItemController {
         priceLabel.setText("$" + item.getPrice().toString());
         Image image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
         itemImage.setImage(image);
+
     }
 
 

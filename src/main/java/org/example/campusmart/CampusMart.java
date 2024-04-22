@@ -17,16 +17,18 @@ public class CampusMart extends Application {
         launch(args);
     }
 
+
+
     @Override
     public void start(Stage primaryStage) throws IOException {
-
+        //==============
         // start of app pull data and then make a data structure
         DatabaseUtility bd = new DatabaseUtility();
         bd.setTable("Item_Database");
 
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
-        data.setItemDataStructure(bd.createHasMapItemClass());
+        data.setItemDataStructure(bd.createHashMapItemClass());
 
         // load the HeaderBar.fxml file and set is as the headerBar
         FXMLLoader headerLoader = new FXMLLoader(getClass().getResource("/view/HeaderBar.fxml"));
@@ -37,11 +39,34 @@ public class CampusMart extends Application {
         headerController.setMainStage(primaryStage);
 
         // load the HomeScreen.fxml file
-        FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
+        //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
+        //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/OrderPage.fxml"));
+        FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/AccountDashboard.fxml"));
+        //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
+
         Parent homeRoot = homeLoader.load();
 
         // setting homeRoot as the root node of the scene
         Scene scene = new Scene(homeRoot, 1300, 800);   // also set the initial window size
+
+
+
+
+
+        // get the HeaderBarController instance and set the main stage
+
+
+        //scene.getStylesheets().add(getClass().getResource("/css/checkout-styles.css").toExternalForm());
+
+//        Parent root = FXMLLoader.load(getClass().getResource("/view/ItemDisplay.fxml"));
+//
+//        Scene scene = new Scene(root);
+//        String css = this.getClass().getResource("/css/items-styles.css").toExternalForm();
+//        scene.getStylesheets().add(css);
+        // load the HomeScreen.fxml file
+
+
+
 
         // setting the title of the stage
         primaryStage.setTitle("Welcome to Campus Mart");

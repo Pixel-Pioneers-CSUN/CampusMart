@@ -11,13 +11,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
+import orders.Orders;
 
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.*;
-import java.util.HashMap;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 
 /**
@@ -68,13 +67,39 @@ public class DatabaseUtility {
      * @param q The query to be set.
      */
     public void setQuery (String q) {this.query = q;}
-    
+
+    public String getQuery() {return this.query;}
+
     /**
      * Sets the table for database operations.
      *
      * @param t The table name to be set.
      */
     public void setTable (String t) {this.table = t;}
+
+    // makes it easier to just call this for connection
+    // helper funcion to make code look nicer
+    public Connection getConnection() {
+        try {
+            return DriverManager.getConnection(this.url, this.user, this.password);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    // a helper function to execute a sql statement regarding the database
+    public  void executeSQLStatement (String query) {
+        try {
+            Statement statement = getConnection().createStatement();
+            statement.execute(query);
+            getConnection().close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+
+        }
+
+    }
+
 
 
     
@@ -166,7 +191,7 @@ public class DatabaseUtility {
      *
      * @return A HashMap containing ItemClass objects.
      */
-    public HashMap<Integer, ItemClass> createHasMapItemClass() {
+    public HashMap<Integer, ItemClass> createHashMapItemClass() {
         HashMap<Integer, ItemClass> map = new HashMap<>();
         try {
             
@@ -264,7 +289,7 @@ public class DatabaseUtility {
                 psInsert.setString(3, password);
                 psInsert.executeUpdate();
 
-                //   changeScene(event, "HomeScreen.fxml", username);
+                // changeScene(event, "HomeScreen.fxml", username);
             }
         } catch(SQLException e) {
             e.printStackTrace();
@@ -354,5 +379,89 @@ public class DatabaseUtility {
 //            }
 //        }
 //    }
+public List<Orders> createOrderList(int customerID) {
+    List<Orders> orderList = new ArrayList<>();
+    this.setTable("Orders_Database");
+
+    try {
+
+        // creating connection to the database.
+        Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+        Statement statement = connection.createStatement();
+
+        String printQuery = "select * from " + this.table;
+        ResultSet resultSet = statement.executeQuery(printQuery);
+        // end of connection to database
+
+        //get all info from database to create a DataStructureItemClass
+        while (resultSet.next()) {
+            //need to create a orderItems HashMap
+            if(customerID == resultSet.getInt("customerID")) {
+
+                int orderID = resultSet.getInt("orderID");
+                HashMap<Integer, Integer> map = this.createOrderItemsHashMap(orderID);
+                // fix this later
+                String date = resultSet.getString("orderDate");
+
+                BigDecimal totalPrice = resultSet.getBigDecimal("orderTotal");
+                Orders newEntry = new Orders(orderID,customerID,date,totalPrice,map);
+                orderList.add(newEntry);
+            }
+
+
+        }
+        connection.close();
+
+    } catch(Exception e){
+        System.out.println("Failed to create Orders List!");
+        e.printStackTrace();
+    }
+
+    return orderList;
+}
+
+    // pulls from "OrderItems_Database"
+    public HashMap<Integer,Integer> createOrderItemsHashMap(int orderID) {
+        HashMap<Integer,Integer> temp = new HashMap<>();
+        this.setTable("OrderItems_Database");
+        try {
+
+            // creating connection to the database.
+            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+            Statement statement = connection.createStatement();
+
+            String printQuery = "select * from " + this.table;
+            ResultSet resultSet = statement.executeQuery(printQuery);
+            // end of connection to database
+
+            //get all info from database to create a DataStructureItemClass
+            while (resultSet.next()) {
+                if(orderID == resultSet.getInt("orderNumber")) {
+                    Integer itemNumber = resultSet.getInt("itemNumber");
+                    Integer itemCount = resultSet.getInt("itemCount");
+                    temp.putIfAbsent(itemNumber, itemCount);
+                }
+
+            }
+
+            connection.close();
+
+        } catch(Exception e){
+            System.out.println("Failed to create OrderItems HashMap from DatabaseUtility!");
+            e.printStackTrace();
+        }
+        return temp;
+
+    }
+
+    public void updateOrderDatabase(String query) {
+        this.executeSQLStatement(query);
+    }
+
+    public void updateOrderItemsDatabase(String query) {
+        this.executeSQLStatement(query);
+    }
+
+
 
 }
