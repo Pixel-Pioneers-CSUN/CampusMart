@@ -1,0 +1,365 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"d074da33-4be0-4762-b17e-6ea61fcf7725\" name=\"Changes\" comment=\"UI update for Order package\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controllers/OrderController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controllers/OrderController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/view/Order.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/view/Order.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/view/OrderPage.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/view/OrderPage.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/controllers/OrderController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/controllers/OrderController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/controllers/OrderPageController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/controllers/OrderPageController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/view/Order.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/target/classes/view/Order.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"CSS File\" />\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <excluded-from-favorite>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"REMOTE\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"origin/main\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </excluded-from-favorite>\r\n    <favorite-branches>\r\n      <branch-storage>\r\n        <map>\r\n          <entry type=\"LOCAL\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"Home-Screen\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n          <entry type=\"REMOTE\">\r\n            <value>\r\n              <list>\r\n                <branch-info repo=\"$PROJECT_DIR$\" source=\"origin/Homescreen\" />\r\n              </list>\r\n            </value>\r\n          </entry>\r\n        </map>\r\n      </branch-storage>\r\n    </favorite-branches>\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"Merge-Searchbar-and-ItemUpdate\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n    &quot;state&quot;: &quot;OPEN&quot;,\r\n    &quot;assignee&quot;: &quot;SevanCSUN&quot;\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/Pixel-Pioneers-CSUN/CampusMart.git&quot;,\r\n    &quot;accountId&quot;: &quot;519635a5-75fe-44c2-808f-97921c63e8c2&quot;\r\n  }\r\n}</component>\r\n  <component name=\"MacroExpansionManager\">\r\n    <option name=\"directoryName\" value=\"jx693jil\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"mavenHomeTypeForPersistence\" value=\"WRAPPER\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 8\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2eKCWBCWb4rjyoee9z5z6mJJSBu\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;Application.CampusMart.executor&quot;: &quot;Run&quot;,\r\n    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;Merge-Searchbar-and-ItemUpdate&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,\r\n    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/images\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/items\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/controllers\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/org/example/campusmart\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/view\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration name=\"CampusMart\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"org.example.campusmart.CampusMart\" />\r\n      <module name=\"CampusMart\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"org.example.campusmart.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.CampusMart\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240\" />\r\n        <option value=\"bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"d074da33-4be0-4762-b17e-6ea61fcf7725\" name=\"Changes\" comment=\"\" />\r\n      <created>1711643911910</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1711643911910</updated>\r\n      <workItem from=\"1711643912938\" duration=\"5473000\" />\r\n      <workItem from=\"1711650371189\" duration=\"2526000\" />\r\n      <workItem from=\"1711654664788\" duration=\"28978000\" />\r\n      <workItem from=\"1711765318533\" duration=\"3844000\" />\r\n      <workItem from=\"1711769172422\" duration=\"10787000\" />\r\n      <workItem from=\"1712166759008\" duration=\"6344000\" />\r\n      <workItem from=\"1712678622765\" duration=\"8021000\" />\r\n      <workItem from=\"1712775373254\" duration=\"8903000\" />\r\n      <workItem from=\"1712883537204\" duration=\"3734000\" />\r\n      <workItem from=\"1713018723132\" duration=\"20277000\" />\r\n      <workItem from=\"1713197861809\" duration=\"753000\" />\r\n      <workItem from=\"1713203150006\" duration=\"3959000\" />\r\n      <workItem from=\"1713214356228\" duration=\"313000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Initial HomeScreen UI and file structure setup\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711762927109</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711762927109</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Initial HomeScreen UI and file structure setup\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711767869090</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711767869090</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Initial HomeScreen UI and file structure setup\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711769204425</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711769204425</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Initial Home Screen UI and file structure setup\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1711769258202</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1711769258202</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Merged Home-Screen and Item-Screen + fixed conflicts and dependencies.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712173002503</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712173002503</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Search functionality on header bar now displays relevant item names.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712299048155</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712299048155</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Search bar popup results styling and positioning fixes.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712301548823</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712301548823</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712684404511</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712684404511</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Merge the new itembase with the HeaderBarController.\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712873837790</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712873837790</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"fixing a branch issue\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1712988926725</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1712988926725</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"adding more to the orders package\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713038783342</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713038783342</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"UI update for Order package\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1713043289502</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1713043289502</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"13\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"origin/Homescreen\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Initial HomeScreen UI and file structure setup\" />\r\n    <MESSAGE value=\"Initial Home Screen UI and file structure setup\" />\r\n    <MESSAGE value=\"Merged Home-Screen and Item-Screen + fixed conflicts and dependencies.\" />\r\n    <MESSAGE value=\"Search functionality on header bar now displays relevant item names.\" />\r\n    <MESSAGE value=\"Search bar popup results styling and positioning fixes.\" />\r\n    <MESSAGE value=\"Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.\" />\r\n    <MESSAGE value=\"Merge the new itembase with the HeaderBarController.\" />\r\n    <MESSAGE value=\"fixing a branch issue\" />\r\n    <MESSAGE value=\"adding more to the orders package\" />\r\n    <MESSAGE value=\"UI update for Order package\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"UI update for Order package\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/java/controllers/OrderItemController.java</url>\r\n          <line>35</line>\r\n          <option name=\"timeStamp\" value=\"12\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n    <pin-to-top-manager>\r\n      <pinned-members>\r\n        <PinnedItemInfo parentTag=\"java.lang.Integer\" memberName=\"value\" />\r\n      </pinned-members>\r\n    </pin-to-top-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -4,17 +4,14 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="UI update for Order package">
++    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="fixed date related issues and formatting.">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/Order.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/Order.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/OrderPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/OrderPage.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderPageController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/view/Order.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/Order.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditPaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditPaymentController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EditPaymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EditPaymentController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -24,9 +21,9 @@
+   <component name="FileTemplateManagerImpl">
+     <option name="RECENT_TEMPLATES">
+       <list>
+-        <option value="CSS File" />
+         <option value="FxmlFile" />
+         <option value="Class" />
++        <option value="CSS File" />
+       </list>
+     </option>
+   </component>
+@@ -64,9 +61,15 @@
+         </map>
+       </branch-storage>
+     </favorite-branches>
++    <option name="PUSH_TAGS">
++      <GitPushTagMode>
++        <option name="argument" value="--follow-tags" />
++        <option name="title" value="Current Branch" />
++      </GitPushTagMode>
++    </option>
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="Merge-Searchbar-and-ItemUpdate" />
++        <entry key="$PROJECT_DIR$" value="Checkout-Page" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -80,12 +83,9 @@
+   <component name="GithubPullRequestsUISettings">{
+   &quot;selectedUrlAndAccountId&quot;: {
+     &quot;url&quot;: &quot;https://github.com/Pixel-Pioneers-CSUN/CampusMart.git&quot;,
+-    &quot;accountId&quot;: &quot;519635a5-75fe-44c2-808f-97921c63e8c2&quot;
++    &quot;accountId&quot;: &quot;ca6f6385-dc86-4a64-8e76-df02d33adefe&quot;
+   }
+ }</component>
+-  <component name="MacroExpansionManager">
+-    <option name="directoryName" value="jx693jil" />
+-  </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+@@ -95,6 +95,9 @@
+         <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+       </MavenGeneralSettings>
+     </option>
++  </component>
++  <component name="ProblemsViewState">
++    <option name="selectedTabId" value="ProjectErrors" />
+   </component>
+   <component name="ProjectColorInfo">{
+   &quot;associatedIndex&quot;: 8
+@@ -105,40 +108,56 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Application.CampusMart.executor&quot;: &quot;Run&quot;,
+-    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;Merge-Searchbar-and-ItemUpdate&quot;,
+-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+-    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Application.App.executor": "Run",
++    "Application.CampusMart.executor": "Run",
++    "Application.HelloApplication.executor": "Run",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "git-widget-placeholder": "Login-Screen",
++    "kotlin-language-version-configured": "true",
++    "last_opened_file_path": "C:/Users/olahe/OneDrive/Desktop/COMP380L/Java Mail/javax.mail.jar",
++    "list.type.of.created.stylesheet": "CSS",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Libraries",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.2",
++    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
++}]]></component>
+   <component name="RecentsManager">
++    <key name="CopyFile.RECENT_KEYS">
++      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project" />
++    </key>
+     <key name="MoveFile.RECENT_KEYS">
+-      <recent name="$PROJECT_DIR$/src/main/resources/images" />
+-      <recent name="$PROJECT_DIR$/src/main/java/items" />
+-      <recent name="$PROJECT_DIR$/src/main/java/controllers" />
+-      <recent name="$PROJECT_DIR$/src/main/java/org/example/campusmart" />
+-      <recent name="$PROJECT_DIR$/src/main/resources/view" />
++      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\resources\images" />
++      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\java\org\example\campusmart" />
++      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\java\utils" />
++      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\java\controllers" />
++      <recent name="C:\Users\olahe\OneDrive\Desktop\COMP380 Project\src\main\resources\css" />
+     </key>
+   </component>
+-  <component name="RunManager">
++  <component name="RunManager" selected="Application.App">
++    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++      <option name="MAIN_CLASS_NAME" value="org.example.campusmart.App" />
++      <module name="CampusMart" />
++      <extension name="coverage">
++        <pattern>
++          <option name="PATTERN" value="org.example.campusmart.*" />
++          <option name="ENABLED" value="true" />
++        </pattern>
++      </extension>
++      <method v="2">
++        <option name="Make" enabled="true" />
++      </method>
++    </configuration>
+     <configuration name="CampusMart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="org.example.campusmart.CampusMart" />
+       <module name="CampusMart" />
+@@ -154,6 +173,9 @@
+     </configuration>
+     <recent_temporary>
+       <list>
++        <item itemvalue="Application.App" />
++        <item itemvalue="Application.CampusMart" />
++        <item itemvalue="Application.App" />
+         <item itemvalue="Application.CampusMart" />
+       </list>
+     </recent_temporary>
+@@ -180,13 +202,8 @@
+       <workItem from="1711765318533" duration="3844000" />
+       <workItem from="1711769172422" duration="10787000" />
+       <workItem from="1712166759008" duration="6344000" />
+-      <workItem from="1712678622765" duration="8021000" />
+-      <workItem from="1712775373254" duration="8903000" />
+-      <workItem from="1712883537204" duration="3734000" />
+-      <workItem from="1713018723132" duration="20277000" />
+-      <workItem from="1713197861809" duration="753000" />
+-      <workItem from="1713203150006" duration="3959000" />
+-      <workItem from="1713214356228" duration="313000" />
++      <workItem from="1712724489499" duration="9456000" />
++      <workItem from="1712734085536" duration="4491000" />
+     </task>
+     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
+       <option name="closed" value="true" />
+@@ -236,55 +253,103 @@
+       <option name="project" value="LOCAL" />
+       <updated>1712299048155</updated>
+     </task>
+-    <task id="LOCAL-00007" summary="Search bar popup results styling and positioning fixes.">
++    <task id="LOCAL-00007" summary="Fixed issues regarding null exceptions and images.">
+       <option name="closed" value="true" />
+-      <created>1712301548823</created>
++      <created>1712373031416</created>
+       <option name="number" value="00007" />
+       <option name="presentableId" value="LOCAL-00007" />
+       <option name="project" value="LOCAL" />
+-      <updated>1712301548823</updated>
++      <updated>1712373031416</updated>
+     </task>
+-    <task id="LOCAL-00008" summary="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages.">
++    <task id="LOCAL-00008" summary="Fixed issues regarding null exceptions and images.">
+       <option name="closed" value="true" />
+-      <created>1712684404511</created>
++      <created>1712373139890</created>
+       <option name="number" value="00008" />
+       <option name="presentableId" value="LOCAL-00008" />
+       <option name="project" value="LOCAL" />
+-      <updated>1712684404511</updated>
++      <updated>1712373139890</updated>
+     </task>
+-    <task id="LOCAL-00009" summary="Merge the new itembase with the HeaderBarController.">
++    <task id="LOCAL-00009" summary="Fixed issues regarding null exceptions and images.">
+       <option name="closed" value="true" />
+-      <created>1712873837790</created>
++      <created>1712373373416</created>
+       <option name="number" value="00009" />
+       <option name="presentableId" value="LOCAL-00009" />
+       <option name="project" value="LOCAL" />
+-      <updated>1712873837790</updated>
++      <updated>1712373373416</updated>
+     </task>
+-    <task id="LOCAL-00010" summary="fixing a branch issue">
++    <task id="LOCAL-00010" summary="Moved some methods into separate class, updated CSS styling and fixed some issues.">
+       <option name="closed" value="true" />
+-      <created>1712988926725</created>
++      <created>1712738463157</created>
+       <option name="number" value="00010" />
+       <option name="presentableId" value="LOCAL-00010" />
+       <option name="project" value="LOCAL" />
+-      <updated>1712988926725</updated>
++      <updated>1712738463157</updated>
+     </task>
+-    <task id="LOCAL-00011" summary="adding more to the orders package">
++    <task id="LOCAL-00011" summary="Implemented an initial login screen functionality.">
+       <option name="closed" value="true" />
+-      <created>1713038783342</created>
++      <created>1713229497708</created>
+       <option name="number" value="00011" />
+       <option name="presentableId" value="LOCAL-00011" />
+       <option name="project" value="LOCAL" />
+-      <updated>1713038783342</updated>
++      <updated>1713229497708</updated>
+     </task>
+-    <task id="LOCAL-00012" summary="UI update for Order package">
++    <task id="LOCAL-00012" summary="Added new edit profile files. Files are in their initial states and not yet completed">
+       <option name="closed" value="true" />
+-      <created>1713043289502</created>
++      <created>1713395823961</created>
+       <option name="number" value="00012" />
+       <option name="presentableId" value="LOCAL-00012" />
+       <option name="project" value="LOCAL" />
+-      <updated>1713043289502</updated>
++      <updated>1713395823961</updated>
+     </task>
+-    <option name="localTasksCounter" value="13" />
++    <task id="LOCAL-00013" summary="Added validation for email and date.">
++      <option name="closed" value="true" />
++      <created>1713581120616</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1713581120616</updated>
++    </task>
++    <task id="LOCAL-00014" summary="Added more files and methods for the edit profile functionality">
++      <option name="closed" value="true" />
++      <created>1713682009186</created>
++      <option name="number" value="00014" />
++      <option name="presentableId" value="LOCAL-00014" />
++      <option name="project" value="LOCAL" />
++      <updated>1713682009186</updated>
++    </task>
++    <task id="LOCAL-00015" summary="refactored code for dateValidation and moved it to its own DateHelper class.">
++      <option name="closed" value="true" />
++      <created>1713735694404</created>
++      <option name="number" value="00015" />
++      <option name="presentableId" value="LOCAL-00015" />
++      <option name="project" value="LOCAL" />
++      <updated>1713735694404</updated>
++    </task>
++    <task id="LOCAL-00016" summary="refactored code for dateValidation and moved it to its own DateHelper class.">
++      <option name="closed" value="true" />
++      <created>1713735706041</created>
++      <option name="number" value="00016" />
++      <option name="presentableId" value="LOCAL-00016" />
++      <option name="project" value="LOCAL" />
++      <updated>1713735706041</updated>
++    </task>
++    <task id="LOCAL-00017" summary="Added stylesheet to the FXML files and added some css file">
++      <option name="closed" value="true" />
++      <created>1713738376214</created>
++      <option name="number" value="00017" />
++      <option name="presentableId" value="LOCAL-00017" />
++      <option name="project" value="LOCAL" />
++      <updated>1713738376214</updated>
++    </task>
++    <task id="LOCAL-00018" summary="fixed date related issues and formatting.">
++      <option name="closed" value="true" />
++      <created>1713743041258</created>
++      <option name="number" value="00018" />
++      <option name="presentableId" value="LOCAL-00018" />
++      <option name="project" value="LOCAL" />
++      <updated>1713743041258</updated>
++    </task>
++    <option name="localTasksCounter" value="19" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -333,28 +398,26 @@
+     <MESSAGE value="Initial Home Screen UI and file structure setup" />
+     <MESSAGE value="Merged Home-Screen and Item-Screen + fixed conflicts and dependencies." />
+     <MESSAGE value="Search functionality on header bar now displays relevant item names." />
+-    <MESSAGE value="Search bar popup results styling and positioning fixes." />
+-    <MESSAGE value="Search bar results are now clickable and lead to their respective focused screen on the ItemDisplayPage. The Account and Cart icons also now lead to their respective pages." />
+-    <MESSAGE value="Merge the new itembase with the HeaderBarController." />
+-    <MESSAGE value="fixing a branch issue" />
+-    <MESSAGE value="adding more to the orders package" />
+-    <MESSAGE value="UI update for Order package" />
+-    <option name="LAST_COMMIT_MESSAGE" value="UI update for Order package" />
++    <MESSAGE value="Fixed issues regarding null exceptions and images." />
++    <MESSAGE value="Moved some methods into separate class, updated CSS styling and fixed some issues." />
++    <MESSAGE value="Implemented an initial login screen functionality." />
++    <MESSAGE value="Added new edit profile files. Files are in their initial states and not yet completed" />
++    <MESSAGE value="Added validation for email and date." />
++    <MESSAGE value="Added more files and methods for the edit profile functionality" />
++    <MESSAGE value="refactored code for dateValidation and moved it to its own DateHelper class." />
++    <MESSAGE value="Added stylesheet to the FXML files and added some css file" />
++    <MESSAGE value="fixed date related issues and formatting." />
++    <option name="LAST_COMMIT_MESSAGE" value="fixed date related issues and formatting." />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+       <breakpoints>
+         <line-breakpoint enabled="true" type="java-line">
+-          <url>file://$PROJECT_DIR$/src/main/java/controllers/OrderItemController.java</url>
+-          <line>35</line>
+-          <option name="timeStamp" value="12" />
++          <url>file://$PROJECT_DIR$/bin/App.class</url>
++          <line>11</line>
++          <option name="timeStamp" value="1" />
+         </line-breakpoint>
+       </breakpoints>
+     </breakpoint-manager>
+-    <pin-to-top-manager>
+-      <pinned-members>
+-        <PinnedItemInfo parentTag="java.lang.Integer" memberName="value" />
+-      </pinned-members>
+-    </pin-to-top-manager>
+   </component>
+ </project>
+\ No newline at end of file

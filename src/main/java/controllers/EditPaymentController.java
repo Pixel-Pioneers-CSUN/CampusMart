@@ -71,10 +71,10 @@ public class EditPaymentController implements Initializable {
         Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
         if (!textFieldHelper.isEmpty && dateValidation) {
             //saves payment to database
-            db.saveProfileInfoToDB("name on card", getEditPaymentNameOnCard(), login.getLoggedInUsername());
-            db.saveProfileInfoToDB("card number", getEditPaymentCardNum(), login.getLoggedInUsername());
-            db.saveProfileInfoToDB("cvv", getEditPaymentCVV(), login.getLoggedInUsername());
-            db.saveProfileInfoToDB("date", formattedDate, login.getLoggedInUsername());
+            db.saveProfileInfoToDB("paymentName", getEditPaymentNameOnCard(), login.getLoggedInUsername());
+            db.saveProfileInfoToDB("paymentNumber", getEditPaymentCardNum(), login.getLoggedInUsername());
+            db.saveProfileInfoToDB("paymentCVV", getEditPaymentCVV(), login.getLoggedInUsername());
+            db.saveProfileInfoToDB("paymentExpiration", formattedDate, login.getLoggedInUsername());
 
         }
         else {
