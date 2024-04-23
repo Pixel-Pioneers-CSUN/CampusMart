@@ -1,11 +1,13 @@
 package items;
-// this is a Singleton Class meaning only one instance of class
 
 import java.util.HashMap;
 import java.util.Iterator;
 
 /**
+ * 3/20/24
+ * Erick Espinoza
  * Represents a singleton data structure for storing items.
+ * HashMap is chosen as a data structure for its speed to access entries
  */
 public class ItemDataStructure {
     private static final ItemDataStructure singletonObj = new ItemDataStructure();

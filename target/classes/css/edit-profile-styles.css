@@ -1,0 +1,61 @@
+/* Apply styles to buttons */
+.button {
+    -fx-font-size: 14px;
+    -fx-min-width: 120px;
+    -fx-min-height: 40px;
+    -fx-background-radius: 5px;
+    -fx-text-fill: white;
+    -fx-background-color: #C13538;
+}
+#editPaymentBtn:hover{
+    -fx-background-color: #951616;
+    -fx-cursor: hand;
+}
+#editPaymentBtn:pressed{
+    -fx-background-color: #7c0b0b;
+}
+#cancelBtn:hover {
+    -fx-background-color: #951616;
+    -fx-cursor: hand;
+}
+#cancelBtn:pressed{
+    -fx-background-color: #7c0b0b;
+}
+
+#saveBtn{
+    -fx-background-color: #4CAF50;
+}
+#saveBtn:hover {
+    -fx-background-color: #45a049;
+    -fx-cursor: hand;
+}
+
+#saveBtn:pressed {
+    -fx-background-color: #398439; /* Even Darker Green */
+}
+
+.image-view {
+    -fx-fit-height: 150px;
+    -fx-fit-width: 200px;
+    -fx-padding: 10px;
+}
+
+.button-container {
+    -fx-alignment: CENTER;
+    -fx-spacing: 20px;
+}
+
+#goBackLabel {
+    -fx-font-family: "Arial Bold";
+    -fx-font-size: 12px;
+    -fx-text-fill: #C13538;
+
+}
+
+#goBackLabel:hover {
+    -fx-text-fill: #7c0b0b;
+    -fx-cursor: hand;
+}
+#editProfileErrorLabel{
+    -fx-text-fill:red;
+}

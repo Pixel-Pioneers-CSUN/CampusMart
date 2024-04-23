@@ -1,0 +1,43 @@
+ #saveEditBtn {
+    -fx-background-color: #4CAF50; /* Green */
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-pref-width: 80px;
+    -fx-pref-height: 35px;
+    -fx-border-radius: 5px;
+}
+
+#saveEditBtn:hover {
+    -fx-background-color: #45a049; /* Darker Green */
+    -fx-cursor: hand;
+}
+
+
+#saveEditBtn:pressed {
+    -fx-background-color: #398439; /* Even Darker Green */
+}
+ #cancelEditBtn{
+     -fx-background-color: #C13538; /* Green */
+     -fx-text-fill: white;
+     -fx-font-size: 14px;
+     -fx-font-weight: bold;
+     -fx-pref-width: 80px;
+     -fx-pref-height: 35px;
+     -fx-border-radius: 5px;
+ }
+ #cancelEditBtn:hover{
+     -fx-background-color: #951616;
+     -fx-cursor: hand;
+ }
+
+ #cancelEditBtn:pressed{
+     -fx-background-color: #7c0b0b;
+ }
+
+ #editPaymentErrorLabel {
+     -fx-text-fill: red;
+     -fx-font-size: 10px;
+
+
+ }

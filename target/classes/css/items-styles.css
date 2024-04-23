@@ -1,0 +1,66 @@
+
+/*
+ item product style
+*/
+
+.itemCard {
+    -fx-border-color: black;
+    -fx-background-color: "C13538";
+}
+.itemCard:hover {
+    -fx-border-color: black;
+    -fx-background-color: "c44e4e";
+}
+
+.itemCardLabels {
+
+    -fx-font: 100 pxTahoma;
+    -fx-text-alignment: center;
+    -fx-font-size: 20;
+    -fx-text-fill: "white";
+    /* want to add a border color to item labels*/
+
+
+}
+.itemCardImage {
+
+}
+
+/* Item Page Style */
+.itemView {
+    -fx-border-color: black;
+    -fx-background-color: "C13538";
+}
+.addToCart {
+    -fx-border-color: black;
+    -fx-background-color: "e6dbdb";
+    -fx-font-size: 40
+;
+}
+.addToCart:hover {
+    -fx-border-color: black;
+    -fx-background-color: "white";
+}
+.itemViewLabels {
+    -fx-font: 100px Tahoma;
+    -fx-text-alignment: center;
+    -fx-font-size: 30;
+    -fx-text-fill: "white";
+}
+.itemViewImage {
+
+}
+.itemViewCounter {
+    -fx-border-color: black;
+    -fx-background-color: "e6dbdb";
+    -fx-font-size: 20;
+}
+.itemViewCounter:hover {
+    -fx-border-color: black;
+    -fx-background-color: "white";
+}
+.itemViewQuantity {
+    -fx-border-color: black;
+    -fx-font-size: 20;
+    -fx-text-alignment: center;
+}

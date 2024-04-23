@@ -1,11 +1,12 @@
 package controllers;
+
+import Cart.Cart;
 import items.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -13,9 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -24,13 +23,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import org.controlsfx.control.PropertySheet;
 
+/** 3/20/24
+ * Erick Espinoza
+ * Controller class for managing the display of item information.
+ */
 public class ItemDisplayController implements Initializable {
 
-
-    // These three are for the
-    @FXML
-    private BorderPane myBorderPane;
     @FXML
     private ImageView itemImage;
 
@@ -41,120 +41,101 @@ public class ItemDisplayController implements Initializable {
     private Label itemPrice;
 
     @FXML
-    private HBox headerPane;
-
-    @FXML
-    private TextArea myTextArea;
-
-    @FXML
-    private ImageView myImageView;
-
-    @FXML
     private GridPane grid;
 
     @FXML
-    private Button myAddToCart;
-
-    @FXML
-    private ChoiceBox<Integer> myChoiceBox;
-
-    // might have to if this will work or not
-    @FXML
-    private ImageView headerBarLogoImage;
-
-    private Integer[] choices;
+    private TextField myQuantityField;
 
     private MyListener myListener;
-    private Image image;
+    private int selectedItemNumber;
+    private int itemQuantity = 0;
 
-
-    //Image myImage = new Image(getClass().getResourceAsStream("projectPhotos/soda.png"));
-    //private ItemDataStructure tempData = ItemDataStructure.getInstance();
-
-
-    // create a way to display all info and item page
-    // basic to just work
-    // Need to make it so it can be done for every item in database
-    //  Will need a loop to make all full display objects
+    /**
+     * Displays information about the selected item.
+     *
+     * @param item The item to display information for.
+     */
     @FXML
-    private void displayItemInformation(ItemClass item) {
+    public void displayItemInformation(ItemClass item) {
         itemName.setText(item.getItemName());
-        itemPrice.setText(item.getPrice().toString());
-        image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
+        itemPrice.setText("$" + item.getPrice().toString());
+        selectedItemNumber = item.getItemNumber();
+        Image image = new Image(getClass().getResourceAsStream("/images/" + item.getItemPicture()));
         itemImage.setImage(image);
-
+        myQuantityField.setText("0");
+        itemQuantity = 0;
     }
 
+    /**
+     * Handles the click event on the "Add to Cart" button.
+     *
+     * @param event The action event.
+     */
     @FXML
     public void clickAddToCart(ActionEvent event) {
-        Integer amount = myChoiceBox.getValue();
-        // value has to be passed to shopping cart
-        // maybe update picture of cart with a new value on the side
-        // confirmation of added to cart??
-
+        System.out.println("Clicked Add To Cart");
+        Cart cart = Cart.getInstance();
+        cart.addToCart(selectedItemNumber,itemQuantity);
     }
 
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        // start of app pull data and then make a data structure
-        DatabaseUtility bd = new DatabaseUtility();
-        bd.setTable("itemtable");
+    /**
+     * Increases the quantity of the selected item.
+     *
+     * @param event The action event.
+     */
+    @FXML
+    public void increaseQuantity(ActionEvent event) {
+        itemQuantity++;
+        myQuantityField.setText(String.valueOf(itemQuantity));
+    }
 
-        // create data structure for Items
-        ItemDataStructure data = ItemDataStructure.getInstance();
-        data.setItemDataStructure(bd.createHasMapItemClass());
-
-        Iterator<HashMap.Entry<Integer, ItemClass>> it = data.getItemDataStructure().entrySet().iterator();
-        if (it.hasNext()) {
-            // get the first entry in the iterator
-            HashMap.Entry<Integer, ItemClass> entry = it.next();
-            // display item information
-            displayItemInformation(entry.getValue());
-            // override the myListener to pass data between
-            myListener = new MyListener() {
-                @Override
-                public void onClickListener(ItemClass item) {
-                    displayItemInformation(item);
-                }
-            };
+    /**
+     * Decreases the quantity of the selected item.
+     *
+     * @param event The action event.
+     */
+    @FXML
+    public void decreaseQuantity(ActionEvent event) {
+        if (itemQuantity > 0) {
+            itemQuantity--;
+            myQuantityField.setText(String.valueOf(itemQuantity));
         }
+    }
 
-        // reset Iterator
-        it = data.getIterator();
-
+    /**
+     * Creates a grid page displaying items of a specific category.
+     *
+     * @param category The category of items to display.
+     */
+    public void createItemGridPage(String category) {
+        ItemDataStructure data = ItemDataStructure.getInstance();
         int column = 0;
         int row = 1;
+        //
         try {
-            while (it.hasNext()) {
-                // Get the next entry in the iterator
-                HashMap.Entry<Integer, ItemClass> entry = it.next();
-
-                // Create a grid pane that has all items information on a
-                // page. Take the fxml that holds the item product display
-                // and populate a grind pane with it.
-                // This action will eventually have to be made each time going to item page
+            for (ItemClass item : data.getItemDataStructure().values()) {
+                ItemClass entry = new ItemClass();
+                if (item.getCategory().equals(category) || category.equals("default")) {
+                    entry = item;
+                } else {
+                    continue;
+                }
 
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource("/view/item.fxml"));
                 AnchorPane anchorPane = fxmlLoader.load();
-
                 ItemController itemController = fxmlLoader.getController();
-
-                // Set the information for item view
-                itemController.setData(entry.getValue(), myListener);
+                itemController.setData(entry, myListener);
 
                 if (column == 3) {
                     column = 0;
                     row++;
                 }
 
-                grid.add(anchorPane, column++, row); //(child,column,row)
-                // Set grid width
+                grid.add(anchorPane, column++, row);
                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
                 grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
                 grid.setMaxWidth(Region.USE_PREF_SIZE);
-
-                // Set grid height
                 grid.setMinHeight(Region.USE_COMPUTED_SIZE);
                 grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
@@ -162,23 +143,19 @@ public class ItemDisplayController implements Initializable {
                 GridPane.setMargin(anchorPane, new Insets(10));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Failed to create item page!");
         }
+    }
 
-        choices = new Integer[25];
-        for (int i = 0; i < choices.length; i++) {
-            choices[i] = i;
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        myListener = new MyListener() {
+            @Override
+            public void onClickListener(ItemClass item) {
+                displayItemInformation(item);
+            }
+        };
 
-        }
-        myChoiceBox.getItems().addAll(choices);
-
-        System.out.println("Finish initialize");
+        myQuantityField.setText("0");
     }
 }
-
-
-
-
-
-
-
