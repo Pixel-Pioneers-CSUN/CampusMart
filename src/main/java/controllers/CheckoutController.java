@@ -214,19 +214,19 @@ public class CheckoutController implements Initializable {
             addressTF.setTextFormatter(new TextFormatter<>(textFieldHelper
                     .textFilter(addressTF, contactInfoErrorLabel, "^[a-zA-Z0-9 ]*$", "Enter a valid address")));
 
-            // Email validation
-            emailTF.textProperty().addListener((observable, oldValue, newValue) -> {
-                if (isValidEmailAddress(newValue) || emailTF.isVisible()) {
-                    emailTF.setStyle("");
-                    contactInfoErrorLabel.setText("");
-                    System.out.println("right");
-                } else {
-                    emailTF.setStyle("-fx-background-color: pink;");
-                    contactInfoErrorLabel.setText("Enter a valid email address");
-                    contactInfoErrorLabel.setVisible(true);
-                    System.out.println("wrong");
-                }
-            });
+//            // Email validation
+//            emailTF.textProperty().addListener((observable, oldValue, newValue) -> {
+//                if (isValidEmailAddress(newValue) || emailTF.isVisible()) {
+//                    emailTF.setStyle("");
+//                    contactInfoErrorLabel.setText("");
+//                    System.out.println("right");
+//                } else {
+//                    emailTF.setStyle("-fx-background-color: pink;");
+//                    contactInfoErrorLabel.setText("Enter a valid email address");
+//                    contactInfoErrorLabel.setVisible(true);
+//                    System.out.println("wrong");
+//                }
+//            });
 
             textFields = List.of(addressTF, cardNumTF, cityTF, cvvTF, emailTF, firstNameTF, lastNameTF, nameOnCardTF, phoneNumTF, zipCodeTF);
         } catch (Exception e) {

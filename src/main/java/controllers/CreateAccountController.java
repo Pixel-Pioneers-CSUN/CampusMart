@@ -1,5 +1,6 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,7 +34,7 @@ public class CreateAccountController {
      * @param event The mouse event triggered if the Sign Up button is clicked.
      */
     @FXML
-    private void clickSignUp(MouseEvent event) {
+    private void clickSignUp(ActionEvent event) {
         if (checkIfTextFieldsEmpty()) {
             signUpErrorLabel.setText("* One or more required fields are empty.");
         } else if (!passwordMeetsCriteria()) {
@@ -42,7 +43,7 @@ public class CreateAccountController {
             signUpErrorLabel.setText("* Entered passwords do not match.");
         } else {
             DatabaseUtility db = new DatabaseUtility();
-            db.createAccount(createAccountName.getText(), createAccountUsername.getText(),createAccountPassword.getText());
+            db.createAccount(event, createAccountName.getText(), createAccountUsername.getText(),createAccountPassword.getText());
         }
     }
 

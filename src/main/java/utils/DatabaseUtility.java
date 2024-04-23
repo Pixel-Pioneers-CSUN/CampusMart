@@ -454,4 +454,37 @@ public class DatabaseUtility {
         this.executeSQLStatement(query);
     }
 
+    public String getLoggedInUserInfo(String loggedInUserName , String targetField){
+        String retrievedData = "";
+        try (Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+             PreparedStatement statement = connection.prepareStatement("SELECT "+ targetField +" FROM " + this.table + " WHERE username = ?")) {
+            statement.setString(1, loggedInUserName);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    retrievedData = resultSet.getString(targetField);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle SQL exception
+        }
+
+        return retrievedData;
+    }
+
+    public int saveProfileInfoToDB(String infoToUpdate , String updatedInfo, String loggedInUserName){
+        int updatedInfoCount=-1;
+        try {
+            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+            PreparedStatement statement = connection.prepareStatement(" UPDATE " + this.table + " SET "
+                    + infoToUpdate + " = ? WHERE username = ?");
+            statement.setString(1, updatedInfo);
+            statement.setString(2, loggedInUserName);
+            updatedInfoCount = statement.executeUpdate();
+
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return updatedInfoCount;
+    }
 }
