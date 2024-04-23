@@ -3,10 +3,12 @@ package items;
 import java.math.BigDecimal;
 
 /**
+ * 3/20/24
+ * Erick Espinoza
  * Represents an item with various attributes such as name, number, price, category, picture, and inventory count.
  * Implements Comparable interface to allow comparison based on item number.
  */
-public class ItemClass implements Comparable<ItemClass>{
+public class ItemClass {
 
     // attributes
     private String itemName;
@@ -102,19 +104,6 @@ public class ItemClass implements Comparable<ItemClass>{
     public void reduceInventoryCount(int count){
         this.inventoryCount = this.inventoryCount - count;
     }
-    /**
-     * Compares this item with another item based on their item numbers.
-     *
-     * @param o The item to be compared.
-     * @return A negative integer, zero, or a positive integer if this item is less than, equal to, or greater than the specified item.
-     */
-    @Override
-    public int compareTo(ItemClass o) {
-        if(this.itemNumber > o.itemNumber) {return 1;}
-        else if(this.itemNumber < o.itemNumber) {return -1;}
-        else {return 0;}
-    }
-
 
     
 }

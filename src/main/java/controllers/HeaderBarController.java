@@ -315,10 +315,11 @@ public class HeaderBarController implements NavigationListener {
         try {
             System.out.println("Cart image clicked!");
             // load the fxml file of the cart screen
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CartScreen.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CartPage.fxml"));
             Parent root = loader.load();
             // get the stage and set it to the new scene
-            Stage stage = (Stage) headerBarCartImage.getScene().getWindow();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

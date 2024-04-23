@@ -4,43 +4,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Fixed item search not showing rest of items in item grid view.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Basic UI for Cart">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_15_2024_6_00_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_15_2024_6_00_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_2024_1_55_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_2024_1_55_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2024_3_07_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2024_11_12_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2024_11_12_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_9_2024_3_19_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HomeScreenController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cart/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CartItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CartItemsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CartPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CartPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderItemController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/items/ItemClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/ItemClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/items/ItemDataStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/ItemDataStructure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/orders/OrderDataStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/orders/OrderDataStructure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/orders/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/orders/Orders.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ImageCarousel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ImageCarousel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/SearchHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/SearchHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderItemController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderPageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/items/DatabaseUtility.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/orders/Orders.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/orders/Orders.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/ImageCarousel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/ImageCarousel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/ItemDisplay.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/ItemDisplay.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/Order.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/Order.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/OrderItems.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/OrderItems.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/OrderPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/OrderPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/checkout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/checkout.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/item.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/item.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,30 +117,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.CampusMart.executor": "Run",
-    "Application.HelloApplication.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Header-Bar-Categories",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "org.rust.first.attach.projects": "true",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CampusMart.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HelloApplication.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Order-History&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/view" />
@@ -187,7 +173,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-322ed176" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="jdk-21.0.2-temurin-21.0.2-4caba194b151-7da56cdf" />
       </set>
     </attachedChunks>
   </component>
@@ -211,6 +198,7 @@
       <workItem from="1713124766101" duration="21935000" />
       <workItem from="1713252627688" duration="52388000" />
       <workItem from="1713570720807" duration="12353000" />
+      <workItem from="1713891382067" duration="6721000" />
     </task>
     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
       <option name="closed" value="true" />
@@ -324,7 +312,31 @@
       <option name="project" value="LOCAL" />
       <updated>1713572935665</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Order page branch">
+      <option name="closed" value="true" />
+      <created>1713811386579</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1713811386579</updated>
+    </task>
+    <task id="LOCAL-00016" summary="added Cart Class with no UI yet.">
+      <option name="closed" value="true" />
+      <created>1713829421055</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1713829421055</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Basic UI for Cart">
+      <option name="closed" value="true" />
+      <created>1713845633899</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1713845633899</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,6 +392,30 @@
     <MESSAGE value="New Sign-In/Create Account popup, updated visuals, cleaned up UI, and refactored code." />
     <MESSAGE value="Fixed popup navigation issue and refactored code. Implemented a carousel on the home screen (still needs work)." />
     <MESSAGE value="Fixed item search not showing rest of items in item grid view." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed item search not showing rest of items in item grid view." />
+    <MESSAGE value="Order page branch" />
+    <MESSAGE value="added Cart Class with no UI yet." />
+    <MESSAGE value="Basic UI for Cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic UI for Cart" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java</url>
+          <line>275</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controllers/CartPageController.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="java.lang.Integer" memberName="value" />
+      </pinned-members>
+    </pin-to-top-manager>
   </component>
 </project>
