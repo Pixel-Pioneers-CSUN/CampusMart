@@ -1,3 +1,4 @@
+
 package controllers;
 
 import items.DatabaseUtility;
@@ -8,19 +9,17 @@ import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import utils.CardHelper;
-
-import javax.swing.*;
 import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * The EditProfileController class controls the user profile editing functionality.
+ */
 public class EditProfileController implements Initializable {
 
     LoginController login = new LoginController();
@@ -48,11 +47,17 @@ public class EditProfileController implements Initializable {
     @FXML
     private Label goBackLabel;
 
-    public  String getEditAddress() {return editAddressTF.getText();}
-    public  String getEditPassword() {return editPasswordTF.getText();}
-    public  String getConfirmPassword() {return confirmPwTF.getText();}
 
-    // method to save changes to the database
+    //Getters
+    public String getEditAddress() {return editAddressTF.getText();}
+    public String getEditPassword() {return editPasswordTF.getText();}
+    public String getConfirmPassword() { return confirmPwTF.getText();}
+
+    /**
+     * Saves changes to the database.
+     *
+     * @param event The event triggering the action
+     */
     @FXML
     void saveChangesToDB(ActionEvent event) {
         int addressUpdated = -1; // Flag for address update
@@ -72,25 +77,32 @@ public class EditProfileController implements Initializable {
         if (addressUpdated != -1 || passwordUpdated != -1) {
             saveConfirmation.setContentText("Saved Successfully");
             saveConfirmation.showAndWait();
-        }
-        else {
+        } else {
             saveConfirmation.setContentText("Something went wrong");
             saveConfirmation.showAndWait();
         }
     }
 
-
-    public boolean validatePassword(){
+    /**
+     * Validates the password.
+     *
+     * @return True if the password is valid, otherwise false
+     */
+    public boolean validatePassword() {
         boolean validPW = false;
-        if (!(editPasswordTF.getText().equals(confirmPwTF.getText()))){
+        if (!(editPasswordTF.getText().equals(confirmPwTF.getText()))) {
             editProfileErrorLabel.setText("Passwords do not match");
-        }
-        else {
+        } else {
             validPW = true;
         }
         return validPW;
     }
-    // method to edit payment information
+
+    /**
+     * Edits payment information.
+     *
+     * @param event The event triggering the action
+     */
     @FXML
     void editPayment(ActionEvent event) {
         try {
@@ -107,19 +119,30 @@ public class EditProfileController implements Initializable {
         }
     }
 
+    /**
+     * Handles going back to the account dashboard.
+     *
+     * @param event The event triggering the action
+     */
     @FXML
     void backToAccount(MouseEvent event) {
         checkIfSafeToGoBack();
     }
 
-    // method to go back to the profile page
+    /**
+     * Handles going back to the edit profile page.
+     *
+     * @param event The event triggering the action
+     */
     @FXML
     void backToEditProfile(ActionEvent event) {
         checkIfSafeToGoBack();
     }
 
-
-    public void checkIfSafeToGoBack(){
+    /**
+     * Checks if the user has typed anything in the textfields and alerts them before going back.
+     */
+    public void checkIfSafeToGoBack() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setContentText("Are you sure you want to go back to the previous window?");
@@ -132,16 +155,18 @@ public class EditProfileController implements Initializable {
         } else {
             alert.showAndWait(); // Otherwise, show confirmation alert
         }
-        // ff user click yes, go back
+        // If user clicks yes, go back
         if (alert.getResult() == yesBtn) {
             goBack();
         }
     }
 
-    // method to navigate back to the previous window
+    /**
+     * Navigates back to the account dashboard window.
+     */
     public void goBack() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountDashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountDashboard.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) cancelBtn.getScene().getWindow();

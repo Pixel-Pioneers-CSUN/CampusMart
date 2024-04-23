@@ -5,12 +5,21 @@ import javafx.scene.control.Label;
 
 import java.time.LocalDate;
 
-public class DateHelper
-{
+/**
+ * The DateHelper class provides utility methods for date operations.
+ */
+public class DateHelper {
 
-    public boolean dateValidation(LocalDate date , Label errorLabel, String errorMessage){
+    /**
+     * Validates a date against the current date.
+     *
+     * @param date         The date to validate
+     * @param errorLabel   The label to display error messages
+     * @param errorMessage The error message to display
+     * @return True if the date is valid, otherwise false
+     */
+    public boolean dateValidation(LocalDate date, Label errorLabel, String errorMessage) {
         LocalDate currentDate = LocalDate.now();
-        //LocalDate selectedDate = datePicker.getValue();
         boolean isValid = false;
 
         if (date != null && date.isAfter(currentDate)) {
@@ -20,7 +29,6 @@ public class DateHelper
             errorLabel.setText(errorMessage);
             errorLabel.setVisible(true);
         }
-        return  isValid;
+        return isValid;
     }
-
 }

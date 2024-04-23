@@ -1,4 +1,5 @@
 package utils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.UnaryOperator;
@@ -8,33 +9,49 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 
+/**
+ * The textFieldHelper class provides utility methods for handling text fields.
+ */
 public class textFieldHelper {
     public boolean isEmpty;
 
-
-    public textFieldHelper(){
+    /**
+     * Initializes the textFieldHelper.
+     */
+    public textFieldHelper() {
         isEmpty = false;
     }
 
-    //Checks if list of text fields are empty
-    public List<TextField>  checkEmptyTextFields(List<TextField> tfList){
+    /**
+     * Checks if a list of text fields are empty.
+     *
+     * @param tfList The list of text fields to check
+     * @return A list of empty text fields
+     */
+    public List<TextField> checkEmptyTextFields(List<TextField> tfList) {
         List<TextField> emptyFields = new ArrayList<>();
         for (TextField textField : tfList) {
             if (textField.getText().isEmpty()) {
                 isEmpty = true;
                 emptyFields.add(textField);
-            }
-            else {
-                isEmpty = false; 
+            } else {
+                isEmpty = false;
                 emptyFields.remove(textField); // remove textfield if not empty anymore
             }
-            
-
         }
         return emptyFields;
     }
 
-    public UnaryOperator<TextFormatter.Change> textFilter (TextField textfield,  Label errorLabel, String regex, String errorMessage) {
+    /**
+     * Provides a text filter for text fields.
+     *
+     * @param textfield    The text field to apply the filter to
+     * @param errorLabel   The label to display error messages
+     * @param regex        The regular expression pattern to match
+     * @param errorMessage The error message to display
+     * @return The text filter
+     */
+    public UnaryOperator<TextFormatter.Change> textFilter(TextField textfield, Label errorLabel, String regex, String errorMessage) {
         return change -> {
             String newText = change.getControlNewText();
             if (newText.matches(regex) || newText.isEmpty()) {
@@ -50,5 +67,3 @@ public class textFieldHelper {
         };
     }
 }
-
-    

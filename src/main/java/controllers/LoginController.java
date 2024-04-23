@@ -1,4 +1,5 @@
 package controllers;
+
 import items.DatabaseUtility;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * The LoginController class controls the login functionality of the application.
+ */
 public class LoginController implements Initializable {
 
     @FXML
@@ -33,29 +37,41 @@ public class LoginController implements Initializable {
     @FXML
     private TextField usernameTF;
 
-    public String getPassword(){
-        return  passwordTF.getText();
-    }
-
-    public String getUsername(){
-        return  usernameTF.getText();
-    }
+    //Getters
+    public String getPassword() {return passwordTF.getText();}
+    public String getUsername() {return usernameTF.getText();}
+    public String getLoggedInUsername() {return loggedInUsername;}
 
     List<TextField> textFields = new ArrayList<>();
     List<TextField> emptyFields = new ArrayList<>();
     utils.textFieldHelper textFieldHelper = new textFieldHelper();
     boolean isLoggedIn = false;
     String loggedInUsername;
-    public String getLoggedInUsername() {
-        return loggedInUsername;
-    }
+
+    /**
+     * Switches to the sign-up page.
+     *
+     * @param event The event triggering the action
+     */
     @FXML
     void switchToSignUp(MouseEvent event) {
-        try{ FXMLLoader loader = new FXMLLoader(getClass().getResource("signup.fxml"));
-         Parent root = loader.load(); Scene scene = new Scene(root); Stage stage =
-         (Stage) SignUpLabel.getScene().getWindow(); stage.setScene(scene);
-         stage.show(); } catch (IOException e) { e.printStackTrace(); }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("signup.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) SignUpLabel.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+
+    /**
+     * Handles the login button click event.
+     *
+     * @param event The event triggering the action
+     */
     @FXML
     void LoginClicked(ActionEvent event) {
         for (TextField textField : textFields) {
@@ -68,12 +84,14 @@ public class LoginController implements Initializable {
                 textField.setStyle("-fx-background-color: pink;");
                 LoginErrorLabel.setText("Fill Empty Fields");
             }
-        }
-        else {
+        } else {
             validateLogin();
         }
     }
 
+    /**
+     * Switches to the home screen when the user successfully logs in.
+     */
     void switchToHomescreen() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("homescreen.fxml"));
@@ -84,10 +102,12 @@ public class LoginController implements Initializable {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 
+    /**
+     * Validates the login credentials.
+     */
     void validateLogin() {
         DatabaseUtility database = new DatabaseUtility();
         database.setQuery("SELECT * FROM users WHERE username = ?");
@@ -104,22 +124,17 @@ public class LoginController implements Initializable {
                     LoginErrorLabel.setText("Invalid Password");
                     return;
                 }
-                    loggedInUsername = resultSet.getString("username");
-                    isLoggedIn = true;
-                    switchToHomescreen();
-                }
+                loggedInUsername = resultSet.getString("username");
+                isLoggedIn = true;
+                switchToHomescreen();
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-        @Override
-        public void initialize(URL location, ResourceBundle resources) {
-            textFields = List.of(usernameTF, passwordTF);
-
-
-
-
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        textFields = List.of(usernameTF, passwordTF);
     }
-
 }

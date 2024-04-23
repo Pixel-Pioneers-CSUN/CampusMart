@@ -1,8 +1,18 @@
 package utils;
 
+/**
+ * The CardHelper class provides methods for handling card numbers.
+ */
 public class CardHelper {
+
+    /**
+     * Hides all characters except the last 4 digits of the card number.
+     *
+     * @param number The card number
+     * @return The hidden card number
+     */
     public static String hideNumbers(String number) {
-        // Check if card num is null or empty
+        // Check if card number is null or empty
         if (number == null || number.isEmpty()) {
             return "";
         }

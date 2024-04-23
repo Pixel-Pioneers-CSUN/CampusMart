@@ -21,9 +21,24 @@
     -fx-font-weight: bold; 
 }
 
+#payButton:hover {
+    -fx-background-color: #951616;
+    -fx-cursor: hand;
+}
+#payButton:pressed {
+    -fx-background-color: #7c0b0b;
+}
+
 #backToCartLabel {
-    -fx-text-fill: #C13538; 
+    -fx-text-fill: #C13538;
+}
+
+#backToCartLabel:hover {
+    -fx-text-fill: #951616;
     -fx-cursor: hand; /* Change cursor on hover */
+}
+#backToCartLabel:pressed {
+    -fx-text-fill: #7c0b0b;
 }
 
 #creditCardInfoPane {
