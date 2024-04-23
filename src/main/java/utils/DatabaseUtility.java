@@ -368,7 +368,7 @@ public class DatabaseUtility {
                     String date = resultSet.getString("orderDate");
 
                     BigDecimal totalPrice = resultSet.getBigDecimal("orderTotal");
-                    Orders newEntry = new Orders(orderID,customerID,date,totalPrice,map);
+                    Orders newEntry = new Orders(orderID,customerID, date ,totalPrice,map);
                     orderList.add(newEntry);
                 }
 

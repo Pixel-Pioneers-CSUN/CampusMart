@@ -8,10 +8,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import items.*;
-import utils.DatabaseUtility;
+import utils.*;
 
 import java.io.IOException;
-import java.util.HashMap;
+
 
 public class CampusMart extends Application {
 
@@ -24,13 +24,6 @@ public class CampusMart extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-
-
-
-
-
-
-
         //==============
         // start of app pull data and then make a data structure
         DatabaseUtility bd = new DatabaseUtility();
@@ -40,19 +33,21 @@ public class CampusMart extends Application {
         ItemDataStructure data = ItemDataStructure.getInstance();
         data.setItemDataStructure(bd.createHashMapItemClass());
 
-        /***
+        /*
          * test for cart object
+         * Using Singleton Obj of cart
          */
-        Cart cart = new Cart();
+        Cart cart = Cart.getInstance();
+        cart.createCart();
         cart.addToCart(1,4);
         cart.addToCart(4,7);
         cart.addToCart(23,5);
         cart.addToCart(34,2);
         cart.addToCart(2,1);
-        System.out.println("Cart object test add to cart:\n" + cart.toString());
+        System.out.println("Cart object test add to cart:\n" + cart);
 
         cart.removeFromCart(23);
-        System.out.println("Cart object test remove from cart:\n" + cart.toString());
+        System.out.println("Cart object test remove from cart:\n" + cart);
         System.out.println("End of test");
 
         // load the HeaderBar.fxml file and set is as the headerBar

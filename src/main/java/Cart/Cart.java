@@ -9,19 +9,17 @@ import java.util.Map;
 
 public class Cart {
 
+    private static Cart cart = new Cart();
     BigDecimal subtotal;
     HashMap<Integer, Integer> cartItems;
 
-    // default constructor
-    public Cart() {
-        subtotal = new BigDecimal(0);
-        cartItems = new HashMap<>();
+    public static Cart getInstance() {
+        return cart;
     }
 
-    // constructor with parameters
-    public Cart(BigDecimal subtotal, HashMap<Integer, Integer> cartItems) {
-        this.subtotal = subtotal;
-        this.cartItems = cartItems;
+    public void createCart() {
+        this.subtotal = new BigDecimal(0);
+        this.cartItems = new HashMap<>();
     }
 
     // getters
@@ -41,18 +39,15 @@ public class Cart {
     public void setCartItems(HashMap<Integer, Integer> cartItems) {
         this.cartItems = cartItems;
     }
-
-
     // adds to cart by taking item number and quantity
     // and places into a cartItems hashmap
     public void addToCart(int itemNumber, int quantity) {
         cartItems.put(itemNumber, quantity);
         updateSubtotal();
-
     }
     // removes from the hashmap
-    public void removeFromCart(int itemNunber) {
-        cartItems.remove(itemNunber);
+    public void removeFromCart(int itemNumber) {
+        cartItems.remove(itemNumber);
         updateSubtotal();
     }
 
