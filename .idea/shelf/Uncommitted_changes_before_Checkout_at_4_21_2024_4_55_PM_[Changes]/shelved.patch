@@ -1,0 +1,77 @@
+Index: src/main/java/org/example/campusmart/App.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package org.example.campusmart;\r\nimport javafx.application.Application;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\n \r\npublic class App extends Application {\r\n       \r\n    @Override\r\n    public void start(Stage primaryStage) throws Exception{\r\n        try {\r\n            Parent root = FXMLLoader.load(getClass().getResource(\"/view/checkout.fxml\"));\r\n            \r\n            Scene scene = new Scene(root, 1300, 800);\r\n            primaryStage.setResizable(false);\r\n            primaryStage.setScene(scene);\r\n            \r\n            primaryStage.show();\r\n            \r\n        } catch (Exception e) {\r\n            \r\n            e.printStackTrace();\r\n        }\r\n     \r\n    }\r\n \r\n public static void main(String[] args) {\r\n        \r\n\r\n        launch(args);\r\n    }\r\n} \r\n\r\n\r\n
+===================================================================
+diff --git a/src/main/java/org/example/campusmart/App.java b/src/main/java/org/example/campusmart/App.java
+--- a/src/main/java/org/example/campusmart/App.java	
++++ b/src/main/java/org/example/campusmart/App.java	
+@@ -10,7 +10,7 @@
+     @Override
+     public void start(Stage primaryStage) throws Exception{
+         try {
+-            Parent root = FXMLLoader.load(getClass().getResource("/view/checkout.fxml"));
++            Parent root = FXMLLoader.load(getClass().getResource("/view/EditProfile.fxml"));
+             
+             Scene scene = new Scene(root, 1300, 800);
+             primaryStage.setResizable(false);
+Index: src/main/java/controllers/EditProfileController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controllers;\r\n\r\nimport items.DatabaseUtility;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.control.*;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.layout.VBox;\r\nimport javafx.stage.Modality;\r\nimport javafx.stage.Popup;\r\nimport javafx.stage.Stage;\r\nimport javafx.stage.StageStyle;\r\nimport utils.CardHelper;\r\n\r\nimport javax.swing.*;\r\nimport java.io.IOException;\r\nimport java.net.URL;\r\nimport java.util.ResourceBundle;\r\n\r\npublic class EditProfileController implements Initializable {\r\n\r\n    LoginController login = new LoginController();\r\n    DatabaseUtility db = new DatabaseUtility();\r\n\r\n    // FXML elements\r\n    @FXML\r\n    private TextField editAddressTF; // Text field for editing address\r\n\r\n    @FXML\r\n    private PasswordField editPasswordTF; // Password field for editing password\r\n\r\n    @FXML\r\n    private Label cardEndingLabel; // Label showing last four digits of card number\r\n\r\n    @FXML\r\n    private PasswordField confirmPwTF; // Password field for confirming password changes\r\n\r\n    @FXML\r\n    private Button cancelBtn; // Button for canceling changes\r\n\r\n    public  String getEditAddress() {return editAddressTF.getText();}\r\n    public  String getEditPassword() {return editPasswordTF.getText();}\r\n    public  String getConfirmPassword() {return confirmPwTF.getText();}\r\n\r\n    // method to save changes to the database\r\n    @FXML\r\n    void saveChangesToDB(ActionEvent event) {\r\n        int addressUpdated = -1; // Flag for address update\r\n        int passwordUpdated = -1; // Flag for password update\r\n\r\n        // Check if address is provided and update the database\r\n        if (!editAddressTF.getText().isEmpty()) {\r\n            addressUpdated = db.saveProfileInfoToDB(\"address\", editAddressTF.getText(), login.loggedInUsername);\r\n        }\r\n\r\n        // Check if password is provided and update the database\r\n        if (!editPasswordTF.getText().isEmpty()) {\r\n            passwordUpdated = db.saveProfileInfoToDB(\"password\", editPasswordTF.getText(), login.loggedInUsername);\r\n        }\r\n\r\n        // Show confirmation message if any update was successful\r\n        Alert saveConfirmation = new Alert(Alert.AlertType.INFORMATION);\r\n        if (addressUpdated != -1 || passwordUpdated != -1) {\r\n            saveConfirmation.setContentText(\"Saved Successfully\");\r\n            saveConfirmation.showAndWait();\r\n        }\r\n    }\r\n\r\n    // method to edit payment information\r\n    @FXML\r\n    void editPayment(ActionEvent event) {\r\n        try {\r\n            FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/view/EditPayment.fxml\"));\r\n            Parent root = loader.load();\r\n            Scene scene = new Scene(root);\r\n            Stage stage = new Stage();\r\n            stage.initModality(Modality.APPLICATION_MODAL);\r\n            stage.setScene(scene);\r\n            stage.setTitle(\"Edit Payment Information\");\r\n            stage.show();\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    // method to go back to the profile page\r\n    @FXML\r\n    void backToEditProfile(ActionEvent event) {\r\n        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);\r\n        alert.setTitle(\"Confirmation\");\r\n        alert.setContentText(\"Are you sure you want to go back to the previous window?\");\r\n        ButtonType yesBtn = new ButtonType(\"Yes\", ButtonBar.ButtonData.YES);\r\n        ButtonType noBtn = new ButtonType(\"No\", ButtonBar.ButtonData.NO);\r\n        alert.getButtonTypes().setAll(yesBtn, noBtn);\r\n\r\n        // If fields are empty, go back directly\r\n        if (getEditAddress().isEmpty() && getEditPassword().isEmpty() && getConfirmPassword().isEmpty()) {\r\n            goBack();\r\n        } else {\r\n            alert.showAndWait(); // Otherwise, show confirmation alert\r\n        }\r\n\r\n        // ff user click yes, go back\r\n        if (alert.getResult() == yesBtn) {\r\n            goBack();\r\n        }\r\n    }\r\n\r\n    // method to navigate back to the previous window\r\n    public void goBack() {\r\n        try {\r\n            FXMLLoader loader = new FXMLLoader(getClass().getResource(\"account.fxml\"));\r\n            Parent root = loader.load();\r\n            Scene scene = new Scene(root);\r\n            Stage stage = (Stage) cancelBtn.getScene().getWindow();\r\n            stage.setScene(scene);\r\n            stage.show();\r\n        } catch (IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void initialize(URL url, ResourceBundle resourceBundle) {\r\n        // show original address so user can edit it\r\n        if (login.isLoggedIn) {\r\n            db.setTable(\"users\");\r\n            editAddressTF.setText(db.getLoggedInUserInfo(login.getLoggedInUsername(), \"address\"));\r\n            String cardnum = db.getLoggedInUserInfo(login.getLoggedInUsername(), \"cardNumber\");\r\n            String hiddenNumber = CardHelper.hideNumbers(cardnum);\r\n            cardEndingLabel.setText(hiddenNumber);\r\n            cardEndingLabel.setVisible(true);\r\n        }\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/controllers/EditProfileController.java b/src/main/java/controllers/EditProfileController.java
+--- a/src/main/java/controllers/EditProfileController.java	
++++ b/src/main/java/controllers/EditProfileController.java	
+@@ -112,7 +112,7 @@
+     // method to navigate back to the previous window
+     public void goBack() {
+         try {
+-            FXMLLoader loader = new FXMLLoader(getClass().getResource("account.fxml"));
++            FXMLLoader loader = new FXMLLoader(getClass().getResource("AccountDashboard.fxml"));
+             Parent root = loader.load();
+             Scene scene = new Scene(root);
+             Stage stage = (Stage) cancelBtn.getScene().getWindow();
+@@ -129,10 +129,12 @@
+         if (login.isLoggedIn) {
+             db.setTable("users");
+             editAddressTF.setText(db.getLoggedInUserInfo(login.getLoggedInUsername(), "address"));
+-            String cardnum = db.getLoggedInUserInfo(login.getLoggedInUsername(), "cardNumber");
++            String cardnum = db.getLoggedInUserInfo(login.getLoggedInUsername(), "cardNumber"); // change cardNumber placeholder
+             String hiddenNumber = CardHelper.hideNumbers(cardnum);
+             cardEndingLabel.setText(hiddenNumber);
+             cardEndingLabel.setVisible(true);
+         }
+     }
+ }
++
++
+Index: src/main/java/controllers/EditPaymentController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package controllers;\r\n\r\nimport items.DatabaseUtility;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.Initializable;\r\nimport javafx.scene.control.*;\r\nimport javafx.stage.Stage;\r\nimport utils.DateHelper;\r\nimport utils.textFieldHelper;\r\n\r\nimport java.net.URL;\r\nimport java.time.LocalDate;\r\nimport java.time.format.DateTimeFormatter;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.ResourceBundle;\r\n\r\npublic class EditPaymentController implements Initializable {\r\n\r\n    @FXML\r\n    private Button cancelEditBtn;\r\n\r\n    @FXML\r\n    private Label editPaymentErrorLabel;\r\n\r\n\r\n    @FXML\r\n    private TextField editPaymentCVV;\r\n\r\n    @FXML\r\n    private TextField editPaymentCardNum;\r\n\r\n    @FXML\r\n    private TextField editPaymentNameOnCard;\r\n\r\n    @FXML\r\n    private DatePicker editPaymentValidThrough;\r\n\r\n    @FXML\r\n    private Button saveEditBtn;\r\n\r\n    public String getEditPaymentCVV() {return editPaymentCVV.getText();}\r\n    public LocalDate getEditPaymentValidThrough () {return editPaymentValidThrough.getValue();}\r\n    public String getEditPaymentCardNum() {return editPaymentCardNum.getText();}\r\n    public String getEditPaymentNameOnCard() {return editPaymentNameOnCard.getText();}\r\n    LoginController login = new LoginController();\r\n    String formattedDate;\r\n\r\n\r\n\r\n    utils.textFieldHelper textFieldHelper = new textFieldHelper();\r\n    List<TextField> textFields = new ArrayList<>();\r\n    List<TextField> emptyFields = new ArrayList<>();\r\n    DateHelper dateHelper = new DateHelper();\r\n    DatabaseUtility db = new DatabaseUtility();\r\n\r\n    @FXML\r\n    void cancelEdit(ActionEvent event) {\r\n        Stage stage = (Stage) cancelEditBtn.getScene().getWindow();\r\n        stage.close();\r\n    }\r\n\r\n    @FXML\r\n    void saveEdit(ActionEvent event) {\r\n\r\n        boolean dateValidation = dateHelper.dateValidation(getEditPaymentValidThrough(), editPaymentErrorLabel, \"Invalid Date\");\r\n        // Check if user entered all info\r\n        formattedDate = getEditPaymentValidThrough().format(DateTimeFormatter.ofPattern(\"MM/dd/yyyy\"));\r\n        emptyFields = textFieldHelper.checkEmptyTextFields(textFields);\r\n        Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);\r\n        if (!textFieldHelper.isEmpty && dateValidation) {\r\n            //saves payment to database\r\n            db.saveProfileInfoToDB(\"name on card\", getEditPaymentNameOnCard(), login.getLoggedInUsername());\r\n            db.saveProfileInfoToDB(\"card number\", getEditPaymentCardNum(), login.getLoggedInUsername());\r\n            db.saveProfileInfoToDB(\"cvv\", getEditPaymentCVV(), login.getLoggedInUsername());\r\n            db.saveProfileInfoToDB(\"date\", formattedDate, login.getLoggedInUsername());\r\n\r\n        }\r\n        else {\r\n                Alert errorAlert = new Alert(Alert.AlertType.ERROR);\r\n                errorAlert.setTitle(\"Error\");\r\n                errorAlert.setHeaderText(\"Empty Fields\");\r\n                errorAlert.setContentText(\"Please Fill All Fields \");\r\n                errorAlert.show();\r\n                for (TextField textField : emptyFields) {\r\n                    textField.setStyle(\"-fx-background-color: pink;\");\r\n                }\r\n            }\r\n        }\r\n\r\n    @Override\r\n    public void initialize(URL location, ResourceBundle resources) {\r\n        try {\r\n            // Set filters for text fields during initialization\r\n            editPaymentCardNum.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter\r\n                    (editPaymentCardNum, editPaymentErrorLabel, \"\\\\d{0,16}\", \"Enter a valid card number\")));\r\n            editPaymentNameOnCard.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(\r\n                    editPaymentNameOnCard, editPaymentErrorLabel, \"^[a-zA-Z ]*$\", \"Enter a valid name for card\")));\r\n            editPaymentCVV.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(\r\n                    editPaymentCVV, editPaymentErrorLabel, \"\\\\d{0,3}\", \"Enter a valid CVV\")));\r\n\r\n            textFields = List.of(editPaymentCardNum, editPaymentNameOnCard, editPaymentCVV);\r\n\r\n        } catch (Exception e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        }\r\n    }\r\n\r\n\r\n
+===================================================================
+diff --git a/src/main/java/controllers/EditPaymentController.java b/src/main/java/controllers/EditPaymentController.java
+--- a/src/main/java/controllers/EditPaymentController.java	
++++ b/src/main/java/controllers/EditPaymentController.java	
+@@ -71,10 +71,10 @@
+         Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
+         if (!textFieldHelper.isEmpty && dateValidation) {
+             //saves payment to database
+-            db.saveProfileInfoToDB("name on card", getEditPaymentNameOnCard(), login.getLoggedInUsername());
++            db.saveProfileInfoToDB("paymentName", getEditPaymentNameOnCard(), login.getLoggedInUsername());
+             db.saveProfileInfoToDB("card number", getEditPaymentCardNum(), login.getLoggedInUsername());
+-            db.saveProfileInfoToDB("cvv", getEditPaymentCVV(), login.getLoggedInUsername());
+-            db.saveProfileInfoToDB("date", formattedDate, login.getLoggedInUsername());
++            db.saveProfileInfoToDB("paymentCVV", getEditPaymentCVV(), login.getLoggedInUsername());
++            db.saveProfileInfoToDB("paymentExpiration", formattedDate, login.getLoggedInUsername());
+ 
+         }
+         else {
+@@ -110,3 +110,5 @@
+     }
+ 
+ 
++//paymentcvv is string
++//fix email
+\ No newline at end of file

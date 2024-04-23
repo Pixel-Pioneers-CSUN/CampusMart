@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditProfileController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../css/edit-profile-styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditProfileController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Label prefHeight="31.0" prefWidth="120.0" text="&lt; Account Settings">
+            <Label fx:id="goBackLabel" onMouseClicked="#backToAccount" prefHeight="37.0" prefWidth="187.0" text="&lt; Account Settings">
                <font>
-                  <Font name="System Bold" size="11.0" />
+                  <Font name="System Bold" size="12.0" />
                </font>
             </Label>
             <Label prefHeight="53.0" prefWidth="969.0" text="Edit Profile">
@@ -43,7 +43,7 @@
                      <font>
                         <Font size="16.0" />
                      </font></Label>
-                  <TextField fx:id="editAddressTF" prefHeight="36.0" prefWidth="361.0" />
+                  <TextField fx:id="editAddressTF" prefHeight="33.0" prefWidth="363.0" />
                </children>
                <VBox.margin>
                   <Insets left="70.0" />
@@ -55,7 +55,7 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <PasswordField fx:id="editPasswordTF" prefHeight="36.0" prefWidth="329.0" />
+                  <PasswordField fx:id="editPasswordTF" prefHeight="34.0" prefWidth="329.0" />
                </children>
                <VBox.margin>
                   <Insets left="70.0" />
@@ -73,6 +73,7 @@
                   <Insets left="70.0" />
                </VBox.margin>
             </HBox>
+            <Label fx:id="editProfileErrorLabel" prefHeight="19.0" prefWidth="541.0" text="Error" />
          </children>
          <padding>
             <Insets left="30.0" />
@@ -124,7 +125,7 @@
                   <Insets left="100.0" top="20.0" />
                </VBox.margin>
             </HBox>
-            <ImageView fitHeight="145.0" fitWidth="184.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="187.0" fitWidth="315.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/card_icon.png" />
                </image>
@@ -132,7 +133,7 @@
                   <Insets left="100.0" />
                </VBox.margin>
             </ImageView>
-            <Button mnemonicParsing="false" onAction="#editPayment" prefHeight="49.0" prefWidth="133.0" text="Edit Payment">
+            <Button fx:id="editPaymentBtn" mnemonicParsing="false" onAction="#editPayment" prefHeight="49.0" prefWidth="133.0" text="Edit Payment">
                <VBox.margin>
                   <Insets left="110.0" top="20.0" />
                </VBox.margin>
@@ -142,7 +143,7 @@
    </right>
    <bottom>
       <HBox prefHeight="112.0" prefWidth="1300.0" spacing="40.0" BorderPane.alignment="CENTER">
-         <Button mnemonicParsing="false" onAction="#saveChangesToDB" prefHeight="41.0" prefWidth="144.0" text="Save Changes">
+         <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveChangesToDB" prefHeight="41.0" prefWidth="144.0" text="Save Changes">
             <HBox.margin>
                <Insets left="500.0" />
             </HBox.margin>
