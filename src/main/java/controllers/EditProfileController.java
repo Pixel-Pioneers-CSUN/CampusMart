@@ -1,6 +1,5 @@
 package controllers;
 
-import items.DatabaseUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +13,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import utils.CardHelper;
+import utils.*;
 
 import javax.swing.*;
 import java.io.IOException;

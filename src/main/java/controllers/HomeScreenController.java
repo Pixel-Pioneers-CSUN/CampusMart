@@ -18,25 +18,18 @@ public class HomeScreenController {
 
     @FXML
     private Button shopNowButton;
-
     @FXML
     private VBox vboxHotFood;
-
     @FXML
     private VBox vboxColdFood;
-
     @FXML
     private VBox vboxSnacks;
-
     @FXML
     private VBox vboxFruits;
-
     @FXML
     private VBox vboxDrinks;
-
     @FXML
     private VBox vboxCoffee;
-
     @FXML
     private HBox itemCarouselContainer;
 
@@ -69,7 +62,6 @@ public class HomeScreenController {
                 e.printStackTrace();
             }
     }
-
 
     @FXML
     private void clickHotFoods(MouseEvent event) {

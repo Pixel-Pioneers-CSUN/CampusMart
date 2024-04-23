@@ -264,14 +264,22 @@ public class DatabaseUtility {
 //        stage.show();
 //    }
 
-    public static void createAccount(String name, String username, String password) {
+    /**
+     * Creates a new account in the database.
+     *
+     * @param name     The name of the user.
+     * @param username The username of the user.
+     * @param password The password of the user.
+     */
+    public void createAccount(String name, String username, String password) {
         Connection connection = null;   // connection to the database
         PreparedStatement psInsert = null;  // used to query the database - inserts valid user data into database
         PreparedStatement psCheckIfUserExists = null;   // used to query the database - checks if user already exits
         ResultSet resultSet = null; // contains the data returned from our database when we query it
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://cp01-wa.privatesystems.net/users", "driftmer_pixelpioneer", "COMP380Group");
+            //connection = DriverManager.getConnection("jdbc:mysql://cp01-wa.privatesystems.net/users", "driftmer_pixelpioneer", "COMP380Group");
+            connection = getConnection();
             psCheckIfUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");    // check database if username already exists
             psCheckIfUserExists.setString(1, username);
             resultSet = psCheckIfUserExists.executeQuery();
@@ -283,7 +291,7 @@ public class DatabaseUtility {
                 alert.setContentText("Username is not available.");
                 alert.show();
             } else {
-                psInsert = connection.prepareStatement("INSERT INTO users (name, username, password VALUES (?, ?, ?))");
+                psInsert = connection.prepareStatement("INSERT INTO users (name, username, password) VALUES (?, ?, ?)");
                 psInsert.setString(1, name);
                 psInsert.setString(2, username);
                 psInsert.setString(3, password);
@@ -462,6 +470,38 @@ public List<Orders> createOrderList(int customerID) {
         this.executeSQLStatement(query);
     }
 
+    public String getLoggedInUserInfo(String loggedInUserName , String targetField){
+        String retrievedData = "";
+        try (Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+             PreparedStatement statement = connection.prepareStatement("SELECT "+ targetField +" FROM " + this.table + " WHERE username = ?")) {
+            statement.setString(1, loggedInUserName);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    retrievedData = resultSet.getString(targetField);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle SQL exception
+        }
 
+        return retrievedData;
+    }
+
+    public int saveProfileInfoToDB(String infoToUpdate , String updatedInfo, String loggedInUserName){
+        int updatedInfoCount=-1;
+        try {
+            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
+            PreparedStatement statement = connection.prepareStatement(" UPDATE " + this.table + " SET "
+                    + infoToUpdate + " = ? WHERE username = ?");
+            statement.setString(1, updatedInfo);
+            statement.setString(2, loggedInUserName);
+            updatedInfoCount = statement.executeUpdate();
+
+        }
+        catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return updatedInfoCount;
+    }
 
 }

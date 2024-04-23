@@ -11,13 +11,21 @@ import javafx.util.Duration;
 
 import java.io.InputStream;
 
-
+/**
+ * Image Carousel class that displays a slideshow of images with animations.
+ * Images are loaded from the resources folder and displayed in a horizontal layout.
+ */
 public class ImageCarousel extends HBox {
     private ImageView[] imageViews;
     private int currentIndex = 0;
 
     // constructor for the ImageCarousel class to set num items to show
-    // doing it this way because direct image paths throwing null exceptions for some reason
+    // doing it this way because direct image paths throws null exceptions for some reason
+    /**
+     * Constructs an ImageCarousel with the specified number of items to show.
+     *
+     * @param numItemsToShow The number of items to show in the carousel at a given time.
+     */
     public ImageCarousel(int numItemsToShow) {
         // load the images
         Image[] images = {
@@ -52,6 +60,13 @@ public class ImageCarousel extends HBox {
         showImages(currentIndex, numItemsToShow);
     }
 
+    /**
+     * Loads an image from the resources folder.
+     *
+     * @param fileName The name of the image to load.
+     * @return The loaded Image object.
+     * @throws IllegalArgumentException If the image file isn't found.
+     */
     private Image loadImage(String fileName) {
         InputStream inputStream = getClass().getResourceAsStream("/images/" + fileName);
         if (inputStream != null) {
@@ -61,6 +76,12 @@ public class ImageCarousel extends HBox {
         }
     }
 
+    /**
+     * Shows the images in the carousel.
+     *
+     * @param startingIndex   The index to start displaying images.
+     * @param numItemsToShow  The number of items to show in the carousel at a given time.
+     */
     private void showImages(int startingIndex, int numItemsToShow) {
         // Calculate the distance to slide for each image
         double slideDistance = getWidth() / numItemsToShow;
@@ -77,6 +98,12 @@ public class ImageCarousel extends HBox {
         }
     }
 
+    /**
+     * Animates the images in a sliding motion
+     *
+     * @param imageView The ImageView that will slide.
+     * @param targetX   The target X position to slide the image to.
+     */
     private void slideImage(ImageView imageView, double targetX) {
         // Calculate the current X position of the image
         double currentX = imageView.getTranslateX();

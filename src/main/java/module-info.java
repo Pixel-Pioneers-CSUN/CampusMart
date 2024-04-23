@@ -9,6 +9,7 @@ module org.example.campusmart {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires mysql.connector.j;
+    requires java.desktop;
 
     opens org.example.campusmart to javafx.fxml;
     opens controllers to javafx.fxml;   // had to open up controllers to JavafX since it couldn't access the HomeScreenController

@@ -21,7 +21,7 @@ public class CampusMart extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        //==============
+
         // start of app pull data and then make a data structure
         DatabaseUtility bd = new DatabaseUtility();
         bd.setTable("Item_Database");
@@ -39,9 +39,9 @@ public class CampusMart extends Application {
         headerController.setMainStage(primaryStage);
 
         // load the HomeScreen.fxml file
-        //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
+        FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
         //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/OrderPage.fxml"));
-        FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/AccountDashboard.fxml"));
+        //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/AccountDashboard.fxml"));
         //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
 
         Parent homeRoot = homeLoader.load();

@@ -22,91 +22,31 @@ import utils.SearchHelper;
 import java.io.IOException;
 import java.util.*;
 
-
+/**
+ * Controller class for the header bar, it's UI elements, and their functionalities.
+ */
 public class HeaderBarController implements NavigationListener {
-    public StackPane headerBar;
-    private Stage mainStage;
-    private Scene scene;
 
-    // creating a Popup for displaying search results
-    private Popup searchPopup = new Popup();
-
-    // creating a Popup for sign-in/create account options when clicking account icon
-    private Popup accountPopup;
-
-    // creating a ListView for search results
     private ListView<String> searchResultsListView = new ListView<>();
-
     @FXML
     private ImageView headerBarLogoImage;
-
     @FXML
     private TextField headerBarSearchBar;
-
     @FXML
     private ImageView headerBarCartImage;
-
     @FXML
     private ImageView headerBarAccountImage;
-
     @FXML
     private ComboBox<String> headerBarCategoryDropdown;
 
-    @Override
-    public void navigateToCreateAccount() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAccount.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void navigateToSignIn() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void navigateToAccountDashboard() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountDashboard.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void navigateToLogin() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+    public StackPane headerBar;
+    private Stage mainStage;
+    private Scene scene;
+    // creating a Popup for displaying search results
+    private Popup searchPopup = new Popup();
+    // creating a Popup for sign-in/create account options when clicking account icon
+    private Popup accountPopup;
+    // creating a ListView for search results
 
     @FXML
     public void initialize() {
@@ -135,6 +75,62 @@ public class HeaderBarController implements NavigationListener {
 
     }
 
+    /**
+     * Navigates the user to the Create Account screen.
+     */
+    @Override
+    public void navigateToCreateAccount() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAccount.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Navigates the user to the Account Dashboard screen.
+     */
+    @Override
+    public void navigateToAccountDashboard() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AccountDashboard.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Navigates the user to the Login screen.
+     */
+    @Override
+    public void navigateToLogin() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Sets the stage of the current window to main stage.
+     * Note: This function is needed to allow navigating the user to new scenes from popups
+     * @param mainStage The main stage of the application.
+     */
     public void setMainStage(Stage mainStage) {
         this.mainStage = mainStage;
     }
@@ -147,6 +143,9 @@ public class HeaderBarController implements NavigationListener {
         headerBarCategoryDropdown.getItems().addAll(categories);
     }
 
+    /**
+     * Handles category selection and navigation for the ComboBox dropdown menu
+     */
     private void setupCategorySelectionHandler() {
         headerBarCategoryDropdown.setOnAction(event -> {
             // store the selected category name into selectedCategory
@@ -174,6 +173,9 @@ public class HeaderBarController implements NavigationListener {
         });
     }
 
+    /**
+     * Performs an item search based on the entered search term and navigates the user to the respective item page after click event.
+     */
     @FXML
     private void searchItems() {
         String searchTerm = headerBarSearchBar.getText();
@@ -210,7 +212,11 @@ public class HeaderBarController implements NavigationListener {
         }
     }
 
-    // loads the sign-in / create account popup
+    /**
+     * Loads the sign-in/create account popup.
+     *
+     * @param mainStage The main stage of the application.
+     */
     private void loadAccountPopup(Stage mainStage) {
         this.mainStage = mainStage;
         accountPopup = new Popup();
@@ -227,7 +233,11 @@ public class HeaderBarController implements NavigationListener {
         accountPopup.setAutoHide(true);
     }
 
-    // load the item's page if a search result is clicked on
+    /**
+     * Loads the respective item page when an item's name in the search results is clicked on.
+     *
+     * @param item The clicked item in the search results.
+     */
     private void loadItemPage(ItemClass item) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ItemDisplay.fxml"));
@@ -249,7 +259,9 @@ public class HeaderBarController implements NavigationListener {
         }
     }
 
-    //position the search popup below the search bar
+    /**
+     * Positions the search results popup correctly below the search bar.
+     */
     private void positionSearchResults() {
         // get the width of the search bar
         double searchBarWidth = headerBarSearchBar.getWidth();
@@ -296,8 +308,6 @@ public class HeaderBarController implements NavigationListener {
         System.out.println("Account image clicked!");
         accountPopup.show(headerBarAccountImage, popupX, popupY);
     }
-
-
 
     @FXML
     private void clickCartImage(MouseEvent event) {
