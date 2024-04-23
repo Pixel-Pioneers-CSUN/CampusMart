@@ -4,35 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Added stylesheet to the FXML files and added some css file">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/javax_mail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/javax_mail.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_15_2024_6_00_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_15_2024_6_00_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_16_2024_10_25_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_16_2024_10_25_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_16_2024_7_00_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_16_2024_7_00_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_16_2024_7_00_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_16_2024_7_00_PM__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_16_2024_7_08_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_16_2024_7_08_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_16_2024_7_17_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_16_2024_7_17_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_21_2024_4_55_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_21_2024_4_55_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_21_2024_4_55_PM__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_21_2024_4_55_PM__Changes_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_21_2024_4_55_PM__Changes_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_21_2024_4_55_PM__Changes_2.xml" afterDir="false" />
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Added JavaDoc for the classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditPaymentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditPaymentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CardHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CardHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DateHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DateHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/textFieldHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/textFieldHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/checkout-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/checkout-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EditPaymentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EditPaymentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/CardHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/CardHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/DateHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DateHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/textFieldHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/textFieldHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -363,7 +336,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713738376214</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Added JavaDoc for the classes">
+      <option name="closed" value="true" />
+      <created>1713900985034</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1713900985034</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,7 +401,8 @@
     <MESSAGE value="Added more files and methods for the edit profile functionality" />
     <MESSAGE value="refactored code for dateValidation and moved it to its own DateHelper class." />
     <MESSAGE value="Added stylesheet to the FXML files and added some css file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added stylesheet to the FXML files and added some css file" />
+    <MESSAGE value="Added JavaDoc for the classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added JavaDoc for the classes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
