@@ -18,7 +18,8 @@ import java.sql.*;
 import java.util.*;
 
 
-/**
+/** 3/20/24
+ * Erick Espinoza
  * Utility class for accessing and manipulating databases.
  * Note: Works only with MySQL and requires JDBC driver.
  */
@@ -159,7 +160,7 @@ public class DatabaseUtility {
             // creating connection to the database. 
             Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
             Statement statement = connection.createStatement();
-             
+
             String printQuery = "select * from " + this.table;
             ResultSet resultSet = statement.executeQuery(printQuery);
             // end of connection to database
@@ -184,27 +185,34 @@ public class DatabaseUtility {
         }
         return map;
     }
-    
+
+    /**
+     * Updates the inventory count of an item in the database.
+     *
+     * @param itemNumber The number identifying the item whose inventory count needs to be updated.
+     */
     public void updateItemDatabaseInventory(Integer itemNumber) {
-        // use the datastructure class to get the object
+        // Use the data structure class to get the object
         ItemDataStructure data = ItemDataStructure.getInstance();
-        // get temp item structure
+        // Get the temporary item structure
         ItemClass temp = data.getItemDataStructure().get(itemNumber);
 
+        // Construct SQL statement to update inventory count
         String sqlStatement = "UPDATE itemtable SET inventoryCount = " + temp.getInventoryCount() + " WHERE itemNumber = " + itemNumber;
 
-        
         try {
+            // Establish connection to the database
             Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
             Statement statement = connection.createStatement();
+
+            // Execute SQL statement to update inventory count
             statement.executeUpdate(sqlStatement);
             connection.close();
-        } 
-        
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
 //    *** the following is preliminary code for when user is logged in... need to work out implementation later
     public static void changeScene(ActionEvent event, String fxmlFile, String username) {
@@ -343,6 +351,12 @@ public class DatabaseUtility {
 
     }
 
+    /**
+     * Retrieves a list of orders associated with a given customer ID from the database.
+     *
+     * @param customerID The ID of the customer whose orders are to be retrieved.
+     * @return A list of Orders objects associated with the specified customer ID.
+     */
     public List<Orders> createOrderList(int customerID) {
         List<Orders> orderList = new ArrayList<>();
         this.setTable("Orders_Database");
@@ -384,7 +398,12 @@ public class DatabaseUtility {
         return orderList;
     }
 
-    // pulls from "OrderItems_Database"
+    /**
+     * Retrieves a HashMap of order items associated with a given order ID from the database.
+     *
+     * @param orderID The ID of the order whose items are to be retrieved.
+     * @return A HashMap containing the item numbers as keys and the corresponding quantities as values.
+     */
     public HashMap<Integer,Integer> createOrderItemsHashMap(int orderID) {
         HashMap<Integer,Integer> temp = new HashMap<>();
         this.setTable("OrderItems_Database");
@@ -417,15 +436,22 @@ public class DatabaseUtility {
         return temp;
 
     }
-
+    /**
+     * Updates the Orders database with the provided SQL query.
+     *
+     * @param query The SQL query to update the Orders database.
+     */
     public void updateOrderDatabase(String query) {
         this.executeSQLStatement(query);
     }
 
+    /**
+     * Updates the OrderItems database with the provided SQL query.
+     *
+     * @param query The SQL query to update the OrderItems database.
+     */
     public void updateOrderItemsDatabase(String query) {
         this.executeSQLStatement(query);
     }
-
-
 
 }

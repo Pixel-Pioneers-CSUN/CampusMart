@@ -39,6 +39,7 @@ public class CampusMart extends Application {
          */
         Cart cart = Cart.getInstance();
         cart.createCart();
+
         cart.addToCart(1,4);
         cart.addToCart(4,7);
         cart.addToCart(23,5);
