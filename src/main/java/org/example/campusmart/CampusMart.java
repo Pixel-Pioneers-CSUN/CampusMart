@@ -12,6 +12,9 @@ import items.*;
 import utils.*;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 public class CampusMart extends Application {
@@ -33,6 +36,9 @@ public class CampusMart extends Application {
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
         data.setItemDataStructure(bd.createHashMapItemClass());
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        String test = df.format(new Date());
+        System.out.println("Date Test: " + test);
 
         /*
          * test for cart object
