@@ -60,9 +60,9 @@ public class CampusMart extends Application {
         headerController.setMainStage(primaryStage);
 
         // load the HomeScreen.fxml file
-        //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
+        FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
         //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/OrderPage.fxml"));
-        FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/AccountDashboard.fxml"));
+        //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/AccountDashboard.fxml"));
         //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
 
         Parent homeRoot = homeLoader.load();

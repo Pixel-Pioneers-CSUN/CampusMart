@@ -1,8 +1,13 @@
 package controllers;
+
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,26 +15,30 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import utils.DateHelper;
 import utils.textFieldHelper;
 
+//import javax.mail.internet.AddressException;
+//import javax.mail.internet.InternetAddress;
+
+/**
+ * Controller for the Checkout view.
+ */
 public class CheckoutController implements Initializable {
 
     // FXML
     @FXML
     private TextField addressTF;
     @FXML
-    private Label backToCartLabel;
-    @FXML
     private TextField cardNumTF;
     @FXML
     private TextField cityTF;
-    @FXML
-    private Pane contactInfoPane;
     @FXML
     private Label creditcardErrorLabel;
     @FXML
@@ -47,8 +56,6 @@ public class CheckoutController implements Initializable {
     @FXML
     private TextField nameOnCardTF;
     @FXML
-    private Button payButton;
-    @FXML
     private TextField phoneNumTF;
     @FXML
     private Label taxAmount;
@@ -57,14 +64,14 @@ public class CheckoutController implements Initializable {
     @FXML
     private TextField zipCodeTF;
     @FXML
-    private Label checkoutLabel;
-    @FXML
-    private TextField expirationDateTF;
+    private DatePicker validThroughDP;
 
     List<TextField> textFields = new ArrayList<>();
     List<TextField> emptyFields = new ArrayList<>();
 
     textFieldHelper textFieldHelper = new textFieldHelper();
+    DateHelper dateHelper = new DateHelper();
+    String formattedDate;
 
     // Getter methods to access text fields info
     public String getCardNumber() {
@@ -107,15 +114,24 @@ public class CheckoutController implements Initializable {
         return cityTF.getText();
     }
 
-    public String getExpirationDate(){ return expirationDateTF.getText(); }
+    public LocalDate getValidThrough() {
+        return validThroughDP.getValue();
+    }
 
+    /**
+     * Handles the payment confirmation.
+     *
+     * @param event The action event
+     */
     @FXML
     void confirmPayment(ActionEvent event) {
         try {
+            boolean dateValidation = dateHelper.dateValidation(getValidThrough(), creditcardErrorLabel, "Invalid Date");
             // Check if user entered all info
             emptyFields = textFieldHelper.checkEmptyTextFields(textFields);
             Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
-            if (emptyFields.isEmpty() ) {
+            if (!textFieldHelper.isEmpty && dateValidation) {
+                formattedDate = getValidThrough().format(DateTimeFormatter.ofPattern("MM/dd/yy"));
                 confirmAlert.setTitle("Payment Confirmation");
                 confirmAlert.setHeaderText("Confirm Payment");
                 confirmAlert.setContentText("Are you sure you want to proceed with the payment?");
@@ -123,14 +139,15 @@ public class CheckoutController implements Initializable {
                 ButtonType noBtn = new ButtonType("No", ButtonData.NO);
                 confirmAlert.getButtonTypes().setAll(yesBtn, noBtn);
                 confirmAlert.showAndWait();
+                //System.out.println(formattedDate);
                 // If not show error
-            } 
-            else {
+            } else {
                 Alert errorAlert = new Alert(Alert.AlertType.ERROR);
                 errorAlert.setTitle("Error");
                 errorAlert.setHeaderText("Empty Fields");
                 errorAlert.setContentText("Please Fill All Fields ");
                 errorAlert.show();
+
                 for (TextField textField : emptyFields) {
                     textField.setStyle("-fx-background-color: pink;");
                 }
@@ -148,6 +165,11 @@ public class CheckoutController implements Initializable {
         }
     }
 
+    /**
+     * Switches to the cart screen.
+     *
+     * @param event The mouse event
+     */
     @FXML
     void switchToCart(MouseEvent event) {
         // Switch scene to cart when user clicks on "back to cart" label
@@ -159,6 +181,11 @@ public class CheckoutController implements Initializable {
          */
     }
 
+    /**
+     * Shows the credit card information box.
+     *
+     * @param event The action event
+     */
     @FXML
     void showCreditCard(ActionEvent event) {
         creditCardInfoPane.setVisible(true);
@@ -167,37 +194,51 @@ public class CheckoutController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
-            textFields = List.of(addressTF, cardNumTF, cityTF, cvvTF, emailTF, firstNameTF, lastNameTF, nameOnCardTF,
-                    phoneNumTF, zipCodeTF, expirationDateTF);
             // Set filters for text fields during initialization
-            cardNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter
-                    (cardNumTF, creditcardErrorLabel, "\\d{0,16}", "Enter a valid card number")));
-            nameOnCardTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
-                    nameOnCardTF, creditcardErrorLabel, "^[a-zA-Z ]*$", "Enter a valid name for card")));
-            cvvTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
-                    cvvTF, creditcardErrorLabel, "\\d{0,3}", "Enter a valid CVV")));
-            firstNameTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
-                    firstNameTF, contactInfoErrorLabel, "^[a-zA-Z ]*$", "Enter a valid first name")));
-            lastNameTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
-                    lastNameTF, contactInfoErrorLabel, "^[a-zA-Z ]*$", "Enter a valid last name")));
-            cityTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
-                    cityTF, contactInfoErrorLabel, "^[a-zA-Z ]*$", "Enter a valid city")));
-            zipCodeTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
-                    zipCodeTF, contactInfoErrorLabel, "\\d{0,5}", "Enter a valid zip code")));
-            phoneNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
-                    phoneNumTF, contactInfoErrorLabel, "\\d{0,10}", "Enter a valid phone number")));
-            addressTF.setTextFormatter(new TextFormatter<>(textFieldHelper.textFilter(
-                    addressTF, contactInfoErrorLabel, "^[a-zA-Z0-9 ]*$"
-                    , "Enter a valid address")));
+            cardNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper
+                    .textFilter(cardNumTF, creditcardErrorLabel, "\\d{0,16}", "Enter a valid card number")));
+            nameOnCardTF.setTextFormatter(new TextFormatter<>(textFieldHelper.
+                    textFilter(nameOnCardTF, creditcardErrorLabel, "^[a-zA-Z ]*$", "Enter a valid name for card")));
+            cvvTF.setTextFormatter(new TextFormatter<>(textFieldHelper
+                    .textFilter(cvvTF, creditcardErrorLabel, "\\d{0,3}", "Enter a valid CVV")));
+            firstNameTF.setTextFormatter(new TextFormatter<>(textFieldHelper
+                    .textFilter(firstNameTF, contactInfoErrorLabel, "^[a-zA-Z ]*$", "Enter a valid first name")));
+            lastNameTF.setTextFormatter(new TextFormatter<>(textFieldHelper
+                    .textFilter(lastNameTF, contactInfoErrorLabel, "^[a-zA-Z ]*$", "Enter a valid last name")));
+            cityTF.setTextFormatter(new TextFormatter<>(textFieldHelper
+                    .textFilter(cityTF, contactInfoErrorLabel, "^[a-zA-Z ]*$", "Enter a valid city")));
+            zipCodeTF.setTextFormatter(new TextFormatter<>(textFieldHelper
+                    .textFilter(zipCodeTF, contactInfoErrorLabel, "\\d{0,5}", "Enter a valid zip code")));
+            phoneNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper
+                    .textFilter(phoneNumTF, contactInfoErrorLabel, "\\d{0,10}", "Enter a valid phone number")));
+            addressTF.setTextFormatter(new TextFormatter<>(textFieldHelper
+                    .textFilter(addressTF, contactInfoErrorLabel, "^[a-zA-Z0-9 ]*$", "Enter a valid address")));
 
+//            // Email validation
+//            emailTF.textProperty().addListener((observable, oldValue, newValue) -> {
+//                if (isValidEmailAddress(newValue) || emailTF.isVisible()) {
+//                    emailTF.setStyle("");
+//                    contactInfoErrorLabel.setText("");
+//                    System.out.println("right");
+//                } else {
+//                    emailTF.setStyle("-fx-background-color: pink;");
+//                    contactInfoErrorLabel.setText("Enter a valid email address");
+//                    contactInfoErrorLabel.setVisible(true);
+//                    System.out.println("wrong");
+//                }
+//            });
 
-
+            textFields = List.of(addressTF, cardNumTF, cityTF, cvvTF, emailTF, firstNameTF, lastNameTF, nameOnCardTF, phoneNumTF, zipCodeTF);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    // Method to reduce the inventory count for items that were bought
+    /**
+     * Reduces the inventory count for items that were bought.
+     *
+     * @return The new inventory count
+     */
     public int reduceInventory() {
         // Iterate over each item in cart
         // Access each cart item's inventory count
@@ -207,7 +248,9 @@ public class CheckoutController implements Initializable {
         return 0;
     }
 
-    // Method to display the items that are in cart when the user goes to the checkout page
+    /**
+     * Updates the order summary.
+     */
     public void updateOrderSummary() {
         // Iterate over the items in cart
         // Display each item's name, price, quantity

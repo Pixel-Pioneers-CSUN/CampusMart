@@ -76,7 +76,12 @@
                   <Insets left="25.0" right="25.0" />
                </VBox.margin>
             </TextField>
-            <Button fx:id="signUpButton" mnemonicParsing="false" text="Sign Up" textAlignment="CENTER">
+            <Label fx:id="signUpErrorLabel" prefHeight="17.0" prefWidth="300.0" textFill="RED">
+               <VBox.margin>
+                  <Insets left="25.0" top="15.0" />
+               </VBox.margin>
+            </Label>
+            <Button fx:id="signUpButton" mnemonicParsing="false" onMouseClicked="#clickSignUp" text="Sign Up" textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>

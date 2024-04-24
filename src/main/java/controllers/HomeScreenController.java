@@ -4,39 +4,43 @@ package controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.Popup;
+import utils.DatabaseUtility;
+import utils.SearchHelper;
+import items.*;
+
 import utils.ImageCarousel;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class HomeScreenController {
 
     @FXML
     private Button shopNowButton;
-
     @FXML
     private VBox vboxHotFood;
-
     @FXML
     private VBox vboxColdFood;
-
     @FXML
     private VBox vboxSnacks;
-
     @FXML
     private VBox vboxFruits;
-
     @FXML
     private VBox vboxDrinks;
-
     @FXML
     private VBox vboxCoffee;
-
     @FXML
     private HBox itemCarouselContainer;
 
@@ -69,7 +73,6 @@ public class HomeScreenController {
                 e.printStackTrace();
             }
     }
-
 
     @FXML
     private void clickHotFoods(MouseEvent event) {

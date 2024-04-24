@@ -4,29 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Basic UI for Cart">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_15_2024_6_00_PM_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_15_2024_6_00_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_2024_1_55_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_4_4_2024_1_55_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_11_2024_3_07_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2024_11_12_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2024_11_12_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_9_2024_3_19_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Merged with Erick's Order History branch.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cart/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CartItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CartItemsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CartPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CartPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderItemController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderItemController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/items/ItemClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/ItemClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/items/ItemDataStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/items/ItemDataStructure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/orders/OrderDataStructure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/orders/OrderDataStructure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/orders/Orders.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/orders/Orders.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/EditProfileController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Cart/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Cart/Cart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/EditProfileController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HomeScreenController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderItemController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderItemController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/OrderPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/OrderPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/css/items-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/items-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/items/ItemClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/items/ItemClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/items/ItemDataStructure.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/items/ItemDataStructure.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/orders/OrderDataStructure.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/orders/OrderDataStructure.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/orders/Orders.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/orders/Orders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/textFieldHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/textFieldHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +128,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Order-History&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Header-Bar-Categories&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
@@ -336,7 +340,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713845633899</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Merged with Erick's Order History branch.">
+      <option name="closed" value="true" />
+      <created>1713906759658</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1713906759658</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,7 +407,8 @@
     <MESSAGE value="Order page branch" />
     <MESSAGE value="added Cart Class with no UI yet." />
     <MESSAGE value="Basic UI for Cart" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic UI for Cart" />
+    <MESSAGE value="Merged with Erick's Order History branch." />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged with Erick's Order History branch." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -404,11 +417,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java</url>
           <line>275</line>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controllers/CartPageController.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
