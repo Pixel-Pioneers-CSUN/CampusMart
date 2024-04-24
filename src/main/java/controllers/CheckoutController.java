@@ -1,13 +1,15 @@
 package controllers;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
+import Cart.Cart;
+import items.ItemClass;
+import items.ItemDataStructure;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import orders.Orders;
 import utils.DateHelper;
 import utils.textFieldHelper;
 
@@ -239,13 +242,20 @@ public class CheckoutController implements Initializable {
      *
      * @return The new inventory count
      */
-    public int reduceInventory() {
+    public void reduceInventory() {
         // Iterate over each item in cart
         // Access each cart item's inventory count
         // Reduce each cart item's inventory count by 1
         // Returns a list of the new inventory count number for each cart item
         // Is called when the user presses on pay button
-        return 0;
+        Cart cart = Cart.getInstance();
+        ItemDataStructure data = ItemDataStructure.getInstance();
+
+        for(Map.Entry<Integer,Integer> entry : cart.getCartItems().entrySet()) {
+            //temp itemClass
+            data.getItemDataStructure().get(entry.getKey()).reduceInventoryCount(entry.getValue());
+        }
+
     }
 
     /**
@@ -255,6 +265,14 @@ public class CheckoutController implements Initializable {
         // Iterate over the items in cart
         // Display each item's name, price, quantity
         // Must be updated every time the customer presses on checkout
+        Cart cart = Cart.getInstance();
+
+        Random rand = new Random();
+        int randOrderID = rand.nextInt(999);
+        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+        String date = df.format(new Date());
+        Orders order = new Orders(randOrderID,0,date,cart.getSubtotal(),cart.getCartItems());
+        order.addToDatabase();
     }
 
 }

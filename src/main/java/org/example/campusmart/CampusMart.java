@@ -1,6 +1,7 @@
 package org.example.campusmart;
 
 import Cart.Cart;
+import controllers.CheckoutController;
 import controllers.HeaderBarController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -40,15 +41,16 @@ public class CampusMart extends Application {
         Cart cart = Cart.getInstance();
         cart.createCart();
 
-        cart.addToCart(1,4);
-        cart.addToCart(4,7);
-        cart.addToCart(23,5);
-        cart.addToCart(34,2);
-        cart.addToCart(2,1);
+
         System.out.println("Cart object test add to cart:\n" + cart);
 
-        cart.removeFromCart(23);
         System.out.println("Cart object test remove from cart:\n" + cart);
+//        CheckoutController checkoutController = new CheckoutController();
+//        System.out.println("Calls reduceInventory should affect items in database: ");
+//        checkoutController.reduceInventory();
+//        System.out.println("Calls updateOrderSummary should add a new order to database: ");
+//        checkoutController.updateOrderSummary();
+
         System.out.println("End of test");
 
         // load the HeaderBar.fxml file and set is as the headerBar
