@@ -1,8 +1,13 @@
 package controllers;
+import java.math.BigDecimal;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+import Cart.Cart;
+import items.ItemClass;
+import items.ItemDataStructure;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,6 +20,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import orders.Orders;
 import utils.textFieldHelper;
 
 public class CheckoutController implements Initializable {
@@ -199,6 +205,19 @@ public class CheckoutController implements Initializable {
 
     // Method to reduce the inventory count for items that were bought
     public int reduceInventory() {
+
+        // get cart obj
+        Cart cart = Cart.getInstance();
+        ItemDataStructure data = ItemDataStructure.getInstance();
+        // has a hashMap<Integer, Integer>
+        // represented by itemNumber and quantity
+        for(Map.Entry<Integer,Integer> entry : cart.getCartItems().entrySet()) {
+            // temp itemCLass
+            ItemClass temp = data.getItemDataStructure().get(entry.getKey());
+            temp.reduceInventoryCount(entry.getValue());
+        }
+
+
         // Iterate over each item in cart
         // Access each cart item's inventory count
         // Reduce each cart item's inventory count by 1
@@ -212,6 +231,17 @@ public class CheckoutController implements Initializable {
         // Iterate over the items in cart
         // Display each item's name, price, quantity
         // Must be updated every time the customer presses on checkout
+        Cart cart = Cart.getInstance();
+        // create a new Order object
+        //need a random OrderID
+        Random rand = new Random();
+        int randOrderID = rand.nextInt();
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        String date = df.format(new Date());
+        //CustomerId from account class can use default '0' for now
+        // till Account is up
+        Orders order = new Orders(randOrderID, 0, date, cart.getSubtotal(), cart.getCartItems());
+        order.addToDatabase();
     }
 
 }

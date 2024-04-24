@@ -16,6 +16,7 @@ import java.util.Map;
 public class Cart {
 
     private static final Cart cart = new Cart();
+
     private BigDecimal subtotal;
     private HashMap<Integer, Integer> cartItems;
 
@@ -102,6 +103,7 @@ public class Cart {
      * Recalculates the subtotal of the cart based on the items and their quantities.
      */
     public void updateSubtotal() {
+        //get the item data
         ItemDataStructure list = ItemDataStructure.getInstance();
         BigDecimal updatedSubtotal = new BigDecimal("0.00");
 
