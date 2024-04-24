@@ -191,26 +191,8 @@ public class DatabaseUtility {
      *
      * @param itemNumber The number identifying the item whose inventory count needs to be updated.
      */
-    public void updateItemDatabaseInventory(Integer itemNumber) {
-        // Use the data structure class to get the object
-        ItemDataStructure data = ItemDataStructure.getInstance();
-        // Get the temporary item structure
-        ItemClass temp = data.getItemDataStructure().get(itemNumber);
-
-        // Construct SQL statement to update inventory count
-        String sqlStatement = "UPDATE itemtable SET inventoryCount = " + temp.getInventoryCount() + " WHERE itemNumber = " + itemNumber;
-
-        try {
-            // Establish connection to the database
-            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
-            Statement statement = connection.createStatement();
-
-            // Execute SQL statement to update inventory count
-            statement.executeUpdate(sqlStatement);
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void updateItemDatabaseInventory(String query) {
+        executeSQLStatement(query);
     }
 
 

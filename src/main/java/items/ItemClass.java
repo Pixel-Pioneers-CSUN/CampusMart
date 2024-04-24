@@ -1,5 +1,7 @@
 package items;
 
+import utils.DatabaseUtility;
+
 import java.math.BigDecimal;
 
 /**
@@ -102,8 +104,13 @@ public class ItemClass {
      * @param count The amount to reduce the inventory count by.
      */
     public void reduceInventoryCount(int count){
+
+        DatabaseUtility db = new DatabaseUtility();
         this.inventoryCount = this.inventoryCount - count;
+        String query = "update Item_Database set inventoryCount = " + this.inventoryCount
+                        + " where itemNumber = " + this.itemNumber;
+        db.updateItemDatabaseInventory(query);
     }
 
-    
+
 }
