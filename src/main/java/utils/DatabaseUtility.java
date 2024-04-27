@@ -305,7 +305,7 @@ public class DatabaseUtility {
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
             System.out.println("the username being passed into the db check is " + username);
-            if (resultSet.isBeforeFirst()) {
+            if (!resultSet.isBeforeFirst()) {
                 System.out.print("User not found in the database!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("The provided username is incorrect!");
@@ -328,7 +328,7 @@ public class DatabaseUtility {
                         account.setLoggedInStatus(true);
 
                         // redirect user to the home screen
-                        changeScene(event, "HomeScreen.fxml");
+                        changeScene(event, "/view/HomeScreen.fxml");
                     } else {
                         System.out.println("Passwords did not match!");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
