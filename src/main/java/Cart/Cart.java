@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * 4/20/24
- * Erick Espinoza
+ * @author Erick Espinoza
  * Singleton class representing a shopping cart.
  * A HashMap is chosen as a data structure for its speed to access entries
  */

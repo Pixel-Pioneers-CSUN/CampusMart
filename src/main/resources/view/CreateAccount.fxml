@@ -81,7 +81,7 @@
                   <Insets left="25.0" top="15.0" />
                </VBox.margin>
             </Label>
-            <Button fx:id="signUpButton" mnemonicParsing="false" onMouseClicked="#clickSignUp" text="Sign Up" textAlignment="CENTER">
+            <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#clickSignUp" text="Sign Up" textAlignment="CENTER">
                <font>
                   <Font name="Arial" size="13.0" />
                </font>

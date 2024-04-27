@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 /**
- * 3/20/24
- * Erick Espinoza
+ * @version 3/20/24
+ * @author Erick Espinoza
  * Represents a singleton data structure for storing items.
  * HashMap is chosen as a data structure for its speed to access entries
  */

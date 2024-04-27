@@ -23,7 +23,10 @@ import java.io.IOException;
 import java.util.*;
 
 /**
+ * @version 3/20/24
+ * @author Sevan Shahijanian
  * Controller class for the header bar, it's UI elements, and their functionalities.
+ * Header Bar acts as the main stage for any popups. This is needed to allow for navigating to other pages from popups.
  */
 public class HeaderBarController implements NavigationListener {
 

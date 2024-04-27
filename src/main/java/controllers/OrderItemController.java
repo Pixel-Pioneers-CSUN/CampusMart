@@ -8,8 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
- * 4/13/24
- * Erick Espinoza
+ * @version 4/13/24
+ * @author Erick Espinoza
  * Controller class for managing the display of items in an order.
  */
 public class OrderItemController {

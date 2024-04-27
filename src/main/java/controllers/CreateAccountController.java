@@ -9,6 +9,8 @@ import javafx.scene.input.MouseEvent;
 import utils.*;
 
 /**
+ * @version 4/21/24
+ * @author Sevan Shahijanian
  * Controller class for creating a new user account using the Create Account screen's GUI
  */
 public class CreateAccountController {

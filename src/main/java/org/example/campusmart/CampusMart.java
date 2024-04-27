@@ -24,7 +24,7 @@ public class CampusMart extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
 
-        //==============
+
         // start of app pull data and then make a data structure
         DatabaseUtility bd = new DatabaseUtility();
         bd.setTable("Item_Database");

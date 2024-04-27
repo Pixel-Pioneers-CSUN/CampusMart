@@ -25,8 +25,9 @@ import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.controlsfx.control.PropertySheet;
 
-/** 3/20/24
- * Erick Espinoza
+/**
+ * @version 3/20/24
+ * @author Erick Espinoza
  * Controller class for managing the display of item information.
  */
 public class ItemDisplayController implements Initializable {

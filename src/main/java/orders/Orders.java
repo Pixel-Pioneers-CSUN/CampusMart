@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 4/13/24
- * Erick Espinoza
+ * @version 4/13/24
+ * @author Erick Espinoza
  * Class representing an order.
  * A HashMap is chosen as a data structure for its speed to access entries
  */

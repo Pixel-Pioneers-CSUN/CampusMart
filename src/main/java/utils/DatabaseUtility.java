@@ -11,15 +11,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import orders.Orders;
-
+import Account.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
 
 
-/** 3/20/24
- * Erick Espinoza
+
+/** @version 3/20/24
+ * @author Erick Espinoza & Sevan Shahijanian
  * Utility class for accessing and manipulating databases.
  * Note: Works only with MySQL and requires JDBC driver.
  */
@@ -100,9 +101,6 @@ public class DatabaseUtility {
 
     }
 
-
-
-    
     /**
      * Prints out the data from the table.
      */
@@ -215,32 +213,35 @@ public class DatabaseUtility {
 
 
 //    *** the following is preliminary code for when user is logged in... need to work out implementation later
-    public static void changeScene(ActionEvent event, String fxmlFile, String username) {
-        Parent root = null;
-        // if the user is logged in, allow them to navigate to account dashboard
-        if (username != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(DatabaseUtility.class.getResource(fxmlFile));
-                root = loader.load();
-                HeaderBarController headerBarController = loader.getController();
-               //headerBarController.setUserInformation(username);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public static void changeScene(ActionEvent event, String fxmlFilePath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(DatabaseUtility.class.getResource(fxmlFilePath));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root, 1300, 800));
-        stage.show();
     }
 
-    public static void createAccount(ActionEvent event, String name, String username, String password) {
+    /**
+     * Creates a new user account
+     *
+     * @param event the action event passed in for navigation purposes
+     * @param name the user's first and last name
+     * @param username the user's login username
+     * @param password the user's login password
+     */
+    public void createAccount(ActionEvent event, String name, String username, String password) {
         Connection connection = null;   // connection to the database
         PreparedStatement psInsert = null;  // used to query the database - inserts valid user data into database
         PreparedStatement psCheckIfUserExists = null;   // used to query the database - checks if user already exits
         ResultSet resultSet = null; // contains the data returned from our database when we query it
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://cp01-wa.privatesystems.net/users", "driftmer_pixelpioneer", "COMP380Group");
+            connection = DriverManager.getConnection(this.url, this.user, this.password);
             psCheckIfUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");    // check database if username already exists
             psCheckIfUserExists.setString(1, username);
             resultSet = psCheckIfUserExists.executeQuery();
@@ -252,13 +253,13 @@ public class DatabaseUtility {
                 alert.setContentText("Username is not available.");
                 alert.show();
             } else {
-                psInsert = connection.prepareStatement("INSERT INTO users (name, username, password VALUES (?, ?, ?))");
+                psInsert = connection.prepareStatement("INSERT INTO users (name, username, password) VALUES (?, ?, ?)");
                 psInsert.setString(1, name);
                 psInsert.setString(2, username);
                 psInsert.setString(3, password);
                 psInsert.executeUpdate();
 
-                changeScene(event, "HomeScreen.fxml", username);
+                changeScene(event, "/view/HomeScreen.fxml");
             }
         } catch(SQLException e) {
             e.printStackTrace();
@@ -294,16 +295,16 @@ public class DatabaseUtility {
         }
     }
 
-    public static void logInUser(ActionEvent event, String username, String password) {
+    public void logInUser(ActionEvent event, String username, String password) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://cp01-wa.privatesystems.net/users", "driftmer_pixelpioneer", "COMP380Group");
-            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
+            connection = DriverManager.getConnection(this.url, this.user, this.password);
+            preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
-
+            System.out.println("the username being passed into the db check is " + username);
             if (resultSet.isBeforeFirst()) {
                 System.out.print("User not found in the database!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -313,7 +314,21 @@ public class DatabaseUtility {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
                     if (retrievedPassword.equals(password)) {
-                        changeScene(event, "HomeScreen.fxml", username);
+                        // user has successfully logged in
+                        System.out.println(username + " has successfully logged in!");
+                        Account account = Account.getInstance();
+
+                        // initialize the user's info into the Account singleton
+                        account.setAccountID(resultSet.getInt("accountID"));
+                        System.out.println("Account ID is " + account.getAccountID());
+                        account.setUsername(username);
+                        System.out.println("Name is " + account.getName());
+                        account.setName(resultSet.getString("name"));
+                        account.setPassword(password);
+                        account.setLoggedInStatus(true);
+
+                        // redirect user to the home screen
+                        changeScene(event, "HomeScreen.fxml");
                     } else {
                         System.out.println("Passwords did not match!");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -347,8 +362,6 @@ public class DatabaseUtility {
                 }
             }
         }
-
-
     }
 
     /**

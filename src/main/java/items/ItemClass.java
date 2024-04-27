@@ -3,8 +3,8 @@ package items;
 import java.math.BigDecimal;
 
 /**
- * 3/20/24
- * Erick Espinoza
+ * @version 3/20/24
+ * @author Erick Espinoza
  * Represents an item with various attributes such as name, number, price, category, picture, and inventory count.
  * Implements Comparable interface to allow comparison based on item number.
  */

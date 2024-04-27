@@ -12,7 +12,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 
 /**
+ * @version 4/01/24
+ * @author Ola Hendy
  * The textFieldHelper class provides utility methods for handling text fields.
+ * Used ArrayLists to store empty text fields for error handling.
+ * Used regex for text filtering in text fields because it’s flexible and efficient.
  */
 public class textFieldHelper {
     public boolean isEmpty;

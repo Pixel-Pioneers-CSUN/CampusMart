@@ -6,7 +6,10 @@ import java.util.stream.Collectors;
 import items.*;
 
 /**
+ * @version 3/20/24
+ * @author Sevan Shahijanian
  * Utility class for searching items from the item hash map based on various search criteria.
+ * The Item Hash Map, which itself pulls data from the database, plays a key role and serves as the source of searchable items.
  */
 public class SearchHelper {
 

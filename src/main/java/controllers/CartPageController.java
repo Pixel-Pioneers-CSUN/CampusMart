@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * 4/20/24
- * Erick Espinoza
+ * @version 4/20/24
+ * @author Erick Espinoza
  * Controller class for managing the display of items in the shopping cart page.
  */
 public class CartPageController {
