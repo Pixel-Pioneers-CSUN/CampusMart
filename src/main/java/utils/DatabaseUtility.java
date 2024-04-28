@@ -320,10 +320,26 @@ public class DatabaseUtility {
                         // initialize the user's info into the Account singleton
                         account.setAccountID(resultSet.getInt("accountID"));
                         account.setUsername(username);
-                        System.out.println("Name is " + account.getName());
                         account.setName(resultSet.getString("name"));
                         account.setPassword(password);
+                        account.setAddress(resultSet.getString("address"));
+                        account.setPaymentName(resultSet.getString("paymentName"));
+                        account.setPaymentCVV(resultSet.getInt("paymentCVV"));
+                        account.setPaymentExpiration(resultSet.getString("paymentExpiration"));
+                        account.setPaymentNumber(resultSet.getString("paymentNumber"));
                         account.setLoggedInStatus(true);
+
+                        // check that account data is properly being set and pulled from the database
+//                        System.out.println("AccountID is " + account.getAccountID());
+//                        System.out.println("Name is " + account.getName());
+//                        System.out.println("Username is " + account.getUsername());
+//                        System.out.println("Password is " + account.getPassword());
+//                        System.out.println("Address is " + account.getAddress());
+//                        System.out.println("Payment Name on Card is " + account.getPaymentName());
+//                        System.out.println("Payment number is " + account.getPaymentNumber());
+//                        System.out.println("Payment Expiration is " + account.getPaymentExpiration());
+//                        System.out.println("Payment CVV is " + account.getPaymentCVV());
+//                        System.out.println("Logged in status is " + account.getLoggedInStatus());
 
                         // redirect user to the home screen
                         changeScene(event, "/view/HomeScreen.fxml");

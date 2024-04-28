@@ -49,12 +49,12 @@
                <Insets top="20.0" />
             </HBox.margin>
          </TextField>
-         <Label fx:id="helloUser">
+         <Label id="helloUserLabel" fx:id="helloUserLabel" textFill="#dd0000">
             <font>
                <Font name="Montserrat Bold" size="15.0" />
             </font>
             <HBox.margin>
-               <Insets top="18.0" />
+               <Insets left="10.0" right="10.0" top="18.0" />
             </HBox.margin>
          </Label>
          <ImageView fx:id="headerBarAccountImage" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#clickAccountImage" pickOnBounds="true" preserveRatio="true">

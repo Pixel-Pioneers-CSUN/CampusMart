@@ -1,5 +1,6 @@
 package controllers;
 
+import Account.Account;
 import items.ItemClass;
 import items.ItemDataStructure;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -41,6 +43,8 @@ public class HeaderBarController implements NavigationListener {
     private ImageView headerBarAccountImage;
     @FXML
     private ComboBox<String> headerBarCategoryDropdown;
+    @FXML
+    private Label helloUserLabel;
 
     public StackPane headerBar;
     private Stage mainStage;
@@ -50,7 +54,7 @@ public class HeaderBarController implements NavigationListener {
     // creating a Popup for sign-in/create account options when clicking account icon
     private Popup accountPopup;
     // Popup for logging in
-    public Popup signInPopup;
+    public Popup alreadyLoggedInPopup;
 
     @FXML
     public void initialize() {
@@ -74,8 +78,12 @@ public class HeaderBarController implements NavigationListener {
         // hide the popup initially (only show it during a valid search)
         searchPopup.setAutoHide(true);
 
-        // Initialize the account popup and pass in a reference to the current stage, mainStage
+        // Initialize the account popups and pass in a reference to the current stage, mainStage
         loadAccountPopup(mainStage);
+        loadAlreadyLoggedInPopup(mainStage);
+
+        // set HelloUserLabel
+        setHelloUserLabel();
     }
 
     /**
@@ -128,6 +136,21 @@ public class HeaderBarController implements NavigationListener {
             e.printStackTrace();
         }
     }
+
+    @Override
+    public void navigateToHome() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeScreen.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) headerBarSearchBar.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * Sets the stage of the current window to main stage.
@@ -237,6 +260,36 @@ public class HeaderBarController implements NavigationListener {
     }
 
     /**
+     * Loads the account-dashboard/log-out popup.
+     *
+     * @param mainStage The main stage of the application.
+     */
+    private void loadAlreadyLoggedInPopup(Stage mainStage) {
+        this.mainStage = mainStage;
+        alreadyLoggedInPopup = new Popup();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/AlreadyLoggedInPopup.fxml"));
+            BorderPane popupContent = loader.load();
+            AlreadyLoggedInPopupController popupController = loader.getController();
+            popupController.setNavigationListener(this);    // pass the NavigationListener to AccountSignInPopupController
+            alreadyLoggedInPopup.getContent().add(popupContent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // hide the popup if the user clicks anywhere outside of it
+        alreadyLoggedInPopup.setAutoHide(true);
+    }
+
+    private void setHelloUserLabel() {
+        Account account = Account.getInstance();
+        // if user is logged in, show and set the hello label
+        if (account.getLoggedInStatus()) {
+            String firstName = account.getName().split(" ", 2)[0];
+            helloUserLabel.setText("Hello, " + firstName + "!");
+        }
+    }
+
+    /**
      * Loads the respective item page when an item's name in the search results is clicked on.
      *
      * @param item The clicked item in the search results.
@@ -302,13 +355,17 @@ public class HeaderBarController implements NavigationListener {
 
     @FXML
     private void clickAccountImage(MouseEvent event) {
-
+        Account account = Account.getInstance();
         // Show the account popup below to the account image
         Bounds accountImageBounds = headerBarAccountImage.localToScreen(headerBarAccountImage.getBoundsInLocal());
         double popupX = accountImageBounds.getMinX() - 185;
         double popupY = accountImageBounds.getMinY() + 25;
-
-        accountPopup.show(headerBarAccountImage, popupX, popupY);
+        // if the user is logged in, show the AlreadyLoggedInPopup
+        if (account.getLoggedInStatus()) {
+            alreadyLoggedInPopup.show(headerBarAccountImage, popupX, popupY);
+        } else { // otherwise show the AccountSignInPopup
+            accountPopup.show(headerBarAccountImage, popupX, popupY);
+        }
     }
 
     @FXML
