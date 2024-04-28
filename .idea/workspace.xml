@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Fixed Account creation bugs. Login still not functional. Account class created.">
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Account Log In now works and initializes user info in the Account class.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AccountSignInPopupController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CreateAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/login-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/login-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/CreateAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CreateAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/HeaderBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/HeaderBar.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -183,7 +193,7 @@
       <workItem from="1713570720807" duration="12353000" />
       <workItem from="1713891382067" duration="6721000" />
       <workItem from="1714083350057" duration="1677000" />
-      <workItem from="1714177111071" duration="16517000" />
+      <workItem from="1714177111071" duration="23179000" />
     </task>
     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
       <option name="closed" value="true" />
@@ -337,7 +347,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714199444352</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Account Log In now works and initializes user info in the Account class.">
+      <option name="closed" value="true" />
+      <created>1714200358096</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1714200358096</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,7 +416,8 @@
     <MESSAGE value="Basic UI for Cart" />
     <MESSAGE value="Merged with Erick's Order History branch." />
     <MESSAGE value="Fixed Account creation bugs. Login still not functional. Account class created." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Account creation bugs. Login still not functional. Account class created." />
+    <MESSAGE value="Account Log In now works and initializes user info in the Account class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Account Log In now works and initializes user info in the Account class." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

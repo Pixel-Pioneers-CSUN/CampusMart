@@ -49,7 +49,8 @@ public class HeaderBarController implements NavigationListener {
     private Popup searchPopup = new Popup();
     // creating a Popup for sign-in/create account options when clicking account icon
     private Popup accountPopup;
-    // creating a ListView for search results
+    // Popup for logging in
+    public Popup signInPopup;
 
     @FXML
     public void initialize() {
@@ -75,7 +76,6 @@ public class HeaderBarController implements NavigationListener {
 
         // Initialize the account popup and pass in a reference to the current stage, mainStage
         loadAccountPopup(mainStage);
-
     }
 
     /**
@@ -115,7 +115,7 @@ public class HeaderBarController implements NavigationListener {
     /**
      * Navigates the user to the Login screen.
      */
-    @Override
+    //@Override
     public void navigateToLogin() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/login.fxml"));
@@ -308,7 +308,6 @@ public class HeaderBarController implements NavigationListener {
         double popupX = accountImageBounds.getMinX() - 185;
         double popupY = accountImageBounds.getMinY() + 25;
 
-        System.out.println("Account image clicked!");
         accountPopup.show(headerBarAccountImage, popupX, popupY);
     }
 

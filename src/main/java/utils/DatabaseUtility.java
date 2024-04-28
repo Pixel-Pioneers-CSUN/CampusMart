@@ -304,7 +304,6 @@ public class DatabaseUtility {
             preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
-            System.out.println("the username being passed into the db check is " + username);
             if (!resultSet.isBeforeFirst()) {
                 System.out.print("User not found in the database!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -320,7 +319,6 @@ public class DatabaseUtility {
 
                         // initialize the user's info into the Account singleton
                         account.setAccountID(resultSet.getInt("accountID"));
-                        System.out.println("Account ID is " + account.getAccountID());
                         account.setUsername(username);
                         System.out.println("Name is " + account.getName());
                         account.setName(resultSet.getString("name"));
