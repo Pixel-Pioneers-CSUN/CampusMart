@@ -4,22 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Refactored methods and scenes pertaining to login, create account, and header bar. Login view was revamped to fill the screen and have proper styling/layout constraints. Navigating to and from login/create account now works properly.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/controllers/AlreadyLoggedInPopupController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/view/AlreadyLoggedInPopup.fxml" afterDir="false" />
+    <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Log-in and log-out functionality implemented. Header bar now displays dynamic welcome message to logged-in user. Clicking on the account icon in the headerbar now dynamically shows different account-related options depending on if the user is logged in or not.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/HeaderBarController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/NavigationListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/header-bar-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/header-bar-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/view/HeaderBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/HeaderBar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/AccountSignInPopupController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/HeaderBarController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/css/login-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/login-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/NavigationListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/CreateAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/HeaderBar.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/HeaderBar.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/view/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/view/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/7UP.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/7UP.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Apple.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Apple.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Banana.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Banana.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Cheetos.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Cheetos.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Cherries.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Cherries.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Chicken Sandwich.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Chicken Sandwich.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Chicken Tenders.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Chicken Tenders.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Coca-Cola Zero.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Coca-Cola Zero.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Coca-Cola.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Coca-Cola.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Diet Coke.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Diet Coke.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Diet Pepsi.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Diet Pepsi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Doritos.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Doritos.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Fanta.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Fanta.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Fresh Fruit Cup.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Fresh Fruit Cup.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Fritos.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Fritos.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Ginger Ale.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Ginger Ale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Granola Bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Granola Bar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Hershey's Chocolate Bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Hershey's Chocolate Bar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Ice Cream Bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Ice Cream Bar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Kiwi.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Kiwi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Lays.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Lays.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Mango.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Mango.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Mountain Dew.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Mountain Dew.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Nachos with Cheese.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Nachos with Cheese.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Orange.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Orange.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Peach.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Peach.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Pear.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Pear.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Pepsi Max.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Pepsi Max.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Pizza.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Pizza.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Plum.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Plum.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Popchips.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Popchips.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Pringles.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Pringles.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Root Beer.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Root Beer.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Salad.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Salad.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Sushi Rolls.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Sushi Rolls.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Turkey Sandwich.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Turkey Sandwich.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Watermelon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Watermelon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Yogurt Parfait.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Yogurt Parfait.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/granola.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/granola.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/iceCreamBar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/iceCreamBar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/css/header-bar-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/header-bar-styles.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +222,7 @@
       <workItem from="1713570720807" duration="12353000" />
       <workItem from="1713891382067" duration="6721000" />
       <workItem from="1714083350057" duration="1677000" />
-      <workItem from="1714177111071" duration="30647000" />
+      <workItem from="1714177111071" duration="32373000" />
     </task>
     <task id="LOCAL-00001" summary="Initial HomeScreen UI and file structure setup">
       <option name="closed" value="true" />
@@ -365,7 +392,15 @@
       <option name="project" value="LOCAL" />
       <updated>1714263481894</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Log-in and log-out functionality implemented. Header bar now displays dynamic welcome message to logged-in user. Clicking on the account icon in the headerbar now dynamically shows different account-related options depending on if the user is logged in or not.">
+      <option name="closed" value="true" />
+      <created>1714337820903</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1714337820903</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -428,7 +463,8 @@
     <MESSAGE value="Fixed Account creation bugs. Login still not functional. Account class created." />
     <MESSAGE value="Account Log In now works and initializes user info in the Account class." />
     <MESSAGE value="Refactored methods and scenes pertaining to login, create account, and header bar. Login view was revamped to fill the screen and have proper styling/layout constraints. Navigating to and from login/create account now works properly." />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored methods and scenes pertaining to login, create account, and header bar. Login view was revamped to fill the screen and have proper styling/layout constraints. Navigating to and from login/create account now works properly." />
+    <MESSAGE value="Log-in and log-out functionality implemented. Header bar now displays dynamic welcome message to logged-in user. Clicking on the account icon in the headerbar now dynamically shows different account-related options depending on if the user is logged in or not." />
+    <option name="LAST_COMMIT_MESSAGE" value="Log-in and log-out functionality implemented. Header bar now displays dynamic welcome message to logged-in user. Clicking on the account icon in the headerbar now dynamically shows different account-related options depending on if the user is logged in or not." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
