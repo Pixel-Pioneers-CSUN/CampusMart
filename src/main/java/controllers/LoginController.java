@@ -1,6 +1,6 @@
 package controllers;
 
-import utils.DatabaseUtility;
+import utils.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -21,9 +21,11 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 /**
+ * @version 4/01/24
+ * @author Ola Hendy & Sevan Shahijanian
  * The LoginController class controls the login functionality of the application.
  */
-public class LoginController implements Initializable {
+public class LoginController {
 
     @FXML
     private TextField passwordTF;
@@ -56,7 +58,7 @@ public class LoginController implements Initializable {
     @FXML
     void switchToSignUp(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("signup.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CreateAccount.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) SignUpLabel.getScene().getWindow();
@@ -85,7 +87,7 @@ public class LoginController implements Initializable {
                 LoginErrorLabel.setText("Fill Empty Fields");
             }
         } else {
-            validateLogin();
+            validateLogin(event);
         }
     }
 
@@ -109,33 +111,13 @@ public class LoginController implements Initializable {
     /**
      * Validates the login credentials.
      */
-    void validateLogin() {
-        DatabaseUtility database = new DatabaseUtility();
-        database.setQuery("SELECT * FROM users WHERE username = ?");
-        try (Connection connection = database.getConnection();
-             PreparedStatement statement = connection.prepareStatement(database.getQuery())) {
-            statement.setString(1, getUsername());
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (!resultSet.next()) {
-                    LoginErrorLabel.setText("Account doesn't exist");
-                    return;
-                }
-                String dbPassword = resultSet.getString("password");
-                if (!dbPassword.equals(getPassword())) {
-                    LoginErrorLabel.setText("Invalid Password");
-                    return;
-                }
-                loggedInUsername = resultSet.getString("username");
-                isLoggedIn = true;
-                switchToHomescreen();
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    void validateLogin(ActionEvent event) {
+        DatabaseUtility db = new DatabaseUtility();
+        db.logInUser(event, getUsername(), getPassword());
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        textFields = List.of(usernameTF, passwordTF);
-    }
+//    @Override
+//    public void initialize(URL location, ResourceBundle resources) {
+//        textFields = List.of(usernameTF, passwordTF);
+//    }
 }

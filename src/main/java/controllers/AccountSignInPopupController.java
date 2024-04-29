@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Scene;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import utils.NavigationListener;
+import controllers.HeaderBarController;
 
 import java.io.IOException;
 
@@ -29,6 +31,7 @@ public class AccountSignInPopupController {
 
     @FXML
     private void clickSignIn(MouseEvent event) {
+
         // if Sign In in popup is clicked, notify the HeaderBarController to navigate to the login page
         if (navigationListener != null) {
             navigationListener.navigateToLogin();

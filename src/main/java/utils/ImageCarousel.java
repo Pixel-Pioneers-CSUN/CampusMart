@@ -12,6 +12,8 @@ import javafx.util.Duration;
 import java.io.InputStream;
 
 /**
+ * @version 4/10/24
+ * @author Sevan Shahijanian
  * Image Carousel class that displays a slideshow of images with animations.
  * Images are loaded from the resources folder and displayed in a horizontal layout.
  */

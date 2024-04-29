@@ -9,13 +9,14 @@ import java.util.Map;
 
 /**
  * 4/20/24
- * Erick Espinoza
+ * @author Erick Espinoza
  * Singleton class representing a shopping cart.
  * A HashMap is chosen as a data structure for its speed to access entries
  */
 public class Cart {
 
     private static final Cart cart = new Cart();
+
     private BigDecimal subtotal;
     private HashMap<Integer, Integer> cartItems;
 
@@ -84,6 +85,10 @@ public class Cart {
      * @param quantity   The quantity of the item to be added.
      */
     public void addToCart(int itemNumber, int quantity) {
+        if(quantity == 0) {
+            removeFromCart(itemNumber);
+            return;
+        }
         cartItems.put(itemNumber, quantity);
         updateSubtotal();
     }
@@ -102,6 +107,7 @@ public class Cart {
      * Recalculates the subtotal of the cart based on the items and their quantities.
      */
     public void updateSubtotal() {
+        //get the item data
         ItemDataStructure list = ItemDataStructure.getInstance();
         BigDecimal updatedSubtotal = new BigDecimal("0.00");
 

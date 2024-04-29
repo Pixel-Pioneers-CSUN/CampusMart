@@ -25,6 +25,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * @version 3/15/24
+ * @author Sevan Shahijanian
+ * Controller class for the home screen and all of its functions.
+ * The category VBox mouse events trigger navigation to their respective custom Item Display page.
+ */
 public class HomeScreenController {
 
     @FXML
@@ -104,6 +110,12 @@ public class HomeScreenController {
         navigateToItemCategoryPage("coffee", vboxCoffee);
     }
 
+    /**
+     * Navigates the user to the appropriate category page after a category vbox has been clicked.
+     *
+     * @param selectedCategory The name of the selected category
+     * @param vbox The VBox on the home screen containing the category
+     */
     private void navigateToItemCategoryPage(String selectedCategory, VBox vbox) {
         try {
             FXMLLoader itemDisplayLoader = new FXMLLoader((getClass().getResource("/view/ItemDisplay.fxml")));

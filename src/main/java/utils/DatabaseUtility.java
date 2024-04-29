@@ -11,15 +11,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import orders.Orders;
-
+import Account.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
 
 
-/** 3/20/24
- * Erick Espinoza
+
+/** @version 3/20/24
+ * @author Erick Espinoza & Sevan Shahijanian
  * Utility class for accessing and manipulating databases.
  * Note: Works only with MySQL and requires JDBC driver.
  */
@@ -100,9 +101,6 @@ public class DatabaseUtility {
 
     }
 
-
-
-    
     /**
      * Prints out the data from the table.
      */
@@ -191,56 +189,41 @@ public class DatabaseUtility {
      *
      * @param itemNumber The number identifying the item whose inventory count needs to be updated.
      */
-    public void updateItemDatabaseInventory(Integer itemNumber) {
-        // Use the data structure class to get the object
-        ItemDataStructure data = ItemDataStructure.getInstance();
-        // Get the temporary item structure
-        ItemClass temp = data.getItemDataStructure().get(itemNumber);
-
-        // Construct SQL statement to update inventory count
-        String sqlStatement = "UPDATE itemtable SET inventoryCount = " + temp.getInventoryCount() + " WHERE itemNumber = " + itemNumber;
-
-        try {
-            // Establish connection to the database
-            Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
-            Statement statement = connection.createStatement();
-
-            // Execute SQL statement to update inventory count
-            statement.executeUpdate(sqlStatement);
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void updateItemDatabaseInventory(String query) {
+        executeSQLStatement(query);
     }
 
 
 //    *** the following is preliminary code for when user is logged in... need to work out implementation later
-    public static void changeScene(ActionEvent event, String fxmlFile, String username) {
-        Parent root = null;
-        // if the user is logged in, allow them to navigate to account dashboard
-        if (username != null) {
-            try {
-                FXMLLoader loader = new FXMLLoader(DatabaseUtility.class.getResource(fxmlFile));
-                root = loader.load();
-                HeaderBarController headerBarController = loader.getController();
-               //headerBarController.setUserInformation(username);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+    public static void changeScene(ActionEvent event, String fxmlFilePath) {
+        try {
+            FXMLLoader loader = new FXMLLoader(DatabaseUtility.class.getResource(fxmlFilePath));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.setScene(new Scene(root, 1300, 800));
-        stage.show();
     }
 
-    public static void createAccount(ActionEvent event, String name, String username, String password) {
+    /**
+     * Creates a new user account
+     *
+     * @param event the action event passed in for navigation purposes
+     * @param name the user's first and last name
+     * @param username the user's login username
+     * @param password the user's login password
+     */
+    public void createAccount(ActionEvent event, String name, String username, String password) {
         Connection connection = null;   // connection to the database
         PreparedStatement psInsert = null;  // used to query the database - inserts valid user data into database
         PreparedStatement psCheckIfUserExists = null;   // used to query the database - checks if user already exits
         ResultSet resultSet = null; // contains the data returned from our database when we query it
 
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://cp01-wa.privatesystems.net/users", "driftmer_pixelpioneer", "COMP380Group");
+            connection = DriverManager.getConnection(this.url, this.user, this.password);
             psCheckIfUserExists = connection.prepareStatement("SELECT * FROM users WHERE username = ?");    // check database if username already exists
             psCheckIfUserExists.setString(1, username);
             resultSet = psCheckIfUserExists.executeQuery();
@@ -252,13 +235,13 @@ public class DatabaseUtility {
                 alert.setContentText("Username is not available.");
                 alert.show();
             } else {
-                psInsert = connection.prepareStatement("INSERT INTO users (name, username, password VALUES (?, ?, ?))");
+                psInsert = connection.prepareStatement("INSERT INTO users (name, username, password) VALUES (?, ?, ?)");
                 psInsert.setString(1, name);
                 psInsert.setString(2, username);
                 psInsert.setString(3, password);
                 psInsert.executeUpdate();
 
-                changeScene(event, "HomeScreen.fxml", username);
+                changeScene(event, "/view/HomeScreen.fxml");
             }
         } catch(SQLException e) {
             e.printStackTrace();
@@ -294,17 +277,16 @@ public class DatabaseUtility {
         }
     }
 
-    public static void logInUser(ActionEvent event, String username, String password) {
+    public void logInUser(ActionEvent event, String username, String password) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://cp01-wa.privatesystems.net/users", "driftmer_pixelpioneer", "COMP380Group");
-            preparedStatement = connection.prepareStatement("SELECT password FROM users WHERE username = ?");
+            connection = DriverManager.getConnection(this.url, this.user, this.password);
+            preparedStatement = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
             preparedStatement.setString(1, username);
             resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.isBeforeFirst()) {
+            if (!resultSet.isBeforeFirst()) {
                 System.out.print("User not found in the database!");
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("The provided username is incorrect!");
@@ -313,7 +295,36 @@ public class DatabaseUtility {
                 while (resultSet.next()) {
                     String retrievedPassword = resultSet.getString("password");
                     if (retrievedPassword.equals(password)) {
-                        changeScene(event, "HomeScreen.fxml", username);
+                        // user has successfully logged in
+                        System.out.println(username + " has successfully logged in!");
+                        Account account = Account.getInstance();
+
+                        // initialize the user's info into the Account singleton
+                        account.setAccountID(resultSet.getInt("accountID"));
+                        account.setUsername(username);
+                        account.setName(resultSet.getString("name"));
+                        account.setPassword(password);
+                        account.setAddress(resultSet.getString("address"));
+                        account.setPaymentName(resultSet.getString("paymentName"));
+                        account.setPaymentCVV(resultSet.getInt("paymentCVV"));
+                        account.setPaymentExpiration(resultSet.getString("paymentExpiration"));
+                        account.setPaymentNumber(resultSet.getString("paymentNumber"));
+                        account.setLoggedInStatus(true);
+
+                        // check that account data is properly being set and pulled from the database
+//                        System.out.println("AccountID is " + account.getAccountID());
+//                        System.out.println("Name is " + account.getName());
+//                        System.out.println("Username is " + account.getUsername());
+//                        System.out.println("Password is " + account.getPassword());
+//                        System.out.println("Address is " + account.getAddress());
+//                        System.out.println("Payment Name on Card is " + account.getPaymentName());
+//                        System.out.println("Payment number is " + account.getPaymentNumber());
+//                        System.out.println("Payment Expiration is " + account.getPaymentExpiration());
+//                        System.out.println("Payment CVV is " + account.getPaymentCVV());
+//                        System.out.println("Logged in status is " + account.getLoggedInStatus());
+
+                        // redirect user to the home screen
+                        changeScene(event, "/view/HomeScreen.fxml");
                     } else {
                         System.out.println("Passwords did not match!");
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -347,8 +358,6 @@ public class DatabaseUtility {
                 }
             }
         }
-
-
     }
 
     /**
@@ -359,6 +368,8 @@ public class DatabaseUtility {
      */
     public List<Orders> createOrderList(int customerID) {
         List<Orders> orderList = new ArrayList<>();
+        Account account = Account.getInstance();
+
         this.setTable("Orders_Database");
 
         try {
@@ -367,25 +378,21 @@ public class DatabaseUtility {
             Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
             Statement statement = connection.createStatement();
 
-            String printQuery = "select * from " + this.table;
+            String printQuery = "select * from Orders_Database where customerID = " + customerID;
             ResultSet resultSet = statement.executeQuery(printQuery);
             // end of connection to database
 
             //get all info from database to create a DataStructureItemClass
             while (resultSet.next()) {
                 //need to create a orderItems HashMap
-                if(customerID == resultSet.getInt("customerID")) {
+                int orderID = resultSet.getInt("orderID");
+                HashMap<Integer, Integer> map = this.createOrderItemsHashMap(orderID);
+                // fix this later
+                String date = resultSet.getString("orderDate");
 
-                    int orderID = resultSet.getInt("orderID");
-                    HashMap<Integer, Integer> map = this.createOrderItemsHashMap(orderID);
-                    // fix this later
-                    String date = resultSet.getString("orderDate");
-
-                    BigDecimal totalPrice = resultSet.getBigDecimal("orderTotal");
-                    Orders newEntry = new Orders(orderID,customerID, date ,totalPrice,map);
-                    orderList.add(newEntry);
-                }
-
+                BigDecimal totalPrice = resultSet.getBigDecimal("orderTotal");
+                Orders newEntry = new Orders(orderID,customerID, date ,totalPrice,map);
+                orderList.add(newEntry);
 
             }
             connection.close();
@@ -413,18 +420,15 @@ public class DatabaseUtility {
             Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
             Statement statement = connection.createStatement();
 
-            String printQuery = "select * from " + this.table;
+            String printQuery = "select * from OrderItems_Database where orderNumber = " + orderID;
             ResultSet resultSet = statement.executeQuery(printQuery);
             // end of connection to database
 
             //get all info from database to create a DataStructureItemClass
             while (resultSet.next()) {
-                if(orderID == resultSet.getInt("orderNumber")) {
-                    Integer itemNumber = resultSet.getInt("itemNumber");
-                    Integer itemCount = resultSet.getInt("itemCount");
-                    temp.putIfAbsent(itemNumber, itemCount);
-                }
-
+                Integer itemNumber = resultSet.getInt("itemNumber");
+                Integer itemCount = resultSet.getInt("itemCount");
+                temp.putIfAbsent(itemNumber, itemCount);
             }
 
             connection.close();

@@ -12,8 +12,8 @@ import orders.Orders;
 import java.io.IOException;
 
 /**
- * 4/13/24
- * Erick Espinoza
+ * @version 4/13/24
+ * @author Erick Espinoza
  * Controller class for managing the display of order history on the order page.
  */
 public class OrderPageController {
@@ -27,6 +27,7 @@ public class OrderPageController {
     @FXML
     public void createOrderGrid() {
         int row = 1;
+
         OrderDataStructure data = OrderDataStructure.getInstance();
 
         try {

@@ -5,28 +5,21 @@ import items.*;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.stage.Stage;
-import org.controlsfx.control.PropertySheet;
 
-/** 3/20/24
- * Erick Espinoza
+/**
+ * @version 3/20/24
+ * @author Erick Espinoza
  * Controller class for managing the display of item information.
  */
 public class ItemDisplayController implements Initializable {

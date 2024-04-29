@@ -3,8 +3,8 @@ package orders;
 import java.util.List;
 
 /**
- * 4/13/24
- * Erick Espinoza
+ * @version 4/13/24
+ * @author Erick Espinoza
  * Singleton class representing the data structure for orders.
  * A List attribute is chosen for its simplicity
  */

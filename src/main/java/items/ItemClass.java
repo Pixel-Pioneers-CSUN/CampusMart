@@ -1,10 +1,12 @@
 package items;
 
+import utils.DatabaseUtility;
+
 import java.math.BigDecimal;
 
 /**
- * 3/20/24
- * Erick Espinoza
+ * @version 3/20/24
+ * @author Erick Espinoza
  * Represents an item with various attributes such as name, number, price, category, picture, and inventory count.
  * Implements Comparable interface to allow comparison based on item number.
  */
@@ -102,8 +104,13 @@ public class ItemClass {
      * @param count The amount to reduce the inventory count by.
      */
     public void reduceInventoryCount(int count){
+
+        DatabaseUtility db = new DatabaseUtility();
         this.inventoryCount = this.inventoryCount - count;
+        String query = "update Item_Database set inventoryCount = " + this.inventoryCount
+                        + " where itemNumber = " + this.itemNumber;
+        db.updateItemDatabaseInventory(query);
     }
 
-    
+
 }
