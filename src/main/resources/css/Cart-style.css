@@ -17,3 +17,11 @@
     -fx-min-height: 20px;
     -fx-alignment: center;
 }
+.buttons {
+    -fx-border-color: black;
+    -fx-background-color: "C13538";
+    -fx-font: 100 pxTahoma;
+    -fx-text-alignment: center;
+    -fx-font-size: 30;
+    -fx-text-fill: "white";
+}

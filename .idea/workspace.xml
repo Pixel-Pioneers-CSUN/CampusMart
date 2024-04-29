@@ -5,48 +5,90 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d074da33-4be0-4762-b17e-6ea61fcf7725" name="Changes" comment="Log-in and log-out functionality implemented. Header bar now displays dynamic welcome message to logged-in user. Clicking on the account icon in the headerbar now dynamically shows different account-related options depending on if the user is logged in or not.">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2024_11_12_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_12_2024_11_12_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_3_31_PM_[Changes]/CampusMart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_3_31_PM_[Changes]/DatabaseUtility.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_3_31_PM_[Changes]/ItemDisplayController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_3_31_PM_[Changes]/ItemDisplayController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_3_31_PM_[Changes]/OrderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_3_31_PM_[Changes]/OrderPageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_3_31_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_3_31_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_4_42_PM_[Changes]/CampusMart.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_4_42_PM_[Changes]/DatabaseUtility.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_4_42_PM_[Changes]/ItemController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_4_42_PM_[Changes]/ItemDisplayController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_4_42_PM_[Changes]/ItemDisplayController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_4_42_PM_[Changes]/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_4_42_PM_[Changes]/OrderController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_4_42_PM_[Changes]/OrderPageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_4_42_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_20_2024_4_42_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_21_24__3_02PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_21_24__3_02PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_22_2024_5_36_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_22_2024_5_36_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_22_24__11_43AM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_22_24__11_43AM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_23_2024_7_35_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_4_23_2024_7_35_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/7UP.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/7UP.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Apple.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Apple.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Banana.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Banana.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Cheetos.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Cheetos.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Cherries.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Cherries.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Chicken Sandwich.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Chicken Sandwich.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Chicken Tenders.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Chicken Tenders.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Coca-Cola Zero.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Coca-Cola Zero.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Coca-Cola.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Coca-Cola.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Diet Coke.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Diet Coke.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Diet Pepsi.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Diet Pepsi.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Doritos.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Doritos.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Fanta.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Fanta.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Fresh Fruit Cup.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Fresh Fruit Cup.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Fritos.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Fritos.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Ginger Ale.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Ginger Ale.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Granola Bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Granola Bar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Hershey's Chocolate Bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Hershey's Chocolate Bar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Ice Cream Bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Ice Cream Bar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Kiwi.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Kiwi.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Lays.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Lays.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Mango.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Mango.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Mountain Dew.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Mountain Dew.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Nachos with Cheese.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Nachos with Cheese.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Orange.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Orange.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Peach.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Peach.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Pear.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Pear.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Pepsi Max.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Pepsi Max.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Pizza.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Pizza.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Plum.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Plum.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Popchips.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Popchips.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Pringles.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Pringles.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Root Beer.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Root Beer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Salad.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Salad.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Sushi Rolls.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Sushi Rolls.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Turkey Sandwich.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Turkey Sandwich.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Watermelon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Watermelon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/Yogurt Parfait.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/Yogurt Parfait.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/granola.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/granola.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/iceCreamBar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/images/iceCreamBar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/css/header-bar-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/css/header-bar-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Cart/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Cart/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/AccountDashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/AccountDashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CartItemsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CartItemsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CartPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CartPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/CheckoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/ItemDisplayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controllers/OrderPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/campusmart/CampusMart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DatabaseUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/css/Cart-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/css/Cart-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/CartItem.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/CartItem.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/CartPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/CartPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Cart/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Cart/Cart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/CheckoutController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controllers/ItemDisplayController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/7UP.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/7UP.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Apple.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Apple.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Banana.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Banana.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Cheetos.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Cheetos.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Cherries.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Cherries.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Chicken Sandwich.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Chicken Sandwich.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Chicken Tenders.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Chicken Tenders.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Coca-Cola Zero.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Coca-Cola Zero.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Coca-Cola.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Coca-Cola.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Diet Coke.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Diet Coke.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Diet Pepsi.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Diet Pepsi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Doritos.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Doritos.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Fanta.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Fanta.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Fresh Fruit Cup.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Fresh Fruit Cup.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Fritos.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Fritos.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Ginger Ale.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Ginger Ale.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Granola Bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Granola Bar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Hershey's Chocolate Bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Hershey's Chocolate Bar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Ice Cream Bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Ice Cream Bar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Kiwi.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Kiwi.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Lays.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Lays.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Mango.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Mango.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Mountain Dew.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Mountain Dew.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Nachos with Cheese.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Nachos with Cheese.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Orange.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Orange.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Peach.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Peach.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Pear.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Pear.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Pepsi Max.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Pepsi Max.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Pizza.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Pizza.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Plum.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Plum.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Popchips.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Popchips.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Pringles.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Pringles.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Root Beer.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Root Beer.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Salad.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Salad.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Sushi Rolls.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Sushi Rolls.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Turkey Sandwich.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Turkey Sandwich.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Watermelon.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Watermelon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/Yogurt Parfait.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/Yogurt Parfait.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/granola.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/granola.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/images/iceCreamBar.png" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/images/iceCreamBar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/org/example/campusmart/CampusMart.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/DatabaseUtility.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/ImageCarousel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/ImageCarousel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/SearchHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/SearchHelper.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +189,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Account-Functionality",
+    "git-widget-placeholder": "Order-History",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "list.type.of.created.stylesheet": "CSS",

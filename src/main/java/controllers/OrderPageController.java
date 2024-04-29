@@ -27,6 +27,7 @@ public class OrderPageController {
     @FXML
     public void createOrderGrid() {
         int row = 1;
+
         OrderDataStructure data = OrderDataStructure.getInstance();
 
         try {

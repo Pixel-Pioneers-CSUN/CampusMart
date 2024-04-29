@@ -1,6 +1,8 @@
 package controllers;
 
 
+import Account.Account;
+import Cart.Cart;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,9 @@ import utils.DatabaseUtility;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -27,27 +32,24 @@ public class AccountDashboardController {
     void loadOrderPage(ActionEvent event) {
         // create Orders DataStructure
         DatabaseUtility db = new DatabaseUtility();
-        OrderDataStructure data = OrderDataStructure.getInstance();
+        OrderDataStructure orderData = OrderDataStructure.getInstance();
+        Account account = Account.getInstance();
+
         // There will be a check for which account is being used before
         // creating the database aka make sure a user is logged in
 
-//        HashMap<Integer,Integer> tempMap = new HashMap<>();
+//        Cart cart = Cart.getInstance();
+//        cart.addToCart(2,3);
+//        cart.addToCart(3,6);
+//        cart.addToCart(34,1);
 //        Random rand = new Random();
-//        tempMap.put(4,2);
-//        tempMap.put(34,2);
-//        tempMap.put(5,1);
-//        tempMap.put(45,2);
-//
-//        BigDecimal tempTotal = new BigDecimal("33.66");
-//
-//        int rand_int = rand.nextInt(100);
-//
-//        Orders tempOrder = new Orders(rand_int,0, "7/13/24", tempTotal, tempMap);
-//
-//        System.out.println(tempOrder);
-//
-//        tempOrder.addToDataBase();
-        data.setOrderList(db.createOrderList(0));
+//        int randOrderID = rand.nextInt(999);
+//        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+//        String date = df.format(new Date());
+//        Orders order = new Orders(randOrderID,account.getAccountID(),date,cart.getSubtotal(),cart.getCartItems());
+//        order.addToDatabase();
+
+        orderData.setOrderList(db.createOrderList(account.getAccountID()));
 
 
         try {

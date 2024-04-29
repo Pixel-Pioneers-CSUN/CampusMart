@@ -36,28 +36,10 @@ public class CampusMart extends Application {
         // create data structure for Items
         ItemDataStructure data = ItemDataStructure.getInstance();
         data.setItemDataStructure(bd.createHashMapItemClass());
-        DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-        String test = df.format(new Date());
-        System.out.println("Date Test: " + test);
 
-        /*
-         * test for cart object
-         * Using Singleton Obj of cart
-         */
+        //create cart object
         Cart cart = Cart.getInstance();
         cart.createCart();
-
-
-        System.out.println("Cart object test add to cart:\n" + cart);
-
-        System.out.println("Cart object test remove from cart:\n" + cart);
-//        CheckoutController checkoutController = new CheckoutController();
-//        System.out.println("Calls reduceInventory should affect items in database: ");
-//        checkoutController.reduceInventory();
-//        System.out.println("Calls updateOrderSummary should add a new order to database: ");
-//        checkoutController.updateOrderSummary();
-
-        System.out.println("End of test");
 
         // load the HeaderBar.fxml file and set is as the headerBar
         FXMLLoader headerLoader = new FXMLLoader(getClass().getResource("/view/HeaderBar.fxml"));

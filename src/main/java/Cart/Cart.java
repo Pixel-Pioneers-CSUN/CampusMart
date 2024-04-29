@@ -85,6 +85,10 @@ public class Cart {
      * @param quantity   The quantity of the item to be added.
      */
     public void addToCart(int itemNumber, int quantity) {
+        if(quantity == 0) {
+            removeFromCart(itemNumber);
+            return;
+        }
         cartItems.put(itemNumber, quantity);
         updateSubtotal();
     }

@@ -368,6 +368,8 @@ public class DatabaseUtility {
      */
     public List<Orders> createOrderList(int customerID) {
         List<Orders> orderList = new ArrayList<>();
+        Account account = Account.getInstance();
+
         this.setTable("Orders_Database");
 
         try {
@@ -376,25 +378,21 @@ public class DatabaseUtility {
             Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
             Statement statement = connection.createStatement();
 
-            String printQuery = "select * from " + this.table;
+            String printQuery = "select * from Orders_Database where customerID = " + customerID;
             ResultSet resultSet = statement.executeQuery(printQuery);
             // end of connection to database
 
             //get all info from database to create a DataStructureItemClass
             while (resultSet.next()) {
                 //need to create a orderItems HashMap
-                if(customerID == resultSet.getInt("customerID")) {
+                int orderID = resultSet.getInt("orderID");
+                HashMap<Integer, Integer> map = this.createOrderItemsHashMap(orderID);
+                // fix this later
+                String date = resultSet.getString("orderDate");
 
-                    int orderID = resultSet.getInt("orderID");
-                    HashMap<Integer, Integer> map = this.createOrderItemsHashMap(orderID);
-                    // fix this later
-                    String date = resultSet.getString("orderDate");
-
-                    BigDecimal totalPrice = resultSet.getBigDecimal("orderTotal");
-                    Orders newEntry = new Orders(orderID,customerID, date ,totalPrice,map);
-                    orderList.add(newEntry);
-                }
-
+                BigDecimal totalPrice = resultSet.getBigDecimal("orderTotal");
+                Orders newEntry = new Orders(orderID,customerID, date ,totalPrice,map);
+                orderList.add(newEntry);
 
             }
             connection.close();
@@ -422,18 +420,15 @@ public class DatabaseUtility {
             Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
             Statement statement = connection.createStatement();
 
-            String printQuery = "select * from " + this.table;
+            String printQuery = "select * from OrderItems_Database where orderNumber = " + orderID;
             ResultSet resultSet = statement.executeQuery(printQuery);
             // end of connection to database
 
             //get all info from database to create a DataStructureItemClass
             while (resultSet.next()) {
-                if(orderID == resultSet.getInt("orderNumber")) {
-                    Integer itemNumber = resultSet.getInt("itemNumber");
-                    Integer itemCount = resultSet.getInt("itemCount");
-                    temp.putIfAbsent(itemNumber, itemCount);
-                }
-
+                Integer itemNumber = resultSet.getInt("itemNumber");
+                Integer itemCount = resultSet.getInt("itemCount");
+                temp.putIfAbsent(itemNumber, itemCount);
             }
 
             connection.close();

@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+import Account.Account;
 import Cart.Cart;
 import items.ItemClass;
 import items.ItemDataStructure;
@@ -266,12 +267,12 @@ public class CheckoutController implements Initializable {
         // Display each item's name, price, quantity
         // Must be updated every time the customer presses on checkout
         Cart cart = Cart.getInstance();
-
+        Account account = Account.getInstance();
         Random rand = new Random();
         int randOrderID = rand.nextInt(999);
         DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         String date = df.format(new Date());
-        Orders order = new Orders(randOrderID,0,date,cart.getSubtotal(),cart.getCartItems());
+        Orders order = new Orders(randOrderID,account.getAccountID(),date,cart.getSubtotal(),cart.getCartItems());
         order.addToDatabase();
     }
 
