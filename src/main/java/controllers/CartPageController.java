@@ -23,9 +23,6 @@ import java.util.Map;
  */
 public class CartPageController {
 
-    @FXML
-    private VBox myCartItemsVBox;
-
 
     @FXML
     private GridPane grid;

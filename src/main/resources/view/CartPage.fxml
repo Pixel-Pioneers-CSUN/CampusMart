@@ -16,7 +16,7 @@
          <children>
             <Button mnemonicParsing="false" onAction="#clickCheckout" prefHeight="25.0" prefWidth="517.0" styleClass="buttons" stylesheets="@../css/Cart-style.css" text="Checkout" />
             <Button mnemonicParsing="false" onAction="#clickedUpdate" prefHeight="25.0" prefWidth="567.0" styleClass="buttons" stylesheets="@../css/Cart-style.css" text="Update" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="553.0" styleClass="buttons" stylesheets="@../css/Cart-style.css" text="Continue Shopping" />
+            <Button mnemonicParsing="false" onAction="#clickContinueShopping" prefHeight="25.0" prefWidth="553.0" styleClass="buttons" stylesheets="@../css/Cart-style.css" text="Continue Shopping" />
          </children>
       </VBox>
    </right>
