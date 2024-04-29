@@ -70,7 +70,20 @@ public class CartPageController {
 
     @FXML
     void clickedUpdate() {
-        //initialize();
+
+        try {
+            // load the fxml file of the cart screen
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CartPage.fxml"));
+            Parent root = loader.load();
+            // get the stage and set it to the new scene
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) grid.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            System.out.println("Error with updating cart");
+            e.printStackTrace();
+        }
     }
 
     /**
