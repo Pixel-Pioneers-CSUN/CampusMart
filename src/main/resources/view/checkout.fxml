@@ -19,7 +19,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../css/checkout-styles.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CheckoutController">
    <children>
-      <Label id="checkoutLabel" layoutX="530.0" layoutY="64.0" prefHeight="57.0" prefWidth="178.0" text="Check Out">
+      <Label id="checkoutLabel" layoutY="72.0" prefHeight="85.0" prefWidth="1300.0" text="Check Out">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
@@ -139,11 +139,11 @@
             </HBox>
          </children>
       </VBox>
-      <TableView layoutX="859.0" layoutY="276.0" prefHeight="290.0" prefWidth="288.0">
+      <TableView fx:id="summaryTable" layoutX="859.0" layoutY="276.0" prefHeight="290.0" prefWidth="288.0">
          <columns>
-            <TableColumn prefWidth="104.66674554347992" text="Item Name" />
-            <TableColumn prefWidth="90.6666259765625" text="Quantity" />
-            <TableColumn prefWidth="90.6666259765625" text="Price" />
+            <TableColumn fx:id="itemNameCol" prefWidth="104.66674554347992" text="Item Name" />
+            <TableColumn fx:id="quantityCol" prefWidth="90.6666259765625" text="Quantity" />
+            <TableColumn fx:id="priceCol" prefWidth="90.6666259765625" text="Price" />
          </columns>
       </TableView>
    </children>

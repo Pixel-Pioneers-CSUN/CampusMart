@@ -1,5 +1,7 @@
 package controllers;
 
+import java.io.IOException;
+import java.math.BigDecimal;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -11,19 +13,23 @@ import Account.Account;
 import Cart.Cart;
 import items.ItemClass;
 import items.ItemDataStructure;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.ButtonBar.ButtonData;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import orders.Orders;
 import utils.DateHelper;
 import utils.textFieldHelper;
@@ -48,6 +54,8 @@ public class CheckoutController implements Initializable {
     @FXML
     private Label contactInfoErrorLabel;
     @FXML
+    private Label backToCartLabel;
+    @FXML
     private Pane creditCardInfoPane;
     @FXML
     private TextField cvvTF;
@@ -61,6 +69,17 @@ public class CheckoutController implements Initializable {
     private TextField nameOnCardTF;
     @FXML
     private TextField phoneNumTF;
+    @FXML
+    private TableColumn<ItemClass, String> itemNameCol;
+    @FXML
+    private TableColumn<ItemClass, BigDecimal> priceCol;
+
+    @FXML
+    private TableColumn<ItemClass, Integer> quantityCol;
+
+    @FXML
+    private TableView<ItemClass> summaryTable;
+
     @FXML
     private Label taxAmount;
     @FXML
@@ -176,13 +195,16 @@ public class CheckoutController implements Initializable {
      */
     @FXML
     void switchToCart(MouseEvent event) {
-        // Switch scene to cart when user clicks on "back to cart" label
-        /*
-         * try{ FXMLLoader loader = new FXMLLoader(getClass().getResource("cart.fxml"));
-         * Parent root = loader.load(); Scene scene = new Scene(root); Stage stage =
-         * (Stage) backToCartLabel.getScene().getWindow(); stage.setScene(scene);
-         * stage.show(); } catch (IOException e) { e.printStackTrace(); }
-         */
+         //Switch scene to cart when user clicks on "back to cart" label
+
+         try{ FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CartPage.fxml"));
+         Parent root = loader.load(); Scene scene = new Scene(root);
+         Stage stage = (Stage) backToCartLabel.getScene().getWindow();
+         stage.setScene(scene);
+         stage.show();
+         }
+         catch (IOException e) { e.printStackTrace(); }
+
     }
 
     /**
@@ -198,6 +220,7 @@ public class CheckoutController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
+            displayOrder();
             // Set filters for text fields during initialization
             cardNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper
                     .textFilter(cardNumTF, creditcardErrorLabel, "\\d{0,16}", "Enter a valid card number")));
@@ -275,5 +298,32 @@ public class CheckoutController implements Initializable {
         Orders order = new Orders(randOrderID,account.getAccountID(),date,cart.getSubtotal(),cart.getCartItems());
         order.addToDatabase();
     }
+
+    public void displayOrder() {
+        Cart cart = Cart.getInstance();
+        ItemDataStructure data = ItemDataStructure.getInstance();
+        ObservableList<ItemClass> cartItems = FXCollections.observableArrayList();
+        for (Map.Entry<Integer, Integer> entry : cart.getCartItems().entrySet()) {
+            //temp itemClass
+            String itemName = data.getItemDataStructure().get(entry.getKey()).getItemName();
+            BigDecimal price = data.getItemDataStructure().get(entry.getKey()).getPrice();
+            itemNameCol.setCellValueFactory(cellData -> new SimpleStringProperty(itemName));
+            priceCol.setCellValueFactory(cellData ->  new SimpleObjectProperty<>(price));
+            //quantityCol.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getValue()));
+
+            ItemClass item = data.getItemDataStructure().get(entry.getKey());
+            cartItems.add(item);
+        }
+        // Set items to the TableView
+        summaryTable.setItems(cartItems);
+        //int quantity = data.getItemDataStructure().get(entry.getKey()).
+    }
+
+//    public BigDecimal totalPrice(){
+//
+//        return 0;
+//    }
+
+
 
 }
