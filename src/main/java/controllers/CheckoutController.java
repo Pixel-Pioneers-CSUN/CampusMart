@@ -2,8 +2,10 @@ package controllers;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -16,7 +18,6 @@ import items.ItemDataStructure;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -95,7 +96,6 @@ public class CheckoutController implements Initializable {
     textFieldHelper textFieldHelper = new textFieldHelper();
     DateHelper dateHelper = new DateHelper();
     String formattedDate;
-
     // Getter methods to access text fields info
     public String getCardNumber() {
         return cardNumTF.getText();
@@ -207,6 +207,7 @@ public class CheckoutController implements Initializable {
 
     }
 
+
     /**
      * Shows the credit card information box.
      *
@@ -221,6 +222,8 @@ public class CheckoutController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             displayOrder();
+            taxAmount.setText(currencyFormat(getTaxes()));
+            totalPrice.setText(currencyFormat(totalPrice()));
             // Set filters for text fields during initialization
             cardNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper
                     .textFilter(cardNumTF, creditcardErrorLabel, "\\d{0,16}", "Enter a valid card number")));
@@ -298,31 +301,61 @@ public class CheckoutController implements Initializable {
         Orders order = new Orders(randOrderID,account.getAccountID(),date,cart.getSubtotal(),cart.getCartItems());
         order.addToDatabase();
     }
-
+    //displays the items in the cart in a table view
     public void displayOrder() {
         Cart cart = Cart.getInstance();
-        ItemDataStructure data = ItemDataStructure.getInstance();
+        ItemDataStructure temp = ItemDataStructure.getInstance();
         ObservableList<ItemClass> cartItems = FXCollections.observableArrayList();
-        for (Map.Entry<Integer, Integer> entry : cart.getCartItems().entrySet()) {
-            //temp itemClass
-            String itemName = data.getItemDataStructure().get(entry.getKey()).getItemName();
-            BigDecimal price = data.getItemDataStructure().get(entry.getKey()).getPrice();
-            itemNameCol.setCellValueFactory(cellData -> new SimpleStringProperty(itemName));
-            priceCol.setCellValueFactory(cellData ->  new SimpleObjectProperty<>(price));
-            //quantityCol.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getValue()));
+        itemNameCol.setCellValueFactory(cellData -> { ItemClass item = cellData.getValue();
+            return new SimpleStringProperty(item.getItemName()); });
+        priceCol.setCellValueFactory(cellData -> {
+            ItemClass item = cellData.getValue();
+            return new SimpleObjectProperty<>(item.getPrice());});
+        quantityCol.setCellValueFactory(cellData -> {
+            ItemClass item = cellData.getValue();
+            int quantity = cart.getCartItems().get(item.getItemNumber());
+            return new SimpleIntegerProperty(quantity).asObject();});
 
-            ItemClass item = data.getItemDataStructure().get(entry.getKey());
+        for (Map.Entry<Integer, Integer> entry : cart.getCartItems().entrySet()) {
+            ItemClass item = temp.getItemDataStructure().get(entry.getKey());
             cartItems.add(item);
         }
-        // Set items to the TableView
         summaryTable.setItems(cartItems);
         //int quantity = data.getItemDataStructure().get(entry.getKey()).
     }
 
-//    public BigDecimal totalPrice(){
-//
-//        return 0;
-//    }
+    public static String currencyFormat(BigDecimal n) {
+        return NumberFormat.getCurrencyInstance().format(n);
+    }
+    // returns the total price ( subtotal + taxes )
+    public BigDecimal totalPrice(){
+        Cart cart = Cart.getInstance();
+        BigDecimal subtotal = new BigDecimal(0);
+        BigDecimal total = new BigDecimal(0);
+        subtotal =  cart.getSubtotal();
+        total = subtotal.add(getTaxes());
+        return total;
+    }
+
+    //returns the amount of taxes on the items in cart
+    public BigDecimal getTaxes(){
+        BigDecimal taxAmount = new BigDecimal(0.0725);
+        Cart cart = Cart.getInstance();
+
+        BigDecimal taxes = new BigDecimal(0);
+        BigDecimal totalTaxes = new BigDecimal(0);
+        ItemDataStructure list = ItemDataStructure.getInstance();
+        for (Map.Entry<Integer, Integer> entry : cart.getCartItems().entrySet()) {
+            ItemClass item = list.getItemDataStructure().get(entry.getKey());
+            if (!(item.getCategory().equalsIgnoreCase("Fruits") || item.getItemName().equalsIgnoreCase("water bottle"))) {
+                // calculate taxes for items other than fruits and water bottles
+            taxes = taxAmount.multiply(item.getPrice().multiply(new BigDecimal(entry.getValue())));
+                totalTaxes = totalTaxes.add(taxes);
+            }
+
+    }
+        return totalTaxes;
+        }
 
 
 
