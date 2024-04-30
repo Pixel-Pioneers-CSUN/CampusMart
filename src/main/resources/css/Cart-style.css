@@ -3,8 +3,8 @@
     -fx-border-color: black;
     -fx-background-color: "C13538";
     -fx-font: 100 pxTahoma;
-    -fx-text-alignment: center;
-    -fx-font-size: 10;
+    -fx-text-alignment: left;
+    -fx-font-size: 15;
     -fx-text-fill: "white";
 }
 
