@@ -15,24 +15,24 @@
          <children>
             <VBox prefHeight="136.0" prefWidth="209.0">
                <children>
-                  <ImageView fx:id="myImage" fitHeight="89.0" fitWidth="163.0" pickOnBounds="true" preserveRatio="true" styleClass="image" />
+                  <ImageView fx:id="myImage" fitHeight="89.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" styleClass="image" />
                   <Label fx:id="myLabel" prefHeight="70.0" prefWidth="164.0" stylesheets="@../css/Cart-style.css" />
                </children>
             </VBox>
-            <VBox prefHeight="164.0" prefWidth="211.0">
+            <VBox prefHeight="136.0" prefWidth="211.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#increaseQuantity" prefHeight="34.0" prefWidth="164.0" text="+">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button mnemonicParsing="false" onAction="#decreaseQuantity" prefHeight="34.0" prefWidth="165.0" text="-">
+                  <Button mnemonicParsing="false" onAction="#decreaseQuantity" prefHeight="34.0" prefWidth="164.0" text="-">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
                   <HBox prefHeight="32.0" prefWidth="119.0">
                      <children>
                         <Label alignment="CENTER" prefHeight="32.0" prefWidth="75.0" stylesheets="@../css/Cart-style.css" text="Qty:" />
-                        <TextField fx:id="myQuantityField" prefHeight="32.0" prefWidth="90.0">
+                        <TextField fx:id="myQuantityField" prefHeight="32.0" prefWidth="87.0">
                            <cursor>
                               <Cursor fx:constant="NONE" />
                            </cursor></TextField>

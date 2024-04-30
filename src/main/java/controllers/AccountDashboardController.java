@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import orders.OrderDataStructure;
 import orders.Orders;
 import utils.DatabaseUtility;
@@ -30,6 +31,8 @@ public class AccountDashboardController {
 
     @FXML
     void loadOrderPage(ActionEvent event) {
+
+        myDisplayAnchorPane.getChildren().clear();
         // create Orders DataStructure
         DatabaseUtility db = new DatabaseUtility();
         OrderDataStructure orderData = OrderDataStructure.getInstance();
@@ -55,7 +58,10 @@ public class AccountDashboardController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/view/OrderPage.fxml"));
+            //BorderPane borderPane = (BorderPane) fxmlLoader.load();
             AnchorPane pane = fxmlLoader.load();
+            pane.setMaxWidth(1121);
+            pane.setMinWidth(714);
 
             myDisplayAnchorPane.getChildren().add(pane);
         }
@@ -64,6 +70,23 @@ public class AccountDashboardController {
             e.printStackTrace();
         }
 
+    }
+
+    public void editAccount() {
+        myDisplayAnchorPane.getChildren().clear();
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader();
+            fxmlLoader.setLocation(getClass().getResource("/view/EditProfile.fxml"));
+            AnchorPane pane = fxmlLoader.load();
+            pane.setMaxWidth(1121);
+            pane.setMinWidth(714);
+
+            myDisplayAnchorPane.getChildren().add(pane);
+        }
+        catch (IOException e) {
+            System.out.println("Failed to load OrderPage.fxml in AccountDashboardController");
+            e.printStackTrace();
+        }
     }
 
 }
