@@ -69,7 +69,7 @@ public class CartItemsController {
         itemQuantity = amount;
 
         // Constructs the text to be displayed, including item name, quantity, and price
-        String text = temp.getItemName() + "\n Price: " +
+        String text = temp.getItemName() + "\n Price: $" +
                 temp.getPrice();
         myQuantityField.setText(amount.toString());
 

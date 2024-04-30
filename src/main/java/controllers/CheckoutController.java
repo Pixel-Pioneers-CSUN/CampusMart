@@ -1,7 +1,11 @@
 package controllers;
 
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.net.URL;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,19 +15,22 @@ import Account.Account;
 import Cart.Cart;
 import items.ItemClass;
 import items.ItemDataStructure;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.ButtonBar.ButtonData;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import orders.Orders;
 import utils.DateHelper;
 import utils.textFieldHelper;
@@ -48,6 +55,8 @@ public class CheckoutController implements Initializable {
     @FXML
     private Label contactInfoErrorLabel;
     @FXML
+    private Label backToCartLabel;
+    @FXML
     private Pane creditCardInfoPane;
     @FXML
     private TextField cvvTF;
@@ -61,6 +70,17 @@ public class CheckoutController implements Initializable {
     private TextField nameOnCardTF;
     @FXML
     private TextField phoneNumTF;
+    @FXML
+    private TableColumn<ItemClass, String> itemNameCol;
+    @FXML
+    private TableColumn<ItemClass, BigDecimal> priceCol;
+
+    @FXML
+    private TableColumn<ItemClass, Integer> quantityCol;
+
+    @FXML
+    private TableView<ItemClass> summaryTable;
+
     @FXML
     private Label taxAmount;
     @FXML
@@ -76,7 +96,6 @@ public class CheckoutController implements Initializable {
     textFieldHelper textFieldHelper = new textFieldHelper();
     DateHelper dateHelper = new DateHelper();
     String formattedDate;
-
     // Getter methods to access text fields info
     public String getCardNumber() {
         return cardNumTF.getText();
@@ -176,14 +195,18 @@ public class CheckoutController implements Initializable {
      */
     @FXML
     void switchToCart(MouseEvent event) {
-        // Switch scene to cart when user clicks on "back to cart" label
-        /*
-         * try{ FXMLLoader loader = new FXMLLoader(getClass().getResource("cart.fxml"));
-         * Parent root = loader.load(); Scene scene = new Scene(root); Stage stage =
-         * (Stage) backToCartLabel.getScene().getWindow(); stage.setScene(scene);
-         * stage.show(); } catch (IOException e) { e.printStackTrace(); }
-         */
+         //Switch scene to cart when user clicks on "back to cart" label
+
+         try{ FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CartPage.fxml"));
+         Parent root = loader.load(); Scene scene = new Scene(root);
+         Stage stage = (Stage) backToCartLabel.getScene().getWindow();
+         stage.setScene(scene);
+         stage.show();
+         }
+         catch (IOException e) { e.printStackTrace(); }
+
     }
+
 
     /**
      * Shows the credit card information box.
@@ -198,6 +221,9 @@ public class CheckoutController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
+            displayOrder();
+            taxAmount.setText(currencyFormat(getTaxes()));
+            totalPrice.setText(currencyFormat(totalPrice()));
             // Set filters for text fields during initialization
             cardNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper
                     .textFilter(cardNumTF, creditcardErrorLabel, "\\d{0,16}", "Enter a valid card number")));
@@ -275,5 +301,62 @@ public class CheckoutController implements Initializable {
         Orders order = new Orders(randOrderID,account.getAccountID(),date,cart.getSubtotal(),cart.getCartItems());
         order.addToDatabase();
     }
+    //displays the items in the cart in a table view
+    public void displayOrder() {
+        Cart cart = Cart.getInstance();
+        ItemDataStructure temp = ItemDataStructure.getInstance();
+        ObservableList<ItemClass> cartItems = FXCollections.observableArrayList();
+        itemNameCol.setCellValueFactory(cellData -> { ItemClass item = cellData.getValue();
+            return new SimpleStringProperty(item.getItemName()); });
+        priceCol.setCellValueFactory(cellData -> {
+            ItemClass item = cellData.getValue();
+            return new SimpleObjectProperty<>(item.getPrice());});
+        quantityCol.setCellValueFactory(cellData -> {
+            ItemClass item = cellData.getValue();
+            int quantity = cart.getCartItems().get(item.getItemNumber());
+            return new SimpleIntegerProperty(quantity).asObject();});
+
+        for (Map.Entry<Integer, Integer> entry : cart.getCartItems().entrySet()) {
+            ItemClass item = temp.getItemDataStructure().get(entry.getKey());
+            cartItems.add(item);
+        }
+        summaryTable.setItems(cartItems);
+        //int quantity = data.getItemDataStructure().get(entry.getKey()).
+    }
+
+    public static String currencyFormat(BigDecimal n) {
+        return NumberFormat.getCurrencyInstance().format(n);
+    }
+    // returns the total price ( subtotal + taxes )
+    public BigDecimal totalPrice(){
+        Cart cart = Cart.getInstance();
+        BigDecimal subtotal = new BigDecimal(0);
+        BigDecimal total = new BigDecimal(0);
+        subtotal =  cart.getSubtotal();
+        total = subtotal.add(getTaxes());
+        return total;
+    }
+
+    //returns the amount of taxes on the items in cart
+    public BigDecimal getTaxes(){
+        BigDecimal taxAmount = new BigDecimal(0.0725);
+        Cart cart = Cart.getInstance();
+
+        BigDecimal taxes = new BigDecimal(0);
+        BigDecimal totalTaxes = new BigDecimal(0);
+        ItemDataStructure list = ItemDataStructure.getInstance();
+        for (Map.Entry<Integer, Integer> entry : cart.getCartItems().entrySet()) {
+            ItemClass item = list.getItemDataStructure().get(entry.getKey());
+            if (!(item.getCategory().equalsIgnoreCase("Fruits") || item.getItemName().equalsIgnoreCase("water bottle"))) {
+                // calculate taxes for items other than fruits and water bottles
+            taxes = taxAmount.multiply(item.getPrice().multiply(new BigDecimal(entry.getValue())));
+                totalTaxes = totalTaxes.add(taxes);
+            }
+
+    }
+        return totalTaxes;
+        }
+
+
 
 }

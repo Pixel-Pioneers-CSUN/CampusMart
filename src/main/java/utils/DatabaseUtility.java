@@ -187,7 +187,7 @@ public class DatabaseUtility {
     /**
      * Updates the inventory count of an item in the database.
      *
-     * @param itemNumber The number identifying the item whose inventory count needs to be updated.
+     * @param query
      */
     public void updateItemDatabaseInventory(String query) {
         executeSQLStatement(query);

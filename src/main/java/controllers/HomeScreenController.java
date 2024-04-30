@@ -1,29 +1,22 @@
 package controllers;
 
 
+import items.ItemClass;
+import items.ItemDataStructure;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.stage.Popup;
-import utils.DatabaseUtility;
 import utils.SearchHelper;
-import items.*;
 
-import utils.ImageCarousel;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 /**
  * @version 3/15/24
@@ -32,6 +25,8 @@ import java.util.Map;
  * The category VBox mouse events trigger navigation to their respective custom Item Display page.
  */
 public class HomeScreenController {
+
+
 
     @FXML
     private Button shopNowButton;
@@ -48,13 +43,22 @@ public class HomeScreenController {
     @FXML
     private VBox vboxCoffee;
     @FXML
+    private ImageView popFavSandwich;
+    @FXML
+    private ImageView popFavIceCream;
+    @FXML
+    private ImageView popFavBurrito;
+    @FXML
+    private ImageView popFavPizza;
+    @FXML
+    private ImageView popFavMuffin;
+
+    @FXML
     private HBox itemCarouselContainer;
 
     @FXML
     private void initialize() {
-        // create an instance of ImageCarousel and add it to the FlowPane container
-        ImageCarousel imageCarousel = new ImageCarousel(10);
-        itemCarouselContainer.getChildren().add(imageCarousel);
+
     }
 
     @FXML
@@ -110,6 +114,52 @@ public class HomeScreenController {
         navigateToItemCategoryPage("coffee", vboxCoffee);
     }
 
+    @FXML
+    private void clickPopFavSandwich(MouseEvent event) {
+        clickFav("Chicken Sandwich");
+    }
+
+    @FXML
+    private void clickPopFavIceCream(MouseEvent event) {
+        clickFav("Ice Cream Bar");
+    }
+
+    @FXML
+    private void clickPopFavBurrito(MouseEvent event) {
+        clickFav("Burrito");
+    }
+
+    @FXML
+    private void clickPopFavPizza(MouseEvent event) {
+        clickFav("Pizza");
+    }
+
+    @FXML
+    private void clickPopFavMuffin(MouseEvent event) {
+        clickFav("Blueberry Muffin");
+    }
+
+    private void clickFav(String itemName) {
+        ItemClass item = SearchHelper.getItemByName(itemName, ItemDataStructure.getInstance().getItemDataStructure());
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ItemDisplay.fxml"));
+            Parent root = loader.load();
+            // now pass the selected item to the ItemDisplayController so it can display it
+            ItemDisplayController controller = loader.getController();
+            //display the selected item
+            controller.displayItemInformation(item);
+            // display the grid with the rest of the items
+            controller.createItemGridPage("default");
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) popFavSandwich.getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /**
      * Navigates the user to the appropriate category page after a category vbox has been clicked.
      *
@@ -134,6 +184,8 @@ public class HomeScreenController {
             e.printStackTrace();
         }
     }
+
+
 
     // Method to add drop shadow effect to a VBox
     private void addDropShadow(VBox vbox) {

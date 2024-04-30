@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeScreenController" prefHeight="800.0" prefWidth="1300.0">
+<BorderPane fx:id="rootPane" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeScreenController">
    <top>
       <fx:include source="HeaderBar.fxml" />
    </top>
@@ -48,7 +48,7 @@
             </StackPane>
             <HBox alignment="CENTER" prefHeight="125.0" prefWidth="1100.0" spacing="50.0">
                <children>
-                  <VBox fx:id="vboxHotFood" alignment="CENTER" onMouseClicked="#clickHotFoods" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="100.0" prefWidth="125.0">
+                  <VBox id="categoryBox" fx:id="vboxHotFood" alignment="CENTER" onMouseClicked="#clickHotFoods" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="100.0" prefWidth="125.0">
                      <children>
                         <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -65,7 +65,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </VBox>
-                  <VBox fx:id="vboxColdFood" alignment="CENTER" onMouseClicked="#clickColdFoods" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="200.0" prefWidth="125.0">
+                  <VBox id="categoryBox" fx:id="vboxColdFood" alignment="CENTER" onMouseClicked="#clickColdFoods" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="200.0" prefWidth="125.0">
                      <children>
                         <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -82,7 +82,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </VBox>
-                  <VBox fx:id="vboxSnacks" alignment="CENTER" onMouseClicked="#clickSnacks" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="200.0" prefWidth="125.0">
+                  <VBox id="categoryBox" fx:id="vboxSnacks" alignment="CENTER" onMouseClicked="#clickSnacks" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="200.0" prefWidth="125.0">
                      <children>
                         <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -99,7 +99,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </VBox>
-                  <VBox fx:id="vboxFruits" alignment="CENTER" onMouseClicked="#clickFruits" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="200.0" prefWidth="125.0">
+                  <VBox id="categoryBox" fx:id="vboxFruits" alignment="CENTER" onMouseClicked="#clickFruits" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="200.0" prefWidth="125.0">
                      <children>
                         <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -116,7 +116,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </VBox>
-                  <VBox fx:id="vboxDrinks" alignment="CENTER" onMouseClicked="#clickDrinks" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="200.0" prefWidth="125.0">
+                  <VBox id="categoryBox" fx:id="vboxDrinks" alignment="CENTER" onMouseClicked="#clickDrinks" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="200.0" prefWidth="125.0">
                      <children>
                         <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -133,7 +133,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </VBox>
-                  <VBox fx:id="vboxCoffee" alignment="CENTER" onMouseClicked="#clickCoffee" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="200.0" prefWidth="125.0">
+                  <VBox id="categoryBox" fx:id="vboxCoffee" alignment="CENTER" onMouseClicked="#clickCoffee" onMouseEntered="#onMouseEntered" onMouseExited="#onMouseExited" prefHeight="200.0" prefWidth="125.0">
                      <children>
                         <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -168,7 +168,64 @@
                         <Insets top="25.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox fx:id="itemCarouselContainer" prefHeight="100.0" prefWidth="200.0" />
+                  <HBox fx:id="popularFavoritesHBox" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView id="popFav" fx:id="popFavSandwich" fitHeight="200.0" fitWidth="200.0" onMouseClicked="#clickPopFavSandwich" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../images/Chicken Sandwich.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView id="popFav" fx:id="popFavIceCream" fitHeight="200.0" fitWidth="200.0" onMouseClicked="#clickPopFavIceCream" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Ice Cream Bar.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView id="popFav" fx:id="popFavBurrito" fitHeight="200.0" fitWidth="200.0" onMouseClicked="#clickPopFavBurrito" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Burrito.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView id="popFav" fx:id="popFavPizza" fitHeight="200.0" fitWidth="200.0" onMouseClicked="#clickPopFavPizza" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Pizza.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView id="popFav" fx:id="popFavMuffin" fitHeight="200.0" fitWidth="200.0" onMouseClicked="#clickPopFavMuffin" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/BlueberryMuffin.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children></HBox>
                </children>
             </VBox>
          </children>

@@ -294,7 +294,7 @@ public class HeaderBarController implements NavigationListener {
      *
      * @param item The clicked item in the search results.
      */
-    private void loadItemPage(ItemClass item) {
+    public void loadItemPage(ItemClass item) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/ItemDisplay.fxml"));
             Parent root = loader.load();

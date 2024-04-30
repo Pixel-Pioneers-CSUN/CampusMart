@@ -129,7 +129,7 @@ public class EditProfileController implements Initializable {
      * @param event The event triggering the action
      */
     @FXML
-    void backToAccount(MouseEvent event) {
+    void backToEditProfile(ActionEvent event) {
         checkIfSafeToGoBack();
     }
 
@@ -137,9 +137,9 @@ public class EditProfileController implements Initializable {
      * Handles going back to the edit profile page.
      *
      * @param event The event triggering the action
-     */
+//     */
     @FXML
-    void backToEditProfile(ActionEvent event) {
+    public void backToAccount(javafx.scene.input.MouseEvent mouseEvent) {
         checkIfSafeToGoBack();
     }
 
@@ -194,4 +194,7 @@ public class EditProfileController implements Initializable {
             cardEndingLabel.setVisible(true);
         }
     }
+
+
+
 }
