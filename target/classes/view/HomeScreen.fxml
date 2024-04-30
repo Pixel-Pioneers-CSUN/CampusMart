@@ -170,20 +170,20 @@
                   </Label>
                   <HBox fx:id="popularFavoritesHBox" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <ImageView fx:id="popFavSandwich" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="popFavSandwich" onMouseClicked="#clickPopFavSandwich" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <HBox.margin>
                               <Insets left="25.0" right="25.0" />
                            </HBox.margin>
                            <image>
-                              <Image url="@../images/Chicken%20Sandwich.png" />
+                              <Image url="@../images/Chicken Sandwich.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <ImageView fx:id="popFavIceCream" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="popFavIceCream" onMouseClicked="#clickPopFavIceCream" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../images/Ice%20Cream%20Bar.png" />
+                              <Image url="@../images/Ice Cream Bar.png" />
                            </image>
                            <HBox.margin>
                               <Insets left="25.0" right="25.0" />
@@ -192,7 +192,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <ImageView fx:id="popFavBurrito" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="popFavBurrito" onMouseClicked="#clickPopFavBurrito" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/Burrito.png" />
                            </image>
@@ -203,7 +203,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <ImageView fx:id="popFavPizza" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="popFavPizza" onMouseClicked="#clickPopFavPizza" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/Pizza.png" />
                            </image>
@@ -214,7 +214,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </ImageView>
-                        <ImageView fx:id="popFavMuffin" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="popFavMuffin" onMouseClicked="#clickPopFavMuffin" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/BlueberryMuffin.png" />
                            </image>
