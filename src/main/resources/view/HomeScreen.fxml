@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="rootPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeScreenController" prefHeight="800.0" prefWidth="1300.0">
+<BorderPane fx:id="rootPane" prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.HomeScreenController">
    <top>
       <fx:include source="HeaderBar.fxml" />
    </top>
@@ -168,7 +168,64 @@
                         <Insets top="25.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox fx:id="itemCarouselContainer" prefHeight="100.0" prefWidth="200.0" />
+                  <HBox fx:id="popularFavoritesHBox" alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="popFavSandwich" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </HBox.margin>
+                           <image>
+                              <Image url="@../images/Chicken%20Sandwich.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView fx:id="popFavIceCream" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Ice%20Cream%20Bar.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView fx:id="popFavBurrito" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Burrito.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView fx:id="popFavPizza" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Pizza.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                        <ImageView fx:id="popFavMuffin" fitHeight="200.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/BlueberryMuffin.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="25.0" right="25.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </children></HBox>
                </children>
             </VBox>
          </children>
