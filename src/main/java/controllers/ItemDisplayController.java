@@ -40,7 +40,7 @@ public class ItemDisplayController implements Initializable {
     private TextField myQuantityField;
 
     private MyListener myListener;
-    private int selectedItemNumber;
+    private int selectedItemNumber =-1;
     private int itemQuantity = 0;
 
     /**
@@ -66,9 +66,14 @@ public class ItemDisplayController implements Initializable {
      */
     @FXML
     public void clickAddToCart(ActionEvent event) {
-        System.out.println("Clicked Add To Cart");
+        if(selectedItemNumber == -1) {
+            return;
+        }
         Cart cart = Cart.getInstance();
         cart.addToCart(selectedItemNumber,itemQuantity);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Added to Cart");
+        alert.show();
     }
 
     /**

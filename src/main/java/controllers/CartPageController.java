@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import org.example.campusmart.CampusMart;
@@ -26,6 +27,16 @@ public class CartPageController {
 
     @FXML
     private GridPane grid;
+
+    @FXML
+    private TextField mySubTotal;
+
+    @FXML
+    void updateSubtotal() {
+        Cart cart = Cart.getInstance();
+        mySubTotal.setText("Subtotal: $" + cart.getSubtotal().toString());
+
+    }
 
 
     @FXML
@@ -93,6 +104,7 @@ public class CartPageController {
     public void initialize() {
         // Retrieves the singleton instance of the shopping cart
         Cart cart = Cart.getInstance();
+        updateSubtotal();
         int row = 1;
         // Iterates over each item in the cart
         for (Map.Entry<Integer, Integer> entry : cart.getCartItems().entrySet()) {
@@ -103,8 +115,8 @@ public class CartPageController {
                 AnchorPane pane = fxmlLoader.load();
 
                 // Sets the preferred height and width for the cart item pane
-                pane.setPrefHeight(100);
-                pane.setPrefWidth(400);
+                //pane.setPrefHeight(100);
+                //pane.setPrefWidth(400);
 
                 // Retrieves the controller associated with the loaded FXML
                 CartItemsController controller = fxmlLoader.getController();
