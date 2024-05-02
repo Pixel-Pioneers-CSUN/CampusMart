@@ -9,15 +9,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import utils.CardHelper;
 import utils.*;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -58,6 +54,9 @@ public class EditProfileController implements Initializable {
     public String getEditPassword() {return editPasswordTF.getText();}
     public String getConfirmPassword() { return confirmPwTF.getText();}
 
+
+    Account account = Account.getInstance();
+
     /**
      * Saves changes to the database.
      *
@@ -65,12 +64,14 @@ public class EditProfileController implements Initializable {
      */
     @FXML
     void saveChangesToDB(ActionEvent event) {
+        Account account = Account.getInstance();
         int addressUpdated = -1; // Flag for address update
         int passwordUpdated = -1; // Flag for password update
 
         // Check if address is provided and update the database
         if (!editAddressTF.getText().isEmpty() && validatePassword()) {
             addressUpdated = db.saveProfileInfoToDB("address", editAddressTF.getText(), login.loggedInUsername);
+            account.setAddress(editAddressTF.getText());
         }
 
         // Check if password is provided and update the database
@@ -184,7 +185,7 @@ public class EditProfileController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Account account = Account.getInstance();
+
         // show original address so user can edit it
         editProfileErrorLabel.setText("");
         if (account.getLoggedInStatus()) {
