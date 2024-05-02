@@ -102,7 +102,13 @@ public class Cart {
         cartItems.remove(itemNumber);
         updateSubtotal();
     }
-
+    public int getCartQuantity() {
+        int total = 0;
+        for (Map.Entry<Integer, Integer> entry : cartItems.entrySet()) {
+            total = total + entry.getValue();
+        }
+        return total;
+    }
     /**
      * Recalculates the subtotal of the cart based on the items and their quantities.
      */

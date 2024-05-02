@@ -159,7 +159,7 @@ public class DatabaseUtility {
             Connection connection = DriverManager.getConnection(this.url, this.user, this.password);
             Statement statement = connection.createStatement();
 
-            String printQuery = "select * from " + this.table;
+            String printQuery = "select * from Item_Database";
             ResultSet resultSet = statement.executeQuery(printQuery);
             // end of connection to database
             
