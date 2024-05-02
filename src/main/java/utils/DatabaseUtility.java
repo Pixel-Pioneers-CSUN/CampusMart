@@ -306,7 +306,7 @@ public class DatabaseUtility {
                         account.setPassword(password);
                         account.setAddress(resultSet.getString("address"));
                         account.setPaymentName(resultSet.getString("paymentName"));
-                        account.setPaymentCVV(resultSet.getInt("paymentCVV"));
+                        account.setPaymentCVV(resultSet.getString("paymentCVV"));
                         account.setPaymentExpiration(resultSet.getString("paymentExpiration"));
                         account.setPaymentNumber(resultSet.getString("paymentNumber"));
                         account.setLoggedInStatus(true);
@@ -485,6 +485,7 @@ public class DatabaseUtility {
             statement.setString(1, updatedInfo);
             statement.setString(2, account.getUsername());
             updatedInfoCount = statement.executeUpdate();
+
         }
         catch (SQLException e) {
             throw new RuntimeException(e);

@@ -32,6 +32,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import orders.Orders;
+import utils.DatabaseUtility;
 import utils.DateHelper;
 import utils.textFieldHelper;
 
@@ -95,6 +96,7 @@ public class CheckoutController implements Initializable {
 
     textFieldHelper textFieldHelper = new textFieldHelper();
     DateHelper dateHelper = new DateHelper();
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     String formattedDate;
     // Getter methods to access text fields info
     public String getCardNumber() {
@@ -154,7 +156,7 @@ public class CheckoutController implements Initializable {
             emptyFields = textFieldHelper.checkEmptyTextFields(textFields);
             Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
             if (!textFieldHelper.isEmpty && dateValidation) {
-                formattedDate = getValidThrough().format(DateTimeFormatter.ofPattern("MM/dd/yy"));
+                formattedDate = getValidThrough().format(format);
                 confirmAlert.setTitle("Payment Confirmation");
                 confirmAlert.setHeaderText("Confirm Payment");
                 confirmAlert.setContentText("Are you sure you want to proceed with the payment?");
@@ -181,6 +183,8 @@ public class CheckoutController implements Initializable {
                 successAlert.setHeaderText("Payment Successful");
                 successAlert.setContentText("Order Placed");
                 successAlert.show();
+                reduceInventory();
+                updateOrderSummary();
                 // If user presses yes, call reduce inventory method
             }
         } catch (Exception e) {
@@ -221,9 +225,18 @@ public class CheckoutController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
+            Account account = Account.getInstance();
             displayOrder();
             taxAmount.setText(currencyFormat(getTaxes()));
             totalPrice.setText(currencyFormat(totalPrice()));
+            if (account.getLoggedInStatus()){
+                addressTF.setText(account.getAddress());
+                firstNameTF.setText(account.getName());
+                nameOnCardTF.setText(account.getPaymentName());
+                cardNumTF.setText(account.getPaymentNumber());
+                cvvTF.setText(account.getPaymentCVV());
+                validThroughDP.setValue(LocalDate.parse(account.getPaymentExpiration() , format));
+            }
             // Set filters for text fields during initialization
             cardNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper
                     .textFilter(cardNumTF, creditcardErrorLabel, "\\d{0,16}", "Enter a valid card number")));
@@ -242,7 +255,7 @@ public class CheckoutController implements Initializable {
             phoneNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper
                     .textFilter(phoneNumTF, contactInfoErrorLabel, "\\d{0,10}", "Enter a valid phone number")));
             addressTF.setTextFormatter(new TextFormatter<>(textFieldHelper
-                    .textFilter(addressTF, contactInfoErrorLabel, "^[a-zA-Z0-9 ]*$", "Enter a valid address")));
+                    .textFilter(addressTF, contactInfoErrorLabel, "^[a-zA-Z0-9 ,.]*$", "Enter a valid address")));
 
 //            // Email validation
 //            emailTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -356,6 +369,8 @@ public class CheckoutController implements Initializable {
     }
         return totalTaxes;
         }
+
+
 
 
 

@@ -26,7 +26,7 @@ public class Account {
     private String name;
     private String address;
     private String paymentName;
-    private int paymentCVV;
+    private String paymentCVV;
     private String paymentExpiration;
     private String paymentNumber;
     private boolean isLoggedIn = false;
@@ -72,10 +72,10 @@ public class Account {
     }
 
     // Get and set payment CVV
-    public int getPaymentCVV() {
+    public String getPaymentCVV() {
         return paymentCVV;
     }
-    public void setPaymentCVV(int paymentCVV) {
+    public void setPaymentCVV(String paymentCVV) {
         this.paymentCVV = paymentCVV;
     }
 
