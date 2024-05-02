@@ -230,13 +230,17 @@ public class CheckoutController implements Initializable {
             displayOrder();
             taxAmount.setText(currencyFormat(getTaxes()));
             totalPrice.setText(currencyFormat(totalPrice()));
-            if (account.getLoggedInStatus() && !addressTF.getText().isEmpty()){
+            if (account.getLoggedInStatus()){
                 addressTF.setText(account.getAddress());
                 firstNameTF.setText(account.getName());
                 nameOnCardTF.setText(account.getPaymentName());
                 cardNumTF.setText(account.getPaymentNumber());
                 cvvTF.setText(account.getPaymentCVV());
-                validThroughDP.setValue(LocalDate.parse(account.getPaymentExpiration() , format));
+                if (!account.getPaymentExpiration().isEmpty()){
+                    validThroughDP.setValue(LocalDate.parse(account.getPaymentExpiration() , format));
+                }
+
+
             }
             // Set filters for text fields during initialization
             cardNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper
