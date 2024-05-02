@@ -185,6 +185,7 @@ public class CheckoutController implements Initializable {
                 successAlert.show();
                 reduceInventory();
                 updateOrderSummary();
+                saveToDB();
                 // If user presses yes, call reduce inventory method
             }
         } catch (Exception e) {
@@ -229,7 +230,7 @@ public class CheckoutController implements Initializable {
             displayOrder();
             taxAmount.setText(currencyFormat(getTaxes()));
             totalPrice.setText(currencyFormat(totalPrice()));
-            if (account.getLoggedInStatus()){
+            if (account.getLoggedInStatus() && !addressTF.getText().isEmpty()){
                 addressTF.setText(account.getAddress());
                 firstNameTF.setText(account.getName());
                 nameOnCardTF.setText(account.getPaymentName());
@@ -369,7 +370,15 @@ public class CheckoutController implements Initializable {
     }
         return totalTaxes;
         }
-
+        public void saveToDB(){
+            DatabaseUtility db = new DatabaseUtility();
+            Account account = Account.getInstance();
+            db.saveProfileInfoToDB("address" , getAddress() , account.getUsername());
+            db.saveProfileInfoToDB("paymentName" , getNameOnCard() , account.getUsername());
+            db.saveProfileInfoToDB("paymentNumber" , getCardNumber() , account.getUsername());
+            db.saveProfileInfoToDB("paymentCVV" , getCVV() , account.getUsername());
+            db.saveProfileInfoToDB("paymentExpiration" , getValidThrough().toString() , account.getUsername());
+        }
 
 
 
