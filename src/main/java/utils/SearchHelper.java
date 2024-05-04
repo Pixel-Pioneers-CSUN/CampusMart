@@ -36,14 +36,12 @@ public class SearchHelper {
      * @return If found, the item with the specified name. Otherwise, return null.
      */
     public static ItemClass getItemByName(String name, Map<Integer, ItemClass> itemMap) {
-        // Iterate through each item in the itemMap
         for (ItemClass item : itemMap.values()) {
-            // check if the name matches an actual item name. If it does, return the item itself
             if (item.getItemName().equals(name)) {
                 return item;
             }
         }
-        // if no matching item name found, return null
         return null;
     }
 }
+
