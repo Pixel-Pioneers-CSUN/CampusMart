@@ -118,6 +118,11 @@ public class Cart {
         setSubtotal(updatedSubtotal);
     }
 
+    public void clearCart(){
+        cartItems.clear();
+        setSubtotal(BigDecimal.ZERO);
+    }
+
     /**
      * Provides a string representation of the shopping cart.
      *

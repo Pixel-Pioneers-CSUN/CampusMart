@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -42,18 +43,28 @@ public class CartPageController {
     @FXML
     void clickCheckout() {
         //load checkout
-
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/checkout.fxml"));
-            Parent checkoutRoot = loader.load();
-            Scene scene = new Scene(checkoutRoot);
-            Stage stage = (Stage) grid.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-
-        } catch (IOException e) {
-            System.out.println("Error with transition to checkout");
+        Cart cart = Cart.getInstance();
+        if (!cart.getSubtotal().toString().equals("0")){
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/checkout.fxml"));
+                Parent checkoutRoot = loader.load();
+                Scene scene = new Scene(checkoutRoot);
+                Stage stage = (Stage) grid.getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                System.out.println("Error with transition to checkout");
+            }
         }
+        else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText("Empty Cart");
+            alert.showAndWait();
+        }
+
+
     }
 
     @FXML

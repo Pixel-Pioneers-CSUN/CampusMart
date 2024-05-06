@@ -24,11 +24,11 @@
     -fx-cursor: hand;
 }
 #payButton:pressed {
-    -fx-background-color: #7c0b0b;
+    -fx-background-color: #6c0707;
 }
 
 #payButton:hover{
-    -fx-text-fill: #951616;
+    -fx-background-color: #951616;
     -fx-cursor: hand;
 }
 

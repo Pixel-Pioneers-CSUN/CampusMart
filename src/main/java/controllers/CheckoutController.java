@@ -150,6 +150,7 @@ public class CheckoutController implements Initializable {
      */
     @FXML
     void confirmPayment(ActionEvent event) {
+        Cart cart = Cart.getInstance();
         try {
             boolean dateValidation = dateHelper.dateValidation(getValidThrough(), creditcardErrorLabel, "Invalid Date");
             // Check if user entered all info
@@ -186,6 +187,9 @@ public class CheckoutController implements Initializable {
                 reduceInventory();
                 updateOrderSummary();
                 saveToDB();
+                switchToHomescreen();
+                cart.clearCart();
+
                 // If user presses yes, call reduce inventory method
             }
         } catch (Exception e) {
@@ -357,17 +361,17 @@ public class CheckoutController implements Initializable {
 
     //returns the amount of taxes on the items in cart
     public BigDecimal getTaxes(){
+        ItemDataStructure list = ItemDataStructure.getInstance();
         BigDecimal taxAmount = new BigDecimal(0.0725);
         Cart cart = Cart.getInstance();
-
         BigDecimal taxes = new BigDecimal(0);
         BigDecimal totalTaxes = new BigDecimal(0);
-        ItemDataStructure list = ItemDataStructure.getInstance();
         for (Map.Entry<Integer, Integer> entry : cart.getCartItems().entrySet()) {
             ItemClass item = list.getItemDataStructure().get(entry.getKey());
-            if (!(item.getCategory().equalsIgnoreCase("Fruits") || item.getItemName().equalsIgnoreCase("water bottle"))) {
+            if (!(item.getCategory().equalsIgnoreCase("Fruits")
+                    || item.getItemName().equalsIgnoreCase("water bottle"))) {
                 // calculate taxes for items other than fruits and water bottles
-            taxes = taxAmount.multiply(item.getPrice().multiply(new BigDecimal(entry.getValue())));
+                taxes = taxAmount.multiply(item.getPrice().multiply(new BigDecimal(entry.getValue())));
                 totalTaxes = totalTaxes.add(taxes);
             }
 
@@ -382,6 +386,22 @@ public class CheckoutController implements Initializable {
             db.saveProfileInfoToDB("paymentNumber" , getCardNumber() , account.getUsername());
             db.saveProfileInfoToDB("paymentCVV" , getCVV() , account.getUsername());
             db.saveProfileInfoToDB("paymentExpiration" , getValidThrough().toString() , account.getUsername());
+        }
+
+
+        public void switchToHomescreen(){
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeScreen.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) cvvTF.getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+
         }
 
 
