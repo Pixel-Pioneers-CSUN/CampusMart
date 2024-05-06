@@ -20,10 +20,6 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button mnemonicParsing="false" onAction="#clickedUpdate" prefHeight="25.0" prefWidth="567.0" styleClass="buttons" stylesheets="@../css/Cart-style.css" text="Update">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
             <Button mnemonicParsing="false" onAction="#clickContinueShopping" prefHeight="25.0" prefWidth="553.0" styleClass="buttons" stylesheets="@../css/Cart-style.css" text="Continue Shopping">
                <cursor>
                   <Cursor fx:constant="HAND" />

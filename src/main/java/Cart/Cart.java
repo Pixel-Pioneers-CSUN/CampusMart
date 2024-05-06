@@ -2,7 +2,6 @@ package Cart;
 
 import items.ItemClass;
 import items.ItemDataStructure;
-
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,7 +37,7 @@ public class Cart {
      * Initializes the shopping cart by setting subtotal to zero and creating an empty cartItems HashMap.
      */
     public void createCart() {
-        this.subtotal = new BigDecimal(0);
+        this.subtotal = new BigDecimal("0.00");
         this.cartItems = new HashMap<>();
     }
 

@@ -1,7 +1,6 @@
 package org.example.campusmart;
 
 import Cart.Cart;
-import controllers.CheckoutController;
 import controllers.HeaderBarController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,11 +9,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import items.*;
 import utils.*;
-
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 
 
 public class CampusMart extends Application {
@@ -51,32 +47,10 @@ public class CampusMart extends Application {
 
         // load the HomeScreen.fxml file
         FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
-        //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/OrderPage.fxml"));
-        //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/AccountDashboard.fxml"));
-        //FXMLLoader homeLoader = new FXMLLoader(CampusMart.class.getResource("/view/HomeScreen.fxml"));
-
         Parent homeRoot = homeLoader.load();
 
         // setting homeRoot as the root node of the scene
         Scene scene = new Scene(homeRoot, 1300, 800);   // also set the initial window size
-
-
-
-
-
-        // get the HeaderBarController instance and set the main stage
-
-
-        //scene.getStylesheets().add(getClass().getResource("/css/checkout-styles.css").toExternalForm());
-
-//        Parent root = FXMLLoader.load(getClass().getResource("/view/ItemDisplay.fxml"));
-//
-//        Scene scene = new Scene(root);
-//        String css = this.getClass().getResource("/css/items-styles.css").toExternalForm();
-//        scene.getStylesheets().add(css);
-        // load the HomeScreen.fxml file
-
-
 
 
         // setting the title of the stage

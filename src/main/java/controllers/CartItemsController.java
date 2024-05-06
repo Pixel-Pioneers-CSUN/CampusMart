@@ -5,10 +5,12 @@ import items.ItemClass;
 import items.ItemDataStructure;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import utils.CartListener;
 
 /**
  * @version 4/20/24
@@ -31,12 +33,15 @@ public class CartItemsController {
 
     int itemQuantity;
 
+    private CartListener cartListener;
+
     @FXML
     public void increaseQuantity(ActionEvent event) {
 
         Cart cart = Cart.getInstance();
         cart.addToCart(itemNumber,++itemQuantity);
         myQuantityField.setText(String.valueOf(itemQuantity));
+        cartListener.onClickUpdate();
     }
 
     @FXML
@@ -45,11 +50,16 @@ public class CartItemsController {
         if(--itemQuantity >= 0) {
             cart.addToCart(itemNumber,itemQuantity);
             myQuantityField.setText(String.valueOf(itemQuantity));
+            cartListener.onClickUpdate();
         }
         else {
             itemQuantity = 0;
-
+            cartListener.onClickUpdate();
         }
+    }
+    @FXML
+    void removeItem(ActionEvent event) {
+        cartListener.onClickListener(itemNumber);
     }
 
     /**
@@ -58,8 +68,8 @@ public class CartItemsController {
      * @param item   The index of the item in the data structure.
      * @param amount The quantity of the item.
      */
-    public void setData(Integer item, Integer amount) {
-
+    public void setData(Integer item, Integer amount, CartListener listener) {
+        this.cartListener = listener;
         itemNumber = item;
         // Retrieves the instance of the item data structure
         ItemDataStructure data = ItemDataStructure.getInstance();

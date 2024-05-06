@@ -4,16 +4,13 @@ import Cart.Cart;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Control;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import org.example.campusmart.CampusMart;
+import utils.CartListener;
 
 import java.io.IOException;
 import java.util.Map;
@@ -32,11 +29,23 @@ public class CartPageController {
     @FXML
     private TextField mySubTotal;
 
+    private CartListener cartListener;
+
     @FXML
     void updateSubtotal() {
         Cart cart = Cart.getInstance();
         mySubTotal.setText("Subtotal: $" + cart.getSubtotal().toString());
 
+
+    }
+
+    void removeItem(int itemNumber) {
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        fxmlLoader.setLocation(getClass().getResource("/view/CartItem.fxml"));
+        CartItemsController controller = fxmlLoader.getController();
+        Cart cart = Cart.getInstance();
+        cart.addToCart(itemNumber,0);
+        initialize();
     }
 
 
@@ -69,8 +78,6 @@ public class CartPageController {
 
     @FXML
     void clickContinueShopping() {
-
-
         try {
             FXMLLoader itemDisplayLoader = new FXMLLoader((getClass().getResource("/view/ItemDisplay.fxml")));
             Parent itemDisplayRoot = itemDisplayLoader.load();
@@ -90,29 +97,25 @@ public class CartPageController {
         }
     }
 
-    @FXML
-    void clickedUpdate() {
-
-        try {
-            // load the fxml file of the cart screen
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CartPage.fxml"));
-            Parent root = loader.load();
-            // get the stage and set it to the new scene
-            Scene scene = new Scene(root);
-            Stage stage = (Stage) grid.getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            System.out.println("Error with updating cart");
-            e.printStackTrace();
-        }
-    }
 
     /**
      * Initializes the controller, setting up the display of items in the shopping cart.
      */
     @FXML
     public void initialize() {
+        grid.getChildren().clear();
+        cartListener = new CartListener() {
+            @Override
+            public void onClickListener(int itemNumber) {
+                removeItem(itemNumber);
+            }
+            @Override
+            public  void onClickUpdate() {
+                updateSubtotal();
+            }
+        };
+
+
         // Retrieves the singleton instance of the shopping cart
         Cart cart = Cart.getInstance();
         updateSubtotal();
@@ -133,7 +136,7 @@ public class CartPageController {
                 CartItemsController controller = fxmlLoader.getController();
 
                 // Sets the data for the cart item using the entry from the cart
-                controller.setData(entry.getKey(), entry.getValue());
+                controller.setData(entry.getKey(), entry.getValue(), cartListener);
 
                 // Adds the cart item pane to the VBox for display
                 grid.add(pane, 0, row++);
