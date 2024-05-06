@@ -87,10 +87,11 @@ public class Cart {
     public void addToCart(int itemNumber, int quantity) {
         if(quantity == 0) {
             removeFromCart(itemNumber);
-            return;
+        } else {
+            cartItems.put(itemNumber, quantity);
+            updateSubtotal();
         }
-        cartItems.put(itemNumber, quantity);
-        updateSubtotal();
+
     }
 
     /**

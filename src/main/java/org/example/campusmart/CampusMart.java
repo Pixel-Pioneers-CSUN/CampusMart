@@ -41,6 +41,7 @@ public class CampusMart extends Application {
         Cart cart = Cart.getInstance();
         cart.createCart();
 
+
         // load the HeaderBar.fxml file and set is as the headerBar
         FXMLLoader headerLoader = new FXMLLoader(getClass().getResource("/view/HeaderBar.fxml"));
         Parent headerRoot = headerLoader.load();

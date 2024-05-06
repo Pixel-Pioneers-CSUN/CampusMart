@@ -1,32 +1,27 @@
 package org.example.campusmart;
 
 import Cart.Cart;
-import controllers.CartItemsController;
 import items.ItemDataStructure;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import utils.DatabaseUtility;
-
-import javax.xml.crypto.Data;
-import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CampusMartTest {
 
-    @Test
-    void main() {
-    }
 
-    @Test
-    void start() {
-
+    @BeforeAll
+    static void setUp() {
         DatabaseUtility db = new DatabaseUtility();
         ItemDataStructure itemData = ItemDataStructure.getInstance();
         itemData.setItemDataStructure(db.createHashMapItemClass());
 
+    }
 
-        // cart test of subtotal calculation
+    @Test
+    void testSubtotal() {
         Cart cart = Cart.getInstance();
         cart.createCart();
         cart.addToCart(1,2); //$2.99 * 2
@@ -35,35 +30,52 @@ class CampusMartTest {
         cart.addToCart(45,66); // $4.99 * 66
         // subtotal should be 348.82
         // getter is used to retrieve value to test updateSubtotal
-        System.out.print("Cart Subtotal test: ");
         assertEquals(new BigDecimal("348.82"), cart.getSubtotal());
-        System.out.println("Passed");
+    }
 
-        // reset cart
+    @Test
+    void testRemoveFromCart() {
+        Cart cart = Cart.getInstance();
         cart.createCart();
+        cart.addToCart(1,2);
+        cart.removeFromCart(1);
+        assertTrue(cart.getCartItems().isEmpty());
+    }
 
-        // test of add to cart
+    @Test
+    void addToCartTest1() {
+        // first path of addToCart
+        Cart cart = Cart.getInstance();
+        cart.createCart();
         cart.addToCart(1,0);
-
-        System.out.print("Add to Cart test add item with 0 quantity: ");
         //cart should be empty since there is no 0
         assertTrue(cart.getCartItems().isEmpty());
-        System.out.println("Passed");
-
-        System.out.print("Add to Cart test, update quantity of item in cart: ");
+    }
+    @Test
+    void addToCartTest2() {
+        // second path of addToCart
+        Cart cart = Cart.getInstance();
+        cart.createCart();
+        cart.addToCart(1,1);
+        // check that cart is not empty
+        assertFalse(cart.getCartItems().isEmpty());
+    }
+    @Test
+    void addToCartTest3() {
+        // test for update cart Item using addToCart
+        Cart cart = Cart.getInstance();
+        cart.createCart();
         cart.addToCart(1,3);
         cart.addToCart(1,5);
         // new value of item should be 5 not 3
         assertEquals(5,cart.getCartItems().get(1));
-        System.out.println("Passed");
+    }
 
-        System.out.print("Add to Cart test, remove an existing item when 0 passed as new quantity: ");
-        cart.addToCart(1,0);
-        // new value of item should be 5 not 3
-        assertTrue(cart.getCartItems().isEmpty());
-        System.out.println("Passed");
-
-        System.out.print("Add to Cart test, total items are correct: ");
+    @Test
+    void addToCartTest4() {
+        // check for correct quantity
+        Cart cart = Cart.getInstance();
+        cart.createCart();
         cart.addToCart(1,3);
         cart.addToCart(2,32);
         cart.addToCart(3,54);
@@ -71,16 +83,8 @@ class CampusMartTest {
         cart.addToCart(5,10);
         // total should be 122
         assertEquals(122,cart.getCartQuantity());
-        System.out.println("Passed");
-
-
-
-
-
-
-
-
-
-
     }
+
+
+
 }

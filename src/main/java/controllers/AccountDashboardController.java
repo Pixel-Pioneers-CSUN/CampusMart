@@ -60,8 +60,8 @@ public class AccountDashboardController {
             fxmlLoader.setLocation(getClass().getResource("/view/OrderPage.fxml"));
             //BorderPane borderPane = (BorderPane) fxmlLoader.load();
             AnchorPane pane = fxmlLoader.load();
-            pane.setMaxWidth(1121);
-            pane.setMinWidth(714);
+            pane.setPrefHeight(1121);
+            pane.setPrefHeight(714);
 
             myDisplayAnchorPane.getChildren().add(pane);
         }
@@ -77,9 +77,12 @@ public class AccountDashboardController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader();
             fxmlLoader.setLocation(getClass().getResource("/view/EditProfile.fxml"));
-            AnchorPane pane = fxmlLoader.load();
-            pane.setMaxWidth(1121);
-            pane.setMinWidth(714);
+            BorderPane pane = fxmlLoader.load();
+
+            pane.setMaxWidth(900);
+            pane.setMaxHeight(600);
+
+            // 714
 
             myDisplayAnchorPane.getChildren().add(pane);
         }
