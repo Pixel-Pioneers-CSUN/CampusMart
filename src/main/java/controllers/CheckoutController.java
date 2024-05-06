@@ -32,6 +32,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import orders.Orders;
+import utils.DatabaseUtility;
 import utils.DateHelper;
 import utils.textFieldHelper;
 
@@ -95,6 +96,7 @@ public class CheckoutController implements Initializable {
 
     textFieldHelper textFieldHelper = new textFieldHelper();
     DateHelper dateHelper = new DateHelper();
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     String formattedDate;
     // Getter methods to access text fields info
     public String getCardNumber() {
@@ -148,13 +150,14 @@ public class CheckoutController implements Initializable {
      */
     @FXML
     void confirmPayment(ActionEvent event) {
+        Cart cart = Cart.getInstance();
         try {
             boolean dateValidation = dateHelper.dateValidation(getValidThrough(), creditcardErrorLabel, "Invalid Date");
             // Check if user entered all info
             emptyFields = textFieldHelper.checkEmptyTextFields(textFields);
             Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
             if (!textFieldHelper.isEmpty && dateValidation) {
-                formattedDate = getValidThrough().format(DateTimeFormatter.ofPattern("MM/dd/yy"));
+                formattedDate = getValidThrough().format(format);
                 confirmAlert.setTitle("Payment Confirmation");
                 confirmAlert.setHeaderText("Confirm Payment");
                 confirmAlert.setContentText("Are you sure you want to proceed with the payment?");
@@ -181,6 +184,12 @@ public class CheckoutController implements Initializable {
                 successAlert.setHeaderText("Payment Successful");
                 successAlert.setContentText("Order Placed");
                 successAlert.show();
+                reduceInventory();
+                updateOrderSummary();
+                saveToDB();
+                switchToHomescreen();
+                cart.clearCart();
+
                 // If user presses yes, call reduce inventory method
             }
         } catch (Exception e) {
@@ -221,9 +230,22 @@ public class CheckoutController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
+            Account account = Account.getInstance();
             displayOrder();
             taxAmount.setText(currencyFormat(getTaxes()));
             totalPrice.setText(currencyFormat(totalPrice()));
+            if (account.getLoggedInStatus()){
+                addressTF.setText(account.getAddress());
+                firstNameTF.setText(account.getName());
+                nameOnCardTF.setText(account.getPaymentName());
+                cardNumTF.setText(account.getPaymentNumber());
+                cvvTF.setText(account.getPaymentCVV());
+                if (!account.getPaymentExpiration().isEmpty()){
+                    validThroughDP.setValue(LocalDate.parse(account.getPaymentExpiration() , format));
+                }
+
+
+            }
             // Set filters for text fields during initialization
             cardNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper
                     .textFilter(cardNumTF, creditcardErrorLabel, "\\d{0,16}", "Enter a valid card number")));
@@ -242,7 +264,7 @@ public class CheckoutController implements Initializable {
             phoneNumTF.setTextFormatter(new TextFormatter<>(textFieldHelper
                     .textFilter(phoneNumTF, contactInfoErrorLabel, "\\d{0,10}", "Enter a valid phone number")));
             addressTF.setTextFormatter(new TextFormatter<>(textFieldHelper
-                    .textFilter(addressTF, contactInfoErrorLabel, "^[a-zA-Z0-9 ]*$", "Enter a valid address")));
+                    .textFilter(addressTF, contactInfoErrorLabel, "^[a-zA-Z0-9 ,.]*$", "Enter a valid address")));
 
 //            // Email validation
 //            emailTF.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -339,23 +361,49 @@ public class CheckoutController implements Initializable {
 
     //returns the amount of taxes on the items in cart
     public BigDecimal getTaxes(){
+        ItemDataStructure list = ItemDataStructure.getInstance();
         BigDecimal taxAmount = new BigDecimal(0.0725);
         Cart cart = Cart.getInstance();
-
         BigDecimal taxes = new BigDecimal(0);
         BigDecimal totalTaxes = new BigDecimal(0);
-        ItemDataStructure list = ItemDataStructure.getInstance();
         for (Map.Entry<Integer, Integer> entry : cart.getCartItems().entrySet()) {
             ItemClass item = list.getItemDataStructure().get(entry.getKey());
-            if (!(item.getCategory().equalsIgnoreCase("Fruits") || item.getItemName().equalsIgnoreCase("water bottle"))) {
+            if (!(item.getCategory().equalsIgnoreCase("Fruits")
+                    || item.getItemName().equalsIgnoreCase("water bottle"))) {
                 // calculate taxes for items other than fruits and water bottles
-            taxes = taxAmount.multiply(item.getPrice().multiply(new BigDecimal(entry.getValue())));
+                taxes = taxAmount.multiply(item.getPrice().multiply(new BigDecimal(entry.getValue())));
                 totalTaxes = totalTaxes.add(taxes);
             }
 
     }
         return totalTaxes;
         }
+        public void saveToDB(){
+            DatabaseUtility db = new DatabaseUtility();
+            Account account = Account.getInstance();
+            db.saveProfileInfoToDB("address" , getAddress() , account.getUsername());
+            db.saveProfileInfoToDB("paymentName" , getNameOnCard() , account.getUsername());
+            db.saveProfileInfoToDB("paymentNumber" , getCardNumber() , account.getUsername());
+            db.saveProfileInfoToDB("paymentCVV" , getCVV() , account.getUsername());
+            db.saveProfileInfoToDB("paymentExpiration" , getValidThrough().toString() , account.getUsername());
+        }
+
+
+        public void switchToHomescreen(){
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeScreen.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
+                Stage stage = (Stage) cvvTF.getScene().getWindow();
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
+
+        }
+
 
 
 

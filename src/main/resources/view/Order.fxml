@@ -15,7 +15,7 @@
          <children>
             <VBox prefHeight="398.0" prefWidth="619.0" styleClass="orderPage">
                <children>
-                  <Label fx:id="myDateOrderPlaced" alignment="CENTER" prefHeight="78.0" prefWidth="605.0" style="-fx-background-color: C13538;" styleClass="order" stylesheets="@../css/Order-Style-Sheet.css" text="Date Order Placed" textFill="WHITE">
+                  <Label fx:id="myDateOrderPlaced" alignment="CENTER" prefHeight="78.0" prefWidth="605.0" style="-fx-background-color: f32a35;" styleClass="order" stylesheets="@../css/Order-Style-Sheet.css" text="Date Order Placed" textFill="WHITE">
                      <font>
                         <Font size="17.0" />
                      </font>

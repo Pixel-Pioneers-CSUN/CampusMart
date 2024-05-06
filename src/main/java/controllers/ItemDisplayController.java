@@ -66,13 +66,13 @@ public class ItemDisplayController implements Initializable {
      */
     @FXML
     public void clickAddToCart(ActionEvent event) {
-        if(selectedItemNumber == -1) {
+        if(selectedItemNumber == -1 || itemQuantity == 0) {
             return;
         }
         Cart cart = Cart.getInstance();
         cart.addToCart(selectedItemNumber,itemQuantity);
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Added to Cart");
+        alert.setHeaderText("Added to Cart");
         alert.show();
     }
 
@@ -134,7 +134,6 @@ public class ItemDisplayController implements Initializable {
                 grid.setMinWidth(Region.USE_COMPUTED_SIZE);
                 grid.setPrefWidth(Region.USE_COMPUTED_SIZE);
                 grid.setMaxWidth(Region.USE_PREF_SIZE);
-                grid.setMinHeight(Region.USE_COMPUTED_SIZE);
                 grid.setPrefHeight(Region.USE_COMPUTED_SIZE);
                 grid.setMaxHeight(Region.USE_PREF_SIZE);
 

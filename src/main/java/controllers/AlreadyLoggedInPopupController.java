@@ -43,7 +43,7 @@ public class AlreadyLoggedInPopupController {
             account.setName("");
             account.setAddress("");
             account.setPaymentName("");
-            account.setPaymentCVV(0);
+            account.setPaymentCVV("");
             account.setPaymentExpiration("");
             account.setPaymentNumber("");
             account.setLoggedInStatus(false);

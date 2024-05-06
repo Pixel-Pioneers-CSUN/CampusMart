@@ -1,5 +1,9 @@
 package controllers;
 
+import Account.Account;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import utils.CardHelper;
 import utils.DatabaseUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +13,7 @@ import javafx.stage.Stage;
 import utils.DateHelper;
 import utils.textFieldHelper;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -75,6 +80,8 @@ public class EditPaymentController implements Initializable {
 
     @FXML
     void saveEdit(ActionEvent event) {
+
+        Account account = Account.getInstance();
         boolean dateValidation = dateHelper.dateValidation(getEditPaymentValidThrough(), editPaymentErrorLabel, "Invalid Date");
         emptyFields = textFieldHelper.checkEmptyTextFields(textFields);
         Alert confirmAlert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -84,6 +91,17 @@ public class EditPaymentController implements Initializable {
             db.saveProfileInfoToDB("paymentNumber", getEditPaymentCardNum(), login.getLoggedInUsername());
             db.saveProfileInfoToDB("paymentCVV", getEditPaymentCVV(), login.getLoggedInUsername());
             db.saveProfileInfoToDB("paymentExpiration", formattedDate, login.getLoggedInUsername());
+            account.setPaymentName(editPaymentNameOnCard.getText());
+            account.setPaymentNumber((editPaymentCardNum.getText()));
+            account.setPaymentCVV(editPaymentCVV.getText());
+            account.setPaymentExpiration(editPaymentValidThrough.getValue().format(DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+            Alert confirm = new Alert(Alert.AlertType.INFORMATION);
+            confirm.setTitle("Success");
+            confirm.setContentText("Saved Succesfully");
+            confirm.show();
+            Stage stage = (Stage) saveEditBtn.getScene().getWindow();
+            stage.close();
+
         } else {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR);
             errorAlert.setTitle("Error");

@@ -1,5 +1,6 @@
 package controllers;
 
+import Account.Account;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,16 +8,12 @@ import javafx.scene.control.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import utils.CardHelper;
 import utils.*;
 
-import javax.swing.*;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -57,6 +54,9 @@ public class EditProfileController implements Initializable {
     public String getEditPassword() {return editPasswordTF.getText();}
     public String getConfirmPassword() { return confirmPwTF.getText();}
 
+
+    Account account = Account.getInstance();
+
     /**
      * Saves changes to the database.
      *
@@ -64,12 +64,14 @@ public class EditProfileController implements Initializable {
      */
     @FXML
     void saveChangesToDB(ActionEvent event) {
+        Account account = Account.getInstance();
         int addressUpdated = -1; // Flag for address update
         int passwordUpdated = -1; // Flag for password update
 
         // Check if address is provided and update the database
         if (!editAddressTF.getText().isEmpty() && validatePassword()) {
             addressUpdated = db.saveProfileInfoToDB("address", editAddressTF.getText(), login.loggedInUsername);
+            account.setAddress(editAddressTF.getText());
         }
 
         // Check if password is provided and update the database
@@ -136,10 +138,10 @@ public class EditProfileController implements Initializable {
     /**
      * Handles going back to the edit profile page.
      *
-     * @param event The event triggering the action
+     * @param mouseEvent The event triggering the action
 //     */
     @FXML
-    public void backToAccount(javafx.scene.input.MouseEvent mouseEvent) {
+    public void backToAccount(MouseEvent mouseEvent) {
         checkIfSafeToGoBack();
     }
 
@@ -183,12 +185,13 @@ public class EditProfileController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         // show original address so user can edit it
         editProfileErrorLabel.setText("");
-        if (login.isLoggedIn) {
-            db.setTable("users");
-            editAddressTF.setText(db.getLoggedInUserInfo(login.getLoggedInUsername(), "address"));
-            String cardnum = db.getLoggedInUserInfo(login.getLoggedInUsername(), "paymentNumber");
+        if (account.getLoggedInStatus()) {
+         //   System.out.println(db.getLoggedInUserInfo(account.getUsername(), "address");
+            editAddressTF.setText(db.getLoggedInUserInfo(account.getUsername(), "address"));
+            String cardnum = db.getLoggedInUserInfo(account.getUsername(), "paymentNumber");
             String hiddenNumber = CardHelper.hideNumbers(cardnum);
             cardEndingLabel.setText(hiddenNumber);
             cardEndingLabel.setVisible(true);

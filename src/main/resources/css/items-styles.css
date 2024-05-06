@@ -5,7 +5,7 @@
 
 .itemCard {
     -fx-border-color: black;
-    -fx-background-color: "C13538";
+    -fx-background-color: "f32a35";
 }
 .itemCard:hover {
     -fx-border-color: black;
@@ -29,7 +29,7 @@
 /* Item Page Style */
 .itemView {
     -fx-border-color: black;
-    -fx-background-color: "C13538";
+    -fx-background-color: "f32a35";
 }
 .addToCart {
     -fx-border-color: black;
