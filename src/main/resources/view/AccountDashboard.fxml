@@ -13,10 +13,7 @@
       <VBox prefHeight="714.0" prefWidth="239.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="myOrderHistoryButton" mnemonicParsing="false" onAction="#loadOrderPage" prefHeight="240.0" prefWidth="40.0" styleClass="buttons" stylesheets="@../css/accountDashboard-style.css" text="Order History" />
-            <Button mnemonicParsing="false" prefHeight="240.0" prefWidth="40.0" styleClass="buttons" stylesheets="@../css/accountDashboard-style.css" text="Change Password" />
             <Button mnemonicParsing="false" onAction="#editAccount" prefHeight="240.0" prefWidth="40.0" styleClass="buttons" stylesheets="@../css/accountDashboard-style.css" text="Account Details" />
-            <Button mnemonicParsing="false" prefHeight="240.0" prefWidth="40.0" styleClass="buttons" stylesheets="@../css/accountDashboard-style.css" text="Change Password" />
-            <Button mnemonicParsing="false" prefHeight="240.0" prefWidth="40.0" styleClass="buttons" stylesheets="@../css/accountDashboard-style.css" text="Log Out" />
          </children>
       </VBox>
    </left>
