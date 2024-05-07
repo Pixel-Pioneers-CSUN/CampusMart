@@ -1,11 +1,11 @@
 .buttons {
-    -fx-background-color: "C13538";
+    -fx-background-color: "f32a35";
     -fx-border-color: black;
-    -fx-pref-height: 38px;
+    -fx-pref-height: 45px;
     -fx-pref-width: 240px;
     -fx-font: 100px Tahoma;
     -fx-text-alignment: center;
-    -fx-font-size: 20;
+    -fx-font-size: 25;
     -fx-text-fill: "white";
 
 }

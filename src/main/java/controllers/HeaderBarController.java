@@ -338,7 +338,6 @@ public class HeaderBarController implements NavigationListener {
     private void clickHomeLogo(MouseEvent event) {
         // if header bar logo image is clicked, return user to home screen
         try {
-            System.out.println("Logo image clicked!");
             // load the fxml file of the home screen
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/HomeScreen.fxml"));
             Parent root = loader.load();
@@ -372,7 +371,6 @@ public class HeaderBarController implements NavigationListener {
     private void clickCartImage(MouseEvent event) {
         // if header bar cart icon is clicked, navigate user to the cart
         try {
-            System.out.println("Cart image clicked!");
             // load the fxml file of the cart screen
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/CartPage.fxml"));
             Parent root = loader.load();
