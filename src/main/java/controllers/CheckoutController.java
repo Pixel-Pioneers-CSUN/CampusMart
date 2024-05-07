@@ -308,7 +308,8 @@ public class CheckoutController implements Initializable {
     }
 
     /**
-     * Updates the order summary.
+     * Updates the order su
+     * ary.
      */
     public void updateOrderSummary() {
         // Iterate over the items in cart

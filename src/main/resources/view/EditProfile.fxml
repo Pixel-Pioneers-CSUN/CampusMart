@@ -13,18 +13,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EditProfileController">
    <children>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../css/edit-profile-styles.css">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1150.0" stylesheets="@../css/edit-profile-styles.css">
          <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="457.0" prefWidth="541.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="goBackLabel" onMouseClicked="#backToAccount" prefHeight="37.0" prefWidth="187.0" text="&lt; Account Settings">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Label>
                   <Label prefHeight="53.0" prefWidth="969.0" text="Edit Profile">
                      <font>
                         <Font name="System Bold" size="29.0" />
@@ -43,12 +37,15 @@
                   </Label>
                   <HBox prefHeight="79.0" prefWidth="1300.0" spacing="20.0">
                      <children>
-                        <Label text="Address">
+                        <Label prefHeight="30.0" prefWidth="89.0" text="Address">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="editAddressTF" prefHeight="33.0" prefWidth="363.0" />
+                        <TextField fx:id="editAddressTF" prefHeight="37.0" prefWidth="301.0">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></TextField>
                      </children>
                      <VBox.margin>
                         <Insets left="70.0" />
@@ -61,7 +58,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="editPasswordTF" prefHeight="34.0" prefWidth="329.0" />
+                        <PasswordField fx:id="editPasswordTF" prefHeight="37.0" prefWidth="254.0" />
                      </children>
                      <VBox.margin>
                         <Insets left="70.0" />
@@ -74,7 +71,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <PasswordField fx:id="confirmPwTF" prefHeight="34.0" prefWidth="309.0" />
+                        <PasswordField fx:id="confirmPwTF" prefHeight="35.0" prefWidth="233.0" />
                      </children>
                      <VBox.margin>
                         <Insets left="70.0" />
@@ -82,16 +79,13 @@
                   </HBox>
                   <Label fx:id="editProfileErrorLabel" prefHeight="19.0" prefWidth="541.0" text="Error" />
                </children>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
                <BorderPane.margin>
-                  <Insets top="30.0" />
+                  <Insets left="90.0" top="30.0" />
                </BorderPane.margin>
             </VBox>
          </center>
          <right>
-            <VBox prefHeight="700.0" prefWidth="577.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="521.0" prefWidth="467.0" BorderPane.alignment="CENTER">
                <children>
                   <Label prefHeight="7.0" prefWidth="283.0" text="Payment Details">
                      <font>
@@ -146,24 +140,31 @@
                      </VBox.margin>
                   </Button>
                </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
             </VBox>
          </right>
          <bottom>
-            <HBox prefHeight="112.0" prefWidth="1300.0" spacing="40.0" BorderPane.alignment="CENTER">
-               <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveChangesToDB" prefHeight="41.0" prefWidth="144.0" text="Save Changes">
-                  <HBox.margin>
-                     <Insets left="500.0" />
-                  </HBox.margin>
-               </Button>
-               <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#backToEditProfile" prefHeight="42.0" prefWidth="145.0" text="Cancel">
-                  <HBox.margin>
-                     <Insets left="1.0" />
-                  </HBox.margin>
-               </Button>
+            <AnchorPane>
                <BorderPane.margin>
                   <Insets bottom="50.0" />
                </BorderPane.margin>
-            </HBox>
+               <children>
+                  <HBox fillHeight="false" prefHeight="42.0" prefWidth="817.0" spacing="10.0">
+                     <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#saveChangesToDB" prefHeight="41.0" prefWidth="153.0" text="Save Changes">
+                        <HBox.margin>
+                           <Insets left="500.0" />
+                        </HBox.margin>
+                     </Button>
+                     <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#backToEditProfile" prefHeight="42.0" prefWidth="162.0" text="Cancel">
+                        <HBox.margin>
+                           <Insets left="1.0" />
+                        </HBox.margin>
+                     </Button>
+                  </HBox>
+               </children>
+            </AnchorPane>
          </bottom>
       </BorderPane>
    </children>

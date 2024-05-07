@@ -22,8 +22,14 @@
     -fx-background-color: #7c0b0b;
 }
 
+#cancelBtn{
+    -fx-alignment: center;
+}
+
+
 #saveBtn{
     -fx-background-color: #4CAF50;
+    -fx-alignment: center;
 }
 #saveBtn:hover {
     -fx-background-color: #45a049;
