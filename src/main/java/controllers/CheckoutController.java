@@ -240,7 +240,7 @@ public class CheckoutController implements Initializable {
                 nameOnCardTF.setText(account.getPaymentName());
                 cardNumTF.setText(account.getPaymentNumber());
                 cvvTF.setText(account.getPaymentCVV());
-                if (!account.getPaymentExpiration().isEmpty()){
+                if (!(account.getPaymentExpiration()== null)){
                     validThroughDP.setValue(LocalDate.parse(account.getPaymentExpiration() , format));
                 }
 
