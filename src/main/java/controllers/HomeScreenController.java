@@ -54,16 +54,12 @@ public class HomeScreenController {
     private ImageView popFavMuffin;
 
     @FXML
-    private HBox itemCarouselContainer;
-
-    @FXML
     private void initialize() {
 
     }
 
     @FXML
     private void clickShopNow(ActionEvent event) {
-            System.out.println("Shop Now button clicked!");
 
             FXMLLoader itemDisplayLoader = new FXMLLoader((getClass().getResource("/view/ItemDisplay.fxml")));
             Parent itemDisplayRoot;
